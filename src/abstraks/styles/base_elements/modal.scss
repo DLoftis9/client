@@ -68,8 +68,12 @@
 .modal__close {
 	font-size: 30px;
 	width: auto;
-	float: left;
-	padding-top: 10px;
+	float: right;
+    padding-top: 10px;
+    
+    @media #{$medium} {
+		padding-right: 30px;
+	}
 }
 
 .modal__anchor {

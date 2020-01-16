@@ -9,7 +9,6 @@ import TermsOfUse from './TermsOfUse';
 
 // Social Containers
 
-
 // issue 26 pages
 import Issue26p1 from '../components/publication-pages/Issue26p1';
 import Issue26p2 from '../components/publication-pages/Issue26p2';
@@ -309,7 +308,6 @@ const RouterContent = () => (
       <Route path="/Publication/issue29p24" component={Issue29p24} />
 
       {/* social container */}
-
 
       {/* keep the not found component at then bottom so 
       the router can successfully render all pages */}
