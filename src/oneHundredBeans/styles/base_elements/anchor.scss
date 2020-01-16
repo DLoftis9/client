@@ -1,0 +1,23 @@
+@import '.././_variables.scss';
+
+.anchor {
+  color: $color-primary;
+}
+.anchor:hover,
+.anchor:focus {
+  color: $color-primary-hover;
+}
+
+.anchor__section {
+  color: $color-font-body;
+}
+
+.home {
+  .anchor__navbar {
+    color: $color-white;
+  }
+}
+
+.anchor__navbar {
+  color: $color-primary;
+}

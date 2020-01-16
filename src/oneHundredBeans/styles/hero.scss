@@ -1,0 +1,65 @@
+@import '_variables.scss';
+@import '../.././base/styles/_variables.scss';
+
+$font-hero: 80px;
+
+.hero__container {
+  padding-top: 8em;
+
+  @media #{$medium} {
+    padding-top: 0;
+  }
+}
+
+.hero__header {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  font-size: 50px;
+  color: $color-white;
+  line-height: 1.25;
+
+  @media #{$medium} {
+    padding-top: 65px;
+    margin-top: 2em;
+    font-size: $font-hero;
+  }
+}
+
+.section__hero {
+  background-image: url('https://s3-us-west-1.amazonaws.com/100beans.com/assets/images/hero.jpg');
+  height: 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero__down {
+  float: left;
+  width: 100%;
+  color: $color-white;
+  text-align: center;
+  font-size: 40px;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  transform-origin: bottom;
+  animation-name: bounce-3;
+  animation-timing-function: ease;
+
+  @keyframes bounce-3 {
+    0% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-50px);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}

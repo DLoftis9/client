@@ -1,0 +1,116 @@
+@import './_variables.scss';
+@import '../.././base/styles/_variables.scss';
+@import './base_elements/button.scss';
+
+.contact {
+  float: left;
+  width: 100%;
+  background-color: $color-dark_gray;
+  padding: 0 15px;
+
+  @media #{$medium} {
+    display: block;
+    width: 33%;
+    padding: 0;
+  }
+
+  h3 {
+    font-size: $font-header;
+  }
+}
+
+.contact__content--title {
+  line-height: 1.1;
+}
+
+.contact__content--email {
+  padding-top: 20px;
+}
+
+.contact__content {
+  .title {
+    margin: 5px 0 5px 0;
+  }
+
+  .paragraph {
+    @extend .btn-animate;
+    text-decoration: none;
+    color: $color-primary;
+
+    &:hover {
+      color: $color-primary-hover;
+    }
+  }
+}
+
+.contact-page.contact {
+  width: 100%;
+
+  @media #{$medium} {
+    height: 100%;
+  }
+
+  .contact__container {
+    margin-top: 10em;
+    color: $color-white;
+
+    @media #{$medium} {
+      margin-top: 20em;
+    }
+
+    .contact__content {
+      float: left;
+      width: 100%;
+
+      @media #{$medium} {
+        width: 40%;
+        margin-right: 15px;
+      }
+
+      .social .social__content {
+        padding-left: 0;
+      }
+    }
+
+    .contact__credits {
+      width: 100%;
+      float: left;
+      margin-top: 60px;
+    }
+
+    .social__content--dribbble,
+    .social__content--instagram {
+      margin: 5px 0;
+
+      @media #{$medium} {
+        display: inline-block;
+      }
+    }
+
+    .social__content--instagram {
+      @media #{$medium} {
+        margin: 5px 30px;
+      }
+    }
+
+    .navbar {
+      text-align: left;
+      .navbar__container {
+        padding-left: 0;
+
+        .navbar__button {
+          padding: 10px 0 0 0;
+          @media #{$medium} {
+            padding: 0 10px 0 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer .contact {
+  @media #{$medium} {
+    margin-right: 1em;
+  }
+}

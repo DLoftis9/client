@@ -1,0 +1,54 @@
+@import '.././_variables.scss';
+@import '../../.././base/styles/_variables.scss';
+@import './button.scss';
+
+// Brand Base Styles
+
+.modal__overlay {
+	background-color: rgba(0,0,0,0.5);
+}
+
+.modal__anchor {
+    border-bottom: 1px solid $color-light_gray;
+    padding-top: 20px;
+    padding-bottom: 10px;
+
+    @media #{$medium} {
+        border-bottom: none;
+        min-height: 250px;
+    }
+}
+
+.modal__thumbnails-title {
+    text-align: center;
+}
+
+.modal__content {
+    float: left;
+}
+
+.modal__title {
+    text-align: center;
+}
+
+.modal__text {
+    text-align:center;
+}
+
+.modal__image {
+    @media #{$medium} {
+        max-height: 125px;
+    }
+}
+
+.modal__row {
+    background-color: $color-white;
+}
+
+// menu
+.modal-root.oneHundredBeans__modal {
+    .menu__overlay {
+        transition: 0.5s;
+        height: 100%;
+    }
+}

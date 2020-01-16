@@ -1,0 +1,23 @@
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+
+.#{$fa-css-prefix}-calendar:before { content: $fa-var-calendar; }
+.#{$fa-css-prefix}-plus:before { content: $fa-var-plus; }
+.#{$fa-css-prefix}-arrow-left:before { content: $fa-var-arrow-left; }
+.#{$fa-css-prefix}-arrow-right:before { content: $fa-var-arrow-right; }
+.#{$fa-css-prefix}-home:before { content: $fa-var-home; }
+.#{$fa-css-prefix}-envelope:before { content: $fa-var-envelope; }
+.#{$fa-css-prefix}-book:before { content: $fa-var-book; }
+.#{$fa-css-prefix}-twitter-square:before { content: $fa-var-twitter-square; }
+.#{$fa-css-prefix}-facebook-square:before { content: $fa-var-facebook-square; }
+.#{$fa-css-prefix}-tumblr-square:before { content: $fa-var-tumblr-square; }
+.#{$fa-css-prefix}-instagram:before { content: $fa-var-instagram; }
+.#{$fa-css-prefix}-search:before { content: $fa-var-search; }
+.#{$fa-css-prefix}-bars:before { content: $fa-var-bars; }
+.#{$fa-css-prefix}-close:before { content: $fa-var-close; }
+.#{$fa-css-prefix}-chevron-down:before { content: $fa-var-chevron-down; }
+.#{$fa-css-prefix}-chevron-up:before { content: $fa-var-chevron-up; }
+.#{$fa-css-prefix}-info-circle:before { content: $fa-var-info-circle; }
+.#{$fa-css-prefix}-balance-scale:before { content: $fa-var-balance-scale; }
+.#{$fa-css-prefix}-dribbble:before { content: $fa-var-dribbble; }
+.#{$fa-css-prefix}-medkit:before { content: $fa-var-medkit; }

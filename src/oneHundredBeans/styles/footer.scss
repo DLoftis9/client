@@ -1,0 +1,118 @@
+@import './_variables.scss';
+@import '../../base/styles/_variables.scss';
+
+// app base elements
+@import './base_elements/button.scss';
+
+.footer {
+	color: $color-white;
+	background-color: $color-dark_gray;
+	float: left;
+	width: 100%;
+
+	.footer__container {
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
+
+	// navbar footer
+	.navbar {
+		text-align: left;
+
+		@media #{$medium} {
+		  width: auto;
+		  display: inline-block;
+		  float: left;
+		  width: 50%;
+		}
+		
+		.navbar__container {
+			padding: 25px 0;
+			width: 100%;
+			margin-top: 0;
+		
+			@media #{$medium} {
+				padding: 0 0 25px 0;
+			}
+		}
+		
+		.navbar__button {
+			font-size: 16px;
+	
+			@media #{$medium} {
+				display: inline-block;
+				text-align: left;
+				width: auto;
+				padding: 0;
+				margin: 5px 30px;
+			}
+		}
+
+		.anchor__navbar {
+			color: $color-primary;
+		}
+
+		.navbar__button--home {
+			padding-right: 0;
+		}
+	
+		.navbar__button--about {
+			display: inline-block;
+		}
+	}
+
+	.footer__content {
+
+		@media #{$medium} {
+			float: left;
+			width: 33%;
+			border-left: 2px solid $color-medium_gray;
+		}
+	
+		.links {
+			width: 100%;
+			float: left;
+			font-size: $font-subheader;
+			
+			@media #{$medium} {
+				margin-top: 0;
+				padding-left: 30px;
+			}
+		}
+
+		.info__content {
+			padding: 0 15px;
+			
+			@media #{$medium} {
+				padding: 0;
+			}
+		}
+	}
+
+	.footer__credits {
+		float: left;
+		width: 100%;
+
+		.footer__paragraph {
+			color: $color-medium_gray;
+			width: 100%;
+			float: left;
+			padding: 0 15px;
+
+			@media #{$medium} {
+				padding: 0;
+			}
+		}
+	}
+}
+
+// for pages that don't have enough content to push the footer component down
+.error,
+.menu {
+	.footer {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+	}
+} 
