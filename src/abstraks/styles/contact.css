@@ -1,9 +1,0 @@
-.contact__content {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px; }
-  @media (min-width: 768px) {
-    .contact__content {
-      float: left;
-      width: 100%; } }
