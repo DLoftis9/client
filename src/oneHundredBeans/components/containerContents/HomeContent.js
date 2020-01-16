@@ -105,7 +105,7 @@ export default class HomeContent extends React.PureComponent {
             <div className="home-work__container container">
               <div className="home-work__row row">
                 <div className="section__header">
-                  <Link to="/work" className="anchor anchor__section">
+                  <Link to="/work" className="anchor anchor__section" target="_top">
                     <h2 className="work__header">Work</h2>
                   </Link>
                 </div>
