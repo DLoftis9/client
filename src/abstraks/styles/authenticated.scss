@@ -1,0 +1,72 @@
+// app base
+@import '_variables.scss';
+
+@import '../.././base/styles/_variables.scss';
+
+// mobile styles are under base_elements/nav.scss
+
+.authenticated__image,
+.authenticated__paragraph {
+    float:left;
+}
+
+.authenticated__image {
+    float: left;
+    margin: 15px 10px 15px 0;
+    background-color: $color-light_gray;
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+
+    .fa-user {
+        color: $color-white;
+        display: block;
+        position: relative;
+        margin: 0 auto;
+        font-size: 45px;
+        height: 50px;
+        width: 50px;
+        margin: 0 9px;
+    }
+
+    @media #{$medium} {
+        height: 50px;
+        width: 50px;
+        margin: 15px 10px 15px 0;
+    }
+}
+
+.authenticated__paragraph {
+    @media #{$medium} {
+        padding-left: 15px;
+    }
+}
+
+.authenticated__user-title {
+    font-size: $font-subheader;
+    float: left;
+    color: $color-white;
+
+    @media #{$medium} {
+        margin-left: 10px;
+        color: $color-primary;
+    }
+}
+
+.authenticated__logout {
+    float: left;
+    width: 100%;
+
+    @media #{$medium} {
+        width: auto;
+        margin-left: 100px;
+    }
+}
+
+.authenticated__anchor.anchor {
+    color: $color-white;
+
+    @media #{$medium} {
+        color: $color-primary;
+    }
+}

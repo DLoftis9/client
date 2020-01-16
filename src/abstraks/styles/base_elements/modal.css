@@ -1,0 +1,82 @@
+.button {
+  color: #fff; }
+
+.button-primary {
+  background-color: #009900;
+  border-color: #009900; }
+
+.button-primary:hover {
+  background-color: #025302; }
+
+.button-primary:focus {
+  background-color: #fff;
+  color: #025302;
+  border: 1px solid #025302; }
+
+.button-primary:active {
+  background-color: #009900;
+  border-color: #009900; }
+
+.button-secondary {
+  background-color: #7086f1;
+  border-color: #7086f1; }
+
+.button-secondary:hover {
+  background-color: #0266be; }
+
+.button-secondary:focus {
+  background-color: #fff;
+  color: #0266be;
+  border: 1px solid #0266be; }
+
+.button-secondary:active {
+  background-color: #7086f1;
+  border-color: #7086f1; }
+
+.issue-26 .modal--issue27,
+.issue-26 .modal--issue28 {
+  display: none; }
+
+.issue-27 .modal--issue26,
+.issue-27 .modal--issue28 {
+  display: none; }
+
+.issue-28 .modal--issue26,
+.issue-28 .modal--issue27 {
+  display: none; }
+
+.issue-29 .modal--issue26,
+.issue-29 .modal--issue27,
+.issue-29 .modal--issue28 {
+  display: none; }
+
+.modal__overlay {
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.modal__anchor {
+  border-bottom: 1px solid #E5E5E5;
+  padding-top: 20px;
+  padding-bottom: 10px; }
+  @media (min-width: 768px) {
+    .modal__anchor {
+      border-bottom: none;
+      min-height: 250px; } }
+
+.modal__thumbnails-title {
+  text-align: center; }
+
+.modal__content {
+  float: left; }
+
+.modal__title {
+  text-align: center; }
+
+.modal__text {
+  text-align: center; }
+
+@media (min-width: 768px) {
+  .modal__image {
+    max-height: 125px; } }
+
+.modal__row {
+  background-color: #fff; }

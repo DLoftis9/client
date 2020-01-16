@@ -1,0 +1,72 @@
+@import '_variables.scss';
+@import '../.././base/styles/grid.scss';
+@import '../.././base/styles/button.scss';
+
+// app base elements
+@import './base_elements/button.scss';
+
+.blog-content__row {
+	@media #{$medium} {
+		padding: 20px 0;
+	}
+}
+
+.blog-content__header {
+	margin-bottom: 0;
+}
+
+.blog-content__button {
+	@media #{$medium} {
+		margin: 0 auto;
+		display: block;	
+	}
+}
+
+.blog-content__button--next {
+	@extend .button-primary;
+}
+
+.blog-content__div {
+	@media #{$medium} {
+        float: left;
+        width: 32%;
+		margin: 0 5px;
+		border: 1px solid $color-light_gray;
+    }
+
+}
+
+.blog-content__icon,
+.blog-content__categories {
+	display: inline-block;
+}
+
+.blog-content__icon--calendar {
+	color: $color-tertiary;
+	margin-right: 5px;
+}
+
+.blog-content__excerpt {
+	// margin-bottom: 25px;
+	border-bottom: solid 1px $color-light_gray;
+    padding-bottom: 25px;
+	@media #{$medium} {
+		border-bottom: none;
+	}
+}
+
+.blog-content__excerpt--post {
+	margin: 0 -15px;
+}
+
+.blog-content__excerpt--copy {
+	padding: 0 15px;
+}
+
+.blog-content__anchor {
+	color: $color-white;
+	text-decoration: none;
+	@media #{$medium} {
+		width: 33.33333333%;
+	}
+}

@@ -1,0 +1,59 @@
+@import '_variables.scss';
+@import '../.././base/styles/input.scss';
+
+// app base elements
+@import './base_elements/input.scss';
+
+.email {
+    background-color: $color-light_gray;
+}
+
+.email__container:before,
+.email__container:after {
+	content: " ";
+	display: table;
+}
+
+.email__container:after {
+	clear: both;
+}
+
+.email__header {
+	text-align: center;
+}
+
+.email__form {
+	margin-bottom: 20px;
+	@media #{$medium} {
+		margin-left: 37%;
+		float: left;
+		width: 27%;
+	}
+
+	@media #{$large} {
+		margin-left: 41%;
+	}
+
+	@media #{$xlarge} {
+		margin-left: 42%;
+	}
+}
+
+.email__icon {
+	display: none;
+	color: $color-tertiary;
+	margin-right: 5px;
+	@media #{$medium} {
+		display: inline-block;
+	}
+}
+
+.email__input {
+	@extend .input;
+	display: inline-block;
+    margin: 0 auto;
+	width: 100%;
+	@media #{$medium} {
+		width: auto;
+	}
+}

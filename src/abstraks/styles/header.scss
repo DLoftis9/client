@@ -1,0 +1,91 @@
+// app base
+@import '_variables.scss';
+
+@import '../.././base/styles/_variables.scss';
+
+.header {
+	margin-bottom: 0;
+	padding-left: 0;
+	list-style: none;
+	overflow: hidden;
+	background-color: $color-white;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+	height: 90px;
+	
+	@media #{$medium} {
+		border-bottom: 1px solid $color-primary;
+	}
+}
+
+.header:before,
+.header:after {
+	content: " ";
+	display: table;
+}
+
+.header__container {
+	background-color: $color-white;
+	height: 90px;
+
+	@media #{$medium} {
+		height: auto;
+	}
+}
+
+.header__container:before,
+.header__container:after {
+	content: " ";
+	display: table;
+}
+
+.header__container:after {
+	clear: both;
+}
+
+.header__container--default {
+	text-align: center;
+}
+
+.header__menu {
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid $color-primary;
+
+	@media #{$medium} {
+		width: auto;
+		float: none;
+		border-bottom: 1px solid transparent;
+	}
+}
+
+.header-social {
+	@media #{$medium} {
+		float: right;
+		margin-top: 5px;
+	}
+}
+
+.header-social:after,
+.header-social:before {
+    content: " ";
+    display: table;
+}
+
+.header-social__container {
+	position: relative;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	float: left;
+	border-bottom: 2px solid $color-white;
+	width: 100%;
+
+	@media #{$medium} {
+		font-size: 20px;
+		width: auto;
+		border-bottom: none;
+	}
+}

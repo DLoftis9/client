@@ -1,0 +1,517 @@
+@import '../_variables.scss';
+
+// Publication Specific Styles
+
+.rights_reserved {
+	font-size: 12px;
+  	font-weight: 300;
+}
+
+.artistsToWatch-box {
+	margin-left: 15px;
+}
+
+.artistsToWatch-box {
+	background-color: $color-secondary;
+}
+
+.artistsToWatch-number {
+	color:$color-secondary;
+}
+
+.intro-number {
+	color:rgba(244,150,9,1);
+	float: left;
+	margin-top: 0;
+	margin-left: 15px;
+}
+
+.intro-number,
+.artistsToWatch-number {
+	font-size: 42px;
+	background-size: 100%;
+	background-repeat:no-repeat;
+	background-position:center;
+	padding: 40px 24px;
+	width:113px;
+	background-image: url("https://s3-us-west-1.amazonaws.com/abstraksresources/publication/logo_spot.png");
+}
+
+.first-name,
+.last-name,
+.writter {
+	color: $color-white;
+}
+
+.publication__issue h1 {
+	margin-top:10px;
+}
+
+.first-name {
+	margin-bottom:0px;
+}
+
+.last-name {
+	margin-top: -10px;
+  	margin-bottom: 0px;
+}
+
+.titleDescription {
+	font-style:italic;
+	color: $color-medium_gray;
+
+	strong {
+		font-weight: 700;
+		font-size: 18px;
+		color: $color-primary;
+	}
+}
+
+.titleDescription__right {
+	@media (min-width:768px) {
+		text-align: right;
+	}
+}
+
+.pageNav {
+	border-top-width: thin;
+	border-top-color: $color-light_gray;
+	border-top-style: solid;
+	padding-top: 10px;
+}
+
+.issue-page__container {
+	float: left;
+
+	@media (min-width:768px) {
+		float: none;
+	}
+}
+
+.issueNumber {
+	background-color: $color-primary;
+	color: $color-white;
+	margin: 10px 0;
+}
+
+.pageNumber {
+	font-weight:200;
+}
+
+.letterEditorLineHeight {
+	line-height:1.35;
+	font-weight:bolder;
+	color:$color-primary;
+}
+
+.writerQuestion {
+	font-size: large;
+}
+
+.backCover {
+	background-color:#09ffb6;
+	height:600px;
+}
+
+.backCover img {
+	margin:88px 0;
+}
+
+/* Links & Buttons
+================================ */
+
+.captionLink {
+	color:$color-white;
+}
+
+.captionLink:hover {
+	color:$color-tertiary-hover;
+}
+
+.publication__issue header.page-header li a {
+	color:$color-font-body;
+	background-color:$color-white;
+	font-size:16px;
+	font-weight:700;
+	text-decoration:none;
+}
+
+.publication__issue header.page-header li a:hover {
+	color:$color-primary;
+	background-color:$color-white;
+	font-size:16px;
+	font-weight:700;
+	text-decoration:underline;
+}
+
+/* Intro's
+================================ */
+
+.introPhoto {
+	margin: 5% auto 0 auto;
+	position: relative;
+}
+
+.mobileCaption {
+	color:transparent;
+}
+
+/* Imagery
+================================ */
+
+.autoMargin {
+	margin: 0 auto;
+}
+
+.screenshots img {
+	width: 30%;
+}
+
+.pageSpacing img {
+	display: block;
+  	position: absolute;
+	top: 0;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+  	margin: 0px auto;
+	padding: 10px auto;
+}
+
+.credits__image {
+	margin-top: 20px;
+
+	@media (min-width:768px) {
+		height:550px;
+	}
+}
+
+.lagan img {
+	width:100%;
+}
+
+.pageSpacing img {
+	display: block;
+  	position: absolute;
+	top: 0;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+  	margin: 0px auto;
+	padding: 10px auto;
+}
+
+.intro-box {
+	padding-bottom: 5px;
+    background-color: $color-tertiary;
+    border-radius: 10px;
+
+	@media (min-width:768px) {
+		width: 75%;
+		margin-right: 15px;
+		border-radius: 0 0 10px 10px;
+		float: left;
+		margin-left: 15px;
+	}
+}
+
+.intro-box--artistsWatch {
+	background-color: $color-fourth;
+	min-height: 150px;
+	@media (min-width:768px) {
+		min-height: 0;
+	}
+}
+
+.intro-number--artistsWatch {
+	color: $color-fourth;
+}
+
+/* Mobile
+========= */
+@media (max-width: 991px) {
+	
+	.artistsToWatch-box {
+    	height: 140px;
+	}
+	
+	.mobileCaption {
+		color:#00CAFF;
+	}
+	
+	.artistsToWatch-box {
+    	margin-left: 0;
+	}
+	
+	.backCover img {
+		padding:162px 0;
+		margin: 0;
+	}
+}
+
+/* Tablet
+=========*/
+@media (max-width: 767px) {
+	
+	.publication__issue h1 {
+		font-size:30px;
+	}
+	
+	.mobileCaption {
+		color:transparent;
+	}
+
+	.carousel, 
+	.carousel-inner, 
+	.carousel-inner .item {
+  		width: 100%;
+  		height:168px;
+	}
+
+}
+
+// platform styles
+// page-nav__button-- styles are also in base/page-nav styles
+.credits,
+.credits__rights,
+.artists-intro,
+.page-nav__anchor,
+.page_column-3,
+.page_column-4,
+.page_column-6,
+.page_column-9,
+.page_column-12 {
+	position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+	padding-right: 15px;
+
+	@media (min-width:768px) {
+		float: left;
+	}	
+}
+
+.credits,
+.page_column-3 {
+	@media (min-width:768px) {
+		width: 25%;
+	}
+}
+
+.credits__rights,
+.page_column-6 {
+	@media (min-width:768px) {
+		width: 50%;
+	}
+}
+
+.page_column-4 {
+	@media (min-width:768px) {
+		width: 33.33333333%;
+	}
+}
+
+.page_column-9 {
+	@media (min-width:768px) {
+		width: 75%;
+	}
+}
+
+.page_column-12 {
+	@media (min-width:768px) {
+		width: 100%;
+	}
+}
+
+.page_column--right {
+	@media (min-width:768px) {
+		float: right;
+	}
+}
+
+.page_credits__anchor {
+	display: block;
+}
+
+.credits__header,
+.page_paragraph--title {
+	font-size: 20px;
+	margin-bottom: 5px;
+	font-weight: 700;
+}
+
+.credits__header--quote {
+	color: $color-primary;
+}
+
+.credits__paragraph {
+	display: block;
+}
+
+.table-of-contents {
+	margin-top: 15px;
+}
+
+.artists-intro {
+	@media (min-width:768px) {
+		width: 100%;
+	}
+}
+
+.artists-intro__image {
+	width: 100%;
+}
+
+.artists-intro__image--rickBerry,
+.artists-intro__image--raulGonzalez,
+.artists-intro__image--merkThose {
+	@media (min-width:768px) {
+		width: 70%;
+	}
+}
+
+.artists-intro__image--dugan {
+	@media (min-width:768px) {
+		width: 40%;
+	}
+}
+
+.artists-intro__image--chanimation {
+	@media (min-width:768px) {
+		width: 60%;
+	}
+}
+
+.artist-work {
+	@media (min-width:768px) {
+		margin-top: 15px;
+	}
+}
+
+.page-nav__container {
+	border-top-width: thin;
+    border-top-color: $color-light_gray;
+    border-top-style: solid;
+    padding-top: 10px;
+}
+
+.page_end__image {
+	width: 50%;
+}
+
+.page-nav__button--prev .page-nav__title {
+	margin-left: 10px;
+}
+
+.page-nav__button--next,
+.page-nav__button--menu {
+	.page-nav__title {
+		margin-right: 10px;
+	}
+}
+
+.intro .page-nav__button--prev,
+.outro .page-nav__button--next {
+	display: none;
+}
+
+.page-nav__button--menu {
+	@media (min-width:768px) {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: auto;
+	}
+}
+
+.page-nav__anchor--publication {
+	width: auto;
+
+	.page-nav__button--next {
+		margin-top: 0;
+	}
+}
+
+.page-nav__anchor--publication:nth-child(1) {
+	@media (min-width:768px) {
+		margin-right: 25%;
+	}
+
+	@media (min-width: 992px) {
+		margin-right: 33%;
+	}
+}
+
+.page-nav__anchor--publication:nth-child(2) {
+	padding: 0;
+	
+	@media (min-width:768px) {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+.page-nav__anchor--publication:nth-child(3) {
+	@media (min-width:768px) {
+		float: right;
+	}
+}
+
+.page-nav__title {
+	display: none;
+	
+	@media (min-width:768px) {
+		display: inline-block;
+	}
+}
+
+.page_intro__header {
+	color: $color-primary;
+}
+
+.PublicationHome {
+	margin: 10px 0 15px 0;
+	@media (min-width:768px) {
+		margin: 10px 0 0 0;
+	}
+}
+
+.PublicationHome__container {
+	padding-top: 10px;
+
+	:hover {
+		color: $color-secondary-hover;
+	}
+}
+
+.PublicationHome__icon {
+	color: $color-secondary;
+
+	.page-nav__title {
+		margin-left: 15px;
+		display: inline-block;
+	}
+}
+
+.issue-28 .issue-page__container {
+	float: none;
+}
+
+// css for the modal button
+.modal__toggle__close {
+	position: relative;
+	top:0;
+	z-index: 11;
+	left: 0;
+	right: 0;
+
+	@media (min-width:768px) {
+		top: -45px;
+    }
+}
+
+.modal__container {
+	@media (min-width:768px) {
+		background-color: $color-white_gray;
+	}
+}

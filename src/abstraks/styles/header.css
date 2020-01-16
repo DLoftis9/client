@@ -1,0 +1,33 @@
+.header {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none; }
+  @media (min-width: 768px) {
+    .header {
+      border-bottom: 1px solid #009900; } }
+
+.header:before,
+.header:after {
+  content: " ";
+  display: table; }
+
+.header__container:before,
+.header__container:after {
+  content: " ";
+  display: table; }
+
+.header__container:after {
+  clear: both; }
+
+.header__container--default {
+  text-align: center; }
+
+.header__menu {
+  float: left;
+  width: 100%;
+  border-bottom: 1px solid #009900; }
+  @media (min-width: 768px) {
+    .header__menu {
+      width: auto;
+      float: none;
+      border-bottom: 1px solid transparent; } }

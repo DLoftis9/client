@@ -1,0 +1,22 @@
+@import '_variables.scss';
+@import '../.././base/styles/_variables.scss';
+
+.about__content {
+	position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+	padding-right: 15px;
+
+	@media #{$medium} {
+		float: left;
+		width: 100%;
+	}
+}
+
+.about__container {
+	margin-top: 70px;
+
+	@media #{$medium} {
+		margin-top: 110px; 
+	}
+}

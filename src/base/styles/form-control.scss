@@ -1,0 +1,72 @@
+@import './grid.scss';
+@import './input.scss';
+@import './radio.scss';
+@import './select.scss';
+
+// Form Control Base Styles
+
+/*class for input*/
+
+.form-control {
+  font-size: 16px;
+  line-height: 1.42857143;
+  background-image: none;
+}
+
+.form-control:focus {
+  outline: 0;
+}
+
+.form-control::-moz-placeholder {
+  color: $color-mid-gray;
+  opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+  color: $color-mid-gray;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: $color-mid-gray;
+}
+
+.form-control::-ms-expand {
+  border: 0;
+  background-color: transparent;
+}
+
+.form-control[disabled],
+.form-control[readonly] {
+  background-color: $color-light-gray;
+  opacity: 1;
+}
+
+
+// styles inheritance from base element styles
+.form-group--email .form-control {
+  @extend .input
+}
+
+.form-group--email .form-control {
+  @extend .input
+}
+
+.form-group--password .form-control {
+  @extend .input
+}
+
+.form-group--radio .form-control {
+  @extend .radio
+}
+
+.form-group--select .form-control {
+  @extend .select
+}
+
+.form-group--textInput .form-control {
+  @extend .input
+}
+
+.form-group--textArea .form-control {
+  @extend .input
+}

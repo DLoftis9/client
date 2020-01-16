@@ -1,0 +1,9 @@
+@import '.././_variables.scss';
+
+.anchor {
+  color: $color-primary;
+}
+.anchor:hover,
+.anchor:focus {
+  color: $color-primary-hover;
+}

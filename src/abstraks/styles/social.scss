@@ -1,0 +1,68 @@
+@import '_variables.scss';
+@import '../.././base/styles/grid.scss';
+
+.social {
+    float: left;
+    width: 100%;
+    @media #{$large} {
+        width: auto;
+    } 
+}
+
+.social:after,
+.social:before {
+    content: " ";
+    display: table;
+}
+
+.social__container {
+    @extend .col__container;
+    
+    @media #{$medium} {
+        margin-top: 5px;
+    }
+    
+    @media #{$large} {
+        float: left;
+        width: auto;
+        margin-top: 25px;
+    }
+}
+
+.social__icon {   
+    display: inline-block;
+    list-style: none;
+    font-size: 24px;
+    padding: 0 5px;
+}
+
+// these styles cover the classes in the Social component
+.social__icon--facebook,
+.social__icon--instagram,
+.social__icon--twitter,
+.social__icon--tumblr {
+    color: $color-primary;
+
+    &:hover {
+        color: $color-primary-hover;
+    }
+}
+
+.social__icon--facebook--contact,
+.social__icon--instagram--contact,
+.social__icon--twitter--contact,
+.social__icon--tumblr--contact {
+    margin: 10px 0;
+}
+
+.menu__container {
+    .social {
+        text-align: center;
+    }
+
+    .social__icon {
+        color: $color-white;
+        font-size: 40px;
+        padding: 0 15px;
+    }
+}

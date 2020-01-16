@@ -1,0 +1,26 @@
+@import '_variables.scss';
+@import '../.././base/styles/_variables.scss';
+
+.termsOfUse__column {
+	position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+	padding-right: 15px;
+
+	@media #{$medium} {
+		float: left;
+		width: 50%;
+	}
+}
+
+.termsOfUse__row {
+	margin-bottom:35px;
+}
+
+.termsOfUse__container {
+	margin-top: 70px;
+
+	@media #{$medium} {
+		margin-top: 110px;
+	}
+}

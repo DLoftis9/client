@@ -1,0 +1,32 @@
+@import '_variables.scss';
+@import '../.././base/styles/_variables.scss';
+
+.publication__issueContainer.container {
+	@media #{$medium} {
+		width: 95%;
+		
+		.content-preview__artists--single {
+			min-height: 100px;
+		}
+	}
+}
+
+.publication__content {
+	margin-top: 70px;
+
+	@media #{$medium} {
+		margin-top: 80px;
+	}
+}
+
+.issue-page {
+	margin-top: 90px;
+}
+
+.publication__container {
+	margin-top: 70px;
+
+	@media #{$medium} {
+		margin-top: 110px;
+	}
+}

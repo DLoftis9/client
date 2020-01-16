@@ -1,0 +1,96 @@
+@import './_variables.scss';
+
+// Slide animation
+.slide-enter {
+  transform: translateX(-100%);
+}
+
+.slide-enter.slide-enter-active {
+  transform: translateX(0);
+  transition: transform 5s ease-out;
+}
+
+.slide-leave {
+  transform: translateX(0);
+}
+
+.slide-leave.slide-leave-active {
+  transform: translateX(100%);
+  opacity: 0;
+  transition: 0.5s ease-in;
+}
+
+.slide-appear {
+  opacity: 0;
+}
+
+// Drop animation
+.drop-appear.drop-appear-active {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+.drop-enter {
+  from {
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.drop-enter.drop-enter-active {
+  transform: translateY(0);
+  transition: transform 5s ease-out;
+}
+
+.drop-leave {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+}
+
+.drop-leave.drop-leave-active {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: 0.5s ease-in;
+}
+
+.drop-appear {
+  opacity: 0;
+}
+
+.drop-appear.drop-appear-active {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+// page transitions
+.page-enter {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}

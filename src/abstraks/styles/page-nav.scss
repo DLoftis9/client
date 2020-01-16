@@ -1,0 +1,53 @@
+@import '_variables.scss';
+@import '../.././base/styles/button.scss';
+
+// app base elements
+@import './base_elements/button.scss';
+
+.page-nav {
+    display: none;
+}
+
+.page-nav__container:before,
+.page-nav__container:after {
+	content: " ";
+	display: table;
+}
+
+.page-nav__container:after {
+	clear: both;
+}
+
+.page-nav__row {
+	padding: 20px 0;
+}
+
+.page-nav__button--menu {
+    @extend .button-secondary;
+
+    .fa-chevron-down {
+        margin-left: 10px;
+    }
+}
+
+.page-nav__button--prev {
+    @extend .button-secondary;
+}
+
+.page-nav__button--next {
+    @extend .button-primary;
+    margin-top: 20px;
+
+    @media #{$medium} {
+        float: right;
+        margin-top: 0;
+    }
+}
+
+.page-nav__anchor {
+    color: $color-white;
+	text-decoration: none;
+    @media #{$medium} {
+		width: 33.33333333%;
+	}
+}
