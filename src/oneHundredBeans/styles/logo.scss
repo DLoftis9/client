@@ -1,0 +1,55 @@
+// app base
+@import '_variables.scss';
+
+@import '../.././base/styles/_variables.scss';
+
+.logo {
+    float: left;
+    width: 130px;
+    
+    @media #{$medium} {
+        width: 15em;
+    }
+
+    @media #{$large} {
+        display: inline-block;
+        
+    }
+}
+
+.logo:after,
+.logo:before {
+    content: " ";
+    display: table;
+}
+
+.logo__container {
+    margin-top: 5%;
+    float: left;
+
+    @media #{$medium} {
+        margin-top: 3%; 
+    }
+
+    @media #{$large} {
+        width: 70%;
+    }
+
+    .anchor__navbar {
+        float: left;
+    }
+}
+
+.logo__image {
+    width: 70%;
+    float: left;
+
+    @media #{$medium} {
+        width: 40%;
+        float: none;
+    }
+
+    @media #{$large} {
+        width: 60%;
+    }
+}

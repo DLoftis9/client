@@ -1,0 +1,14 @@
+@import '_variables.scss';
+@import '../.././base/styles/_variables.scss';
+
+.error__column {
+	position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+	padding-right: 15px;
+
+	@media #{$medium} {
+		float: left;
+		width: 100%;
+	}
+}

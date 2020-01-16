@@ -1,0 +1,135 @@
+@import '_variables.scss';
+@import '../.././base/styles/_variables.scss';
+@import 'base_elements/button.scss';
+
+.work {
+    float: left;
+    width: 100%;
+
+    @media #{$medium} {
+        display: block;
+    }
+
+    .section__work {
+        @extend .btn-animate;
+
+        @media #{$medium} {
+            width: 100%;
+            padding-top: 50px;
+        }
+    }
+}
+
+.work__abstraks {
+    margin-top: 100px;
+
+    .work__container {
+        border: none;
+    }
+}
+
+.work__container {
+    height: 100%;
+    margin-top: 100px;
+    min-height: 500px;
+
+    @media #{$medium} {
+        border-top: 1px solid $color-medium_gray;
+        min-height: 800px;
+        margin-top: 100px;
+    }
+}
+
+.work__content {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @media #{$medium} {
+        float: left;
+        width: 50%;
+    }
+}
+
+.work__intro {
+    padding-top: 10px;
+    padding-bottom: 30px;
+
+    @media #{$medium} {
+        height: 700px;
+        margin-bottom: 50px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
+
+.work__intro--description {
+    @media #{$medium} {
+        padding: 0 50px;
+    }
+
+    .title {
+        font-size: 45px;
+    }
+    
+    .paragraph {
+        font-size: 30px;
+    }
+}
+
+.work__content--image {
+    @media #{$medium} {
+        margin: 40px 0 40px 0;
+    }
+}
+
+.work__image {
+    @media #{$medium} {
+        padding-top: 20px;
+    }
+}
+
+.work__title {
+    @media #{$medium} {
+        padding-left: 20px;
+    }
+}
+
+// image hover effects
+
+.expand-image .image {
+    @media #{$medium} {
+        max-width: none;
+        width: 100%;
+        padding: 0 20px;
+        opacity: 0.7;
+        transition: opacity 0.35s, transform 0.35s;
+        transform: translate3d(-40px,0,0);
+    }
+}
+
+.expand-image .work__title {
+    @media #{$medium} {
+        transform: translate3d(0,40px,0);
+        transition: transform 0.35s;
+        color: $color-primary;
+        border-bottom: $color-primary;
+        opacity: 0;
+        transition: opacity 0.2s, transform 0.35s;
+    }
+}
+
+
+.expand-image {
+    @media #{$medium} {
+        &:hover {
+            .work__title,
+            .image,
+            .section__overlay {
+                transform: translate3d(0,0,0);
+                opacity: 1;
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+// app base
+@import '_variables.scss';
+
+@import '../.././base/styles/_variables.scss';
+
+.header {
+	margin-bottom: 10px;
+	list-style: none;
+	float: left;
+	width: 100%;
+	height: 80px;
+    padding-top: 10px;
+	padding-left: 0;
+    z-index: 1;
+	position: fixed;
+    top: 0;
+	left: 0;
+	background-color: $color-white-alpha;
+
+	@media #{$medium} {
+		height: 5.25em;
+		float: none;
+		height: auto;
+		padding-top: 20px;
+		padding-bottom: 10px;
+	}
+}
+
+.home {
+	.header {
+		background-color: $color-medium_gray-alpha;
+	}
+}
+
+.header:before,
+.header:after {
+	content: " ";
+	display: table;
+}
+
+.header__container:before,
+.header__container:after {
+	content: " ";
+	display: table;
+}
+
+.header__container:after {
+	clear: both;
+}
+
+.header__container--default {
+	text-align: center;
+}
+
+.header__menu {
+	float: left;
+	width: 100%;
+
+	@media #{$medium} {
+		width: auto;
+		float: none;
+	}
+}

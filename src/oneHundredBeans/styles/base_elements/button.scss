@@ -1,0 +1,57 @@
+@import '.././_variables.scss';
+
+.button {
+  color: $color-white;
+  background: none;
+  border: none;
+}
+
+.button-primary {
+  background-color: $color-primary;
+  border-color: $color-primary;
+}
+
+.button-primary:hover {
+  background-color: $color-primary-hover;
+}
+
+.button-primary:focus {
+  background-color: $color-white;
+  color: $color-primary-hover;
+  border: 1px solid $color-primary-hover;
+}
+
+.button-primary:active {
+  background-color: $color-primary;
+  border-color: $color-primary;
+}
+
+.button-secondary {
+  background-color: $color-secondary;
+  border-color: $color-secondary;
+}
+
+.button-secondary:hover {
+  background-color: $color-secondary-hover;
+}
+
+.button-secondary:focus {
+  background-color: $color-white;
+  color:$color-secondary-hover;
+  border: 1px solid $color-secondary-hover;
+}
+
+.button-secondary:active {
+  background-color: $color-secondary;
+  border-color: $color-secondary;
+}
+
+// animations
+
+.btn-animate {
+	transition: all 0.3s;
+}
+
+.btn-animate:after {
+	transition: all 0.3s;
+}

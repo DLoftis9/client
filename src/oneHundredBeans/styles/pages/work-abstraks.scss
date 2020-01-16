@@ -1,0 +1,33 @@
+@import '.././_variables.scss';
+@import '../../.././base/styles/_variables.scss';
+
+.abstraks {
+    .work__intro .image {
+        @media #{$medium} {
+            width: 75%;
+        } 
+    }
+
+    .work__content.work__content-image--1 {
+        @media #{$medium} {
+            width: 100%;
+        }
+    }
+
+    .work__content.work__content-image--2 {
+        @media #{$medium} {
+            width: 75%;
+        }
+    }
+
+    .work__content.work__content-image--3 {
+        @media #{$medium} {
+            width: 25%;
+        }
+    }
+
+    .work__intro--description {
+        background-color: $color-primary;
+        color: $color-white;
+    }
+}

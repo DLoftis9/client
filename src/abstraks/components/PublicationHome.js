@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const PublicationHome = () => (
   <nav className="PublicationHome">
     <div className="PublicationHome__container col__container">
-      <Link to="/" className="anchor anchor__navbar">
+      <Link to="/" className="anchor anchor__navbar" target="_top">
         <span className="PublicationHome__icon PublicationHome__prev">
           <i className="fa fa-arrow-left" />
           <span className="page-nav__title">Go Back To All Issues</span>

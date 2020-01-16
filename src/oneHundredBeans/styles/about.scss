@@ -1,0 +1,90 @@
+@import './_variables.scss';
+@import '../.././base/styles/_variables.scss';
+
+.about {
+  float: left;
+  width: 100%;
+  background-image: url('https://s3-us-west-1.amazonaws.com/100beans.com/assets/images/aboutUs.jpg');
+
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @media #{$large} {
+    height: 100%;
+  }
+
+  .about__container {
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    @media #{$medium} {
+      background-color: transparent;
+    }
+
+    .about__content {
+      position: relative;
+      min-height: 1px;
+      padding-left: 15px;
+      padding-right: 15px;
+
+      @media #{$medium} {
+        float: left;
+        width: 75%;
+      }
+
+      .title {
+        margin: 1.5em 0 5px 0;
+        width: 100%;
+        color: $color-white;
+        font-size: $font-header;
+
+        @media #{$medium} {
+          margin: 5px 0 5px 0;
+          float: left;
+          width: 75%;
+          font-size: $font-large;
+        }
+      }
+
+      .paragraph {
+        font-size: $font-subheader;
+        text-decoration: none;
+        color: $color-white;
+
+        @media #{$medium} {
+          width: 50%;
+          padding-right: 50px;
+          float: left;
+        }
+      }
+    }
+  }
+
+  .about__icon {
+    width: 30%;
+    margin: 0 auto;
+
+    @media #{$medium} {
+      width: 25%;
+      float: left;
+      padding-top: 10em;
+    }
+  }
+}
+
+// About Page
+
+.about-page.about {
+  @media #{$large} {
+    height: auto;
+  }
+
+  .about-page.about__container {
+    padding-top: 200px;
+
+    @media #{$medium} {
+      padding-top: 250px;
+    }
+  }
+}

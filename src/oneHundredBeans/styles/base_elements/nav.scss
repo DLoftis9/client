@@ -1,0 +1,134 @@
+// app base
+@import '.././_variables.scss';
+@import '../../.././base/styles/_variables.scss';
+
+.navbar {
+  text-align: center;
+
+  @media #{$medium} {
+		text-align: start;
+	}
+}
+
+.navbar__container {
+  @media #{$medium} {
+      margin-top: 20px;
+  }
+}
+
+.navbar__container--mobile {
+  position: relative;
+  z-index: 10;
+
+  .anchor,
+  .social__icon {
+    color: $color-primary;
+  }
+
+  @media #{$medium} {
+		display: none;
+	}
+}
+
+.navbar__mobileMenu {
+  float: right;
+  margin-top: 10px;
+}
+
+.navbar__mobileMenuIcon {
+  color: $color-primary;
+  font-size: 30px;
+  background-color: transparent;
+  border: transparent;
+}
+
+.navbar__container--desktop {
+  display: none;
+  
+	@media #{$medium} {
+    display: inline-block;
+    right: 0;
+    position: absolute;
+    padding-right: 30px;
+
+    .scrollTo {
+      padding-top: 20px;
+    }
+	}
+}
+
+.navbar__button {
+  display: block;
+  font-size: 18px;
+  padding-bottom: 10px;
+
+  .anchor {
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color-primary-hover;
+      border-bottom: 3px solid $color-primary;
+      padding-bottom: 5px;
+      text-decoration: none;
+    }
+  }
+
+  .is-active {
+    border-bottom: 3px solid $color-primary;
+    padding-bottom: 5px;
+  }
+
+  .anchor:focus {
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  @media #{$medium} {
+    display: inline-block;
+    padding: 0 10px;
+  }
+}
+
+// mobile menu styles
+
+.menu__overlay {
+  background-color: $color-white--trans;
+  left: 0;
+}
+
+.menu__head {
+	width: 100%;
+}
+
+.menu__title {
+  text-align: center;
+  color: $color-font-body;
+  margin-top: 35px;
+  width: 100%;
+}
+
+.menu__close {
+  color: $color-primary;
+  background: none;
+  border: none;
+  float: right;
+  font-size: 30px;
+  padding-top: 10px;
+  width: 100%;
+
+  .fa.fa-close {
+    position: absolute;
+    right: 0;
+  }
+}
+
+.menu__body {
+  .anchor__navbar {
+    color: $color-font-body;
+  }
+
+  .navbar__button {
+    margin: 20px auto;
+    width: 230px;
+  }
+}

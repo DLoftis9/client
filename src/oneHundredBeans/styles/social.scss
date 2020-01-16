@@ -1,0 +1,40 @@
+@import '_variables.scss';
+@import '../.././base/styles/_variables.scss';
+
+// Footer
+
+.social {
+  .social__content {
+    padding-left: 15px;
+
+    .social__content--dribbble,
+    .social__content--instagram {
+      display: block;
+      font-size: 18px;
+      padding-bottom: 10px;
+
+      @media #{$medium} {
+        margin: 5px 30px;
+      }
+
+      .anchor {
+        transition: all 0.3s;
+
+        &:hover {
+          color: $color-primary-hover;
+          border-bottom: 3px solid $color-primary;
+          padding-bottom: 5px;
+          text-decoration: none;
+        }
+
+        .fa {
+          padding-right: 10px;
+        }
+      }
+
+      .anchor:focus {
+        padding: 5px;
+      }
+    }
+  }
+}

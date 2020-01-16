@@ -1,0 +1,126 @@
+@import '.././_variables.scss';
+@import '../../.././base/styles/_variables.scss';
+
+
+.home {
+    height: 100%;
+}
+.home__hero {
+  float: left;
+  width: 100%;
+  margin-bottom: 30px;
+
+  @media #{$medium} {
+    height: auto;
+  }
+
+  @media #{$large} {
+    height: 100%;
+  }
+}
+
+.intro-section {
+  float: left;
+  width: 100%;
+}
+
+.home-intro {
+  .home-intro__container {
+    padding-top: 70px;
+    padding-bottom: 100px;
+    margin: 0 auto;
+
+    @media #{$medium} {
+      padding-top: 100px;
+    }
+
+    .home-intro__content {
+      .home-intro__icon {
+        width: 30%;
+        margin: 0 auto;
+
+        @media #{$medium} {
+          float: left;
+          width: 25%;
+        }
+      }
+
+      .home-intro__header {
+        margin-top: 2em;
+        margin-bottom: 0;
+        text-align: center;
+        padding: 0 15px;
+        font-size: $font-subheader;
+
+        @media #{$medium} {
+          margin-top: 0;
+          width: 75%;
+          float: left;
+          padding-left: 1em;
+          padding-top: 1.5em;
+        }
+
+        .callout {
+          color: $color-primary;
+
+          @media #{$medium} {
+            &:before {
+              display: block;
+              content: '';
+              background: $color-font-body;
+              height: 60px;
+              width: 5px;
+              position: relative;
+              left: 0;
+              top: 0;
+              float: left;
+              // margin-right: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.home-work,
+.home-mid {
+  display: block;
+  float: left;
+  width: 100%;
+
+  .home-work__container {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
+.home-mid {
+  background-image: url('https://s3-us-west-1.amazonaws.com/100beans.com/assets/images/designSection.jpg');
+  height: 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Bungee Shade', cursive;
+
+  .home-mid__header {
+    font-size: 21vw;
+    margin-top: 0;
+    line-height: 0.9;
+    text-align: center;
+    color: $color-white;
+    transform-origin: 0 0;
+    transform: rotate(90deg);
+    position: relative;
+    left: 0;
+    margin-left: 39vw;
+
+    @media #{$medium} {
+      font-size: 11vw;
+      transform: rotate(0deg);
+      position: static;
+      margin-left: 0;
+      line-height: 0.75;
+    }
+  }
+}

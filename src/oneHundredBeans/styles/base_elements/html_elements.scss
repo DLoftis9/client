@@ -1,0 +1,28 @@
+@import '.././_variables.scss';
+@import '../../.././base/styles/_variables.scss';
+
+html {
+  font-family: 'Muli', sans-serif;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  p {
+    line-height: 1.7;
+  }
+
+  color: $color-font-body;
+}
+
+// these classes are defined to 
+// set the height of the hero image
+.oneHundredBeans__app,
+.app__container,
+.page {
+  height: 100%;
+}
+
+.oneHundredBeans__app .page {
+  background-color: $color-white;
+}
