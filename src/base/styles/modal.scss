@@ -1,0 +1,32 @@
+@import './_variables.scss';
+@import './button.scss';
+
+// Modal Base Styles
+
+.modal__head {
+	width: 100%;
+}
+
+.modal__head,
+.modal__title {
+	float: left;
+}
+
+.modal__anchor {
+	position: relative;
+    min-height: 1px;
+}
+  
+.modal {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+}
+
+.modal__body {
+	top: 0;
+	left: 0;
+    right: 0;
+	position: absolute;
+}

@@ -1,0 +1,54 @@
+@import './_variables.scss';
+@import '../../base/styles/_variables.scss';
+
+// app base elements
+@import './base_elements/button.scss';
+
+.footer {
+	background-color: $color-dark_gray;
+	display: none;
+
+	@media #{$medium} {
+		display: block;
+	}
+}
+
+.footer__container:before,
+.footer__container:after {
+	content: " ";
+	display: table;
+}
+
+.footer__container:after {
+	clear: both;
+}
+
+.footer__content {
+	position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+	padding-right: 15px;
+
+	@media #{$medium} {
+		float: left;
+		width: 100%;
+	}
+}
+
+.footer__paragraph {
+	color: $color-white;
+	width: 100%;
+    float: left;
+}
+
+// for pages that don't have enough content to push the footer component down
+.contact,
+.about,
+.error {
+	.footer {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+	}
+} 

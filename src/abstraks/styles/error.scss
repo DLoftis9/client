@@ -1,0 +1,45 @@
+@import '_variables.scss';
+@import '../.././base/styles/_variables.scss';
+
+.error__column {
+	position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+	padding-right: 15px;
+
+	@media #{$medium} {
+		float: left;
+		width: 100%;
+	}
+}
+
+.error__message {
+	list-style-type: none;
+}
+
+.validation-errors {
+	ul {
+		padding-left: 0;
+	}
+
+	li {
+		margin-top: 10px;
+		padding: 10px 0 10px 0;
+		color: $color-error;
+
+		.fa-close {
+			font-size: 20px;
+			padding-right: 10px; 
+		}
+	}
+
+	@media #{$medium} {
+		li {
+			width: 315px;
+
+			&:nth-child(1) {
+				width: 280px;
+			}
+		}
+	}
+}

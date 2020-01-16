@@ -1,0 +1,54 @@
+@import '_variables.scss';
+@import '../.././base/styles/button.scss';
+
+// app base elements
+@import './base_elements/button.scss';
+
+.content-preview {
+	@media #{$medium} {
+        float: left;
+        width: 32%;
+		margin: 0 5px 25px;
+		border-bottom: 1px solid $color-light_gray;
+        // min-height: 710px;
+        padding-bottom: 25px;
+    }
+}
+
+.publication__issueRow .content-preview {
+    @media #{$medium} {
+        min-height: 760px; 
+    }
+}
+
+.content-preview__image--img {
+    @media #{$medium} {
+        max-height: 440px;
+    }
+}
+
+.issue-page {
+    .content-preview__image--img {
+        @media #{$medium} {
+            max-height: 240px;
+        }
+    }   
+}
+
+.content-preview__image {
+	display: block;
+}
+
+.content-preview__header,
+.content-preview__artists,
+.content-preview__button,
+.content-preview__anchor {
+	padding: 0 15px;
+}
+
+.content-preview__artists {
+	@media #{$medium} {
+		min-height: 90px;
+    }
+
+}

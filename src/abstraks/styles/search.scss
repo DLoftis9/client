@@ -1,0 +1,46 @@
+@import '_variables.scss';
+@import '../.././base/styles/grid.scss';
+
+.search {
+    float: left;
+    width: 100%;
+    @media #{$large} {
+        width: auto;
+    } 
+}
+
+.search:after,
+.search:before {
+    content: " ";
+    display: table;
+}
+
+.search__container {
+    @extend .col__container;   
+    @media #{$large} {
+        float: left;
+        margin-top: 25px;
+    }
+}
+
+.search__icon {
+	color: $color-tertiary;
+	margin-right: 5px;
+}
+
+.search__input {
+    border: $color-primary 2px solid;
+    width: 100%;
+    border-radius: $border-radius;
+    height: 35px;
+    margin-top: 20px;
+    
+    &:focus {
+        border-color: $color-tertiary;    
+    }
+
+    @media #{$large} {
+        width: auto;
+        margin-top: 0;
+    }
+}

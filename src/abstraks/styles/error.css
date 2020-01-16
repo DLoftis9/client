@@ -1,0 +1,9 @@
+.error__column {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px; }
+  @media (min-width: 768px) {
+    .error__column {
+      float: left;
+      width: 100%; } }

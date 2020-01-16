@@ -1,0 +1,394 @@
+.rights_reserved {
+  font-size: 12px;
+  font-weight: 300; }
+
+.artistsToWatch-box {
+  margin-left: 15px; }
+
+.artistsToWatch-box {
+  background-color: #7086f1; }
+
+.artistsToWatch-number {
+  color: #7086f1; }
+
+.intro-number {
+  color: #f49609;
+  float: left;
+  margin-top: 0;
+  margin-left: 15px; }
+
+.intro-number,
+.artistsToWatch-number {
+  font-size: 42px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 40px 24px;
+  width: 113px;
+  background-image: url("https://s3-us-west-1.amazonaws.com/abstraksresources/publication/logo_spot.png"); }
+
+.first-name,
+.last-name,
+.writter {
+  color: #fff; }
+
+.publication__issue h1 {
+  margin-top: 10px; }
+
+.first-name {
+  margin-bottom: 0px; }
+
+.last-name {
+  margin-top: -10px;
+  margin-bottom: 0px; }
+
+.titleDescription {
+  font-style: italic;
+  color: #828181; }
+  .titleDescription strong {
+    font-weight: 700;
+    font-size: 18px;
+    color: #009900; }
+
+@media (min-width: 768px) {
+  .titleDescription__right {
+    text-align: right; } }
+
+.pageNav {
+  border-top-width: thin;
+  border-top-color: #E5E5E5;
+  border-top-style: solid;
+  padding-top: 10px; }
+
+.issue-page__container {
+  float: left; }
+  @media (min-width: 768px) {
+    .issue-page__container {
+      float: none; } }
+
+.issueNumber {
+  background-color: #009900;
+  color: #fff;
+  margin: 10px 0; }
+
+.pageNumber {
+  font-weight: 200; }
+
+.letterEditorLineHeight {
+  line-height: 1.35;
+  font-weight: bolder;
+  color: #009900; }
+
+.writerQuestion {
+  font-size: large; }
+
+.backCover {
+  background-color: #09ffb6;
+  height: 600px; }
+
+.backCover img {
+  margin: 88px 0; }
+
+/* Links & Buttons
+================================ */
+.captionLink {
+  color: #fff; }
+
+.captionLink:hover {
+  color: #ff6000; }
+
+.publication__issue header.page-header li a {
+  color: #424242;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none; }
+
+.publication__issue header.page-header li a:hover {
+  color: #009900;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: underline; }
+
+/* Intro's
+================================ */
+.introPhoto {
+  margin: 5% auto 0 auto;
+  position: relative; }
+
+.mobileCaption {
+  color: transparent; }
+
+/* Imagery
+================================ */
+.autoMargin {
+  margin: 0 auto; }
+
+.screenshots img {
+  width: 30%; }
+
+.pageSpacing img {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0px auto;
+  padding: 10px auto; }
+
+.credits__image {
+  margin-top: 20px; }
+  @media (min-width: 768px) {
+    .credits__image {
+      height: 550px; } }
+
+.lagan img {
+  width: 100%; }
+
+.pageSpacing img {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0px auto;
+  padding: 10px auto; }
+
+.intro-box {
+  padding-bottom: 5px;
+  background-color: #ff872f;
+  border-radius: 10px; }
+  @media (min-width: 768px) {
+    .intro-box {
+      width: 75%;
+      margin-right: 15px;
+      border-radius: 0 0 10px 10px;
+      float: left;
+      margin-left: 15px; } }
+
+.intro-box--artistsWatch {
+  background-color: #00CAFF;
+  min-height: 150px; }
+  @media (min-width: 768px) {
+    .intro-box--artistsWatch {
+      min-height: 0; } }
+
+.intro-number--artistsWatch {
+  color: #00CAFF; }
+
+/* Mobile
+========= */
+@media (max-width: 991px) {
+  .artistsToWatch-box {
+    height: 140px; }
+  .mobileCaption {
+    color: #00CAFF; }
+  .artistsToWatch-box {
+    margin-left: 0; }
+  .backCover img {
+    padding: 162px 0;
+    margin: 0; } }
+
+/* Tablet
+=========*/
+@media (max-width: 767px) {
+  .publication__issue h1 {
+    font-size: 30px; }
+  .mobileCaption {
+    color: transparent; }
+  .carousel,
+  .carousel-inner,
+  .carousel-inner .item {
+    width: 100%;
+    height: 168px; } }
+
+.credits,
+.credits__rights,
+.artists-intro,
+.page-nav__anchor,
+.page_column-3,
+.page_column-4,
+.page_column-6,
+.page_column-9,
+.page_column-12 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px; }
+  @media (min-width: 768px) {
+    .credits,
+    .credits__rights,
+    .artists-intro,
+    .page-nav__anchor,
+    .page_column-3,
+    .page_column-4,
+    .page_column-6,
+    .page_column-9,
+    .page_column-12 {
+      float: left; } }
+
+@media (min-width: 768px) {
+  .credits,
+  .page_column-3 {
+    width: 25%; } }
+
+@media (min-width: 768px) {
+  .credits__rights,
+  .page_column-6 {
+    width: 50%; } }
+
+@media (min-width: 768px) {
+  .page_column-4 {
+    width: 33.33333333%; } }
+
+@media (min-width: 768px) {
+  .page_column-9 {
+    width: 75%; } }
+
+@media (min-width: 768px) {
+  .page_column-12 {
+    width: 100%; } }
+
+@media (min-width: 768px) {
+  .page_column--right {
+    float: right; } }
+
+.page_credits__anchor {
+  display: block; }
+
+.credits__header,
+.page_paragraph--title {
+  font-size: 20px;
+  margin-bottom: 5px;
+  font-weight: 700; }
+
+.credits__header--quote {
+  color: #009900; }
+
+.credits__paragraph {
+  display: block; }
+
+.table-of-contents {
+  margin-top: 15px; }
+
+@media (min-width: 768px) {
+  .artists-intro {
+    width: 100%; } }
+
+.artists-intro__image {
+  width: 100%; }
+
+@media (min-width: 768px) {
+  .artists-intro__image--rickBerry,
+  .artists-intro__image--raulGonzalez,
+  .artists-intro__image--merkThose {
+    width: 70%; } }
+
+@media (min-width: 768px) {
+  .artists-intro__image--dugan {
+    width: 40%; } }
+
+@media (min-width: 768px) {
+  .artists-intro__image--chanimation {
+    width: 60%; } }
+
+@media (min-width: 768px) {
+  .artist-work {
+    margin-top: 15px; } }
+
+.page-nav__container {
+  border-top-width: thin;
+  border-top-color: #E5E5E5;
+  border-top-style: solid;
+  padding-top: 10px; }
+
+.page_end__image {
+  width: 50%; }
+
+.page-nav__button--prev .page-nav__title {
+  margin-left: 10px; }
+
+.page-nav__button--next .page-nav__title,
+.page-nav__button--menu .page-nav__title {
+  margin-right: 10px; }
+
+.intro .page-nav__button--prev,
+.outro .page-nav__button--next {
+  display: none; }
+
+@media (min-width: 768px) {
+  .page-nav__button--menu {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto; } }
+
+.page-nav__anchor--publication {
+  width: auto; }
+  .page-nav__anchor--publication .page-nav__button--next {
+    margin-top: 0; }
+
+@media (min-width: 768px) {
+  .page-nav__anchor--publication:nth-child(1) {
+    margin-right: 25%; } }
+
+@media (min-width: 992px) {
+  .page-nav__anchor--publication:nth-child(1) {
+    margin-right: 33%; } }
+
+.page-nav__anchor--publication:nth-child(2) {
+  padding: 0; }
+  @media (min-width: 768px) {
+    .page-nav__anchor--publication:nth-child(2) {
+      padding-left: 15px;
+      padding-right: 15px; } }
+
+@media (min-width: 768px) {
+  .page-nav__anchor--publication:nth-child(3) {
+    float: right; } }
+
+.page-nav__title {
+  display: none; }
+  @media (min-width: 768px) {
+    .page-nav__title {
+      display: inline-block; } }
+
+.page_intro__header {
+  color: #009900; }
+
+.PublicationHome {
+  margin: 10px 0 15px 0; }
+  @media (min-width: 768px) {
+    .PublicationHome {
+      margin: 10px 0 0 0; } }
+
+.PublicationHome__container {
+  padding-top: 10px; }
+  .PublicationHome__container :hover {
+    color: #0266be; }
+
+.PublicationHome__icon {
+  color: #7086f1; }
+  .PublicationHome__icon .page-nav__title {
+    margin-left: 15px;
+    display: inline-block; }
+
+.issue-28 .issue-page__container {
+  float: none; }
+
+.modal__toggle__close {
+  position: relative;
+  top: 0;
+  z-index: 11;
+  left: 0;
+  right: 0; }
+  @media (min-width: 768px) {
+    .modal__toggle__close {
+      top: -45px; } }
+
+@media (min-width: 768px) {
+  .modal__container {
+    background-color: #f9f9fa; } }

@@ -1,0 +1,183 @@
+// app base
+@import '.././_variables.scss';
+@import '../../.././base/styles/_variables.scss';
+
+.navbar {
+  @media #{$large} {
+    width: 41.53%;
+  } 
+}
+
+.navbar__container {
+  @media #{$medium} {
+      margin-top: 30px;
+  }
+}
+
+.navbar__container--mobile {
+  width: 50%;
+  float: left;
+
+  .anchor,
+  .social__icon {
+    color: $color-primary;
+  }
+
+  @media #{$medium} {
+		display: none;
+	}
+}
+
+.navbar__container--mobile .navbar {
+  margin-top: 20%;
+}
+
+.navbar__mobileMenu {
+  float: right;
+  margin-top: 25px;
+}
+
+.navbar__mobileMenuIcon {
+  color: $color-primary;
+  font-size: 30px;
+  background-color: transparent;
+  border: transparent;
+}
+
+.navbar__container--desktop {
+	display: none;
+	@media #{$medium} {
+    display: inline-block;
+    width: 75%;
+	}
+}
+
+.navbar__button {
+  display: block;
+  font-size: 18px;
+  padding-bottom: 10px;
+
+  .anchor {
+    &:hover {
+      color: $color-primary-hover;
+      border-bottom: 2px solid $color-primary;
+      text-decoration: none;
+    }
+  }
+
+  .active {
+    border-bottom: 2px solid $color-primary;
+  }
+
+  .anchor:focus {
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  @media #{$medium} {
+    display: inline-block;
+    padding-bottom: 0;
+  }
+}
+
+.navbar__button--home {
+  padding-right: 15px; 
+}
+
+.navbar__button--contact {
+  @media #{$medium} {
+    padding-left: 15px; 
+  }
+}
+
+.navbar__button__icon {
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+  @media #{$large} {
+    display: none;
+  }
+}
+
+// mobile menu styles
+
+.menu__overlay {
+  background-color: rgba(2, 83, 2, 0.9);
+  z-index: 2;
+}
+
+.menu__overlay,
+.menu__body {
+  @media #{$medium} {
+    display: none;
+  }
+}
+
+.menu__head {
+	width: 100%;
+}
+
+.menu__title {
+  text-align: center;
+  color: $color-white;
+}
+
+.menu__close {
+  color: $color-white;
+}
+
+.menu__body {
+  z-index: 2;
+
+  .anchor__navbar {
+    color: $color-white;
+  }
+
+  .navbar__button {
+    margin: 20px auto;
+    width: 230px;
+  }
+
+}
+
+// navbar footer
+
+.footer {
+  .navbar__container {
+    padding: 25px 0;
+    width: 100%;
+    margin-top: 0;
+
+    @media #{$medium} {
+        padding: 0 0 25px 0;
+    }
+  }
+
+  .navbar__button {
+    font-size: 16px;
+
+    @media #{$medium} {
+      display: inline-block;
+      text-align: left;
+      width: auto;
+      padding: 0;
+      margin-right: 30px;
+    }
+  }
+
+  .navbar__button__icon {
+    display: block;
+    color: $color-white;
+
+    @media #{$medium} {
+      display: table-cell;
+      float: left;
+    }
+  }
+
+  .navbar {
+    @media #{$medium} {
+      width: auto;
+    } 
+  }
+}

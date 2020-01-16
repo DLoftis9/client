@@ -1,0 +1,41 @@
+.navbar {
+  float: left;
+  width: 100%; }
+
+.navbar:before,
+.navbar:after {
+  content: " ";
+  display: table; }
+
+.navbar__container {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  float: left;
+  width: 100%; }
+  @media (min-width: 768px) {
+    .navbar__container {
+      width: auto; } }
+
+.menu__head {
+  width: 100%; }
+
+.menu__head,
+.menu__title {
+  float: left; }
+
+.menu__title {
+  width: 90%; }
+
+.menu__close {
+  font-size: 30px;
+  width: auto;
+  float: left;
+  padding-top: 10px; }
+
+.menu__body {
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute; }

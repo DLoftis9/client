@@ -1,0 +1,98 @@
+@import '.././_variables.scss';
+@import '../../.././base/styles/_variables.scss';
+@import './button.scss';
+
+// Brand Base Styles
+
+.issue-26 {
+    .modal--issue27,
+    .modal--issue28 {
+        display: none;
+    }
+}
+
+.issue-27 {
+    .modal--issue26,
+    .modal--issue28 {
+        display: none;
+    }
+}
+
+.issue-28 {
+    .modal--issue26,
+    .modal--issue27 {
+        display: none;
+    }
+}
+
+.issue-29 {
+    .modal--issue26,
+    .modal--issue27,
+    .modal--issue28 {
+        display: none;
+    }
+}
+
+.modal__overlay {
+	background-color: rgba(0,0,0,0.5);
+}
+
+.modal__anchor {
+    border-bottom: 1px solid $color-light_gray;
+    padding-top: 20px;
+    padding-bottom: 10px;
+
+    @media #{$medium} {
+        border-bottom: none;
+        min-height: 250px;
+    }
+}
+
+.modal__thumbnails-title {
+    text-align: center;
+}
+
+.modal__content {
+    float: left;
+}
+
+.modal__title {
+    text-align: center;
+    width:85%;
+
+	@media #{$medium} {
+		width: 95%;
+	}
+}
+
+.modal__close {
+	font-size: 30px;
+	width: auto;
+	float: left;
+	padding-top: 10px;
+}
+
+.modal__anchor {
+    padding-left: 15px;
+	padding-right: 15px;
+	float: left;
+	width: 100%;
+
+	@media #{$medium} {
+		width: 16.66666667%;
+	}
+}
+
+.modal__text {
+    text-align:center;
+}
+
+.modal__image {
+    @media #{$medium} {
+        max-height: 125px;
+    }
+}
+
+.modal__row {
+    background-color: $color-white;
+}
