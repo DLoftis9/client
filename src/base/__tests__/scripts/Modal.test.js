@@ -1,10 +1,8 @@
 import React from 'react';
-
+import Modal from '../../scripts/Modal';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
-
-import Modal from '../scripts/Modal';
 
 describe('Modal', () => {
   const modal = shallow(<Modal />);

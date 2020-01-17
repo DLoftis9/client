@@ -1,13 +1,11 @@
 import React from 'react';
-
+import PortalOverlay from '../../scripts/PortalOverlay';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
-import Loader from '../scripts/Loader';
-
-describe('Loader', () => {
+describe('PortalOverlay', () => {
   it('renders without crashing', () => {
-    shallow(<Loader />);
+    shallow(<PortalOverlay />);
   });
 });
