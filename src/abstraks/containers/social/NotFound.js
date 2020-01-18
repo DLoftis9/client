@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PublicationHome from './PublicationHome';
+import PublicationHome from '../../components/PublicationHome';
 
 const propTypes = {
   path: PropTypes.string,

@@ -18,8 +18,8 @@ import Typography from '@material-ui/core/Typography';
 
 import MenuItem from '@material-ui/core/MenuItem';
 
-import colors from '../misc/colors';
-import defaultImage from '../images/pebbleBeach.JPG';
+import colors from '../../components/social/colors';
+
 import { updateCurrentUser } from '../../../base/social/actions/authActions';
 import { getFollowers, getFollowing, getUser } from '../../../base/social/actions/userActions';
 import Loading from '../../components/social/Loading';
@@ -30,7 +30,6 @@ import PostFeed from './PostFeed';
 const styles = theme => ({
   backgroundContainer: {
     alignItems: 'center',
-    backgroundImage: `url(${defaultImage})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',

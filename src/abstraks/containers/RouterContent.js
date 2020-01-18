@@ -9,12 +9,12 @@ import TermsOfUse from './TermsOfUse';
 
 // Social Containers
 import DiscoverPage from './social/DiscoverPage';
-import FollowingPage from '../social/FollowingPage';
-import HomePage from '../social/HomePage';
-import LoginPage from '../social/LoginPage';
-import ProfilePage from '../social/ProfilePage';
-import SettingsPage from '../social/SettingsPage';
-import SignupPage from '../social/SignupPage';
+import FollowingPage from './social/FollowingPage';
+import HomePage from './social/HomePage';
+import LoginPage from './social/LoginPage';
+import ProfilePage from './social/ProfilePage';
+import SettingsPage from './social/SettingsPage';
+import SignupPage from './social/SignupPage';
 
 // issue 26 pages
 import Issue26p1 from '../components/publication-pages/Issue26p1';

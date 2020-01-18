@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 
-import EditPost from '../containers/EditPost';
+import EditPost from '../../containers/social/EditPost';
 
 const styles = theme => ({
   paper: {
