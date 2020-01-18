@@ -9,42 +9,35 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit
+    margin: theme.spacing.unit,
   },
   container: {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 500
-  }
+    width: 500,
+  },
 });
 
 export class EditPost extends Component {
   /* eslint-disable react/destructuring-assignment */
   state = {
-    postText: this.props.text
+    postText: this.props.text,
   };
   /* eslint-enable react/destructuring-assignment */
 
-  handleChange = (e) => {
+  handleChange = e => {
     const postText = e.target.value;
     this.setState(() => ({ postText }));
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     const { postText } = this.state;
-    const {
-      commentPostId,
-      id,
-      isEditingComment,
-      author,
-      editPost,
-      handleModalClose
-    } = this.props;
+    const { commentPostId, id, isEditingComment, author, editPost, handleModalClose } = this.props;
     if (!postText.trim()) return;
 
     if (isEditingComment) {
@@ -76,12 +69,7 @@ export class EditPost extends Component {
           value={postText}
           onChange={this.handleChange}
         />
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.button}
-          type="submit"
-        >
+        <Button variant="contained" color="primary" className={classes.button} type="submit">
           Update
         </Button>
       </form>
@@ -97,10 +85,10 @@ EditPost.propTypes = {
   author: PropTypes.string.isRequired,
   editPost: PropTypes.func.isRequired,
   handleModalClose: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
 };
 
 export default compose(
   withStyles(styles),
-  connect()
+  connect(),
 )(EditPost);

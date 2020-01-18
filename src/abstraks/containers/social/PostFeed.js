@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import PostList from '../components/PostList';
+import PostList from '../../components/social/PostList';
 import {
   addComment,
   deleteComment,
@@ -7,20 +7,19 @@ import {
   deletePost,
   getPosts,
   editPost,
-  updatePostLikes
-} from '../actions/postsActions';
-import { getFollowing, getUser } from '../actions/userActions';
+  updatePostLikes,
+} from '../../../base/social/actions/postsActions';
+import { getFollowing, getUser } from '../../../base/social/actions/userActions';
 
 const mapStateToProps = state => ({
   posts: state.postsReducer.posts,
-  user: state.authReducer.user
+  user: state.authReducer.user,
 });
 
 const mapDispatchToProps = dispatch => ({
   addComment: (action, commenterId, postId, text, timestamp) =>
     dispatch(addComment(action, commenterId, postId, text, timestamp)),
-  deleteComment: (action, commentId, postId) =>
-    dispatch(deleteComment(action, commentId, postId)),
+  deleteComment: (action, commentId, postId) => dispatch(deleteComment(action, commentId, postId)),
   editComment: (action, commentId, postId, text) =>
     dispatch(editComment(action, commentId, postId, text)),
   deletePost: id => dispatch(deletePost(id)),
@@ -28,11 +27,10 @@ const mapDispatchToProps = dispatch => ({
   getPosts: () => dispatch(getPosts()),
   getUser: id => dispatch(getUser(id)),
   editPost: (id, text, author) => dispatch(editPost(id, text, author)),
-  updatePostLikes: (action, postId, likerId) =>
-    dispatch(updatePostLikes(action, postId, likerId))
+  updatePostLikes: (action, postId, likerId) => dispatch(updatePostLikes(action, postId, likerId)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(PostList);

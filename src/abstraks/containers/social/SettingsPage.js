@@ -7,12 +7,12 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 
-import { logoutUser } from '../actions/authActions';
+import { logoutUser } from '../../../base/social/actions/authActions';
 import NavbarContainer from './NavbarContainer';
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit
+    margin: theme.spacing.unit,
   },
   container: {
     alignItems: 'center',
@@ -26,20 +26,15 @@ const styles = theme => ({
     textAlign: 'center',
     top: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '90%'
-  }
+    width: '90%',
+  },
 });
 
 const SettingsPage = ({ classes, logout }) => (
   <div>
     <NavbarContainer />
     <Paper className={classes.container}>
-      <Button
-        variant="contained"
-        color="primary"
-        className={classes.button}
-        onClick={logout}
-      >
+      <Button variant="contained" color="primary" className={classes.button} onClick={logout}>
         Log Out
       </Button>
     </Paper>
@@ -48,17 +43,17 @@ const SettingsPage = ({ classes, logout }) => (
 
 SettingsPage.propTypes = {
   classes: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logoutUser())
+  logout: () => dispatch(logoutUser()),
 });
 
 export default compose(
   withStyles(styles),
   connect(
     undefined,
-    mapDispatchToProps
-  )
+    mapDispatchToProps,
+  ),
 )(SettingsPage);

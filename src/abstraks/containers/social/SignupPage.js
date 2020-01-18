@@ -14,7 +14,7 @@ import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { registerUser } from '../actions/authActions';
+import { registerUser } from '../../../base/social/actions/authActions';
 
 const styles = theme => ({
   layout: {
@@ -25,8 +25,8 @@ const styles = theme => ({
     [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
       width: 400,
       marginLeft: 'auto',
-      marginRight: 'auto'
-    }
+      marginRight: 'auto',
+    },
   },
   paper: {
     position: 'absolute',
@@ -39,30 +39,30 @@ const styles = theme => ({
     alignItems: 'center',
     width: theme.spacing.unit * 50,
     backgroundColor: 'theme.palette.background.paper',
-    boxShadow: theme.shadows[5]
+    boxShadow: theme.shadows[5],
   },
   avatar: {
     margin: theme.spacing.unit,
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: theme.palette.secondary.main,
   },
   submit: {
-    marginTop: theme.spacing.unit * 3
+    marginTop: theme.spacing.unit * 3,
   },
   link: {
-    textDecoration: 'none'
+    textDecoration: 'none',
   },
   footer: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
   },
   errorText: {
     color: '#D50000',
-    marginTop: '5px'
+    marginTop: '5px',
   },
   successText: {
     color: '#32971E',
     marginTop: '10px',
-    textDecoration: 'none'
-  }
+    textDecoration: 'none',
+  },
 });
 
 class SignupPage extends Component {
@@ -72,36 +72,36 @@ class SignupPage extends Component {
     password: '',
     passwordConfirm: '',
     errors: {},
-    successfulSignup: false
+    successfulSignup: false,
   };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors.success) {
       this.setState({
-        successfulSignup: true
+        successfulSignup: true,
       });
     }
 
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
       });
     }
   }
 
-  handleInputChange = (e) => {
+  handleInputChange = e => {
     const { name, value } = e.target;
     this.setState(() => ({ [name]: value }));
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     const { name, email, password, passwordConfirm } = this.state;
     const user = {
       name,
       email,
       password,
-      passwordConfirm
+      passwordConfirm,
     };
     const { createUser } = this.props;
     createUser(user);
@@ -171,9 +171,7 @@ class SignupPage extends Component {
                   autoComplete="current-password-confirm"
                   error={!!errors.passwordConfirm}
                 />
-                <span className={classes.errorText}>
-                  {errors.passwordConfirm || errors.error}
-                </span>
+                <span className={classes.errorText}>{errors.passwordConfirm || errors.error}</span>
               </FormControl>
               <Button
                 type="submit"
@@ -199,28 +197,28 @@ class SignupPage extends Component {
 }
 
 SignupPage.defaultProps = {
-  errors: {}
+  errors: {},
 };
 
 SignupPage.propTypes = {
   classes: PropTypes.object.isRequired,
   createUser: PropTypes.func.isRequired,
-  errors: PropTypes.object
+  errors: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
   auth: state.authReducer,
-  errors: state.errorReducer
+  errors: state.errorReducer,
 });
 
 const mapDispatchToProps = dispatch => ({
-  createUser: user => dispatch(registerUser(user))
+  createUser: user => dispatch(registerUser(user)),
 });
 
 export default compose(
   withStyles(styles),
   connect(
     mapStateToProps,
-    mapDispatchToProps
-  )
+    mapDispatchToProps,
+  ),
 )(SignupPage);

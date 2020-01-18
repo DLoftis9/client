@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import RouterContent from './containers/RouterContent';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-export default class App extends Component {
-  render() {
-    return (
-      <Router>
-        <RouterContent />
-      </Router>
-    );
-  }
-}
+import createHistory from 'history/createBrowserHistory';
+
+export const history = createHistory();
+
+const App = () => (
+  <Router history={history}>
+    <RouterContent />
+  </Router>
+);
+
+export default App;

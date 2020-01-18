@@ -12,30 +12,30 @@ import {
   getFollowing,
   getUser,
   getAllUsers,
-  unfollowUser
-} from '../actions/userActions';
+  unfollowUser,
+} from '../../../base/social/actions/userActions';
 import NavbarContainer from './NavbarContainer';
-import Loading from '../components/Loading';
-import UserCard from '../components/UserCard';
+import Loading from '../../components/social/Loading';
+import UserCard from '../../components/social/UserCard';
 
 const styles = theme => ({
   cardGrid: {
-    padding: `${theme.spacing.unit * 4}px 0`
+    padding: `${theme.spacing.unit * 4}px 0`,
   },
   layout: {
     width: 'auto',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing.unit * 3,
-      marginRight: theme.spacing.unit * 3
-    }
-  }
+      marginRight: theme.spacing.unit * 3,
+    },
+  },
 });
 
 export class FollowingPage extends Component {
   state = {
     loading: true,
     followingIds: [],
-    followingUsers: []
+    followingUsers: [],
   };
 
   componentDidMount = () => {
@@ -61,31 +61,23 @@ export class FollowingPage extends Component {
     let idsOfUsersYouAreFollowing = [];
     let usersYouAreFollowing = [];
     const requests = userReducer.following.map(userId =>
-      getCurrUser(userId).then((res) => {
-        idsOfUsersYouAreFollowing = [
-          ...idsOfUsersYouAreFollowing,
-          res.payload.user._id
-        ];
+      getCurrUser(userId).then(res => {
+        idsOfUsersYouAreFollowing = [...idsOfUsersYouAreFollowing, res.payload.user._id];
         usersYouAreFollowing = [...usersYouAreFollowing, res.payload.user];
-      }));
+      }),
+    );
 
     Promise.all(requests).then(() => {
       this.setState({
         loading: false,
         followingIds: idsOfUsersYouAreFollowing,
-        followingUsers: usersYouAreFollowing
+        followingUsers: usersYouAreFollowing,
       });
     });
   };
 
   render() {
-    const {
-      authReducer,
-      classes,
-      followThisUser,
-      getCurrUser,
-      unfollowThisUser
-    } = this.props;
+    const { authReducer, classes, followThisUser, getCurrUser, unfollowThisUser } = this.props;
     const { followingIds, followingUsers, loading } = this.state;
 
     return loading ? (
@@ -99,20 +91,19 @@ export class FollowingPage extends Component {
         <main>
           <div className={classNames(classes.layout, classes.cardGrid)}>
             <Grid container justify="center" spacing={40}>
-              {followingUsers.map(
-                user =>
-                  (user._id === authReducer.user.userId ? null : (
-                    <Grid item key={user._id} sm={6} md={3} lg={2}>
-                      <UserCard
-                        isFollowing={followingIds.includes(user._id)}
-                        followUser={followThisUser}
-                        getUser={getCurrUser}
-                        listedUser={user}
-                        signedInUser={authReducer.user}
-                        unfollowUser={unfollowThisUser}
-                      />
-                    </Grid>
-                  ))
+              {followingUsers.map(user =>
+                user._id === authReducer.user.userId ? null : (
+                  <Grid item key={user._id} sm={6} md={3} lg={2}>
+                    <UserCard
+                      isFollowing={followingIds.includes(user._id)}
+                      followUser={followThisUser}
+                      getUser={getCurrUser}
+                      listedUser={user}
+                      signedInUser={authReducer.user}
+                      unfollowUser={unfollowThisUser}
+                    />
+                  </Grid>
+                ),
               )}
             </Grid>
           </div>
@@ -130,28 +121,27 @@ FollowingPage.propTypes = {
   getFollowingUsers: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   unfollowThisUser: PropTypes.func.isRequired,
-  userReducer: PropTypes.object.isRequired
+  userReducer: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
   authReducer: state.authReducer,
-  userReducer: state.userReducer
+  userReducer: state.userReducer,
 });
 
 const mapDispatchToProps = dispatch => ({
   getCurrUser: id => dispatch(getUser(id)),
   getFollowingUsers: id => dispatch(getFollowing(id)),
-  followThisUser: (signedInUserId, idToFollow) =>
-    dispatch(followUser(signedInUserId, idToFollow)),
+  followThisUser: (signedInUserId, idToFollow) => dispatch(followUser(signedInUserId, idToFollow)),
   retrieveAllUsers: () => dispatch(getAllUsers()),
   unfollowThisUser: (signedInUserId, idToUnfollow) =>
-    dispatch(unfollowUser(signedInUserId, idToUnfollow))
+    dispatch(unfollowUser(signedInUserId, idToUnfollow)),
 });
 
 export default compose(
   withStyles(styles),
   connect(
     mapStateToProps,
-    mapDispatchToProps
-  )
+    mapDispatchToProps,
+  ),
 )(FollowingPage);

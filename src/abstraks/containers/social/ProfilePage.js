@@ -18,46 +18,45 @@ import Typography from '@material-ui/core/Typography';
 
 import MenuItem from '@material-ui/core/MenuItem';
 
-import colors from '../misc/colors';
-import defaultImage from '../images/pebbleBeach.JPG';
-import { updateCurrentUser } from '../actions/authActions';
-import { getFollowers, getFollowing, getUser } from '../actions/userActions';
-import Loading from '../components/Loading';
+import colors from '../../components/social/colors';
+
+import { updateCurrentUser } from '../../../base/social/actions/authActions';
+import { getFollowers, getFollowing, getUser } from '../../../base/social/actions/userActions';
+import Loading from '../../components/social/Loading';
 import NavbarContainer from './NavbarContainer';
-import UserAvatar from '../components/UserAvatar';
+import UserAvatar from '../../components/social/UserAvatar';
 import PostFeed from './PostFeed';
 
 const styles = theme => ({
   backgroundContainer: {
     alignItems: 'center',
-    backgroundImage: `url(${defaultImage})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     display: 'flex',
     height: '50vh',
     justifyContent: 'center',
-    width: '100%'
+    width: '100%',
   },
   date: {
     [theme.breakpoints.down('xs')]: {
-      fontSize: '1.5em'
-    }
+      fontSize: '1.5em',
+    },
   },
   editButton: {
     margin: theme.spacing.unit,
     position: 'absolute',
     right: '1vw',
-    top: '50vh'
+    top: '50vh',
   },
   saveButton: {
-    margin: theme.spacing.unit
+    margin: theme.spacing.unit,
   },
   formContainer: {
     alignItems: 'center',
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   paper: {
     alignItems: 'center',
@@ -65,7 +64,7 @@ const styles = theme => ({
     flexDirection: 'column',
     height: 140,
     justifyContent: 'center',
-    width: '33.3%'
+    width: '33.3%',
   },
   modalPaper: {
     position: 'absolute',
@@ -76,15 +75,15 @@ const styles = theme => ({
     top: '50%',
     left: '50%',
     outline: 'none',
-    transform: 'translate(-50%, -50%)'
+    transform: 'translate(-50%, -50%)',
   },
   textField: {
     marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing.unit,
   },
   root: {
-    flexGrow: 1
-  }
+    flexGrow: 1,
+  },
 });
 
 class ProfilePage extends Component {
@@ -106,7 +105,7 @@ class ProfilePage extends Component {
     name: '',
     profileId: '',
     showEmail: false,
-    showEmailSavedResult: false
+    showEmailSavedResult: false,
   };
 
   componentDidMount = () => {
@@ -115,29 +114,24 @@ class ProfilePage extends Component {
       return history.push('/login');
     }
 
-    const {
-      getUsersYouAreFollowing,
-      getYourFollowers,
-      retrieveUser,
-      match
-    } = this.props;
+    const { getUsersYouAreFollowing, getYourFollowers, retrieveUser, match } = this.props;
     const userId = match.params.id;
 
-    getUsersYouAreFollowing(userId).then((res) => {
+    getUsersYouAreFollowing(userId).then(res => {
       this.setState({
         following: res.payload.user.following,
-        loadingFollowing: false
+        loadingFollowing: false,
       });
     });
 
-    getYourFollowers(userId).then((res) => {
+    getYourFollowers(userId).then(res => {
       this.setState({
         followers: res.payload.user.followers,
-        loadingFollowers: false
+        loadingFollowers: false,
       });
     });
 
-    return retrieveUser(userId).then((res) => {
+    return retrieveUser(userId).then(res => {
       this.setState({
         avatarColor: res.payload.user.avatarColor,
         bio: res.payload.user.bio,
@@ -151,7 +145,7 @@ class ProfilePage extends Component {
         name: res.payload.user.name,
         profileId: res.payload.user._id,
         showEmail: res.payload.user.showEmail,
-        showEmailSavedResult: res.payload.user.showEmail
+        showEmailSavedResult: res.payload.user.showEmail,
       });
     });
   };
@@ -164,42 +158,35 @@ class ProfilePage extends Component {
     this.setState({ modalOpen: false });
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { name, value } = e.target;
     this.setState(() => ({ [name]: value }));
   };
 
-  handleSwitchChange = (e) => {
+  handleSwitchChange = e => {
     const { value } = e.target;
     this.setState({
-      [value]: e.target.checked
+      [value]: e.target.checked,
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     const { updateUser, signedInUser } = this.props;
     const { avatarColor, bio, email, name, showEmail } = this.state;
 
-    updateUser(
-      avatarColor,
-      bio,
-      email,
-      name,
-      signedInUser.userId,
-      showEmail
-    ).then(() => {
+    updateUser(avatarColor, bio, email, name, signedInUser.userId, showEmail).then(() => {
       this.setState(
         {
           displayedAvatarColor: avatarColor,
           displayedBio: bio,
           displayedEmail: email,
           displayedName: name,
-          showEmailSavedResult: showEmail
+          showEmailSavedResult: showEmail,
         },
         () => {
           window.location.reload();
-        }
+        },
       );
     });
   };
@@ -221,7 +208,7 @@ class ProfilePage extends Component {
       modalOpen,
       profileId,
       showEmail,
-      showEmailSavedResult
+      showEmailSavedResult,
     } = this.state;
 
     return loadingFollowers || loadingFollowing || loadingUser ? (
@@ -238,7 +225,7 @@ class ProfilePage extends Component {
             className={classes.editButton}
             onClick={this.handleModalOpen}
             style={{
-              display: profileId === signedInUser.userId ? 'block' : 'none'
+              display: profileId === signedInUser.userId ? 'block' : 'none',
             }}
           >
             Edit Profile
@@ -249,7 +236,7 @@ class ProfilePage extends Component {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
               }}
             >
               <UserAvatar
@@ -259,9 +246,7 @@ class ProfilePage extends Component {
                 getUser={getTheUser}
               />
               <Typography variant="headline">{displayedName}</Typography>
-              {showEmailSavedResult ? (
-                <Typography>{displayedEmail}</Typography>
-              ) : null}
+              {showEmailSavedResult ? <Typography>{displayedEmail}</Typography> : null}
               <Typography>{displayedBio}</Typography>
             </CardContent>
           </Card>
@@ -294,16 +279,8 @@ class ProfilePage extends Component {
           onClose={this.handleModalClose}
         >
           <div className={classes.modalPaper}>
-            <form
-              className={classes.formContainer}
-              autoComplete="off"
-              onSubmit={this.handleSubmit}
-            >
-              <Typography
-                variant="title"
-                id="modal-title"
-                className={classes.spacing}
-              >
+            <form className={classes.formContainer} autoComplete="off" onSubmit={this.handleSubmit}>
+              <Typography variant="title" id="modal-title" className={classes.spacing}>
                 Edit Profile
               </Typography>
               <TextField
@@ -387,13 +364,13 @@ ProfilePage.propTypes = {
     createdAt: PropTypes.number.isRequired,
     email: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    userId: PropTypes.string.isRequired
+    userId: PropTypes.string.isRequired,
   }).isRequired,
-  retrieveUser: PropTypes.func.isRequired
+  retrieveUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  signedInUser: state.authReducer.user
+  signedInUser: state.authReducer.user,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -402,13 +379,13 @@ const mapDispatchToProps = dispatch => ({
   getYourFollowers: id => dispatch(getFollowers(id)),
   retrieveUser: userId => dispatch(getUser(userId)),
   updateUser: (avatarColor, bio, email, name, id, showEmail) =>
-    dispatch(updateCurrentUser(avatarColor, bio, email, name, id, showEmail))
+    dispatch(updateCurrentUser(avatarColor, bio, email, name, id, showEmail)),
 });
 
 export default compose(
   withStyles(styles),
   connect(
     mapStateToProps,
-    mapDispatchToProps
-  )
+    mapDispatchToProps,
+  ),
 )(ProfilePage);
