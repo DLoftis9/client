@@ -10,31 +10,31 @@ import { createPost } from '../actions/postsActions';
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit
+    margin: theme.spacing.unit,
   },
   container: {
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '16px'
+    marginTop: '16px',
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 500
-  }
+    width: 500,
+  },
 });
 
 export class CreatePost extends Component {
   state = {
-    postText: ''
+    postText: '',
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     const postText = e.target.value;
     this.setState(() => ({ postText }));
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     const { postText } = this.state;
     const { dispatch, user } = this.props;
@@ -63,12 +63,7 @@ export class CreatePost extends Component {
           value={postText}
           onChange={this.handleChange}
         />
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.button}
-          type="submit"
-        >
+        <Button variant="contained" color="primary" className={classes.button} type="submit">
           Post
         </Button>
       </form>
@@ -79,14 +74,14 @@ export class CreatePost extends Component {
 CreatePost.propTypes = {
   dispatch: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-  user: state.authReducer.user
+  user: state.authReducer.user,
 });
 
 export default compose(
   withStyles(styles),
-  connect(mapStateToProps)
+  connect(mapStateToProps),
 )(CreatePost);

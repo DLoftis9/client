@@ -26,11 +26,11 @@ export class HomePage extends Component {
 }
 
 HomePage.propTypes = {
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-  auth: state.authReducer
+  auth: state.authReducer,
 });
 
 export default connect(mapStateToProps)(HomePage);

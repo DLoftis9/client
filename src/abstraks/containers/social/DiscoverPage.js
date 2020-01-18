@@ -12,7 +12,7 @@ import {
   getFollowing,
   getUser,
   getAllUsers,
-  unfollowUser
+  unfollowUser,
 } from '../actions/userActions';
 import NavbarContainer from './NavbarContainer';
 import Loading from '../components/Loading';
@@ -20,21 +20,21 @@ import UserCard from '../components/UserCard';
 
 const styles = theme => ({
   cardGrid: {
-    padding: `${theme.spacing.unit * 4}px 0`
+    padding: `${theme.spacing.unit * 4}px 0`,
   },
   layout: {
     width: 'auto',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing.unit * 3,
-      marginRight: theme.spacing.unit * 3
-    }
-  }
+      marginRight: theme.spacing.unit * 3,
+    },
+  },
 });
 
 export class DiscoverPage extends Component {
   state = {
     loading: true,
-    following: []
+    following: [],
   };
 
   componentDidMount = () => {
@@ -46,7 +46,7 @@ export class DiscoverPage extends Component {
     retrieveAllUsers().then(() => {
       this.updateFollowing();
       this.setState({
-        loading: false
+        loading: false,
       });
     });
   };
@@ -61,9 +61,9 @@ export class DiscoverPage extends Component {
   // Set "following" to be the list of users you are following
   updateFollowing = () => {
     const { authReducer, getCurrUser } = this.props;
-    getCurrUser(authReducer.user.userId).then((res) => {
+    getCurrUser(authReducer.user.userId).then(res => {
       this.setState({
-        following: res.payload.user.following
+        following: res.payload.user.following,
       });
     });
   };
@@ -75,7 +75,7 @@ export class DiscoverPage extends Component {
       followThisUser,
       getCurrUser,
       userReducer,
-      unfollowThisUser
+      unfollowThisUser,
     } = this.props;
     const { following, loading } = this.state;
 
@@ -90,20 +90,19 @@ export class DiscoverPage extends Component {
         <main>
           <div className={classNames(classes.layout, classes.cardGrid)}>
             <Grid container justify="center" spacing={40}>
-              {userReducer.allUsers.map(
-                user =>
-                  (user._id === authReducer.user.userId ? null : (
-                    <Grid item key={user._id} sm={6} md={3} lg={2}>
-                      <UserCard
-                        isFollowing={following.includes(user._id)}
-                        followUser={followThisUser}
-                        getUser={getCurrUser}
-                        listedUser={user}
-                        signedInUser={authReducer.user}
-                        unfollowUser={unfollowThisUser}
-                      />
-                    </Grid>
-                  ))
+              {userReducer.allUsers.map(user =>
+                user._id === authReducer.user.userId ? null : (
+                  <Grid item key={user._id} sm={6} md={3} lg={2}>
+                    <UserCard
+                      isFollowing={following.includes(user._id)}
+                      followUser={followThisUser}
+                      getUser={getCurrUser}
+                      listedUser={user}
+                      signedInUser={authReducer.user}
+                      unfollowUser={unfollowThisUser}
+                    />
+                  </Grid>
+                ),
               )}
             </Grid>
           </div>
@@ -121,28 +120,27 @@ DiscoverPage.propTypes = {
   history: PropTypes.object.isRequired,
   retrieveAllUsers: PropTypes.func.isRequired,
   unfollowThisUser: PropTypes.func.isRequired,
-  userReducer: PropTypes.object.isRequired
+  userReducer: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
   authReducer: state.authReducer,
-  userReducer: state.userReducer
+  userReducer: state.userReducer,
 });
 
 const mapDispatchToProps = dispatch => ({
   getCurrUser: id => dispatch(getUser(id)),
   getFollowingUsers: id => dispatch(getFollowing(id)),
-  followThisUser: (signedInUserId, idToFollow) =>
-    dispatch(followUser(signedInUserId, idToFollow)),
+  followThisUser: (signedInUserId, idToFollow) => dispatch(followUser(signedInUserId, idToFollow)),
   retrieveAllUsers: () => dispatch(getAllUsers()),
   unfollowThisUser: (signedInUserId, idToUnfollow) =>
-    dispatch(unfollowUser(signedInUserId, idToUnfollow))
+    dispatch(unfollowUser(signedInUserId, idToUnfollow)),
 });
 
 export default compose(
   withStyles(styles),
   connect(
     mapStateToProps,
-    mapDispatchToProps
-  )
+    mapDispatchToProps,
+  ),
 )(DiscoverPage);

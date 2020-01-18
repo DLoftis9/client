@@ -3,14 +3,14 @@ import Navbar from '../components/Navbar';
 import { logoutUser } from '../actions/authActions';
 
 const mapStateToProps = state => ({
-  user: state.authReducer.user
+  user: state.authReducer.user,
 });
 
 const mapDispatchToProps = dispatch => ({
-  logoutUser: () => dispatch(logoutUser())
+  logoutUser: () => dispatch(logoutUser()),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Navbar);

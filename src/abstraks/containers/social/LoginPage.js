@@ -25,8 +25,8 @@ const styles = theme => ({
     [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
       width: 400,
       marginLeft: 'auto',
-      marginRight: 'auto'
-    }
+      marginRight: 'auto',
+    },
   },
   paper: {
     position: 'absolute',
@@ -39,35 +39,35 @@ const styles = theme => ({
     alignItems: 'center',
     width: theme.spacing.unit * 50,
     backgroundColor: 'theme.palette.background.paper',
-    boxShadow: theme.shadows[5]
+    boxShadow: theme.shadows[5],
   },
   avatar: {
     margin: theme.spacing.unit,
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: theme.palette.secondary.main,
   },
   submit: {
-    marginTop: theme.spacing.unit * 3
+    marginTop: theme.spacing.unit * 3,
   },
   link: {
-    textDecoration: 'none'
+    textDecoration: 'none',
   },
   footer: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
   },
   errorText: {
     color: '#D50000',
-    marginTop: '5px'
-  }
+    marginTop: '5px',
+  },
 });
 
 class LoginPage extends Component {
   state = {
     email: '',
     password: '',
-    errors: {}
+    errors: {},
   };
 
-  handleInputChange = (e) => {
+  handleInputChange = e => {
     const { name, value } = e.target;
     this.setState(() => ({ [name]: value }));
   };
@@ -79,25 +79,25 @@ class LoginPage extends Component {
     }
   };
 
-  componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps = nextProps => {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push('/');
     }
 
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
       });
     }
   };
   /* eslint-enable react/destructuring-assignment, react/prop-types */
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     const { email, password } = this.state;
     const user = {
       email,
-      password
+      password,
     };
     const { signInUser } = this.props;
     signInUser(user);
@@ -166,29 +166,29 @@ class LoginPage extends Component {
 }
 
 LoginPage.defaultProps = {
-  errors: {}
+  errors: {},
 };
 
 LoginPage.propTypes = {
   classes: PropTypes.object.isRequired,
   errors: PropTypes.object,
   history: PropTypes.object.isRequired,
-  signInUser: PropTypes.func.isRequired
+  signInUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   auth: state.authReducer,
-  errors: state.errorReducer
+  errors: state.errorReducer,
 });
 
 const mapDispatchToProps = dispatch => ({
-  signInUser: user => dispatch(loginUser(user))
+  signInUser: user => dispatch(loginUser(user)),
 });
 
 export default compose(
   withStyles(styles),
   connect(
     mapStateToProps,
-    mapDispatchToProps
-  )
+    mapDispatchToProps,
+  ),
 )(LoginPage);
