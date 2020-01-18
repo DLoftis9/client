@@ -14,7 +14,8 @@ import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { loginUser } from '../actions/authActions';
+
+import { loginUser } from '../../../base/social/actions/authActions';
 
 const styles = theme => ({
   layout: {

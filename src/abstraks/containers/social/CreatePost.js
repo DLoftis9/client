@@ -6,7 +6,7 @@ import compose from 'recompose/compose';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
-import { createPost } from '../actions/postsActions';
+import { createPost } from '../../../base/social/actions/postsActions';
 
 const styles = theme => ({
   button: {

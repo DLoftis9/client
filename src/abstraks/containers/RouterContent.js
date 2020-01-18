@@ -8,6 +8,13 @@ import Contact from './Contact';
 import TermsOfUse from './TermsOfUse';
 
 // Social Containers
+import DiscoverPage from './social/DiscoverPage';
+import FollowingPage from '../social/FollowingPage';
+import HomePage from '../social/HomePage';
+import LoginPage from '../social/LoginPage';
+import ProfilePage from '../social/ProfilePage';
+import SettingsPage from '../social/SettingsPage';
+import SignupPage from '../social/SignupPage';
 
 // issue 26 pages
 import Issue26p1 from '../components/publication-pages/Issue26p1';
@@ -156,7 +163,7 @@ import Issue29p24 from '../components/publication-pages/Issue29p24';
 
 // keep the not found component at then bottom so
 // the router can successfully render all pages
-import NotFound from '../components/NotFound';
+import NotFound from './social/NotFound';
 
 const RouterContent = () => (
   <div className="app__container">
@@ -165,6 +172,15 @@ const RouterContent = () => (
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/termsOfuse" component={TermsOfUse} />
+
+      {/* social container */}
+      <Route exact path="/home" component={HomePage} />
+      <Route path="/signup" component={SignupPage} />
+      <Route path="/login" component={LoginPage} />
+      <Route path="/profile/:id" component={ProfilePage} />
+      <Route path="/following" component={FollowingPage} />
+      <Route path="/discover" component={DiscoverPage} />
+      <Route path="/settings" component={SettingsPage} />
 
       <Route path="/Publication/issue26p1" component={Issue26p1} />
       <Route path="/Publication/issue26p2" component={Issue26p2} />
@@ -306,8 +322,6 @@ const RouterContent = () => (
       <Route path="/Publication/issue29p22" component={Issue29p22} />
       <Route path="/Publication/issue29p23" component={Issue29p23} />
       <Route path="/Publication/issue29p24" component={Issue29p24} />
-
-      {/* social container */}
 
       {/* keep the not found component at then bottom so 
       the router can successfully render all pages */}

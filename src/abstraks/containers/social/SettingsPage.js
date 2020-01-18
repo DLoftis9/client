@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 
-import { logoutUser } from '../actions/authActions';
+import { logoutUser } from '../../../base/social/actions/authActions';
 import NavbarContainer from './NavbarContainer';
 
 const styles = theme => ({

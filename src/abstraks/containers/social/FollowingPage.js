@@ -13,10 +13,10 @@ import {
   getUser,
   getAllUsers,
   unfollowUser,
-} from '../actions/userActions';
+} from '../../../base/social/actions/userActions';
 import NavbarContainer from './NavbarContainer';
-import Loading from '../components/Loading';
-import UserCard from '../components/UserCard';
+import Loading from '../../components/social/Loading';
+import UserCard from '../../components/social/UserCard';
 
 const styles = theme => ({
   cardGrid: {

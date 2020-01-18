@@ -20,11 +20,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import colors from '../misc/colors';
 import defaultImage from '../images/pebbleBeach.JPG';
-import { updateCurrentUser } from '../actions/authActions';
-import { getFollowers, getFollowing, getUser } from '../actions/userActions';
-import Loading from '../components/Loading';
+import { updateCurrentUser } from '../../../base/social/actions/authActions';
+import { getFollowers, getFollowing, getUser } from '../../../base/social/actions/userActions';
+import Loading from '../../components/social/Loading';
 import NavbarContainer from './NavbarContainer';
-import UserAvatar from '../components/UserAvatar';
+import UserAvatar from '../../components/social/UserAvatar';
 import PostFeed from './PostFeed';
 
 const styles = theme => ({

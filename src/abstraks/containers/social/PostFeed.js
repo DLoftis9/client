@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import PostList from '../components/PostList';
+import PostList from '../../components/social/PostList';
 import {
   addComment,
   deleteComment,
@@ -8,8 +8,8 @@ import {
   getPosts,
   editPost,
   updatePostLikes,
-} from '../actions/postsActions';
-import { getFollowing, getUser } from '../actions/userActions';
+} from '../../../base/social/actions/postsActions';
+import { getFollowing, getUser } from '../../../base/social/actions/userActions';
 
 const mapStateToProps = state => ({
   posts: state.postsReducer.posts,
