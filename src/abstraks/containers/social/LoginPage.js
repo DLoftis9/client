@@ -179,8 +179,6 @@ class LoginPage extends Component {
   }
 }
 
-
-
 const mapStateToProps = state => ({
   auth: state.authReducer,
   errors: state.errorReducer,
