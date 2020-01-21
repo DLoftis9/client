@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
-import Navbar from '../components/Navbar';
-import { logoutUser } from '../actions/authActions';
+import Navbar from '../../components/social/Navbar';
+import { logoutUser } from '../../../base/social/actions/authActions';
 
 const mapStateToProps = state => ({
-  user: state.authReducer.user
+  user: state.authReducer.user,
 });
 
 const mapDispatchToProps = dispatch => ({
-  logoutUser: () => dispatch(logoutUser())
+  logoutUser: () => dispatch(logoutUser()),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Navbar);
