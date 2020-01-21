@@ -17,6 +17,19 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
 import { loginUser } from '../../../base/social/actions/authActions';
 
+const propTypes = {
+  containerName: PropTypes.string.isRequired,
+  classes: PropTypes.object.isRequired,
+  errors: PropTypes.object,
+  history: PropTypes.object.isRequired,
+  signInUser: PropTypes.func.isRequired,
+};
+
+const defaultProps = {
+  containerName: 'login',
+  errors: {},
+};
+
 const styles = theme => ({
   layout: {
     width: 'auto',
@@ -80,7 +93,7 @@ class LoginPage extends Component {
     }
   };
 
-  componentWillReceiveProps = nextProps => {
+  UNSAFE_componentWillReceiveProps = nextProps => {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push('/');
     }
@@ -166,16 +179,7 @@ class LoginPage extends Component {
   }
 }
 
-LoginPage.defaultProps = {
-  errors: {},
-};
 
-LoginPage.propTypes = {
-  classes: PropTypes.object.isRequired,
-  errors: PropTypes.object,
-  history: PropTypes.object.isRequired,
-  signInUser: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = state => ({
   auth: state.authReducer,
@@ -185,6 +189,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   signInUser: user => dispatch(loginUser(user)),
 });
+
+LoginPage.propTypes = propTypes;
+LoginPage.defaultProps = defaultProps;
 
 export default compose(
   withStyles(styles),

@@ -2,9 +2,9 @@ import React from 'react';
 import RouterContent from './containers/RouterContent';
 import { Router } from 'react-router-dom';
 
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from "history";
 
-export const history = createHistory();
+export const history = createBrowserHistory();
 
 const App = () => (
   <Router history={history}>
