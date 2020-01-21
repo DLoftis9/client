@@ -44,8 +44,9 @@
 @import './styles/animations.scss';
 @import './styles/social.scss';
 @import './styles/terms-of-use.scss';
-@import './styles/userSignUp.scss';
-@import './styles/userSignIn.scss';
+
+// Social-Net Imports
+@import './styles/social/signup.scss';
 
 // Project Base Elements
 @import './styles/base_elements/anchor.scss';
