@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -61,5 +61,6 @@
     "prettier": "1.19.1",
     "redux-devtools": "^3.5.0",
     "redux-mock-store": "^1.5.4"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
