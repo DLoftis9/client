@@ -73,10 +73,10 @@ export default class HomeContent extends React.PureComponent {
             </header>
             <div className="hero__container container">
               <div className="hero__row row">
-                <h2 className="section__header hero__header">
+                <h1 className="section__header hero__header">
                   We build products, assist companies to expand, plus provide visual and engaging
                   experiences.
-                </h2>
+                </h1>
                 <div className="hero__down">
                   <i
                     onClick={() => this.scrollToNode(this.introSectionScroll)}
