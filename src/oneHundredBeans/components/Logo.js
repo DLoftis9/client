@@ -7,7 +7,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  logo: 'https://s3-us-west-1.amazonaws.com/100beans.com/assets/logo_orange.svg',
+  logo: 'https://d1mp0mx7eid2ww.cloudfront.net/assets/logo_orange.svg',
 };
 
 const Logo = props => (

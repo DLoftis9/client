@@ -12,3 +12,13 @@
 		width: 100%;
 	}
 }
+
+.error {
+	.error__content {
+		height: 100%;
+	}
+	
+	.error__content.container {
+		margin-top: 5em;
+	}
+}
