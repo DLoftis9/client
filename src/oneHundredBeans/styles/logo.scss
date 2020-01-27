@@ -41,15 +41,11 @@
 }
 
 .logo__image {
-    width: 70%;
+    width: 65px;
     float: left;
 
     @media #{$medium} {
-        width: 40%;
+        width: 80px;
         float: none;
-    }
-
-    @media #{$large} {
-        width: 60%;
     }
 }
