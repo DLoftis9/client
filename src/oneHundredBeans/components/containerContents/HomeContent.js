@@ -22,8 +22,7 @@ export default class HomeContent extends React.PureComponent {
           id: 1,
           title: 'Abstraks',
           url: '/portfolio/abstraks',
-          coverImage:
-            'https://d1mp0mx7eid2ww.cloudfront.net/assets/images/abstraks-work-intro.jpg',
+          coverImage: 'https://d1mp0mx7eid2ww.cloudfront.net/assets/images/abstraks-work-intro.jpg',
         },
       ],
     };
