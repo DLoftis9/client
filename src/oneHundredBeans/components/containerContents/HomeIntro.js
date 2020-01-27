@@ -9,7 +9,7 @@ const propTypes = {
 
 const defaultProps = {
   componentName: 'home-intro',
-  introIcon: 'https://s3-us-west-1.amazonaws.com/100beans.com/assets/images/intro.svg',
+  introIcon: 'https://d1mp0mx7eid2ww.cloudfront.net/assets/images/intro.svg',
 };
 
 const HomeIntro = props => (
