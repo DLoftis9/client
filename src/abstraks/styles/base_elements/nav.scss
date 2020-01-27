@@ -48,7 +48,11 @@
 	display: none;
 	@media #{$medium} {
     display: inline-block;
-    width: 75%;
+    width: auto;
+  }
+  
+  @media #{$large} {
+    padding-top: 1em;
 	}
 }
 
