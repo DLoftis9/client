@@ -10,7 +10,11 @@ const propTypes = {
 
 const WorkPieces = props => (
   <div className="section">
-    <Link to={props.url} className="section__work anchor anchor__section expand-image">
+    <Link
+      to={props.url}
+      className="section__work anchor anchor__section expand-image"
+      target="_top"
+    >
       <div className="section__overlay">
         <div className="work__image">
           <img src={props.coverImage} className="image" alt={props.title} />
