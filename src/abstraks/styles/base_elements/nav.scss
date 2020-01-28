@@ -48,7 +48,12 @@
 	display: none;
 	@media #{$medium} {
     display: inline-block;
-    width: 75%;
+    width: auto;
+    padding-top: 1em;
+  }
+  
+  @media #{$large} {
+    padding-top: 0;
 	}
 }
 
