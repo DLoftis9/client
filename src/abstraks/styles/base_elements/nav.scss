@@ -49,10 +49,11 @@
 	@media #{$medium} {
     display: inline-block;
     width: auto;
+    padding-top: 1em;
   }
   
   @media #{$large} {
-    padding-top: 1em;
+    padding-top: 0;
 	}
 }
 
