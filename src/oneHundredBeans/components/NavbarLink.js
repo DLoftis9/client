@@ -14,7 +14,6 @@ const NavbarLink = props => (
       to={props.path}
       activeClassName={props.activeClassName}
       className="anchor anchor__navbar"
-      target="_top"
     >
       {props.pageName}
     </NavLink>

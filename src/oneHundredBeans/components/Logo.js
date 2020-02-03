@@ -13,7 +13,7 @@ const defaultProps = {
 const Logo = props => (
   <div className="logo">
     <div className="logo__container col__container">
-      <Link to="/" className="anchor anchor__navbar" target="_top">
+      <Link to="/" className="anchor anchor__navbar">
         <img src={props.logo} className="logo__image" alt="Logo" />
       </Link>
     </div>
