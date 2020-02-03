@@ -28,7 +28,7 @@ const PageNav = props => (
       <Link
         className="anchor page-nav__anchor page-nav__anchor--publication"
         to={props.prev}
-        target="_top"
+
       >
         <button className="button page-nav__button page-nav__button--prev">
           <span className="page-nav__icon page-nav__icon--prev">
@@ -51,7 +51,7 @@ const PageNav = props => (
       <Link
         className="anchor page-nav__anchor page-nav__anchor--publication"
         to={props.next}
-        target="_top"
+
       >
         <button className="button page-nav__button page-nav__button--next">
           <span className="page-nav__icon page-nav__icon--next">

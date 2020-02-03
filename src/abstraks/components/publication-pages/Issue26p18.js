@@ -97,7 +97,7 @@ const Issue26p18 = props => (
               <a
                 className="page_credits__anchor anchor"
                 href={props.emailRef}
-                target="_top"
+
                 rel="noopener noreferrer"
               >
                 {props.emailValue}

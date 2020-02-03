@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // This component is shown when the modal appears
 const ModalShowContent = props => (
-  <Link className="modal__anchor anchor" to={props.url} target="_top">
+  <Link className="modal__anchor anchor" to={props.url}>
     <img className="modal__image image" src={props.thumbNail} alt={props.title} />
     <p className="modal__text">{props.title}</p>
   </Link>
