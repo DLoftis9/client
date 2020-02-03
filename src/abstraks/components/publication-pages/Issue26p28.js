@@ -79,7 +79,6 @@ const Issue26p28 = props => (
               <a
                 className="page_credits__anchor anchor"
                 href={props.artistsURL1}
-                target="_top"
                 rel="noopener noreferrer"
               >
                 {props.artistsURLText1}

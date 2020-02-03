@@ -115,7 +115,6 @@ const Issue26p38 = props => (
                 <a
                   className="page_credits__anchor anchor"
                   href={props.artistsURLLink1}
-                  target="_top"
                   rel="noopener noreferrer"
                 >
                   {props.artistsURLText1}
@@ -127,7 +126,6 @@ const Issue26p38 = props => (
                 <a
                   className="page_credits__anchor anchor"
                   href={props.artistsURLLink2}
-                  target="_top"
                   rel="noopener noreferrer"
                 >
                   {props.artistsURLText2}
@@ -139,7 +137,6 @@ const Issue26p38 = props => (
                 <a
                   className="page_credits__anchor anchor"
                   href={props.artistsURLLink3}
-                  target="_top"
                   rel="noopener noreferrer"
                 >
                   {props.artistsURLText3}
@@ -151,7 +148,6 @@ const Issue26p38 = props => (
                 <a
                   className="page_credits__anchor anchor"
                   href={props.artistsURLLink4}
-                  target="_top"
                   rel="noopener noreferrer"
                 >
                   {props.artistsURLText4}

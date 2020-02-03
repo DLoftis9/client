@@ -25,11 +25,7 @@ const defaultProps = {
 const PageNav = props => (
   <nav className="page-nav__container container">
     <div className="page-nav__row row">
-      <Link
-        className="anchor page-nav__anchor page-nav__anchor--publication"
-        to={props.prev}
-        target="_top"
-      >
+      <Link className="anchor page-nav__anchor page-nav__anchor--publication" to={props.prev}>
         <button className="button page-nav__button page-nav__button--prev">
           <span className="page-nav__icon page-nav__icon--prev">
             <i className="fa fa-arrow-left" />
@@ -48,11 +44,7 @@ const PageNav = props => (
         modalContent={props.modalContent}
       />
 
-      <Link
-        className="anchor page-nav__anchor page-nav__anchor--publication"
-        to={props.next}
-        target="_top"
-      >
+      <Link className="anchor page-nav__anchor page-nav__anchor--publication" to={props.next}>
         <button className="button page-nav__button page-nav__button--next">
           <span className="page-nav__icon page-nav__icon--next">
             <span className="page-nav__title">Next</span>

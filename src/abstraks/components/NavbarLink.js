@@ -12,7 +12,7 @@ const propTypes = {
 
 const NavbarLink = props => (
   <div className={props.navbarButton}>
-    <NavLink to={props.path} className="anchor anchor__navbar" target="_top">
+    <NavLink to={props.path} className="anchor anchor__navbar">
       {props.containerName}
       <span className={props.navbarButtonIcon}>
         <i className={props.iconClass} />
