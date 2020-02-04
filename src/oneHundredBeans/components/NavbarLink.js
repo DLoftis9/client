@@ -10,11 +10,7 @@ const propTypes = {
 
 const NavbarLink = props => (
   <div className="navbar__button">
-    <Link
-      to={props.path}
-      activeClassName={props.activeClassName}
-      className="anchor anchor__navbar"
-    >
+    <Link to={props.path} activeClassName={props.activeClassName} className="anchor anchor__navbar">
       {props.pageName}
     </Link>
   </div>
