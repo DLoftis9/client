@@ -39,7 +39,7 @@ const routes = [
   },
 ];
 
-const Router = () => (
+const RouterContainer = () => (
   <div className="app__container">
     {routes.map(({ path, Component }) => (
       <Route key={path} exact path={path}>
@@ -55,4 +55,4 @@ const Router = () => (
   </div>
 );
 
-export default Router;
+export default RouterContainer;
