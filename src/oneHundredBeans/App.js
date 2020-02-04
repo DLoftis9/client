@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
-import Router from './containers/Router';
+import React from 'react';
+import RouterContainer from './containers/RouterContainer';
 import { BrowserRouter } from 'react-router-dom';
+import ScrollToTop from '../base/scripts/ScrollToTop';
 
-export default class App extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
-    );
-  }
+function App() {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <RouterContainer />
+    </BrowserRouter>
+  );
 }
+
+export default App;
