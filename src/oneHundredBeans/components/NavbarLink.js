@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -10,13 +10,13 @@ const propTypes = {
 
 const NavbarLink = props => (
   <div className="navbar__button">
-    <NavLink
+    <Link
       to={props.path}
       activeClassName={props.activeClassName}
       className="anchor anchor__navbar"
     >
       {props.pageName}
-    </NavLink>
+    </Link>
   </div>
 );
 
