@@ -8,13 +8,6 @@ import Contact from './Contact';
 import TermsOfUse from './TermsOfUse';
 
 // Social Containers
-import DiscoverPage from './social/DiscoverPage';
-import FollowingPage from './social/FollowingPage';
-import HomePage from './social/HomePage';
-import LoginPage from './social/LoginPage';
-import ProfilePage from './social/ProfilePage';
-import SettingsPage from './social/SettingsPage';
-import SignupPage from './social/SignupPage';
 
 // issue 26 pages
 import Issue26p1 from '../components/publication-pages/Issue26p1';
@@ -163,7 +156,6 @@ import Issue29p24 from '../components/publication-pages/Issue29p24';
 
 // keep the not found component at then bottom so
 // the router can successfully render all pages
-import NotFound from './social/NotFound';
 
 const RouterContent = () => (
   <div className="app__container">
@@ -174,13 +166,6 @@ const RouterContent = () => (
       <Route path="/termsOfuse" component={TermsOfUse} />
 
       {/* social container */}
-      <Route exact path="/home" component={HomePage} />
-      <Route path="/signup" component={SignupPage} />
-      <Route path="/login" component={LoginPage} />
-      <Route path="/profile/:id" component={ProfilePage} />
-      <Route path="/following" component={FollowingPage} />
-      <Route path="/discover" component={DiscoverPage} />
-      <Route path="/settings" component={SettingsPage} />
 
       <Route path="/Publication/issue26p1" component={Issue26p1} />
       <Route path="/Publication/issue26p2" component={Issue26p2} />
@@ -325,7 +310,6 @@ const RouterContent = () => (
 
       {/* keep the not found component at then bottom so 
       the router can successfully render all pages */}
-      <Route component={NotFound} />
     </Switch>
   </div>
 );
