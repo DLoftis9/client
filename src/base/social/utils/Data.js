@@ -1,5 +1,8 @@
 import config from './config';
 
+// Data is a class with the API authentication utility methods 
+// used to create, sign up and authenticate a user. The file is 
+// for making GET and POST requests to the REST API.
 export default class Data {
   api(path, method = 'GET', body = null, requiresAuth = false, credentials = null) {
     const url = config.apiBaseUrl + path;

@@ -4,6 +4,10 @@ import Data from './Data';
 
 const Context = React.createContext();
 
+// A higher-order component (HOC) that shares functionality across 
+// the components of the app. This allows reusability for component logic 
+// and state. "Context" is used in React when data needs to 
+// be accessible by many components at different nesting levels.
 export class Provider extends Component {
   state = {
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null,

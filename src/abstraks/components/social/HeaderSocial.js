@@ -6,7 +6,7 @@ export default class HeaderSocial extends React.PureComponent {
     const { context } = this.props;
     const authUser = context.authenticatedUser;
     return (
-      <div className="header">
+      <div className="header-social">
         <div className="bounds">
           <h1 className="header--logo">MyAuth</h1>
           <nav>
