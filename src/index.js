@@ -5,6 +5,13 @@ import './abstraks/App.scss';
 import App from './abstraks/App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('abstraks__app'));
+import { Provider } from './base/social/utils/Context';
+
+ReactDOM.render(
+  <Provider>
+    <App />
+  </Provider>,
+  document.getElementById('abstraks__app'),
+);
 
 serviceWorker.unregister();

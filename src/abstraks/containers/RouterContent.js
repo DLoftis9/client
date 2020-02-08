@@ -8,6 +8,19 @@ import Contact from './Contact';
 import TermsOfUse from './TermsOfUse';
 
 // Social Containers
+import Public from './social/Public';
+import NotFound from './social/NotFound';
+import UserSignUp from './social/UserSignUp';
+import UserSignIn from './social/UserSignIn';
+import Authenticated from './social/Authenticated';
+
+// Social Components
+import HeaderSocial from '../components/social/HeaderSocial';
+import UserSignOut from '../components/social/UserSignOut';
+
+// Social Base
+import withContext from '../../base/social/utils/Context';
+import PrivateRoute from '../../base/social/components/PrivateRoute';
 
 // issue 26 pages
 import Issue26p1 from '../components/publication-pages/Issue26p1';
@@ -154,11 +167,18 @@ import Issue29p22 from '../components/publication-pages/Issue29p22';
 import Issue29p23 from '../components/publication-pages/Issue29p23';
 import Issue29p24 from '../components/publication-pages/Issue29p24';
 
+const HeaderWithContext = withContext(HeaderSocial);
+const AuthWithContext = withContext(Authenticated);
+const UserSignUpWithContext = withContext(UserSignUp);
+const UserSignInWithContext = withContext(UserSignIn);
+const UserSignOutWithContext = withContext(UserSignOut);
+
 // keep the not found component at then bottom so
 // the router can successfully render all pages
-
 const RouterContent = () => (
   <div className="app__container">
+    <HeaderWithContext />
+
     <Switch>
       <Route exact path="/" component={Publication} />
       <Route path="/about" component={About} />
@@ -166,6 +186,13 @@ const RouterContent = () => (
       <Route path="/termsOfuse" component={TermsOfUse} />
 
       {/* social container */}
+      {/* When React renders a component that subscribes to context, 
+      it will read the context value passed to it from its Provider. */}
+      <Route exact path="/public" component={Public} />
+      <PrivateRoute path="/authenticated" component={AuthWithContext} />
+      <Route path="/signin" component={UserSignInWithContext} />
+      <Route path="/signup" component={UserSignUpWithContext} />
+      <Route path="/signout" component={UserSignOutWithContext} />
 
       <Route path="/Publication/issue26p1" component={Issue26p1} />
       <Route path="/Publication/issue26p2" component={Issue26p2} />
@@ -310,6 +337,7 @@ const RouterContent = () => (
 
       {/* keep the not found component at then bottom so 
       the router can successfully render all pages */}
+      <Route component={NotFound} />
     </Switch>
   </div>
 );
