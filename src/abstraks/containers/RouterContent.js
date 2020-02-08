@@ -186,6 +186,8 @@ const RouterContent = () => (
       <Route path="/termsOfuse" component={TermsOfUse} />
 
       {/* social container */}
+      {/* When React renders a component that subscribes to context, 
+      it will read the context value passed to it from its Provider. */}
       <Route exact path="/public" component={Public} />
       <PrivateRoute path="/authenticated" component={AuthWithContext} />
       <Route path="/signin" component={UserSignInWithContext} />
