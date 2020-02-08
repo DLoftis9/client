@@ -2,7 +2,7 @@
 
 **Prettier**<br>
 [Prettier](https://prettier.io/docs/en/cli.html)<br>
-cmd: _ _prettier --config ../prettier.config.js --write **/*.js_ _<br>
+cmd: _prettier --config ../prettier.config.js --write **/*.js_<br>
 <br>
 
 **Build a QA site with Zeit - Now**<br>
