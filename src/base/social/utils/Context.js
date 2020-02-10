@@ -47,6 +47,10 @@ export class Provider extends Component {
     return <Context.Provider value={value}>{this.props.children}</Context.Provider>;
   }
 
+  // The signIn function is an asynchronous function that takes a username
+  // and password as arguments. signIn uses those credentials to call the
+  // getUser() method in Data.js, which makes a GET request to the protected
+  // /users route on the server and returns the user data.
   signIn = async (username, password) => {
     const user = await this.data.getUser(username, password);
     if (user !== null) {

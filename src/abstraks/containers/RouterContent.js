@@ -167,14 +167,14 @@ import Issue29p22 from '../components/publication-pages/Issue29p22';
 import Issue29p23 from '../components/publication-pages/Issue29p23';
 import Issue29p24 from '../components/publication-pages/Issue29p24';
 
+// Subscribing (connecting) the components to context – the data and
+// actions are shared throughout the component tree
 const HeaderWithContext = withContext(HeaderSocial);
 const AuthWithContext = withContext(Authenticated);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
 const UserSignOutWithContext = withContext(UserSignOut);
 
-// keep the not found component at then bottom so
-// the router can successfully render all pages
 const RouterContent = () => (
   <div className="app__container">
     <HeaderWithContext />
