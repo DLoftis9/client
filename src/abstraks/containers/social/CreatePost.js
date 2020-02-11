@@ -1,13 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+export default class CreatePost extends React.PureComponent {
+  static propTypes = {
+    containerName: PropTypes.string.isRequired,
+  };
 
-export default ({ context }) => {
-  const authUser = context.authenticatedUser;
-  return (
-    <div className="bounds">
-      <div className="grid-100">
-        <h1>{authUser.name} is authenticated!</h1>
-        <p>Your username is {authUser.username}.</p>
+  static defaultProps = {
+    containerName: 'create-post',
+  };
+  render() {
+    const { containerName } = this.props;
+    return (
+      <div className={containerName}>
+        <div className="grid-100">
+          <h1>The CreatePost page</h1>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
