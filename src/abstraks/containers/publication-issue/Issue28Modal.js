@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import ModalShowContent from '../../components/ModalShowContent';
 
+// This contains all the data for the modal navigation for Issue 28
 export default class Issue28Modal extends Component {
   constructor() {
     super();

@@ -173,6 +173,10 @@ const HeaderWithContext = withContext(HeaderSocial);
 const AuthWithContext = withContext(Authenticated);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
+
+// This subscribes the UserSignOut component to context changes, that
+// way it'll be able to reference the signOut action (which calls the
+// signOut function) from within the component.
 const UserSignOutWithContext = withContext(UserSignOut);
 
 const RouterContent = () => (

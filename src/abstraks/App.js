@@ -9,6 +9,8 @@ export const history = createBrowserHistory();
 
 const App = () => (
   <Router history={history}>
+    {/* <ScrollToTop allows pages to be rendered at 
+    the _top when a link is activated */}
     <ScrollToTop />
     <RouterContent />
   </Router>

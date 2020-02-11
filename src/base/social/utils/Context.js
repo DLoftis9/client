@@ -66,11 +66,21 @@ export class Provider extends Component {
       //   // 1 day
       //   expires: 1,
       // };
-      // Cookies.set('authenticatedUser', JSON.stringify(user), { cookieOptions });
+
+      // A cookie is a file managed by the web browser that can save
+      // information from a website.
+      // A cookie that stores the authenticated user data (user and username).
+      // first argument passed to Cookies.set() specifies the name of the cookie to set.
+      // The second argument specifies the value to store in the cookie.
+      // Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 5 });
     }
     return user;
   };
 
+  // This removes the name and username properties from state – the user is no longer
+  // authenticated and cannot view the private components. Like the signIn function,
+  // it's passed the signOut function as an action to <Context.Provider> to
+  // make it available to all components connected to context changes.
   signOut = () => {
     this.setState({ authenticatedUser: null });
     Cookies.remove('authenticatedUser');
