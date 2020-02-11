@@ -46,7 +46,17 @@
 @import './styles/terms-of-use.scss';
 
 // Social-Net Imports
-
+@import './styles/social/userSignIn.scss';
+@import './styles/social/userSignUp.scss';
+@import './styles/social/createPost.scss';
+@import './styles/social/editPost.scss';
+@import './styles/social/editProfile.scss';
+@import './styles/social/following.scss';
+@import './styles/social/postFeed.scss';
+@import './styles/social/profile.scss';
+@import './styles/social/settings.scss';
+@import './styles/social/users.scss';
+@import './styles/social/headerSocial.scss';
 
 // Project Base Elements
 @import './styles/base_elements/anchor.scss';
