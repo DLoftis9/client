@@ -66,19 +66,34 @@ export default class UserSignIn extends Component {
     const { from } = this.props.location.state || { from: { pathname: '/authenticated' } };
     const { username, password } = this.state;
 
+    // signIn() is an asynchronous operation that calls the getUser API
+    // method (written in Data.js) and returns a promise. The resolved
+    // value of the promise is either an object holding the authenticated
+    // user's name and username values (sent from the API if the response
+    // is 201), or null (if the response is a 401 Unauthorized HTTP status code).
     context.actions
       .signIn(username, password)
       .then(user => {
         if (user === null) {
+          // If the returned promise value is null, set the errors state of the
+          // UserSignIn class to an array which holds the string 'Sign-in was
+          // unsuccessful' (this will be the validation message displayed to the user).
           this.setState(() => {
             return { errors: ['Sign-in was unsuccessful'] };
           });
         } else {
+          // If the response returns the user object (response status is 201), history
+          // and the push() method will navigate the user from the /signin route to the
+          // /authenticated (from variable) route, which will render the "Authenticated"
+          // view to let them know sign-in was successful.
           this.props.history.push(from);
         }
       })
       .catch(error => {
         console.error(error);
+        // In the event of an error, use history and the push() method to navigate
+        // the user from /signin to /error, providing a user-friendly way to let them
+        // know that something went wrong
         this.props.history.push('/error');
       });
   };
