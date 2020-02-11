@@ -87,6 +87,14 @@ export default class UserSignIn extends Component {
           // /authenticated (from variable) route, which will render the "Authenticated"
           // view to let them know sign-in was successful.
           this.props.history.push(from);
+          // If the user is redirected to /signin from a previous route, submit() should 
+          // navigate them back to the original route once they authenticate.
+
+          // The from variable passed to history.push(from) contains information about the 
+          // pathname an unauthenticated user redirected from (via this.props.location.state). 
+          // For example, if a user redirects to the sign up page from /settings, from will 
+          // be equal to pathname: "/settings". If a user submits the sign in form without 
+          // previously visiting a protected route, they will navigate to /authenticated by default.
         }
       })
       .catch(error => {
