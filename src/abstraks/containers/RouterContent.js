@@ -177,6 +177,11 @@ const UserSignOutWithContext = withContext(UserSignOut);
 
 const RouterContent = () => (
   <div className="app__container">
+    {/* The Header component needs to be subscribed to the context 
+    changes provided by Context.js. The data passed to Header will 
+    determine whether it renders the "Welcome" message displaying 
+    the user's name, or the "Sign In" and "Sign Up" links displayed 
+    by default. */}
     <HeaderWithContext />
 
     <Switch>
@@ -188,8 +193,18 @@ const RouterContent = () => (
       {/* social container */}
       {/* When React renders a component that subscribes to context, 
       it will read the context value passed to it from its Provider. */}
-      <Route exact path="/public" component={Public} />
+
+      {/* The PrivateRoute component will serve as a high-order component 
+      for any routes that you want to protect and make accessible to 
+      authenticated users only. The component will either allow the user 
+      to continue to the specified private component, or redirect them to 
+      the sign in page if they are not logged in. 
+      
+      <PrivateRoute> will work similar to how <Route> works. It will render 
+      the private component passed to its component prop when the URL matches 
+      the specified path.*/}
       <PrivateRoute path="/authenticated" component={AuthWithContext} />
+      <Route exact path="/public" component={Public} />
       <Route path="/signin" component={UserSignInWithContext} />
       <Route path="/signup" component={UserSignUpWithContext} />
       <Route path="/signout" component={UserSignOutWithContext} />

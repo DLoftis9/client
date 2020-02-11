@@ -22,6 +22,9 @@ const Context = React.createContext();
 // any actions or event handlers that need to be shared between components,
 // via a required value prop.
 export class Provider extends Component {
+  // If authenticatedUser is null (there is no authenticated user), for SocialHeader
+  // display the default header. Otherwise, display the user name in
+  // the header in a "Welcome" message alongside a "Sign Out" link.
   state = {
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
   };
