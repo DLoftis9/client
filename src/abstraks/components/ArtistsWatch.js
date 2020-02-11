@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// It's the design for the entire grid design that
+// displays all the featured artists to be on the
+// look out for - this is a section in a issue
 const ArtistsWatch = props => (
   <div className="content-preview">
     <h2 className="content-preview__header">{props.title}</h2>

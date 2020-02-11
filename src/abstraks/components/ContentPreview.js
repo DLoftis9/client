@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// It's the design for the entire grid design that
+// displays all the featured issues on Publication
 const ContentPreview = props => (
   <div className="content-preview">
     <h2 className="content-preview__header">{props.title}</h2>

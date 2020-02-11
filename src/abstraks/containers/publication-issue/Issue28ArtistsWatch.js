@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import ArtistsWatch from '../../components/ArtistsWatch';
 
+// This contains all the data for the modal
+// navigation for Issue 28 - artists watch section
 export default class Issue28ArtistsWatch extends Component {
   constructor() {
     super();
