@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-// Logic to handle <ScrollToTop /> when a new 
+// Logic to handle <ScrollToTop /> when a new
 // browser page is opened or reloaded
 class ScrollToTop extends React.Component {
   componentDidUpdate(prevProps) {

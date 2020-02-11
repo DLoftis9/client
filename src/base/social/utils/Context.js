@@ -67,7 +67,7 @@ export class Provider extends Component {
       //   expires: 1,
       // };
 
-      // A cookie is a file managed by the web browser that can save 
+      // A cookie is a file managed by the web browser that can save
       // information from a website.
       // A cookie that stores the authenticated user data (user and username).
       // first argument passed to Cookies.set() specifies the name of the cookie to set.
