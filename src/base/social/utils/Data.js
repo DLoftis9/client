@@ -8,6 +8,8 @@ export default class Data {
   // It currently accepts an API endpoint as its first argument (path),
   // followed by the HTTP method, and body, which will contain any data
   // associated with the request.
+  // Initializing the parameters with default values in case no values
+  // or undefined gets passed for either
   api(path, method = 'GET', body = null, requiresAuth = false, credentials = null) {
     // The url constant configures the request path using the base URL
     // defined in config.js, which gets passed to the returned fetch()
@@ -24,9 +26,25 @@ export default class Data {
     if (body !== null) {
       options.body = JSON.stringify(body);
     }
-
+    // When making a request to a protected route on the server,
+    // authentication is required (the requiresAuth is true). In that
+    // case, encode the user credentials and set the HTTP Authorization
+    // request header to the Basic Authentication type, followed by the
+    // encoded user credentials
     if (requiresAuth) {
+      // In the Basic auth scheme, a server requests authentication
+      // information (a user ID and password) from a client. The client
+      // passes the authentication information to the server in an
+      // Authorization header using base-64 encoding.
+
+      // The btoa() method creates a base-64 encoded ASCII string from a
+      // "string" of data. btoa() is used to encode the username and
+      // password credentials passed to the api() method. The credentials
+      // will be passed as an object containing username and password properties.
       const encodedCredentials = btoa(`${credentials.username}:${credentials.password}`);
+
+      // Set an Authorization header on each request that requires authentication
+      // by adding an Authorization property to the headers object.
       options.headers['Authorization'] = `Basic ${encodedCredentials}`;
     }
 

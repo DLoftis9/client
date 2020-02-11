@@ -22,6 +22,9 @@ const Context = React.createContext();
 // any actions or event handlers that need to be shared between components,
 // via a required value prop.
 export class Provider extends Component {
+  // If authenticatedUser is null (there is no authenticated user), for SocialHeader
+  // display the default header. Otherwise, display the user name in
+  // the header in a "Welcome" message alongside a "Sign Out" link.
   state = {
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
   };
@@ -47,6 +50,10 @@ export class Provider extends Component {
     return <Context.Provider value={value}>{this.props.children}</Context.Provider>;
   }
 
+  // The signIn function is an asynchronous function that takes a username
+  // and password as arguments. signIn uses those credentials to call the
+  // getUser() method in Data.js, which makes a GET request to the protected
+  // /users route on the server and returns the user data.
   signIn = async (username, password) => {
     const user = await this.data.getUser(username, password);
     if (user !== null) {
