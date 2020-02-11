@@ -60,33 +60,3 @@
 		border-bottom: 1px solid transparent;
 	}
 }
-
-.header-social {
-	@media #{$medium} {
-		// float: right;
-		width: 100%;
-		margin-top: 5px;
-	}
-}
-
-.header-social:after,
-.header-social:before {
-    content: " ";
-    display: table;
-}
-
-.header-social__container {
-	position: relative;
-	min-height: 1px;
-	padding-left: 15px;
-	padding-right: 15px;
-	float: left;
-	border-bottom: 2px solid $color-white;
-	width: 100%;
-
-	@media #{$medium} {
-		font-size: 20px;
-		width: auto;
-		border-bottom: none;
-	}
-}

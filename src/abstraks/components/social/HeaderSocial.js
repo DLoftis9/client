@@ -1,9 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import MobileMenu from '../../../base/scripts/MobileMenu';
+import LogoWhite from '../LogoWhite';
 
 export default class HeaderSocial extends React.PureComponent {
+  static propTypes = {
+    divClass: PropTypes.string.isRequired,
+    buttonClass: PropTypes.string.isRequired,
+    buttonIcon: PropTypes.string.isRequired,
+    menuTitle: PropTypes.string.isRequired,
+    menuContent: PropTypes.object,
+    menuContentThird: PropTypes.object,
+    menuNav: PropTypes.object,
+    componentName: PropTypes.string,
+  };
+
+  static defaultProps = {
+    divClass: 'navbar__mobileMenu',
+    buttonClass: 'navbar__mobileMenuIcon',
+    buttonIcon: 'fa fa-bars',
+    menuTitle: 'Stay Connected!',
+    componentName: 'header-social',
+  };
+
   render() {
-    const { context } = this.props;
+    const { context, divClass, buttonClass, buttonIcon, menuTitle, componentName } = this.props;
 
     // The value of authUser is either an object holding the
     // authenticated user's name and username values, or null.
@@ -12,18 +35,30 @@ export default class HeaderSocial extends React.PureComponent {
     // (the authenticatedUser state).
     const authUser = context.authenticatedUser;
     return (
-      <div className="header-social">
-        <div className="bounds">
-          <h1 className="header--logo">MyAuth</h1>
-          <nav>
+      <div className={componentName}>
+        <div className={componentName + ` container header__container header__menu`}>
+          <LogoWhite />
+
+          <div className="navbar__container--mobile">
+            <MobileMenu
+              divClass={divClass}
+              buttonClass={buttonClass}
+              buttonIcon={buttonIcon}
+              menuTitle={menuTitle}
+            />
+          </div>
+
+          <nav className={componentName + `-nav`}>
             {authUser ? (
               // If authUser evaluates to a truthy value (there is an authenticated
               // user in state), the Header class renders a <span> element containing
               // a "Welcome" message that displays the user name. Render the user's
               // name with {authUser.name}
               <React.Fragment>
-                <span>Welcome, {authUser.name}!</span>
-                <Link to="/signout">Sign Out</Link>
+                <span className="welcome">Welcome, {authUser.name}!</span>
+                <Link className="log-out" to="/signout">
+                  Sign Out
+                </Link>
               </React.Fragment>
             ) : (
               // If authUser is falsy (the authenticatedUser state is null, for example),

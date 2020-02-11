@@ -13,6 +13,14 @@ import NotFound from './social/NotFound';
 import UserSignUp from './social/UserSignUp';
 import UserSignIn from './social/UserSignIn';
 import Authenticated from './social/Authenticated';
+import CreatePost from './social/CreatePost';
+import EditPost from './social/EditPost';
+import EditProfile from './social/EditProfile';
+import Following from './social/Following';
+import PostFeed from './social/PostFeed';
+import Profile from './social/Profile';
+import Settings from './social/Settings';
+import Users from './social/Users';
 
 // Social Components
 import HeaderSocial from '../components/social/HeaderSocial';
@@ -173,6 +181,14 @@ const HeaderWithContext = withContext(HeaderSocial);
 const AuthWithContext = withContext(Authenticated);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
+const CreatePostWithContext = withContext(CreatePost);
+const EditPostWithContext = withContext(EditPost);
+const EditProfileWithContext = withContext(EditProfile);
+const FollowingWithContext = withContext(Following);
+const PostFeedWithContext = withContext(PostFeed);
+const ProfileWithContext = withContext(Profile);
+const SettingsWithContext = withContext(Settings);
+const UsersWithContext = withContext(Users);
 
 // This subscribes the UserSignOut component to context changes, that
 // way it'll be able to reference the signOut action (which calls the
@@ -212,6 +228,14 @@ const RouterContent = () => (
       <Route path="/signin" component={UserSignInWithContext} />
       <Route path="/signup" component={UserSignUpWithContext} />
       <Route path="/signout" component={UserSignOutWithContext} />
+      <Route path="/createpost" component={CreatePostWithContext} />
+      <Route path="/editpost" component={EditPostWithContext} />
+      <Route path="/editprofile" component={EditProfileWithContext} />
+      <Route path="/following" component={FollowingWithContext} />
+      <Route path="/postfeed" component={PostFeedWithContext} />
+      <Route path="/profile" component={ProfileWithContext} />
+      <Route path="/settings" component={SettingsWithContext} />
+      <Route path="/users" component={UsersWithContext} />
 
       <Route path="/Publication/issue26p1" component={Issue26p1} />
       <Route path="/Publication/issue26p2" component={Issue26p2} />
