@@ -26,6 +26,10 @@ export class Provider extends Component {
   // display the default header. Otherwise, display the user name in
   // the header in a "Welcome" message alongside a "Sign Out" link.
   state = {
+    // Set the initial state of the Provider class to the value stored in the 
+    // 'authenticatedUser' cookie or null. Retrieve the value of the cookie 
+    // using Cookies.getJSON(), which takes the cookie name ('authenticatedUser') 
+    // as a parameter
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
   };
 
@@ -62,17 +66,25 @@ export class Provider extends Component {
           authenticatedUser: user,
         };
       });
-      // const cookieOptions = {
-      //   // 1 day
-      //   expires: 1,
-      // };
 
       // A cookie is a file managed by the web browser that can save
       // information from a website.
+
       // A cookie that stores the authenticated user data (user and username).
       // first argument passed to Cookies.set() specifies the name of the cookie to set.
       // The second argument specifies the value to store in the cookie.
-      // Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 5 });
+
+      // The method Cookies.getJSON(), which reads a cookie and parses its 
+      // stringified value to JSON (according to JSON.parse).
+      // When the app loads (or reloads), the authenticatedUser state will either be 
+      // the user object stored in the cookie or null. If there is a user in state 
+      // (a cookie exists), the authenticatedUser data persists, which means that the 
+      // PrivateRoute and Header components continue to render the user data and 
+      // Authenticated component. If the value in state is null (which is also set 
+      // on sign out), the user will not be able to access the private routes and 
+      // data until they sign in.
+
+      Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 5 });
     }
     return user;
   };
@@ -83,6 +95,8 @@ export class Provider extends Component {
   // make it available to all components connected to context changes.
   signOut = () => {
     this.setState({ authenticatedUser: null });
+    // Cookies.remove() method, which deletes a cookie created by Cookies.set()
+    // Passing Cookies.remove() the name of the cookie to delete ('authenticatedUser')
     Cookies.remove('authenticatedUser');
   };
 }
