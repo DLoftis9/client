@@ -1,3 +1,20 @@
 @import '../_variables.scss';
 @import '../../.././base/styles/_variables.scss';
 
+.profile {
+    .edit {
+        width: 100%;
+        float: left;
+    }
+
+    .edit {
+        float: right;
+        width: 50%;
+
+        .fa-pencil,
+        .icon-text {
+            // float: right;
+            display: inline-block;
+        }
+    }
+}

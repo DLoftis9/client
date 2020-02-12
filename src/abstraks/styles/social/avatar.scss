@@ -1,0 +1,39 @@
+@import '../_variables.scss';
+@import '../../.././base/styles/_variables.scss';
+
+.avatar {
+    float: left;
+    width: 50%;
+
+    .avatar-image {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        position: relative;
+        overflow: hidden;
+        font-size: 1.25rem;
+        align-items: center;
+        flex-shrink: 0;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        user-select: none;
+        border-radius: 50%;
+        justify-content: center;
+        background-color: gray;
+
+        .fa-user {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            object-fit: cover;
+        }
+    }
+
+    .avatar-image,
+    .avatar-name {
+        float: left;
+    }
+
+    .avatar-name {
+        width: 50%
+    }
+}

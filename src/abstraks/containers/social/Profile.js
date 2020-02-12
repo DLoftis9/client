@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Tabs from '../../../base/scripts/Tabs';
+
 export default class Profile extends React.PureComponent {
   static propTypes = {
     containerName: PropTypes.string.isRequired,
@@ -26,12 +28,15 @@ export default class Profile extends React.PureComponent {
               </div>
             </div>
             <div className="edit">
-              <i class="fa fa-pencil" aria-hidden="true">
-                <p className="icon-text">Edit</p>
-              </i>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+              <p className="icon-text">Edit</p>
             </div>
 
-            {/* Implement tabs */}
+            <Tabs>
+              <div label="posts">Posts</div>
+              <div label="following">Following</div>
+              <div label="followers">Followers</div>
+            </Tabs>
           </div>
         </div>
       </div>

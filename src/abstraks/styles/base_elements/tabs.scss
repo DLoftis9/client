@@ -1,23 +1,69 @@
 @import '.././_variables.scss';
 
-.tab-list {
-  padding: 15px 10px;
-  margin: 0;
-  font-size: 24px;
-}
+.tabs {
+  float: left;
+  width: 100%;
+
+  .table > thead > tr > th {
+    border-bottom: 2px solid #dddddd;
+  }
+
+  .table > thead > tr > th,
+  .table > tbody > tr > th,
+  .table > tfoot > tr > th,
+  .table > thead > tr > td,
+  .table > tbody > tr > td,
+  .table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857143;
+    border-top: 1px solid #dddddd;
+  }
+
+  .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    background-color: transparent;
+  }
+
+  .table > caption + thead > tr:first-child > th,
+  .table > colgroup + thead > tr:first-child > th,
+  .table > thead:first-child > tr:first-child > th,
+  .table > caption + thead > tr:first-child > td,
+  .table > colgroup + thead > tr:first-child > td,
+  .table > thead:first-child > tr:first-child > td {
+    border-top: 0;
+  }
+
+  .table > tbody + tbody {
+    border-top: 2px solid #dddddd;
+  }
+
+  .tab-list {
+    padding: 15px 10px;
+    margin: 0;
+    font-size: 24px;
+  }
+    
+  .tab-list-item {
+    margin: 10px;
+    color: $color-primary;
+
+    &:nth-child(1),
+    &:nth-child(2) {
+      border-right: 1px solid $color-medium_gray;
+      padding-right: 10px;
+    }
+  }
   
-.tab-list-item {
-  margin: 10px 15px;
-  color: $color-white;
-}
-
-.tab-list-active {
-  color: $color-white;
-  border-bottom: 2px solid $color-white;
-}
-
-.tab-content {
-  background-color: $color-white;
-  padding: 20px 15px 45px 15px;
-  border-radius: 4px;
+  .tab-list-active {
+    color: $color-primary;
+    border-bottom: 2px solid $color-primary;
+  }
+  
+  .tab-content {
+    background-color: $color-white;
+    padding: 20px 15px 45px 15px;
+    border-radius: 4px;
+  }
 }
