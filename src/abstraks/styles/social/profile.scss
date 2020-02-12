@@ -1,3 +1,35 @@
 @import '../_variables.scss';
 @import '../../.././base/styles/_variables.scss';
 
+.profile {
+    .edit {
+        width: 100%;
+        float: left;
+    }
+
+    .edit {
+        float: right;
+        width: 50%;
+
+        .fa-pencil,
+        .icon-text {
+            // float: right;
+            display: inline-block;
+        }
+    }
+
+    .post-response {
+        border-bottom: 1px solid $color-light_gray;
+    }
+
+    .post-response-user {
+        .avatar {
+            width: 100%;
+        }
+    
+        .post_input {
+            width: 100%;
+            min-height: 100px;
+        }
+    }
+}
