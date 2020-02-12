@@ -3,24 +3,35 @@
 .post-response,
 .post-response-user,
 .post-response-comments {
-    float: left;
-    width: 100%;
+  float: left;
+  width: 100%;
+}
+
+.post-response-user,
+.post-response-comments {
+    margin: 15px 0;
 }
 
 .post-response,
 .post-response-comments {
-    .post {
-        float: left;
-        width: 100%;
-    }
+  .post {
+    float: left;
+    width: 100%;
+  }
+}
+
+.post-timestamp {
+  color: $color-medium_gray;
 }
 
 .post-response-user {
-    .avatar {
-        width: 100%;
-    }
+    padding: 0 15px;
 
-    .post_input {
-        width: 100%;
-    }
+  .avatar {
+    width: 100%;
+  }
+
+  .post_input {
+    width: 100%;
+  }
 }

@@ -17,4 +17,19 @@
             display: inline-block;
         }
     }
+
+    .post-response {
+        border-bottom: 1px solid $color-light_gray;
+    }
+
+    .post-response-user {
+        .avatar {
+            width: 100%;
+        }
+    
+        .post_input {
+            width: 100%;
+            min-height: 100px;
+        }
+    }
 }

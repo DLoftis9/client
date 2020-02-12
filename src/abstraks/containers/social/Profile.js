@@ -3,17 +3,22 @@ import PropTypes from 'prop-types';
 
 import Tabs from '../../../base/scripts/Tabs';
 import PostResponse from '../../components/social/PostResponse';
+import FollowLayout from '../../components/social/FollowLayout';
 
 export default class Profile extends React.PureComponent {
   static propTypes = {
     containerName: PropTypes.string.isRequired,
+    buttonText: PropTypes.string.isRequired,
+    buttonClassName: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
     containerName: 'profile',
+    buttonText: PropTypes.string.isRequired,
+    buttonClassName: PropTypes.string.isRequired,
   };
   render() {
-    const { context, containerName } = this.props;
+    const { context, containerName, buttonText, buttonClassName } = this.props;
     const authUser = context.authenticatedUser;
     return (
       <div className={containerName}>
@@ -25,7 +30,7 @@ export default class Profile extends React.PureComponent {
                 <i class="fa fa-user" aria-hidden="true"></i>
               </div>
               <div className="avatar-name">
-                <p className="user-name">{authUser.name}</p>
+                <h2 className="user-name">{authUser.name}</h2>
               </div>
             </div>
             <div className="edit">
@@ -34,11 +39,20 @@ export default class Profile extends React.PureComponent {
             </div>
 
             <Tabs>
-              <div label="posts">Posts</div>
-              <div label="following">Following</div>
-              <div label="followers">Followers</div>
+              <div className="posts" label="Posts">
+                <PostResponse />
+              </div>
+              <div className="following" label="Following">
+                <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
+                <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
+                <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
+              </div>
+              <div className="followers" label="Followers">
+                <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
+                <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
+                <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
+              </div>
             </Tabs>
-            <PostResponse />
           </div>
         </div>
       </div>
