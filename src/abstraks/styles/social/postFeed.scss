@@ -41,10 +41,6 @@
     }
 
     .post-widget {
-        border-bottom: 1px solid gray;
-        float: left;
-        width: 100%;
-
         .post {
             width: 100%;
             float: left;
@@ -77,8 +73,15 @@
         }
     }
 
+    .post-response,
+    .post-widget {
+        border-bottom: 1px solid gray;
+        float: left;
+        width: 100%;
+    }
 
-    .post-response {
-
+    .post-response-user,
+    .post-response-comments {
+        padding: 0 10px;
     }
 }
