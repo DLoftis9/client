@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Tabs from '../../../base/scripts/Tabs';
+import PostResponse from '../../components/social/PostResponse';
 
 export default class Profile extends React.PureComponent {
   static propTypes = {
@@ -37,6 +38,7 @@ export default class Profile extends React.PureComponent {
               <div label="following">Following</div>
               <div label="followers">Followers</div>
             </Tabs>
+            <PostResponse />
           </div>
         </div>
       </div>

@@ -22,9 +22,6 @@ const PostResponse = props => (
           <div className="avatar-name">
             <p className="user-name">User Name</p>
           </div>
-          <div className="avatar-time">
-            <p className="post-timestamp paragraph">Mon Dec 16 2019</p>
-          </div>
         </div>
         <div className="post">
           <p className="post-paragraph paragraph">
@@ -38,6 +35,9 @@ const PostResponse = props => (
           <i class="fa fa-comment-o" aria-hidden="true">
             <p className="post-comment-number">11</p>
           </i>
+          <div className="post-time">
+            <p className="post-timestamp paragraph">Mon Dec 16 2019</p>
+          </div>
         </div>
       </div>
     </div>

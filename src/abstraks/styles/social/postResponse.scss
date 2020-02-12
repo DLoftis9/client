@@ -1,0 +1,26 @@
+@import '.././_variables.scss';
+
+.post-response,
+.post-response-user,
+.post-response-comments {
+    float: left;
+    width: 100%;
+}
+
+.post-response,
+.post-response-comments {
+    .post {
+        float: left;
+        width: 100%;
+    }
+}
+
+.post-response-user {
+    .avatar {
+        width: 100%;
+    }
+
+    .post_input {
+        width: 100%;
+    }
+}
