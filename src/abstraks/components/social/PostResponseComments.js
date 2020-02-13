@@ -14,7 +14,7 @@ const PostResponseComments = props => (
     <div className="post-response-user">
       <div className="avatar">
         <div className="avatar-image">
-          <i class="fa fa-user" aria-hidden="true"></i>
+          <i className="fa fa-user" aria-hidden="true"></i>
         </div>
       </div>
       <textarea
@@ -30,7 +30,7 @@ const PostResponseComments = props => (
       <div className={props.componentName + `_container`}>
         <div className="avatar">
           <div className="avatar-image">
-            <i class="fa fa-user" aria-hidden="true"></i>
+            <i className="fa fa-user" aria-hidden="true"></i>
           </div>
           <div className="avatar-name">
             <p className="user-name">User Name</p>

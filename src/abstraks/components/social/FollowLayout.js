@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  componentName: PropTypes.string.isRequired,
+  componentName: PropTypes.string,
   buttonText: PropTypes.string.isRequired,
   buttonClassName: PropTypes.string.isRequired,
 };
@@ -14,7 +14,7 @@ const defaultProps = {
 const FollowLayout = props => (
   <div className={props.componentName}>
     <div className="avatar">
-      <i class="fa fa-user" aria-hidden="true"></i>
+      <i className="fa fa-user" aria-hidden="true"></i>
     </div>
     <div className="user-name">
       <p className="name">User Name</p>
