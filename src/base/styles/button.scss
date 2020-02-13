@@ -2,7 +2,7 @@
 
 // Button Base Styles
 
-[role="button"] {
+[role='button'] {
   cursor: pointer;
 }
 
@@ -12,7 +12,7 @@
   text-align: center;
   vertical-align: middle;
   -ms-touch-action: manipulation;
-      touch-action: manipulation;
+  touch-action: manipulation;
   cursor: pointer;
   background-image: none;
   border: 1px solid transparent;
@@ -30,6 +30,7 @@
   margin: auto;
   display: block;
   width: 90%;
+
   @media #{$medium} {
     margin: 0;
     width: auto;
@@ -54,7 +55,7 @@
   background-image: none;
 }
 
-.button[disabled], {
+.button[disabled] {
   cursor: not-allowed;
   opacity: 0.65;
   filter: alpha(opacity=65);
