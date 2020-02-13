@@ -4,31 +4,31 @@
 // Modal Base Styles
 
 .modal__head {
-	width: 100%;
+  width: 100%;
 }
 
 .modal__head,
 .modal__title {
-	float: left;
+  float: left;
 }
 
 .modal__anchor {
-	position: relative;
-    min-height: 1px;
+  position: relative;
+  min-height: 1px;
 }
-  
+
 .modal {
-	position: fixed;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	z-index: 1;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: 1;
 }
 
 .modal__body {
-	top: 0;
-	left: 0;
-    right: 0;
-	position: absolute;
-	z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: 1;
 }

@@ -17,7 +17,7 @@ const PostResponse = props => (
       <div className={props.componentName + `_container`}>
         <div className="avatar">
           <div className="avatar-image">
-            <i class="fa fa-user" aria-hidden="true"></i>
+            <i className="fa fa-user" aria-hidden="true"></i>
           </div>
           <div className="avatar-name">
             <p className="user-name">User Name</p>
@@ -29,10 +29,10 @@ const PostResponse = props => (
             implement installed base models with global e-markets. Efficiently foster high-quality
             bandwidth and strategic value. Globally.
           </p>
-          <i class="fa fa-heart" aria-hidden="true">
+          <i className="fa fa-heart" aria-hidden="true">
             <p className="post-heart-number">9</p>
           </i>
-          <i class="fa fa-comment-o" aria-hidden="true">
+          <i className="fa fa-comment-o" aria-hidden="true">
             <p className="post-comment-number">11</p>
           </i>
           <div className="post-time">
