@@ -15,7 +15,7 @@ const PostWidget = props => (
     <div className={props.componentName + `_container`}>
       <div className="avatar">
         <div className="avatar-image">
-          <i class="fa fa-user" aria-hidden="true"></i>
+          <i className="fa fa-user" aria-hidden="true"></i>
         </div>
         <div className="avatar-name">
           <p className="user-name">{props.authUserName}</p>
@@ -29,7 +29,7 @@ const PostWidget = props => (
           type="text"
           placeholder="What's on your mind?"
         />
-        <i class="fa fa-camera" aria-hidden="true"></i>
+        <i className="fa fa-camera" aria-hidden="true"></i>
         <button className="button button-primary submit post_button">Post</button>
       </div>
     </div>
