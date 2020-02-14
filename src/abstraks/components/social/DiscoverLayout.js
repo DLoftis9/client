@@ -18,22 +18,22 @@ const defaultProps = {
 const DiscoverLayout = props => (
   <div className={props.componentName}>
     <div className={props.componentName + `_items`}>
-    <div className="avatar">
-      <div className="avatar-image">
-        <i className="fa fa-user" aria-hidden="true"></i>
+      <div className="avatar">
+        <div className="avatar-image">
+          <i className="fa fa-user" aria-hidden="true"></i>
+        </div>
       </div>
-    </div>
-    <div className="user-name">
-      <p className="name">{props.userName}</p>
-    </div>
+      <div className="user-name">
+        <p className="name">{props.userName}</p>
+      </div>
 
-    <div className="view">
-      <Link className={props.viewLinkClassName}>{props.viewLinkText}</Link>
-    </div>
+      <div className="view">
+        <Link className={props.viewLinkClassName}>{props.viewLinkText}</Link>
+      </div>
 
-    <Link className="follow">
-      <button className={props.followButtonClassName}>{props.followButtonText}</button>
-    </Link>
+      <Link className="follow">
+        <button className={props.followButtonClassName}>{props.followButtonText}</button>
+      </Link>
     </div>
   </div>
 );
