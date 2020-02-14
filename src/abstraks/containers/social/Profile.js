@@ -64,6 +64,17 @@ export default class Profile extends React.PureComponent {
                 className="input email_input"
               />
             </div>
+            {/*  */}
+            <div className="skills">
+              <label className="label skills_label">Skills</label>
+              <input
+                id="skills"
+                name="skills"
+                type="skills"
+                placeholder="skills"
+                className="input skills_input"
+              />
+            </div>
 
             <Tabs>
               <div className="posts" label="Posts">
