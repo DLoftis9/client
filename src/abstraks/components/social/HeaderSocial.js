@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import MobileMenu from '../../../base/scripts/MobileMenu';
+import Toggle from '../../../base/scripts/Toggle';
 import LogoWhite from '../LogoWhite';
 
 export default class HeaderSocial extends React.PureComponent {
@@ -47,7 +48,7 @@ export default class HeaderSocial extends React.PureComponent {
               menuTitle={menuTitle}
             />
           </div>
-
+          {/* <Toggle openContent={}/> */}
           <nav className={componentName + `-nav`}>
             {authUser ? (
               // If authUser evaluates to a truthy value (there is an authenticated
@@ -55,10 +56,28 @@ export default class HeaderSocial extends React.PureComponent {
               // a "Welcome" message that displays the user name. Render the user's
               // name with {authUser.name}
               <React.Fragment>
-                <span className="welcome">Welcome, {authUser.name}!</span>
-                <Link className="log-out" to="/signout">
-                  Sign Out
-                </Link>
+                <div className="avatar">
+                  <div className="avatar-image">
+                    <i className="fa fa-user" aria-hidden="true"></i>
+                  </div>
+                </div>
+
+                <Toggle
+                  openContent={
+                    <>
+                      <span className="triangle-top"></span>
+                      <div className="menu">
+                        <div className="avatar-name">
+                          <h2 className="user-name">{authUser.name}</h2>
+                        </div>
+
+                        <Link className="log-out" to="/signout">
+                          Sign Out
+                        </Link>
+                      </div>
+                    </>
+                  }
+                />
               </React.Fragment>
             ) : (
               // If authUser is falsy (the authenticatedUser state is null, for example),

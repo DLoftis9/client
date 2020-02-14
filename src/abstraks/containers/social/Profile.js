@@ -12,7 +12,7 @@ export default class Profile extends React.PureComponent {
     containerName: PropTypes.string,
     buttonText: PropTypes.string,
     buttonClassName: PropTypes.string,
-    userName: PropTypes.string,
+    // userName: PropTypes.string,
   };
 
   static defaultProps = {
@@ -22,7 +22,7 @@ export default class Profile extends React.PureComponent {
     const {
       context,
       containerName,
-      userName,
+      // userName,
       // buttonText,
       // buttonClassName
     } = this.props;
