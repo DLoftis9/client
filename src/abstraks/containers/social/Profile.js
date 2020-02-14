@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 import Tabs from '../../../base/scripts/Tabs';
 import PostResponse from '../../components/social/PostResponse';
 import FollowLayout from '../../components/social/FollowLayout';
+import Avatar from '../../components/social/Avatar';
+import EditProfile from '../../components/social/EditProfile';
 
 export default class Profile extends React.PureComponent {
   static propTypes = {
     containerName: PropTypes.string,
     buttonText: PropTypes.string,
     buttonClassName: PropTypes.string,
+    userName: PropTypes.string,
   };
 
   static defaultProps = {
@@ -19,6 +22,7 @@ export default class Profile extends React.PureComponent {
     const {
       context,
       containerName,
+      userName,
       // buttonText,
       // buttonClassName
     } = this.props;
@@ -28,18 +32,9 @@ export default class Profile extends React.PureComponent {
         <div className={containerName + `_container container`}>
           <div className={containerName + `_row row`}>
             <h1>The Profile page</h1>
-            <div className="avatar">
-              <div className="avatar-image">
-                <i className="fa fa-user" aria-hidden="true"></i>
-              </div>
-              <div className="avatar-name">
-                <h2 className="user-name">{authUser.name}</h2>
-              </div>
-            </div>
-            <div className="edit">
-              <i className="fa fa-pencil" aria-hidden="true"></i>
-              <p className="icon-text">Edit</p>
-            </div>
+            <Avatar userName={authUser.name} />
+
+            <EditProfile />
             {/*  */}
             <div className="website">
               <h3 className="header-3">Website</h3>

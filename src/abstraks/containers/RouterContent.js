@@ -20,7 +20,7 @@ import Following from './social/Following';
 import PostFeed from './social/PostFeed';
 import Profile from './social/Profile';
 import Settings from './social/Settings';
-import Users from './social/Users';
+import Discover from './social/Discover';
 
 // Social Components
 import HeaderSocial from '../components/social/HeaderSocial';
@@ -188,7 +188,7 @@ const FollowingWithContext = withContext(Following);
 const PostFeedWithContext = withContext(PostFeed);
 const ProfileWithContext = withContext(Profile);
 const SettingsWithContext = withContext(Settings);
-const UsersWithContext = withContext(Users);
+const DiscoverWithContext = withContext(Discover);
 
 // This subscribes the UserSignOut component to context changes, that
 // way it'll be able to reference the signOut action (which calls the
@@ -235,7 +235,7 @@ const RouterContent = () => (
       <Route path="/postfeed" component={PostFeedWithContext} />
       <Route path="/profile" component={ProfileWithContext} />
       <Route path="/settings" component={SettingsWithContext} />
-      <Route path="/users" component={UsersWithContext} />
+      <Route path="/discover" component={DiscoverWithContext} />
 
       <Route path="/Publication/issue26p1" component={Issue26p1} />
       <Route path="/Publication/issue26p2" component={Issue26p2} />
