@@ -6,6 +6,7 @@ import MobileMenu from '../../../base/scripts/MobileMenu';
 import Toggle from '../../../base/scripts/Toggle';
 import LogoWhite from '../LogoWhite';
 
+// implement dropdown menu https://codepen.io/taylorharwood/pen/EggrOO
 export default class HeaderSocial extends React.PureComponent {
   static propTypes = {
     divClass: PropTypes.string.isRequired,
@@ -66,15 +67,43 @@ export default class HeaderSocial extends React.PureComponent {
                   openContent={
                     <>
                       <span className="triangle-top"></span>
-                      <div className="menu">
-                        <div className="avatar-name">
+                      <ul className="menu">
+                        <li className="avatar-name">
                           <h2 className="user-name">{authUser.name}</h2>
-                        </div>
+                        </li>
+                        <li className="listItem edit-profile">
+                          <Link className="anchor edit-profile_anchor" to="/editprofile">
+                            Profile
+                          </Link>
+                        </li>
+                        <li className="listItem discover">
+                          <Link className="anchor discover_anchor" to="/discover">
+                            Discover
+                          </Link>
+                        </li>
 
-                        <Link className="log-out" to="/signout">
-                          Sign Out
-                        </Link>
-                      </div>
+                        <li className="listItem settings">
+                          <Link className="anchor settings_anchor" to="/settings">
+                            Settings
+                          </Link>
+                        </li>
+
+                        <li className="listItem privacy-policy">
+                          <Link className="anchor privacy-policy_anchor" to="/privacy-policy">
+                            Privacy Policy
+                          </Link>
+                        </li>
+                        <li className="listItem termsOfUse">
+                          <Link className="anchor termsOfUse_anchor" to="/terms-of-use">
+                            Terms Of Use
+                          </Link>
+                        </li>
+                        <li className="listItem log-out">
+                          <Link className="anchor log-out_anchor" to="/signout">
+                            Sign Out
+                          </Link>
+                        </li>
+                      </ul>
                     </>
                   }
                 />

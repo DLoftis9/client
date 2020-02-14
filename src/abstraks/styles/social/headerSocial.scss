@@ -53,6 +53,10 @@
         border-radius: 5px;
         font-family: $font-family;
 
+        .listItem {
+            padding: 10px 0;
+        }
+
         .avatar-name,
         .log-out {
           width: 100%;
