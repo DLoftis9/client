@@ -12,11 +12,10 @@ const defaultProps = {
 
 const EditProfile = props => (
   <div className={props.componentName}>
-            <div className="edit">
-              <i className="fa fa-pencil" aria-hidden="true"></i>
-              <p className="icon-text">Edit</p>
-            </div>
-
+    <div className="edit">
+      <i className="fa fa-pencil" aria-hidden="true"></i>
+      <p className="icon-text">Edit</p>
+    </div>
   </div>
 );
 
