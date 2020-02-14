@@ -2,7 +2,12 @@
 @import '../../.././base/styles/_variables.scss';
 
 .profile {
-    .edit {
+    .edit,
+    .website,
+    .profile_bio,
+    .profile_email,
+    .profile_number,
+    .profile_gender {
         width: 100%;
         float: left;
     }
