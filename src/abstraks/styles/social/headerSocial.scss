@@ -2,19 +2,85 @@
 @import '../../.././base/styles/_variables.scss';
 
 .header-social {
-    background-color: $color-primary;
+  background-color: $color-primary;
 
-	@media #{$medium} {
-		width: 100%;
+  .header__container {
+    background-color: $color-primary;
+  }
+
+  .header-social-nav {
+    float: right;
+
+    @media #{$medium} {
+      width: auto;
     }
-    
-    .header__container {
-        background-color: $color-primary;
+
+    .avatar,
+    .toggle {
+      float: left;
+      width: auto;
     }
+
+    .avatar {
+      color: $color-white;
+      padding: 20px 20px 0 0;
+    }
+
+    .toggle {
+      padding-top: 25px;
+      display: none;
+
+      @media #{$medium} {
+        display: block;
+      }
+
+      .triangle-top {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 10px 10px 10px;
+        border-color: transparent transparent $color-white_gray transparent;
+        margin-top: 15px;
+      }
+
+      .menu {
+        width: 200px;
+        right: 240px;
+        margin-top: 25px;
+        background-color: $color-white_gray;
+        padding: 0 30px 30px 30px;
+        border-radius: 5px;
+        font-family: $font-family;
+
+        .avatar-name,
+        .log-out {
+          width: 100%;
+          float: left;
+        }
+
+        .log-out {
+          border-top: 1px solid $color-medium_gray;
+          padding-top: 10px;
+        }
+      }
+
+      .menu,
+      .triangle-top {
+        display: none;
+
+        @media #{$medium} {
+          display: block;
+          position: absolute;
+          z-index: 1;
+        }
+      }
+    }
+  }
 }
 
 .header-social:after,
 .header-social:before {
-    content: " ";
-    display: table;
+  content: ' ';
+  display: table;
 }
