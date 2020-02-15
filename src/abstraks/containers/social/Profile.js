@@ -36,25 +36,26 @@ export default class Profile extends React.PureComponent {
 
             <EditProfile />
             {/*  */}
-            <div className="website">
-              <h3 className="header-3">Website</h3>
-              <a href="http://localhost:3000/profile" className="anchor website_anchor">
-                <p className="website_user">www.testsite.com</p>
-              </a>
-            </div>
-            {/*  */}
             <div className="profile_bio">
-              <h3 className="header-3">Bio</h3>
+              <label className="label bio_label">Bio</label>
               <textarea
                 className="input post_input"
                 id={containerName + `_bio-textarea`}
                 name={containerName + `_bio-textarea`}
                 type="text"
-                placeholder="What's on your mind?"
+                placeholder="Tell us about you..."
               />
             </div>
             {/*  */}
+            <div className="website">
+              <label className="label website_label">Website</label>
+              <a href="http://localhost:3000/profile" className="anchor website_anchor">
+                <p className="website_user">www.testsite.com</p>
+              </a>
+            </div>
+            {/*  */}
             <div className="profile_email">
+              <label className="label email_label">Email</label>
               <input
                 id="email"
                 name="email"
@@ -63,22 +64,15 @@ export default class Profile extends React.PureComponent {
                 className="input email_input"
               />
             </div>
-            <div className="profile_number">
+            {/*  */}
+            <div className="skills">
+              <label className="label skills_label">Skills</label>
               <input
-                id="number"
-                name="number"
-                type="number"
-                placeholder="number"
-                className="input number_input"
-              />
-            </div>
-            <div className="profile_gender">
-              <input
-                id="gender"
-                name="gender"
-                type="gender"
-                placeholder="gender"
-                className="input gender_input"
+                id="skills"
+                name="skills"
+                type="skills"
+                placeholder="skills"
+                className="input skills_input"
               />
             </div>
 
