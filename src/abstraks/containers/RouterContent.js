@@ -10,6 +10,8 @@ import TermsOfUse from './TermsOfUse';
 // Social Containers
 import Public from './social/Public';
 import NotFound from './social/NotFound';
+import Test from './social/Test';
+
 import UserSignUp from './social/UserSignUp';
 import UserSignIn from './social/UserSignIn';
 import Authenticated from './social/Authenticated';
@@ -21,6 +23,8 @@ import PostFeed from './social/PostFeed';
 import Profile from './social/Profile';
 import Settings from './social/Settings';
 import Discover from './social/Discover';
+import Terms from './social/Terms';
+import PrivacyPolicy from './social/PrivacyPolicy';
 
 // Social Components
 import HeaderSocial from '../components/social/HeaderSocial';
@@ -189,6 +193,9 @@ const PostFeedWithContext = withContext(PostFeed);
 const ProfileWithContext = withContext(Profile);
 const SettingsWithContext = withContext(Settings);
 const DiscoverWithContext = withContext(Discover);
+const TermsWithContext = withContext(Terms);
+const PrivacyPolicyWithContext = withContext(PrivacyPolicy);
+const TestWithContext = withContext(Test);
 
 // This subscribes the UserSignOut component to context changes, that
 // way it'll be able to reference the signOut action (which calls the
@@ -236,6 +243,9 @@ const RouterContent = () => (
       <Route path="/profile" component={ProfileWithContext} />
       <Route path="/settings" component={SettingsWithContext} />
       <Route path="/discover" component={DiscoverWithContext} />
+      <Route path="/terms-of-use" component={TermsWithContext} />
+      <Route path="/privacy-policy" component={PrivacyPolicyWithContext} />
+      <Route path="/test" component={TestWithContext} />
 
       <Route path="/Publication/issue26p1" component={Issue26p1} />
       <Route path="/Publication/issue26p2" component={Issue26p2} />
