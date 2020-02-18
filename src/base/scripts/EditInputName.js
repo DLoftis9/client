@@ -1,19 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const propTypes = {
-  componentName: PropTypes.string,
-};
-
-const defaultProps = {
-  componentName: 'edit-input-name',
-};
-
 const EditInputName = props => {
   if (props.isEditing) {
     return (
       <input
-        className={props.componentName}
+        className="edit-input-name_input input"
         type="text"
         value={props.children}
         onChange={props.handleNameEdits}
@@ -21,10 +13,12 @@ const EditInputName = props => {
     );
   }
 
-  return <span className="edit-input-name_span">{props.children}</span>;
+  return <p className="paragraph edit-input-name_paragraph">{props.children}</p>;
 };
 
-EditInputName.propTypes = propTypes;
-EditInputName.defaultProps = defaultProps;
+EditInputName.propTypes = {
+  isEditing: PropTypes.bool.isRequired,
+  handleNameEdits: PropTypes.func.isRequired,
+};
 
 export default EditInputName;
