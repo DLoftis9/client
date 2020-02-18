@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   componentName: PropTypes.string,
+  isEditing: PropTypes.bool.isRequired,
 };
 
 const defaultProps = {

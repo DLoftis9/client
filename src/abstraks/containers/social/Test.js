@@ -13,9 +13,11 @@ export default class Test extends React.PureComponent {
   };
 
   state = {
-    isFiltered: false,
-    pendingGuest: '',
-    guests: [],
+    inputs: [
+      {
+        isEditing: false,
+      },
+    ],
   };
 
   render() {
