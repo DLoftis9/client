@@ -3,25 +3,23 @@ import PropTypes from 'prop-types';
 
 import EditInputName from './EditInputName';
 
-const propTypes = {
-  componentName: PropTypes.string,
-};
+const EditInput = props => (
+  <li>
+    <EditInputName isEditing={props.isEditing} handleNameEdits={e => props.setName(e.target.value)}>
+      {props.name}
+    </EditInputName>
+    <label></label>
+    <button onClick={props.handeToggleEditing}>{props.isEditing ? 'save' : 'edit'}</button>
+    <button onClick={props.handleRemove}>remove</button>
+  </li>
+);
 
-const defaultProps = {
-  componentName: 'edit-input',
+EditInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  isEditing: PropTypes.bool.isRequired,
+  handeToggleEditing: PropTypes.func.isRequired,
+  setName: PropTypes.func.isRequired,
+  handleRemove: PropTypes.func.isRequired,
 };
-
-const EditInput = props => {
-  return (
-    <li className={props.componentName}>
-      <EditInputName isEditing={props.isEditing} />
-      <button onClick={props.handleToggleEditing}>edit</button>
-      <button>remove</button>
-    </li>
-  );
-};
-
-EditInput.propTypes = propTypes;
-EditInput.defaultProps = defaultProps;
 
 export default EditInput;
