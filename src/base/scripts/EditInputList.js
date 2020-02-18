@@ -3,8 +3,15 @@ import PropTypes from 'prop-types';
 
 import EditInput from './EditInput';
 
+const propTypes = {
+  inputs: PropTypes.array.isRequired,
+  toggleEditing: PropTypes.func.isRequired,
+  //   setName: PropTypes.func.isRequired,
+  removeInput: PropTypes.func.isRequired,
+};
+
 const EditInputList = props => (
-  <ul>
+  <ul className="edit-input-list">
     {props.inputs.map((input, index) => (
       <EditInput
         key={index}
@@ -18,11 +25,6 @@ const EditInputList = props => (
   </ul>
 );
 
-EditInputList.propTypes = {
-  inputs: PropTypes.array.isRequired,
-  toggleEditing: PropTypes.func.isRequired,
-  //   setName: PropTypes.func.isRequired,
-  removeInput: PropTypes.func.isRequired,
-};
+EditInputList.propTypes = propTypes;
 
 export default EditInputList;

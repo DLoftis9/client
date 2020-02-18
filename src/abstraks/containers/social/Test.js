@@ -13,7 +13,7 @@ export default class Test extends React.PureComponent {
     ],
   };
 
-  toggleGuestProperty = (property, id) =>
+  toggleInputProperty = (property, id) =>
     this.setState({
       inputs: this.state.inputs.map(input => {
         if (id === input.id) {
@@ -31,7 +31,7 @@ export default class Test extends React.PureComponent {
       inputs: this.state.inputs.filter(input => id !== input.id),
     });
 
-  toggleEditing = id => this.toggleGuestProperty('isEditing', id);
+  toggleEditing = id => this.toggleInputProperty('isEditing', id);
 
   //   setName = (name, id) =>
   //     this.setState({

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import EditInputName from './EditInputName';
 
 const EditInput = props => (
-  <li>
+  <li className="edit-input">
     <label className="label">Subject</label>
     <EditInputName isEditing={props.isEditing} handleNameEdits={e => props.setName(e.target.value)}>
       {props.name}
