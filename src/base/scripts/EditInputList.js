@@ -2,28 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import EditInput from './EditInput';
-// import PendingGuest from './PendingGuest';
 
 const EditInputList = props => (
   <ul>
-    {props.guests.map((guest, index) => (
+    {props.inputs.map((input, index) => (
       <EditInput
         key={index}
-        name={guest.name}
-        isEditing={guest.isEditing}
-        handeToggleEditing={() => props.toggleEditing(guest.id)}
+        name={input.name}
+        isEditing={input.isEditing}
+        handeToggleEditing={() => props.toggleEditing(input.id)}
         // setName={text => props.setName(text, guest.id)}
-        handleRemove={() => props.removeGuest(guest.id)}
+        handleRemove={() => props.removeInput(input.id)}
       />
     ))}
   </ul>
 );
 
 EditInputList.propTypes = {
-  guests: PropTypes.array.isRequired,
+  inputs: PropTypes.array.isRequired,
   toggleEditing: PropTypes.func.isRequired,
   //   setName: PropTypes.func.isRequired,
-  removeGuest: PropTypes.func.isRequired,
+  removeInput: PropTypes.func.isRequired,
 };
 
 export default EditInputList;

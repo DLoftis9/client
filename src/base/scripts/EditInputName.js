@@ -3,10 +3,17 @@ import PropTypes from 'prop-types';
 
 const EditInputName = props => {
   if (props.isEditing) {
-    return <input type="text" value={props.children} onChange={props.handleNameEdits} />;
+    return (
+      <input
+        className="edit-input-name_input input"
+        type="text"
+        value={props.children}
+        onChange={props.handleNameEdits}
+      />
+    );
   }
 
-  return <span>{props.children}</span>;
+  return <p className="paragraph edit-input-name_paragraph">{props.children}</p>;
 };
 
 EditInputName.propTypes = {
