@@ -12,7 +12,7 @@ const EditInputList = props => (
         name={guest.name}
         isEditing={guest.isEditing}
         handeToggleEditing={() => props.toggleEditing(guest.id)}
-        setName={text => props.setName(text, guest.id)}
+        // setName={text => props.setName(text, guest.id)}
         handleRemove={() => props.removeGuest(guest.id)}
       />
     ))}
@@ -22,7 +22,7 @@ const EditInputList = props => (
 EditInputList.propTypes = {
   guests: PropTypes.array.isRequired,
   toggleEditing: PropTypes.func.isRequired,
-  setName: PropTypes.func.isRequired,
+  //   setName: PropTypes.func.isRequired,
   removeGuest: PropTypes.func.isRequired,
 };
 

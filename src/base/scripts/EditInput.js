@@ -18,7 +18,7 @@ EditInput.propTypes = {
   name: PropTypes.string.isRequired,
   isEditing: PropTypes.bool.isRequired,
   handeToggleEditing: PropTypes.func.isRequired,
-  setName: PropTypes.func.isRequired,
+  // setName: PropTypes.func.isRequired,
   handleRemove: PropTypes.func.isRequired,
 };
 
