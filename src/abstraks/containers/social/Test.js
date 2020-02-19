@@ -33,31 +33,13 @@ export default class Test extends React.PureComponent {
 
   toggleEditing = id => this.toggleInputProperty('isEditing', id);
 
-  //   setName = (name, id) =>
-  //     this.setState({
-  //       inputs: this.state.inputs.map(guest => {
-  //         if (id === guest.id) {
-  //           return {
-  //             ...guest,
-  //             name,
-  //           };
-  //         }
-  //         return guest;
-  //       }),
-  //     });
-
-  //   handleNameInput = e => this.setState({ pendingGuest: e.target.value });
-
   render() {
     return (
       <div className="App">
         <EditInputElement
-          isFiltered={this.state.isFiltered}
           inputs={this.state.inputs}
           toggleEditing={this.toggleEditing}
-          //   setName={this.setName}
           removeInput={this.removeInput}
-          pendingGuest={this.state.pendingGuest}
         />
       </div>
     );
