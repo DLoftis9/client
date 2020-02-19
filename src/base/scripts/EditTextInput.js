@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import EditSubjectInput from './EditSubjectInput';
+
 const DATA = [
   {
     type: 'INPUT',
     text: 'Where?',
+  },
+  {
+    type: 'INPUT',
+    text: 'Just a test',
   },
 ];
 
@@ -25,126 +31,18 @@ const Message = ({ messageClass, header, message }) => {
   );
 };
 
-class Question extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      editing: props.editing,
-      text: props.text,
-      showError: false,
-    };
-  }
-
-  handleEditQuestion = () => {
-    const { editing } = this.state;
-    this.props.setEditing(true);
-    this.setState({ editing: true });
-  };
-
-  handleSaveQuestion = () => {
-    const { editing, text } = this.state;
-
-    if (text !== '') {
-      this.props.setEditing(false);
-      this.setState({
-        editing: false,
-        text,
-      });
-    } else {
-      this.setState({ showError: true });
-    }
-  };
-
-  handleUpdateText = e => {
-    e.preventDefault();
-    const { value } = e.target;
-    this.setState({ text: value });
-    this.setState({ showError: false });
-  };
-
-  render() {
-    const { children } = this.props;
-    const { editing, text, showError } = this.state;
-
-    let showErrorMessage = showError ? (
-      <Message
-        messageClass="is-danger"
-        header="Question Error"
-        message="Please fill in blank input."
-      />
-    ) : null;
-
-    // Input label
-    const questionInputWrapper = (
-      <div className="question-input-wrapper">
-        <strong>sdasdEdit Question:</strong>
-        <form onSubmit={this.handleSaveQuestion}>
-          <input className="input" defaultValue={text} onChange={this.handleUpdateText} />
-        </form>
-        {showErrorMessage}
-      </div>
-    );
-
-    // Wrapper Title
-    const questionWrapper = (
-      <div className="question-wrapper">
-        <strong>HAHA:</strong>
-        <br />
-        <h3 className="title is-3">{text}</h3>
-      </div>
-    );
-
-    let display;
-
-    if (editing) {
-      display = questionInputWrapper;
-    } else {
-      display = questionWrapper;
-    }
-
-    const saveButtonComp = (
-      <button className="button button-primary is-small is-info" onClick={this.handleSaveQuestion}>
-        <i className="fa fa-save"></i>Save
-      </button>
-    );
-
-    const showSaveButton = editing ? saveButtonComp : null;
-
-    const editButtonComp = (
-      <button
-        className="button button-primary is-small is-warning"
-        onClick={this.handleEditQuestion}
-      >
-        <i className="fa fa-edit"></i>Edit
-      </button>
-    );
-
-    const showEditButton = !editing ? editButtonComp : null;
-
-    return (
-      <div className="question-container">
-        <div className="box">
-          {display}
-          {showEditButton}
-          {showSaveButton}
-        </div>
-      </div>
-    );
-  }
-}
-
 export default class EditTextInput extends React.Component {
   state = {
     questionList: DATA,
     isEditingQuestion: false,
-    showAddQuestionError: false,
+    showAddInputError: false,
   };
 
-  addQuestion = () => {
+  addSubject = () => {
     const { isEditingQuestion } = this.state;
 
     if (isEditingQuestion) {
-      this.setState({ showAddQuestionError: true });
+      this.setState({ showAddInputError: true });
     } else {
       const questionList = [
         ...this.state.questionList,
@@ -165,11 +63,11 @@ export default class EditTextInput extends React.Component {
   };
 
   render() {
-    const displayQuestionList = this.state.questionList.map((item, idx) => {
+    const displaySubjectList = this.state.questionList.map((item, idx) => {
       const { type, text, editing } = item;
       if (type === 'INPUT') {
         return (
-          <Question
+          <EditSubjectInput
             key={idx}
             text={text}
             editing={editing}
@@ -179,22 +77,20 @@ export default class EditTextInput extends React.Component {
       }
     });
 
-    const addQuestionError = (
-      <Message
-        messageClass="is-danger"
-        header="Add Question Error"
-        message="Please save before adding another question."
-      />
+    // Error message that displays when first field is
+    // empty before trying to add a new field
+    const addInputError = (
+      <Message messageClass="is-danger" message="Please save before adding another question." />
     );
 
-    const showQuestionError = this.state.showAddQuestionError ? addQuestionError : null;
+    const showInputError = this.state.showAddInputError ? addInputError : null;
 
     return (
       <section className="section home-container">
-        <List>{displayQuestionList}</List>
+        <List>{displaySubjectList}</List>
         <hr />
-        {/* {showQuestionError} */}
-        <button className="button button-primary is-success" onClick={this.addQuestion}>
+        {showInputError}
+        <button className="button button-primary is-success" onClick={this.addSubject}>
           <i className="fa fa-plus"></i>Add Question
         </button>
       </section>
