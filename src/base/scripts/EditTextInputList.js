@@ -6,7 +6,11 @@ import EditSubjectInput from './EditSubjectInput';
 const DATA = [
   {
     type: 'INPUT',
-    text: 'Where?',
+    text: 'Input One',
+  },
+  {
+    type: 'INPUT',
+    text: 'Just a test',
   },
   {
     type: 'INPUT',
@@ -31,10 +35,10 @@ const Message = ({ messageClass, header, message }) => {
   );
 };
 
-export default class EditTextInput extends React.Component {
-  static propTypes = {
-    setInputs: PropTypes.array.isRequired,
-  };
+export default class EditTextInputList extends React.Component {
+//   static propTypes = {
+//     setInputs: PropTypes.array.isRequired,
+//   };
 
   //   static defaultProps = {
 
@@ -71,7 +75,7 @@ export default class EditTextInput extends React.Component {
   };
 
   render() {
-    const { setInputs } = this.props;
+    // const { setInputs } = this.props;
 
     const displaySubjectList = this.state.inputsList.map((item, idx) => {
       const { type, text, editing } = item;
