@@ -108,7 +108,7 @@ export const Consumer = Context.Consumer;
  * @returns {function} A higher-order component.
  */
 
-// withContext is a higher-order componen that wraps a provided component in
+// withContext is a higher-order component that wraps a provided component in
 // a <Context.Consumer> component. withContext automatically subscribes
 // (or connects) the component passed to it to all actions and context changes:
 export default function withContext(Component) {
