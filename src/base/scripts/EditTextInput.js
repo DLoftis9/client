@@ -1,62 +1,203 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class EditTextInput extends React.Component {
+const DATA = [
+  {
+    type: 'INPUT',
+    text: 'Where?',
+  },
+];
+
+const List = ({ children }) => {
+  return (
+    <div className="list-container">
+      <ul>{children}</ul>
+    </div>
+  );
+};
+
+const Message = ({ messageClass, header, message }) => {
+  return (
+    <article className={`message ${messageClass}`}>
+      <div className="message-header">{header}</div>
+      <div className="message-body">{message}</div>
+    </article>
+  );
+};
+
+class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isToggleOn: true,
-      value: 'Hello React',
+      editing: props.editing,
+      text: props.text,
+      showError: false,
     };
-
-    // This binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleClick() {
-    this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn,
-    }));
-  }
-
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  }
-
-  static propTypes = {
-    componentName: PropTypes.string.isRequired,
+  handleEditQuestion = () => {
+    const { editing } = this.state;
+    this.props.setEditing(true);
+    this.setState({ editing: true });
   };
 
-  static defaultProps = {
-    componentName: 'toggle',
+  handleSaveQuestion = () => {
+    const { editing, text } = this.state;
+
+    if (text !== '') {
+      this.props.setEditing(false);
+      this.setState({
+        editing: false,
+        text,
+      });
+    } else {
+      this.setState({ showError: true });
+    }
+  };
+
+  handleUpdateText = e => {
+    e.preventDefault();
+    const { value } = e.target;
+    this.setState({ text: value });
+    this.setState({ showError: false });
   };
 
   render() {
-    const { componentName } = this.props;
+    const { children } = this.props;
+    const { editing, text, showError } = this.state;
+
+    let showErrorMessage = showError ? (
+      <Message
+        messageClass="is-danger"
+        header="Question Error"
+        message="Please fill in blank input."
+      />
+    ) : null;
+
+    // Input label
+    const questionInputWrapper = (
+      <div className="question-input-wrapper">
+        <strong>sdasdEdit Question:</strong>
+        <form onSubmit={this.handleSaveQuestion}>
+          <input className="input" defaultValue={text} onChange={this.handleUpdateText} />
+        </form>
+        {showErrorMessage}
+      </div>
+    );
+
+    // Wrapper Title
+    const questionWrapper = (
+      <div className="question-wrapper">
+        <strong>HAHA:</strong>
+        <br />
+        <h3 className="title is-3">{text}</h3>
+      </div>
+    );
+
+    let display;
+
+    if (editing) {
+      display = questionInputWrapper;
+    } else {
+      display = questionWrapper;
+    }
+
+    const saveButtonComp = (
+      <button className="button button-primary is-small is-info" onClick={this.handleSaveQuestion}>
+        <i className="fa fa-save"></i>Save
+      </button>
+    );
+
+    const showSaveButton = editing ? saveButtonComp : null;
+
+    const editButtonComp = (
+      <button
+        className="button button-primary is-small is-warning"
+        onClick={this.handleEditQuestion}
+      >
+        <i className="fa fa-edit"></i>Edit
+      </button>
+    );
+
+    const showEditButton = !editing ? editButtonComp : null;
+
     return (
-      <span className={componentName} onClick={this.handleClick}>
-        {this.state.isToggleOn ? (
-          <div className="no-edit">
-            <i className="fa fa-chevron-down" aria-hidden="true"></i>
-            <p className="input-value">
-              The value of the input is: <span className="highlight">{this.state.value}</span>
-            </p>
-          </div>
-        ) : (
-          <div className="edit">
-            <i className="fa fa-chevron-up" aria-hidden="true"></i>
-            <label className="label">Enter text here</label>
-            <input
-              className="input is-medium"
-              type="text"
-              id="input"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-          </div>
-        )}
-      </span>
+      <div className="question-container">
+        <div className="box">
+          {display}
+          {showEditButton}
+          {showSaveButton}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default class EditTextInput extends React.Component {
+  state = {
+    questionList: DATA,
+    isEditingQuestion: false,
+    showAddQuestionError: false,
+  };
+
+  addQuestion = () => {
+    const { isEditingQuestion } = this.state;
+
+    if (isEditingQuestion) {
+      this.setState({ showAddQuestionError: true });
+    } else {
+      const questionList = [
+        ...this.state.questionList,
+        {
+          type: 'INPUT',
+          text: '',
+          editing: true,
+        },
+      ];
+
+      this.setState({ questionList });
+    }
+  };
+
+  editingQuestion = boolean => {
+    const { isEditingQuestion } = this.state;
+    this.setState({ isEditingQuestion: boolean });
+  };
+
+  render() {
+    const displayQuestionList = this.state.questionList.map((item, idx) => {
+      const { type, text, editing } = item;
+      if (type === 'INPUT') {
+        return (
+          <Question
+            key={idx}
+            text={text}
+            editing={editing}
+            setEditing={bool => this.editingQuestion(bool)}
+          />
+        );
+      }
+    });
+
+    const addQuestionError = (
+      <Message
+        messageClass="is-danger"
+        header="Add Question Error"
+        message="Please save before adding another question."
+      />
+    );
+
+    const showQuestionError = this.state.showAddQuestionError ? addQuestionError : null;
+
+    return (
+      <section className="section home-container">
+        <List>{displayQuestionList}</List>
+        <hr />
+        {/* {showQuestionError} */}
+        <button className="button button-primary is-success" onClick={this.addQuestion}>
+          <i className="fa fa-plus"></i>Add Question
+        </button>
+      </section>
     );
   }
 }
