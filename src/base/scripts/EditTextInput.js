@@ -17,7 +17,7 @@ const DATA = [
 const List = ({ children }) => {
   return (
     <div className="list-container">
-      <ul>{children}</ul>
+      <ul className="unordered-list">{children}</ul>
     </div>
   );
 };
@@ -32,20 +32,28 @@ const Message = ({ messageClass, header, message }) => {
 };
 
 export default class EditTextInput extends React.Component {
+  static propTypes = {
+    inputsList: PropTypes.array.isRequired,
+  };
+
+  //   static defaultProps = {
+
+  //   };
+
   state = {
-    questionList: DATA,
-    isEditingQuestion: false,
+    inputsList: DATA,
+    isEditingInput: false,
     showAddInputError: false,
   };
 
   addSubject = () => {
-    const { isEditingQuestion } = this.state;
+    const { isEditingInput } = this.state;
 
-    if (isEditingQuestion) {
+    if (isEditingInput) {
       this.setState({ showAddInputError: true });
     } else {
-      const questionList = [
-        ...this.state.questionList,
+      const inputsList = [
+        ...this.state.inputsList,
         {
           type: 'INPUT',
           text: '',
@@ -53,17 +61,19 @@ export default class EditTextInput extends React.Component {
         },
       ];
 
-      this.setState({ questionList });
+      this.setState({ inputsList });
     }
   };
 
-  editingQuestion = boolean => {
-    const { isEditingQuestion } = this.state;
-    this.setState({ isEditingQuestion: boolean });
+  editingInput = boolean => {
+    const { isEditingInput } = this.state;
+    this.setState({ isEditingInput: boolean });
   };
 
   render() {
-    const displaySubjectList = this.state.questionList.map((item, idx) => {
+    const { inputsList } = this.props;
+
+    const displaySubjectList = this.state.inputsList.map((item, idx) => {
       const { type, text, editing } = item;
       if (type === 'INPUT') {
         return (
@@ -71,7 +81,7 @@ export default class EditTextInput extends React.Component {
             key={idx}
             text={text}
             editing={editing}
-            setEditing={bool => this.editingQuestion(bool)}
+            setEditing={bool => this.editingInput(bool)}
           />
         );
       }
@@ -86,12 +96,12 @@ export default class EditTextInput extends React.Component {
     const showInputError = this.state.showAddInputError ? addInputError : null;
 
     return (
-      <section className="section home-container">
+      <section className="section">
         <List>{displaySubjectList}</List>
         <hr />
         {showInputError}
         <button className="button button-primary is-success" onClick={this.addSubject}>
-          <i className="fa fa-plus"></i>Add Question
+          <i className="fa fa-plus"></i>Add Subject
         </button>
       </section>
     );

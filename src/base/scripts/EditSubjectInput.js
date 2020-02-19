@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Message component for error
 const Message = ({ messageClass, header, message }) => {
   return (
     <article className={`message ${messageClass}`}>
-      <div className="message-header">{header}</div>
-      <div className="message-body">{message}</div>
+      <div className="error">{message}</div>
     </article>
   );
 };
@@ -20,13 +20,13 @@ export default class EditSubjectInput extends React.Component {
     };
   }
 
-  handleEditQuestion = () => {
+  handleEditSubject = () => {
     const { editing } = this.state;
     this.props.setEditing(true);
     this.setState({ editing: true });
   };
 
-  handleSaveQuestion = () => {
+  handleSaveSubject = () => {
     const { editing, text } = this.state;
 
     if (text !== '') {
@@ -53,14 +53,14 @@ export default class EditSubjectInput extends React.Component {
 
     // Error for individual input field
     let showErrorMessage = showError ? (
-      <Message messageClass="is-danger" message="Please fill in blank input." />
+      <Message messageClass="error" message="Please fill in blank input." />
     ) : null;
 
-    // Input label
-    const questionInputWrapper = (
-      <div className="question-input-wrapper">
-        <strong>sdasdEdit Question:</strong>
-        <form onSubmit={this.handleSaveQuestion}>
+    // Input label while editing
+    const subjectInputWrapper = (
+      <div className="subject-input-wrapper">
+        <label className="label">Editing:</label>
+        <form className="form" onSubmit={this.handleSaveSubject}>
           <input className="input" defaultValue={text} onChange={this.handleUpdateText} />
         </form>
         {showErrorMessage}
@@ -68,35 +68,33 @@ export default class EditSubjectInput extends React.Component {
     );
 
     // Wrapper Title
-    const questionWrapper = (
-      <div className="question-wrapper">
-        <strong>HAHA:</strong>
-        <br />
-        <h3 className="title is-3">{text}</h3>
+    const subjectWrapper = (
+      <div className="subject-wrapper">
+        <label className="label">Label:</label>
+        <p className="paragraph">{text}</p>
       </div>
     );
 
     let display;
 
     if (editing) {
-      display = questionInputWrapper;
+      display = subjectInputWrapper;
     } else {
-      display = questionWrapper;
+      display = subjectWrapper;
     }
 
+    // Save button
     const saveButtonComp = (
-      <button className="button button-primary is-small is-info" onClick={this.handleSaveQuestion}>
+      <button className="button button-primary" onClick={this.handleSaveSubject}>
         <i className="fa fa-save"></i>Save
       </button>
     );
 
     const showSaveButton = editing ? saveButtonComp : null;
 
+    // Edit button
     const editButtonComp = (
-      <button
-        className="button button-primary is-small is-warning"
-        onClick={this.handleEditQuestion}
-      >
+      <button className="button button-primary" onClick={this.handleEditSubject}>
         <i className="fa fa-edit"></i>Edit
       </button>
     );
@@ -104,13 +102,11 @@ export default class EditSubjectInput extends React.Component {
     const showEditButton = !editing ? editButtonComp : null;
 
     return (
-      <div className="question-container">
-        <div className="box">
-          {display}
-          {showEditButton}
-          {showSaveButton}
-        </div>
-      </div>
+      <li className="list-item subject-container">
+        {display}
+        {showEditButton}
+        {showSaveButton}
+      </li>
     );
   }
 }
