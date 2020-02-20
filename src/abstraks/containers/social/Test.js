@@ -4,13 +4,9 @@ import { CSSTransitionGroup } from 'react-transition-group';
 
 import SubjectInputAdds from '../../../base/scripts/SubjectInputAdds';
 
-
-
 export default class Test extends React.PureComponent {
-
   static propTypes = {
     containerName: PropTypes.string,
-
   };
 
   static defaultProps = {
