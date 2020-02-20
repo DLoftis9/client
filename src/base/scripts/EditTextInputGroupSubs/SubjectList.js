@@ -26,10 +26,11 @@ const Subject = props => (
     <SubjectName isEditing={props.isEditing} handleNameEdits={e => props.setName(e.target.value)}>
       {props.name}
     </SubjectName>
-    <button className="subject-button_edit" onClick={props.handeToggleEditing}>
+    <button className="button subject-button_edit" onClick={props.handeToggleEditing}>
       {props.isEditing ? (
         <div className="save">
           <p className="button_text">Save</p>
+          {/* <i className="fa fa-chevron-down" aria-hidden="true"></i> */}
           <i class="fa fa-check" aria-hidden="true"></i>
         </div>
       ) : (
@@ -39,7 +40,7 @@ const Subject = props => (
         </div>
       )}
     </button>
-    <button className="subject-button_remove" onClick={props.handleRemove}>
+    <button className="button subject-button_remove" onClick={props.handleRemove}>
       <p className="button_text">Remove</p>
       <i class="fa fa-trash" aria-hidden="true"></i>
     </button>
