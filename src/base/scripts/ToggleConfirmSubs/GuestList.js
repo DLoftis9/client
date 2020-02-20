@@ -5,7 +5,7 @@ import Guest from './Guest';
 import PendingGuest from './PendingGuest';
 
 const GuestList = props => (
-  <ul className="guest-list">
+  <ul>
     <PendingGuest name={props.pendingGuest} />
     {props.guests
       .filter(guest => !props.isFiltered || guest.isConfirmed)

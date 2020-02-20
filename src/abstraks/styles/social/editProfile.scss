@@ -1,3 +1,49 @@
 @import '../_variables.scss';
 @import '../../.././base/styles/_variables.scss';
 
+.subject-input-form {
+  .button {
+    @extend .button-primary;
+  }
+
+  .input {
+    @extend .input;
+  }
+}
+
+.edit-text-input-group-main {
+  .input {
+    @extend .input;
+  }
+}
+
+.subject-button_edit,
+.subject-button_remove {
+  @extend .button;
+}
+
+.subject-button_edit {
+  .edit {
+    color: black;
+    
+    .button_text,
+    .fa-pencil-square-o {
+      color: $color-secondary;
+    }
+  }
+
+  .save {
+    color: black;
+    .button_text,
+    .fa-check {
+      color: green;
+    }
+  }
+}
+
+.subject-button_remove {
+  .button_text,
+  .fa-trash {
+    color: red;
+  }
+}

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import GuestName from './GuestName';
 
 const Guest = props => (
-  <li className="guest">
+  <li>
     <GuestName isEditing={props.isEditing} handleNameEdits={e => props.setName(e.target.value)}>
       {props.name}
     </GuestName>

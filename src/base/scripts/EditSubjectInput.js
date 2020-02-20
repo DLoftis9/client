@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import EditInputMessage from './EditInputMessage';
 
@@ -82,7 +81,10 @@ export default class EditSubjectInput extends React.Component {
     // Save button
     const saveButtonComp = (
       <button className="button button-primary" onClick={this.handleSaveSubject}>
-        <i className="fa fa-save"></i>Save
+        <div className="save">
+          <p className="button_text">Save</p>
+          <i class="fa fa-check" aria-hidden="true"></i>
+        </div>
       </button>
     );
 
@@ -91,7 +93,10 @@ export default class EditSubjectInput extends React.Component {
     // Edit button
     const editButtonComp = (
       <button className="button button-primary" onClick={this.handleEditSubject}>
-        <i className="fa fa-edit"></i>Edit
+        <div className="edit">
+          <p className="button_text">Edit</p>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </div>
       </button>
     );
 
