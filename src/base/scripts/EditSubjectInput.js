@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import EditInputMessage from './EditInputMessage';
 
@@ -83,7 +84,7 @@ export default class EditSubjectInput extends React.Component {
       <button className="button button-primary" onClick={this.handleSaveSubject}>
         <div className="save">
           <p className="button_text">Save</p>
-          <i class="fa fa-check" aria-hidden="true"></i>
+          <i className="fa fa-check" aria-hidden="true"></i>
         </div>
       </button>
     );
@@ -95,7 +96,7 @@ export default class EditSubjectInput extends React.Component {
       <button className="button button-primary" onClick={this.handleEditSubject}>
         <div className="edit">
           <p className="button_text">Edit</p>
-          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
         </div>
       </button>
     );
