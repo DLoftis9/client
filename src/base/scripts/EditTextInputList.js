@@ -17,13 +17,13 @@ const List = ({ children }) => {
 };
 
 export default class EditTextInputList extends React.Component {
-  //   static propTypes = {
-  //     setInputs: PropTypes.array.isRequired,
-  //   };
+  static propTypes = {
+    componentName: PropTypes.string,
+  };
 
-  //   static defaultProps = {
-
-  //   };
+  static defaultProps = {
+    componentName: 'edit-text-input-list',
+  };
 
   state = {
     // DATA is necessary to render a list of inputs
@@ -52,13 +52,11 @@ export default class EditTextInputList extends React.Component {
   };
 
   editingInput = boolean => {
-    const { isEditingInput } = this.state;
     this.setState({ isEditingInput: boolean });
   };
 
   render() {
-    // const { setInputs } = this.props;
-
+    const { componentName } = this.props;
     const displaySubjectList = this.state.inputsList.map((item, idx) => {
       const { type, text, editing } = item;
       if (type === 'INPUT') {
@@ -85,7 +83,7 @@ export default class EditTextInputList extends React.Component {
     const showInputError = this.state.showAddInputError ? addInputError : null;
 
     return (
-      <section className="section">
+      <section className={componentName}>
         <List>{displaySubjectList}</List>
         <hr />
         {showInputError}

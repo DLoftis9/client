@@ -18,8 +18,6 @@ const DATA = [
 export default class Test extends React.PureComponent {
   state = {
     setInputs: DATA,
-    // isEditingInput: false,
-    // showAddInputError: false,
   };
 
   render() {

@@ -3,17 +3,6 @@ import PropTypes from 'prop-types';
 
 import EditSubjectInput from './EditSubjectInput';
 
-const DATA = [
-  {
-    type: 'INPUT',
-    text: 'Where?',
-  },
-  {
-    type: 'INPUT',
-    text: 'Just a test',
-  },
-];
-
 const List = ({ children }) => {
   return (
     <div className="list-container">
@@ -25,11 +14,12 @@ const List = ({ children }) => {
 export default class EditTextInput extends React.Component {
   static propTypes = {
     setInputs: PropTypes.array.isRequired,
+    componentName: PropTypes.string,
   };
 
-  //   static defaultProps = {
-
-  //   };
+  static defaultProps = {
+    componentName: 'edit-text-input',
+  };
 
   state = {
     isEditingInput: false,
@@ -37,13 +27,11 @@ export default class EditTextInput extends React.Component {
   };
 
   editingInput = boolean => {
-    const { isEditingInput } = this.state;
     this.setState({ isEditingInput: boolean });
   };
 
   render() {
-    const { setInputs } = this.props;
-
+    const { componentName } = this.props;
     const displaySubjectList = this.props.setInputs.map((item, idx) => {
       const { type, text, editing } = item;
       if (type === 'INPUT') {
@@ -59,7 +47,7 @@ export default class EditTextInput extends React.Component {
     });
 
     return (
-      <section className="section">
+      <section className={componentName}>
         <List>{displaySubjectList}</List>
       </section>
     );

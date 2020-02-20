@@ -14,13 +14,12 @@ export default class EditSubjectInput extends React.Component {
   }
 
   handleEditSubject = () => {
-    const { editing } = this.state;
     this.props.setEditing(true);
     this.setState({ editing: true });
   };
 
   handleSaveSubject = () => {
-    const { editing, text } = this.state;
+    const { text } = this.state;
 
     if (text !== '') {
       this.props.setEditing(false);
@@ -41,7 +40,6 @@ export default class EditSubjectInput extends React.Component {
   };
 
   render() {
-    const { children } = this.props;
     const { editing, text, showError } = this.state;
 
     // Error for individual input field
@@ -54,7 +52,12 @@ export default class EditSubjectInput extends React.Component {
       <div className="subject-input-wrapper">
         <label className="label">Editing:</label>
         <form className="form" onSubmit={this.handleSaveSubject}>
-          <input className="input" defaultValue={text} onChange={this.handleUpdateText} />
+          <input
+            className="input"
+            type={this.props.inputType}
+            defaultValue={text}
+            onChange={this.handleUpdateText}
+          />
         </form>
         {showErrorMessage}
       </div>
