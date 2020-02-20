@@ -1,11 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import GuestList from "./GuestList";
+import GuestList from './GuestList';
 
-const EditTextInputGroupMain = props =>
+const EditTextInputGroupMain = props => (
   <div className="main">
-
     <GuestList
       guests={props.guests}
       toggleConfirmation={props.toggleConfirmation}
@@ -15,7 +14,8 @@ const EditTextInputGroupMain = props =>
       removeGuest={props.removeGuest}
       pendingGuest={props.pendingGuest}
     />
-  </div>;
+  </div>
+);
 
 EditTextInputGroupMain.propTypes = {
   guests: PropTypes.array.isRequired,
@@ -23,7 +23,7 @@ EditTextInputGroupMain.propTypes = {
   toggleEditing: PropTypes.func.isRequired,
   setName: PropTypes.func.isRequired,
   removeGuest: PropTypes.func.isRequired,
-  pendingGuest: PropTypes.string.isRequired
+  pendingGuest: PropTypes.string.isRequired,
 };
 
 export default EditTextInputGroupMain;

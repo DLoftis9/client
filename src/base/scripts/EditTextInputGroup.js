@@ -4,11 +4,10 @@ import EditTextInputGroupMain from './EditTextInputGroupSubs/EditTextInputGroupM
 import SubjectInputSubmit from './EditTextInputGroupHead/SubjectInputSubmit';
 
 export default class EditTextInputGroup extends Component {
-
   state = {
     isFiltered: false,
-    pendingGuest: "",
-    guests: []
+    pendingGuest: '',
+    guests: [],
   };
 
   lastGuestId = 0;
@@ -25,23 +24,21 @@ export default class EditTextInputGroup extends Component {
         if (id === guest.id) {
           return {
             ...guest,
-            [property]: !guest[property]
+            [property]: !guest[property],
           };
         }
         return guest;
-      })
+      }),
     });
 
-  toggleConfirmation = id =>
-    this.toggleGuestProperty("isConfirmed", id);
+  toggleConfirmation = id => this.toggleGuestProperty('isConfirmed', id);
 
   removeGuest = id =>
     this.setState({
-      guests: this.state.guests.filter(guest => id !== guest.id)
+      guests: this.state.guests.filter(guest => id !== guest.id),
     });
 
-  toggleEditing = id =>
-    this.toggleGuestProperty("isEditing", id);
+  toggleEditing = id => this.toggleGuestProperty('isEditing', id);
 
   setName = (name, id) =>
     this.setState({
@@ -49,18 +46,16 @@ export default class EditTextInputGroup extends Component {
         if (id === guest.id) {
           return {
             ...guest,
-            name
+            name,
           };
         }
         return guest;
-      })
+      }),
     });
 
-  toggleFilter = () =>
-    this.setState({ isFiltered: !this.state.isFiltered });
+  toggleFilter = () => this.setState({ isFiltered: !this.state.isFiltered });
 
-  handleNameInput = e =>
-    this.setState({ pendingGuest: e.target.value });
+  handleNameInput = e => this.setState({ pendingGuest: e.target.value });
 
   newGuestSubmitHandler = e => {
     e.preventDefault();
@@ -71,21 +66,18 @@ export default class EditTextInputGroup extends Component {
           name: this.state.pendingGuest,
           isConfirmed: false,
           isEditing: false,
-          id
+          id,
         },
-        ...this.state.guests
+        ...this.state.guests,
       ],
-      pendingGuest: ''
+      pendingGuest: '',
     });
-  }
+  };
 
   getTotalInvited = () => this.state.guests.length;
 
   getAttendingGuests = () =>
-    this.state.guests.reduce(
-      (total, guest) => guest.isConfirmed ? total + 1 : total,
-      0
-    );
+    this.state.guests.reduce((total, guest) => (guest.isConfirmed ? total + 1 : total), 0);
 
   render() {
     const totalInvited = this.getTotalInvited();

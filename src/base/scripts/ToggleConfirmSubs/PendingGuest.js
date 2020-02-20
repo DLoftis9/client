@@ -5,9 +5,7 @@ const PendingGuest = props => {
   if (props.name) {
     return (
       <li className="pending">
-        <span>
-          {props.name}
-        </span>
+        <span>{props.name}</span>
       </li>
     );
   }
@@ -15,7 +13,7 @@ const PendingGuest = props => {
 };
 
 PendingGuest.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
 };
 
 export default PendingGuest;
