@@ -13,16 +13,6 @@ export default class SubjectInputAdds extends React.Component {
     this.helperspan = null; // is set via ref
 
     this.state = {
-      currentcolor: [
-        '#531CB3',
-        '#7149EE',
-        '#B754FF',
-        '#ED4FEF',
-        '#ED49AB',
-        '#ED4FEF',
-        '#B754FF',
-        '#7149EE',
-      ],
       content_add: 'add +',
       width: 100,
       myItems: [],
@@ -74,12 +64,6 @@ export default class SubjectInputAdds extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.content_add != this.state.content_add) {
-      console.log(
-        'did update, content:',
-        this.helperspan.textContent,
-        'width',
-        this.helperspan.offsetWidth,
-      );
       const helperWidth = this.helperspan.offsetWidth;
       this.setState({ width: Math.max(50, helperWidth + 1) });
     }
@@ -92,7 +76,6 @@ export default class SubjectInputAdds extends React.Component {
         onClick={this.handleClick}
         data-item={listitem.id}
         style={{
-          backgroundColor: this.state.currentcolor[index % this.state.currentcolor.length],
           width: listitem.itemWidth,
         }}
       >
@@ -105,12 +88,7 @@ export default class SubjectInputAdds extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor="value">Dynamic styled Inputfields with React!</label>
-        <br />
-        <br />
-        Hit "Enter" to confirm, Click a pill to remove
-        <br />
-        <br />
+        <p>Hit "Enter" to confirm, Click a pill to remove</p>
         {/* <CSSTransitionGroup
 					transitionName="item-transition"
 					transitionEnterTimeout={500}
