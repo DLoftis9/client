@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import EditTextInput from '../../../base/scripts/EditTextInput';
-import EditTextInputList from '../../../base/scripts/EditTextInputList';
+import EditTextInputGroup from '../../../base/scripts/EditTextInputGroup';
 
 const DATA = [
   {
@@ -24,7 +24,7 @@ export default class Test extends React.PureComponent {
     return (
       <div className="App">
         <EditTextInput setInputs={DATA} />
-        <EditTextInputList />
+        <EditTextInputGroup />
       </div>
     );
   }

@@ -1,24 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import GuestInputForm from './GuestInputForm';
+import SubjectInputForm from './SubjectInputForm';
 
-const Header = props => (
-  <header className="header-rsvp">
-    <h1>RSVP</h1>
-    <p>A Treehouse App</p>
-    <GuestInputForm
+const SubjectInputSubmit = props =>
+  <div>
+    <h1>Skills</h1>
+    <p>Add a skill</p>
+    <SubjectInputForm
       newGuestSubmitHandler={props.newGuestSubmitHandler}
       pendingGuest={props.pendingGuest}
       handleNameInput={props.handleNameInput}
     />
-  </header>
-);
+  </div>;
 
-Header.propTypes = {
+SubjectInputSubmit.propTypes = {
   newGuestSubmitHandler: PropTypes.func.isRequired,
   pendingGuest: PropTypes.string.isRequired,
-  handleNameInput: PropTypes.func.isRequired,
+  handleNameInput: PropTypes.func.isRequired
 };
 
-export default Header;
+export default SubjectInputSubmit;
