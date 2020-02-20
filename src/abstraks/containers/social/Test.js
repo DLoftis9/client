@@ -20,11 +20,22 @@ export default class Test extends React.PureComponent {
     setInputs: DATA,
   };
 
+  static propTypes = {
+    containerName: PropTypes.string,
+    subjectHeader: PropTypes.string,
+    subjectParagraph: PropTypes.string,
+  };
+
+  static defaultProps = {
+    containerName: 'test',
+  };
+
   render() {
+    const { containerName } = this.props;
     return (
-      <div className="App">
+      <div className={containerName}>
         <EditTextInput setInputs={DATA} />
-        <EditTextInputGroup />
+        <EditTextInputGroup subjectHeader="Skills" subjectParagraph="Add a skill" />
       </div>
     );
   }

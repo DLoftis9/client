@@ -21,6 +21,12 @@ SubjectName.propTypes = {
   handleNameEdits: PropTypes.func.isRequired,
 };
 
+/*
+ ****
+ ****
+ ****
+ */
+
 const Subject = props => (
   <li className="listItem subject">
     <SubjectName isEditing={props.isEditing} handleNameEdits={e => props.setName(e.target.value)}>
@@ -30,7 +36,6 @@ const Subject = props => (
       {props.isEditing ? (
         <div className="save">
           <p className="button_text">Save</p>
-          {/* <i className="fa fa-chevron-down" aria-hidden="true"></i> */}
           <i class="fa fa-check" aria-hidden="true"></i>
         </div>
       ) : (
@@ -54,6 +59,12 @@ Subject.propTypes = {
   setName: PropTypes.func.isRequired,
   handleRemove: PropTypes.func.isRequired,
 };
+
+/*
+ ****
+ ****
+ ****
+ */
 
 const SubjectList = props => (
   <ul className="subject-list">

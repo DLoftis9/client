@@ -8,11 +8,11 @@ const SubjectInputForm = props => (
       type="text"
       onChange={props.handleNameInput}
       value={props.pendingSubject}
-      placeholder="Invite Someone"
+      placeholder="Start typing..."
     />
     <button className="button" type="submit" name="submit" value="submit">
       <p className="button_text">Add</p>
-      <i class="fa fa-plus" aria-hidden="true"></i>
+      <i className="fa fa-plus" aria-hidden="true"></i>
     </button>
   </form>
 );
@@ -23,10 +23,16 @@ SubjectInputForm.propTypes = {
   handleNameInput: PropTypes.func.isRequired,
 };
 
+/*
+ ****
+ ****
+ ****
+ */
+
 const SubjectInputSubmit = props => (
   <div className="subject-input-submit">
-    <h1 className="subject-input-submit_header">Skills</h1>
-    <p className=" paragraph subject-input-submit_paragraph">Add a skill</p>
+    <h1 className="subject-input-submit_header">{props.subjectHeader}</h1>
+    <p className=" paragraph subject-input-submit_paragraph">{props.subjectParagraph}</p>
     <SubjectInputForm
       newGuestSubmitHandler={props.newGuestSubmitHandler}
       pendingSubject={props.pendingSubject}
@@ -39,6 +45,8 @@ SubjectInputSubmit.propTypes = {
   newGuestSubmitHandler: PropTypes.func.isRequired,
   pendingSubject: PropTypes.string.isRequired,
   handleNameInput: PropTypes.func.isRequired,
+  subjectHeader: PropTypes.string.isRequired,
+  subjectParagraph: PropTypes.string.isRequired,
 };
 
 export default SubjectInputSubmit;

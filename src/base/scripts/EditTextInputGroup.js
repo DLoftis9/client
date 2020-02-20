@@ -14,6 +14,8 @@ export default class EditTextInputGroup extends Component {
 
   static propTypes = {
     containerName: PropTypes.string.isRequired,
+    subjectHeader: PropTypes.string.isRequired,
+    subjectParagraph: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -79,7 +81,7 @@ export default class EditTextInputGroup extends Component {
   };
 
   render() {
-    const { containerName } = this.props;
+    const { containerName, subjectHeader, subjectParagraph } = this.props;
 
     return (
       <div className={containerName}>
@@ -87,6 +89,8 @@ export default class EditTextInputGroup extends Component {
           newGuestSubmitHandler={this.newGuestSubmitHandler}
           pendingSubject={this.state.pendingSubject}
           handleNameInput={this.handleNameInput}
+          subjectHeader={subjectHeader}
+          subjectParagraph={subjectParagraph}
         />
         <EditTextInputGroupMain
           subjects={this.state.subjects}
