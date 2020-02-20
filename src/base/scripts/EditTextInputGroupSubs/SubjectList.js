@@ -36,18 +36,18 @@ const Subject = props => (
       {props.isEditing ? (
         <div className="save">
           <p className="button_text">Save</p>
-          <i class="fa fa-check" aria-hidden="true"></i>
+          <i className="fa fa-check" aria-hidden="true"></i>
         </div>
       ) : (
         <div className="edit">
           <p className="button_text">Edit</p>
-          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
         </div>
       )}
     </button>
     <button className="button subject-button_remove" onClick={props.handleRemove}>
       <p className="button_text">Remove</p>
-      <i class="fa fa-trash" aria-hidden="true"></i>
+      <i className="fa fa-trash" aria-hidden="true"></i>
     </button>
   </li>
 );
