@@ -1,14 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Message component for error
-const Message = ({ messageClass, header, message }) => {
-  return (
-    <article className={`message ${messageClass}`}>
-      <div className="error">{message}</div>
-    </article>
-  );
-};
+import EditInputMessage from './EditInputMessage';
 
 export default class EditSubjectInput extends React.Component {
   constructor(props) {
@@ -53,7 +46,7 @@ export default class EditSubjectInput extends React.Component {
 
     // Error for individual input field
     let showErrorMessage = showError ? (
-      <Message messageClass="error" message="Please fill in blank input." />
+      <EditInputMessage messageClass="error" message="Please fill in blank input." />
     ) : null;
 
     // Input label while editing

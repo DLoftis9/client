@@ -2,20 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import EditSubjectInput from './EditSubjectInput';
+import EditInputMessage from './EditInputMessage';
 
 const DATA = [
-  {
-    type: 'INPUT',
-    text: 'Input One',
-  },
-  {
-    type: 'INPUT',
-    text: 'Just a test',
-  },
-  {
-    type: 'INPUT',
-    text: 'Just a test',
-  },
+  // empty array so new inputs can be pushed into DATA
 ];
 
 const List = ({ children }) => {
@@ -26,25 +16,17 @@ const List = ({ children }) => {
   );
 };
 
-const Message = ({ messageClass, header, message }) => {
-  return (
-    <article className={`message ${messageClass}`}>
-      <div className="message-header">{header}</div>
-      <div className="message-body">{message}</div>
-    </article>
-  );
-};
-
 export default class EditTextInputList extends React.Component {
-//   static propTypes = {
-//     setInputs: PropTypes.array.isRequired,
-//   };
+  //   static propTypes = {
+  //     setInputs: PropTypes.array.isRequired,
+  //   };
 
   //   static defaultProps = {
 
   //   };
 
   state = {
+    // DATA is necessary to render a list of inputs
     inputsList: DATA,
     isEditingInput: false,
     showAddInputError: false,
@@ -94,7 +76,10 @@ export default class EditTextInputList extends React.Component {
     // Error message that displays when first field is
     // empty before trying to add a new field
     const addInputError = (
-      <Message messageClass="error" message="Please save before adding another question." />
+      <EditInputMessage
+        messageClass="error"
+        message="Please save before adding another question."
+      />
     );
 
     const showInputError = this.state.showAddInputError ? addInputError : null;
@@ -104,7 +89,7 @@ export default class EditTextInputList extends React.Component {
         <List>{displaySubjectList}</List>
         <hr />
         {showInputError}
-        <button className="button button-primary is-success" onClick={this.addSubject}>
+        <button className="button button-primary" onClick={this.addSubject}>
           <i className="fa fa-plus"></i>Add Subject
         </button>
       </section>

@@ -7,7 +7,7 @@ import EditTextInputList from '../../../base/scripts/EditTextInputList';
 const DATA = [
   {
     type: 'INPUT',
-    text: 'Input One',
+    text: 'Input One Blah',
   },
   {
     type: 'INPUT',
@@ -25,8 +25,8 @@ export default class Test extends React.PureComponent {
   render() {
     return (
       <div className="App">
-        <EditTextInput />
-        {/* <EditTextInputList /> */}
+        <EditTextInput setInputs={DATA} />
+        <EditTextInputList />
       </div>
     );
   }
