@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import EditTextInputGroupMain from './EditTextInputGroupSubs/EditTextInputGroupMain';
 import SubjectInputSubmit from './EditTextInputGroupHead/SubjectInputSubmit';
@@ -10,6 +11,14 @@ export default class EditTextInputGroup extends Component {
   };
 
   lastSubjectId = 0;
+
+  static propTypes = {
+    containerName: PropTypes.string.isRequired,
+  };
+
+  static defaultProps = {
+    containerName: 'edit-text-input-group',
+  };
 
   newSubjectId = () => {
     const id = this.lastSubjectId;
@@ -70,8 +79,10 @@ export default class EditTextInputGroup extends Component {
   };
 
   render() {
+    const { containerName } = this.props;
+
     return (
-      <div className="App">
+      <div className={containerName}>
         <SubjectInputSubmit
           newGuestSubmitHandler={this.newGuestSubmitHandler}
           pendingSubject={this.state.pendingSubject}
