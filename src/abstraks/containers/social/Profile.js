@@ -5,26 +5,35 @@ import Tabs from '../../../base/scripts/Tabs';
 import PostResponse from '../../components/social/PostResponse';
 import FollowLayout from '../../components/social/FollowLayout';
 import Avatar from '../../components/social/Avatar';
+import EditTextInput from '../../../base/scripts/EditTextInput';
+import EditTextInputGroup from '../../../base/scripts/EditTextInputGroup';
 
+const DATA = [
+  {
+    type: 'INPUT',
+    text: 'Input One Blah',
+  },
+  {
+    type: 'INPUT',
+    text: 'Just a test',
+  },
+];
 export default class Profile extends React.PureComponent {
+  state = {
+    setInputs: DATA,
+  };
+
   static propTypes = {
     containerName: PropTypes.string,
     buttonText: PropTypes.string,
     buttonClassName: PropTypes.string,
-    // userName: PropTypes.string,
   };
 
   static defaultProps = {
     containerName: 'profile',
   };
   render() {
-    const {
-      context,
-      containerName,
-      // userName,
-      // buttonText,
-      // buttonClassName
-    } = this.props;
+    const { context, containerName } = this.props;
     const authUser = context.authenticatedUser;
     return (
       <div className={containerName}>
@@ -34,7 +43,8 @@ export default class Profile extends React.PureComponent {
             <Avatar userName={authUser.name} />
 
             {/*  */}
-
+            <EditTextInput setInputs={DATA} />
+            <EditTextInputGroup subjectHeader="Skills" subjectParagraph="Add a skill" />
             {/*  */}
             <Tabs>
               <div className="posts" label="Posts">

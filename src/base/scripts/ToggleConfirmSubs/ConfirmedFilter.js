@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ConfirmedFilter = props => (
-  <div className="confirmed-filer">
+  <div>
     <h2>Invitees</h2>
     <label>
       <input type="checkbox" onChange={props.toggleFilter} checked={props.isFiltered} /> Hide those

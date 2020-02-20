@@ -5,12 +5,9 @@ import ConfirmedFilter from './ConfirmedFilter';
 import GuestList from './GuestList';
 import Counter from './Counter';
 
-const MainContent = props => (
-  <div className="main-content">
-    {/* <ConfirmedFilter
-      toggleFilter={props.toggleFilter}
-      isFiltered={props.isFiltered}
-    /> */}
+const EditTextInputGroupMain = props => (
+  <div className="main">
+    <ConfirmedFilter toggleFilter={props.toggleFilter} isFiltered={props.isFiltered} />
     <Counter
       totalInvited={props.totalInvited}
       numberAttending={props.numberAttending}
@@ -28,7 +25,7 @@ const MainContent = props => (
   </div>
 );
 
-MainContent.propTypes = {
+EditTextInputGroupMain.propTypes = {
   toggleFilter: PropTypes.func.isRequired,
   isFiltered: PropTypes.bool.isRequired,
   totalInvited: PropTypes.number.isRequired,
@@ -42,4 +39,4 @@ MainContent.propTypes = {
   pendingGuest: PropTypes.string.isRequired,
 };
 
-export default MainContent;
+export default EditTextInputGroupMain;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const GuestInputForm = props => (
-  <form className="guest-input-form" onSubmit={props.newGuestSubmitHandler}>
+  <form onSubmit={props.newGuestSubmitHandler}>
     <input
       type="text"
       onChange={props.handleNameInput}

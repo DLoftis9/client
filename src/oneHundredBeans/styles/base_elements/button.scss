@@ -11,14 +11,9 @@
   border-color: $color-primary;
 }
 
-.button-primary:hover {
-  background-color: $color-primary-hover;
-}
-
+.button-primary:hover,
 .button-primary:focus {
-  background-color: $color-white;
-  color: $color-primary-hover;
-  border: 1px solid $color-primary-hover;
+  background-color: $color-primary-hover;
 }
 
 .button-primary:active {
@@ -31,14 +26,9 @@
   border-color: $color-secondary;
 }
 
-.button-secondary:hover {
-  background-color: $color-secondary-hover;
-}
-
+.button-secondary:hover,
 .button-secondary:focus {
-  background-color: $color-white;
-  color:$color-secondary-hover;
-  border: 1px solid $color-secondary-hover;
+  background-color: $color-secondary-hover;
 }
 
 .button-secondary:active {
