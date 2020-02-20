@@ -5,22 +5,21 @@ import SubjectInputSubmit from './EditTextInputGroupHead/SubjectInputSubmit';
 
 export default class EditTextInputGroup extends Component {
   state = {
-    isFiltered: false,
-    pendingGuest: '',
-    guests: [],
+    subjects: [],
+    pendingSubject: '',
   };
 
-  lastGuestId = 0;
+  lastSubjectId = 0;
 
-  newGuestId = () => {
-    const id = this.lastGuestId;
-    this.lastGuestId += 1;
+  newSubjectId = () => {
+    const id = this.lastSubjectId;
+    this.lastSubjectId += 1;
     return id;
   };
 
-  toggleGuestProperty = (property, id) =>
+  toggleSubjectProperty = (property, id) =>
     this.setState({
-      guests: this.state.guests.map(guest => {
+      subjects: this.state.subjects.map(guest => {
         if (id === guest.id) {
           return {
             ...guest,
@@ -31,18 +30,16 @@ export default class EditTextInputGroup extends Component {
       }),
     });
 
-  toggleConfirmation = id => this.toggleGuestProperty('isConfirmed', id);
-
-  removeGuest = id =>
+  removeSubject = id =>
     this.setState({
-      guests: this.state.guests.filter(guest => id !== guest.id),
+      subjects: this.state.subjects.filter(guest => id !== guest.id),
     });
 
-  toggleEditing = id => this.toggleGuestProperty('isEditing', id);
+  toggleEditing = id => this.toggleSubjectProperty('isEditing', id);
 
   setName = (name, id) =>
     this.setState({
-      guests: this.state.guests.map(guest => {
+      subjects: this.state.subjects.map(guest => {
         if (id === guest.id) {
           return {
             ...guest,
@@ -53,56 +50,39 @@ export default class EditTextInputGroup extends Component {
       }),
     });
 
-  toggleFilter = () => this.setState({ isFiltered: !this.state.isFiltered });
-
-  handleNameInput = e => this.setState({ pendingGuest: e.target.value });
+  handleNameInput = e => this.setState({ pendingSubject: e.target.value });
 
   newGuestSubmitHandler = e => {
     e.preventDefault();
-    const id = this.newGuestId();
+    const id = this.newSubjectId();
     this.setState({
-      guests: [
+      subjects: [
         {
-          name: this.state.pendingGuest,
+          name: this.state.pendingSubject,
           isConfirmed: false,
           isEditing: false,
           id,
         },
-        ...this.state.guests,
+        ...this.state.subjects,
       ],
-      pendingGuest: '',
+      pendingSubject: '',
     });
   };
 
-  getTotalInvited = () => this.state.guests.length;
-
-  getAttendingGuests = () =>
-    this.state.guests.reduce((total, guest) => (guest.isConfirmed ? total + 1 : total), 0);
-
   render() {
-    const totalInvited = this.getTotalInvited();
-    const numberAttending = this.getAttendingGuests();
-    const numberUnconfirmed = totalInvited - numberAttending;
-
     return (
       <div className="App">
         <SubjectInputSubmit
           newGuestSubmitHandler={this.newGuestSubmitHandler}
-          pendingGuest={this.state.pendingGuest}
+          pendingSubject={this.state.pendingSubject}
           handleNameInput={this.handleNameInput}
         />
         <EditTextInputGroupMain
-          toggleFilter={this.toggleFilter}
-          isFiltered={this.state.isFiltered}
-          totalInvited={totalInvited}
-          numberAttending={numberAttending}
-          numberUnconfirmed={numberUnconfirmed}
-          guests={this.state.guests}
-          toggleConfirmation={this.toggleConfirmation}
+          subjects={this.state.subjects}
           toggleEditing={this.toggleEditing}
           setName={this.setName}
-          removeGuest={this.removeGuest}
-          pendingGuest={this.state.pendingGuest}
+          removeSubject={this.removeSubject}
+          pendingSubject={this.state.pendingSubject}
         />
       </div>
     );
