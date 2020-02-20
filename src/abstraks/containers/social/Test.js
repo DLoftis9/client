@@ -2,15 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import EditTextInput from '../../../base/scripts/EditTextInput';
+import EditTextInputList from '../../../base/scripts/EditTextInputList';
 
 const DATA = [
   {
     type: 'INPUT',
-    text: 'Where?',
-  },
-  {
-    type: 'INPUT',
-    text: 'Just a test',
+    text: 'Input One Blah',
   },
   {
     type: 'INPUT',
@@ -20,15 +17,14 @@ const DATA = [
 
 export default class Test extends React.PureComponent {
   state = {
-    inputsList: DATA,
-    // isEditingInput: false,
-    // showAddInputError: false,
+    setInputs: DATA,
   };
 
   render() {
     return (
       <div className="App">
-        <EditTextInput inputsList={DATA} />
+        <EditTextInput setInputs={DATA} />
+        <EditTextInputList />
       </div>
     );
   }
