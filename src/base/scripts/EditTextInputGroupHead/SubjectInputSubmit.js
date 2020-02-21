@@ -31,8 +31,6 @@ SubjectInputForm.propTypes = {
 
 const SubjectInputSubmit = props => (
   <div className="subject-input-submit">
-    <h1 className="subject-input-submit_header">{props.subjectHeader}</h1>
-    <p className=" paragraph subject-input-submit_paragraph">{props.subjectParagraph}</p>
     <SubjectInputForm
       newGuestSubmitHandler={props.newGuestSubmitHandler}
       pendingSubject={props.pendingSubject}

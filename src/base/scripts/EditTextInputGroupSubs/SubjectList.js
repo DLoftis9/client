@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const SubjectName = props => {
   if (props.isEditing) {
     return (
-      <input
+      <textarea
         className="input subject-name"
         type="text"
         value={props.children}

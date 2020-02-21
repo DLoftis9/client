@@ -49,7 +49,7 @@ export default class Profile extends React.PureComponent {
 
             {/*  */}
             <EditTextInput setInputs={DATA} />
-            <EditTextInputGroup subjectHeader="Skills" subjectParagraph="Add a skill" />
+            <EditTextInputGroup title="Bio" />
             <SubjectInputAdds instructions={instructions} title={title} />
             {/*  */}
             <Tabs>
