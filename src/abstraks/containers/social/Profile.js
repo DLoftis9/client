@@ -7,6 +7,7 @@ import FollowLayout from '../../components/social/FollowLayout';
 import Avatar from '../../components/social/Avatar';
 import EditTextInput from '../../../base/scripts/EditTextInput';
 import EditTextInputGroup from '../../../base/scripts/EditTextInputGroup';
+import SubjectInputAdds from '../../../base/scripts/SubjectInputAdds';
 
 const DATA = [
   {
@@ -27,13 +28,17 @@ export default class Profile extends React.PureComponent {
     containerName: PropTypes.string,
     buttonText: PropTypes.string,
     buttonClassName: PropTypes.string,
+    instructions: PropTypes.string,
+    title: PropTypes.string,
   };
 
   static defaultProps = {
     containerName: 'profile',
+    instructions: 'Hit "Enter" to confirm, Click a pill to remove',
+    title: 'Skills',
   };
   render() {
-    const { context, containerName } = this.props;
+    const { context, containerName, instructions, title } = this.props;
     const authUser = context.authenticatedUser;
     return (
       <div className={containerName}>
@@ -45,6 +50,7 @@ export default class Profile extends React.PureComponent {
             {/*  */}
             <EditTextInput setInputs={DATA} />
             <EditTextInputGroup subjectHeader="Skills" subjectParagraph="Add a skill" />
+            <SubjectInputAdds instructions={instructions} title={title} />
             {/*  */}
             <Tabs>
               <div className="posts" label="Posts">
