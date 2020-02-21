@@ -64,6 +64,12 @@ export default class SubjectInputAdds extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.content_add != this.state.content_add) {
+      console.log(
+        'did update, content:',
+        this.helperspan.textContent,
+        'width',
+        this.helperspan.offsetWidth,
+      );
       const helperWidth = this.helperspan.offsetWidth;
       this.setState({ width: Math.max(50, helperWidth + 1) });
     }
@@ -75,9 +81,12 @@ export default class SubjectInputAdds extends React.Component {
         key={listitem.id}
         onClick={this.handleClick}
         data-item={listitem.id}
-        style={{
-          width: listitem.itemWidth,
-        }}
+        // style={{
+        // 	backgroundColor: this.state.currentcolor[
+        // 		index % this.state.currentcolor.length
+        // 	],
+        // 	width: listitem.itemWidth
+        // }}
       >
         {listitem.content}
       </li>
@@ -87,16 +96,16 @@ export default class SubjectInputAdds extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>Hit "Enter" to confirm, Click a pill to remove</p>
+      <div className="subject-input-add">
+        <p className="instructions">Hit "Enter" to confirm, Click a pill to remove</p>
         {/* <CSSTransitionGroup
 					transitionName="item-transition"
 					transitionEnterTimeout={500}
 					transitionLeaveTimeout={210}
 				> */}
-        {this.makeAddedList()}
         {/* </CSSTransitionGroup> */}
         <input
+          className="input input-add-list"
           id="add"
           type="text"
           name="initvalue"
@@ -109,9 +118,10 @@ export default class SubjectInputAdds extends React.Component {
           value={this.state.content_add}
           style={{ width: this.state.width }}
         />
-        <span id="helperspan" ref={el => (this.helperspan = el)}>
+        <p className="paragraph" id="helperspan" ref={el => (this.helperspan = el)}>
           {this.state.content_add}
-        </span>
+        </p>
+        {this.makeAddedList()}
       </div>
     );
   }

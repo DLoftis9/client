@@ -1,0 +1,39 @@
+@import '../_variables.scss';
+@import '../../.././base/styles/_variables.scss';
+
+.subject-input-add {
+    width: 100%;
+    float: left;
+
+    .added-list {
+        float: left;
+        padding: 0px 15px;
+        background-color: $color-secondary;
+        color: $color-white;
+        margin: 0 5px;
+
+        &:hover {
+            background-color: $color-secondary-hover;
+        }
+
+        .listItem,
+        .fa-close {
+            float: left;
+        }
+
+        .listItem {
+            .added-list-content {
+                float: left;
+            }
+        }
+
+        .fa-close {
+            margin: 19px 0 0 5px;
+        }
+    }
+
+    .input-add-list {
+        float: left;
+        width: 100%;
+    }
+}
