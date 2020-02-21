@@ -13,7 +13,7 @@ export default class SubjectInputAdds extends React.Component {
     this.helperspan = null; // is set via ref
 
     this.state = {
-      content_add: 'add +',
+      content_add: 'Add something...',
       width: 100,
       myItems: [],
     };
@@ -31,13 +31,13 @@ export default class SubjectInputAdds extends React.Component {
 
   handleKeypress(event) {
     if (event.key == 'Enter') {
-      var newArray = this.state.myItems;
-      var currentcontent = this.state.content_add.trim();
+      const newArray = this.state.myItems;
+      const currentcontent = this.state.content_add.trim();
       if (!currentcontent) {
         return;
       }
 
-      var currentWidth = this.helperspan.offsetWidth;
+      const currentWidth = this.helperspan.offsetWidth;
       newArray.push({
         content: currentcontent,
         id: ++this.lastId,
@@ -71,15 +71,9 @@ export default class SubjectInputAdds extends React.Component {
 
   makeAddedList() {
     const elements = this.state.myItems.map((listitem, index) => (
-      <li
-        key={listitem.id}
-        onClick={this.handleClick}
-        data-item={listitem.id}
-        style={{
-          width: listitem.itemWidth,
-        }}
-      >
+      <li className="listItem" key={listitem.id} onClick={this.handleClick} data-item={listitem.id}>
         {listitem.content}
+        <i class="fa fa-close" aria-hidden="true"></i>
       </li>
     ));
     return elements;
@@ -87,16 +81,10 @@ export default class SubjectInputAdds extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>Hit "Enter" to confirm, Click a pill to remove</p>
-        {/* <CSSTransitionGroup
-					transitionName="item-transition"
-					transitionEnterTimeout={500}
-					transitionLeaveTimeout={210}
-				> */}
-        {this.makeAddedList()}
-        {/* </CSSTransitionGroup> */}
+      <div className="subject-input-add">
+        <p className="instructions">Hit "Enter" to confirm, Click a pill to remove</p>
         <input
+          className="input input-add-list"
           id="add"
           type="text"
           name="initvalue"
@@ -107,11 +95,11 @@ export default class SubjectInputAdds extends React.Component {
           onKeyPress={this.handleKeypress}
           onBlur={this.handleBlur}
           value={this.state.content_add}
-          style={{ width: this.state.width }}
         />
-        <span id="helperspan" ref={el => (this.helperspan = el)}>
+        <p className="paragraph" id="helperspan" ref={el => (this.helperspan = el)}>
           {this.state.content_add}
-        </span>
+        </p>
+        {this.makeAddedList()}
       </div>
     );
   }
