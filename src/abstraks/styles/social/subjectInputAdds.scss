@@ -2,38 +2,33 @@
 @import '../../.././base/styles/_variables.scss';
 
 .subject-input-add {
-    width: 100%;
-    float: left;
+  width: 100%;
+  float: left;
 
-    .added-list {
-        float: left;
-        padding: 0px 15px;
-        background-color: $color-secondary;
-        color: $color-white;
-        margin: 0 5px;
+  .listItem {
+    color: $color-white;
+    background-color: $color-secondary;
+    padding: 10px 10px 10px 20px;
+    float: left;
+    margin: 5px 10px;
+    border-radius: 5px;
+
+    .fa-close {
+        color: $color-secondary;
+        margin-left: 5px;
 
         &:hover {
-            background-color: $color-secondary-hover;
-        }
-
-        .listItem,
-        .fa-close {
-            float: left;
-        }
-
-        .listItem {
-            .added-list-content {
-                float: left;
-            }
-        }
-
-        .fa-close {
-            margin: 19px 0 0 5px;
+            color: $color-white;
         }
     }
 
-    .input-add-list {
-        float: left;
-        width: 100%;
+    &:hover {
+        background-color: $color-secondary-hover;
     }
+  }
+
+  .input-add-list {
+    float: left;
+    width: 100%;
+  }
 }

@@ -13,7 +13,7 @@ export default class SubjectInputAdds extends React.Component {
     this.helperspan = null; // is set via ref
 
     this.state = {
-      content_add: 'add +',
+      content_add: 'Add something...',
       width: 100,
       myItems: [],
     };
@@ -31,13 +31,13 @@ export default class SubjectInputAdds extends React.Component {
 
   handleKeypress(event) {
     if (event.key == 'Enter') {
-      var newArray = this.state.myItems;
-      var currentcontent = this.state.content_add.trim();
+      const newArray = this.state.myItems;
+      const currentcontent = this.state.content_add.trim();
       if (!currentcontent) {
         return;
       }
 
-      var currentWidth = this.helperspan.offsetWidth;
+      const currentWidth = this.helperspan.offsetWidth;
       newArray.push({
         content: currentcontent,
         id: ++this.lastId,
@@ -64,12 +64,6 @@ export default class SubjectInputAdds extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.content_add != this.state.content_add) {
-      console.log(
-        'did update, content:',
-        this.helperspan.textContent,
-        'width',
-        this.helperspan.offsetWidth,
-      );
       const helperWidth = this.helperspan.offsetWidth;
       this.setState({ width: Math.max(50, helperWidth + 1) });
     }
@@ -77,18 +71,9 @@ export default class SubjectInputAdds extends React.Component {
 
   makeAddedList() {
     const elements = this.state.myItems.map((listitem, index) => (
-      <li
-        key={listitem.id}
-        onClick={this.handleClick}
-        data-item={listitem.id}
-        // style={{
-        // 	backgroundColor: this.state.currentcolor[
-        // 		index % this.state.currentcolor.length
-        // 	],
-        // 	width: listitem.itemWidth
-        // }}
-      >
+      <li className="listItem" key={listitem.id} onClick={this.handleClick} data-item={listitem.id}>
         {listitem.content}
+        <i class="fa fa-close" aria-hidden="true"></i>
       </li>
     ));
     return elements;
@@ -98,12 +83,6 @@ export default class SubjectInputAdds extends React.Component {
     return (
       <div className="subject-input-add">
         <p className="instructions">Hit "Enter" to confirm, Click a pill to remove</p>
-        {/* <CSSTransitionGroup
-					transitionName="item-transition"
-					transitionEnterTimeout={500}
-					transitionLeaveTimeout={210}
-				> */}
-        {/* </CSSTransitionGroup> */}
         <input
           className="input input-add-list"
           id="add"
@@ -116,7 +95,6 @@ export default class SubjectInputAdds extends React.Component {
           onKeyPress={this.handleKeypress}
           onBlur={this.handleBlur}
           value={this.state.content_add}
-          style={{ width: this.state.width }}
         />
         <p className="paragraph" id="helperspan" ref={el => (this.helperspan = el)}>
           {this.state.content_add}
