@@ -56,13 +56,13 @@ export default class EditTextInputSingleSubject extends React.Component {
     let showErrorMessage = showError ? (
       <EditTextInputSingleMessage
         messageClass="is-danger"
-        header="Question Error"
+        header="Error"
         message="Please fill in blank input."
       />
     ) : null;
 
     const subjectInputWrapper = (
-      <div className="question-input-wrapper">
+      <div className="subject-input-wrapper">
         <label className="label">{labelNameEditing}</label>
         <form onSubmit={this.handleSaveSubject}>
           <input className="input" defaultValue={text} onChange={this.handleUpdateText} />
@@ -88,7 +88,8 @@ export default class EditTextInputSingleSubject extends React.Component {
 
     const saveButtonComp = (
       <button className="button button-primary" onClick={this.handleSaveSubject}>
-        <i className="fa fa-save"></i>Save
+        <span className='save'>Save</span>
+        <i className="fa fa-check" aria-hidden="true"></i>
       </button>
     );
 
@@ -96,7 +97,8 @@ export default class EditTextInputSingleSubject extends React.Component {
 
     const editButtonComp = (
       <button className="button button-primary" onClick={this.handleEditSubject}>
-        <i className="fa fa-edit"></i>Edit
+          <span className='edit'>Edit</span>
+        <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
       </button>
     );
 
