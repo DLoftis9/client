@@ -1,14 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Message = ({ messageClass, header, message }) => {
-  return (
-    <article className={`message ${messageClass}`}>
-      <div className="message-header">{header}</div>
-      <div className="message-body">{message}</div>
-    </article>
-  );
-};
+import EditTextInputSingleMessage from './EditTextInputSingleMessage';
 
 export default class EditTextInputSingleSubject extends React.Component {
   constructor(props) {
@@ -17,17 +10,26 @@ export default class EditTextInputSingleSubject extends React.Component {
       editing: props.editing,
       text: props.text,
       showError: false,
+      labelName: props.labelName,
+      labelNameEditing: props.labelNameEditing,
     };
   }
 
-  handleEditQuestion = () => {
-    const { editing } = this.state;
+  static propTypes = {
+    containerName: PropTypes.string,
+  };
+
+  static defaultProps = {
+    containerName: 'edit-text-input-single-subject',
+  };
+
+  handleEditSubject = () => {
     this.props.setEditing(true);
     this.setState({ editing: true });
   };
 
-  handleSaveQuestion = () => {
-    const { editing, text } = this.state;
+  handleSaveSubject = () => {
+    const { text } = this.state;
 
     if (text !== '') {
       this.props.setEditing(false);
@@ -48,45 +50,44 @@ export default class EditTextInputSingleSubject extends React.Component {
   };
 
   render() {
-    const { children } = this.props;
-    const { editing, text, showError } = this.state;
+    const { containerName } = this.props;
+    const { editing, text, showError, labelName, labelNameEditing } = this.state;
 
     let showErrorMessage = showError ? (
-      <Message
+      <EditTextInputSingleMessage
         messageClass="is-danger"
         header="Question Error"
         message="Please fill in blank input."
       />
     ) : null;
 
-    const questionInputWrapper = (
+    const subjectInputWrapper = (
       <div className="question-input-wrapper">
-        <strong>Edit Question:</strong>
-        <form onSubmit={this.handleSaveQuestion}>
+        <label className="label">{labelNameEditing}</label>
+        <form onSubmit={this.handleSaveSubject}>
           <input className="input" defaultValue={text} onChange={this.handleUpdateText} />
         </form>
         {showErrorMessage}
       </div>
     );
 
-    const questionWrapper = (
-      <div className="question-wrapper">
-        <strong>Question:</strong>
-        <br />
-        <h3 className="title is-3">{text}</h3>
+    const subjectWrapper = (
+      <div className="subject-wrapper">
+        <label className="label">{labelName}</label>
+        <p className="paragraph">{text}</p>
       </div>
     );
 
     let display;
 
     if (editing) {
-      display = questionInputWrapper;
+      display = subjectInputWrapper;
     } else {
-      display = questionWrapper;
+      display = subjectWrapper;
     }
 
     const saveButtonComp = (
-      <button className="button button-primary" onClick={this.handleSaveQuestion}>
+      <button className="button button-primary" onClick={this.handleSaveSubject}>
         <i className="fa fa-save"></i>Save
       </button>
     );
@@ -94,7 +95,7 @@ export default class EditTextInputSingleSubject extends React.Component {
     const showSaveButton = editing ? saveButtonComp : null;
 
     const editButtonComp = (
-      <button className="button button-primary" onClick={this.handleEditQuestion}>
+      <button className="button button-primary" onClick={this.handleEditSubject}>
         <i className="fa fa-edit"></i>Edit
       </button>
     );
@@ -102,7 +103,7 @@ export default class EditTextInputSingleSubject extends React.Component {
     const showEditButton = !editing ? editButtonComp : null;
 
     return (
-      <div className="question-container">
+      <div className={containerName}>
         <div className="box">
           {display}
           {showEditButton}
