@@ -5,7 +5,6 @@ import Tabs from '../../../base/scripts/Tabs';
 import PostResponse from '../../components/social/PostResponse';
 import FollowLayout from '../../components/social/FollowLayout';
 import Avatar from '../../components/social/Avatar';
-import EditTextInput from '../../../base/scripts/EditTextInput';
 import EditTextInputGroup from '../../../base/scripts/EditTextInputGroup';
 import SubjectInputAdds from '../../../base/scripts/SubjectInputAdds';
 
@@ -57,7 +56,6 @@ export default class Profile extends React.PureComponent {
 
             {/*  */}
             <EditTextInputGroup title="Bio" />
-            <EditTextInput setInputs={DATA} />
             <SubjectInputAdds instructions={instructions} title={title} />
             {/*  */}
             <Tabs>

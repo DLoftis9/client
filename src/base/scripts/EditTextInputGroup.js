@@ -1,3 +1,11 @@
+// This component renders a Textarea html element.
+// The component is editable and allows the ability to 
+// remove an entire element, which is a listItem
+// Another part of this component is to add text to a 
+// list of listItems with a input field.
+// All other components that have to do with this 
+// component are in ./EditTextInputGroupHead and ./EditTextInputGroupSubs
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
