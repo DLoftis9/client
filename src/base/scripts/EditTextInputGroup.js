@@ -1,3 +1,11 @@
+// This component renders a Textarea html element.
+// The component is editable and allows the ability to
+// remove an entire element, which is a listItem
+// Another part of this component is to add text to a
+// list of listItems with a input field.
+// All other components that have to do with this
+// component are in ./EditTextInputGroupHead and ./EditTextInputGroupSubs
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -6,7 +14,12 @@ import SubjectInputSubmit from './EditTextInputGroupHead/SubjectInputSubmit';
 
 export default class EditTextInputGroup extends Component {
   state = {
-    subjects: [],
+    subjects: [
+      {
+        name: 'Bio',
+        isEditing: false,
+      },
+    ],
     pendingSubject: '',
   };
 
@@ -14,8 +27,7 @@ export default class EditTextInputGroup extends Component {
 
   static propTypes = {
     containerName: PropTypes.string.isRequired,
-    subjectHeader: PropTypes.string.isRequired,
-    subjectParagraph: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -63,7 +75,7 @@ export default class EditTextInputGroup extends Component {
 
   handleNameInput = e => this.setState({ pendingSubject: e.target.value });
 
-  newGuestSubmitHandler = e => {
+  newSubjectSubmitHandler = e => {
     e.preventDefault();
     const id = this.newSubjectId();
     this.setState({
@@ -81,16 +93,15 @@ export default class EditTextInputGroup extends Component {
   };
 
   render() {
-    const { containerName, subjectHeader, subjectParagraph } = this.props;
+    const { containerName, title } = this.props;
 
     return (
       <div className={containerName}>
+        <h3 className="title">{title}</h3>
         <SubjectInputSubmit
-          newGuestSubmitHandler={this.newGuestSubmitHandler}
+          newSubjectSubmitHandler={this.newSubjectSubmitHandler}
           pendingSubject={this.state.pendingSubject}
           handleNameInput={this.handleNameInput}
-          subjectHeader={subjectHeader}
-          subjectParagraph={subjectParagraph}
         />
         <EditTextInputGroupMain
           subjects={this.state.subjects}

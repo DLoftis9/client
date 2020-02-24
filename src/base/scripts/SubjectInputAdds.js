@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 // import CSSTransitionGroup from 'react-transition-group';
 
 export default class SubjectInputAdds extends React.Component {
@@ -20,6 +21,16 @@ export default class SubjectInputAdds extends React.Component {
     this.lastId = -1;
   }
 
+  static propTypes = {
+    containerName: PropTypes.string,
+    instructions: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  };
+
+  static defaultProps = {
+    containerName: 'subject-input-adds',
+  };
+
   handleFocus(event) {
     this.setState({ content_add: '' });
   }
@@ -30,7 +41,7 @@ export default class SubjectInputAdds extends React.Component {
   }
 
   handleKeypress(event) {
-    if (event.key == 'Enter') {
+    if (event.key === 'Enter') {
       const newArray = this.state.myItems;
       const currentcontent = this.state.content_add.trim();
       if (!currentcontent) {
@@ -51,7 +62,7 @@ export default class SubjectInputAdds extends React.Component {
   }
 
   handleBlur(event) {
-    this.setState({ content_add: 'add +' });
+    this.setState({ content_add: 'Add something...' });
   }
 
   handleClick(event) {
@@ -63,7 +74,7 @@ export default class SubjectInputAdds extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.content_add != this.state.content_add) {
+    if (prevState.content_add !== this.state.content_add) {
       const helperWidth = this.helperspan.offsetWidth;
       this.setState({ width: Math.max(50, helperWidth + 1) });
     }
@@ -73,16 +84,18 @@ export default class SubjectInputAdds extends React.Component {
     const elements = this.state.myItems.map((listitem, index) => (
       <li className="listItem" key={listitem.id} onClick={this.handleClick} data-item={listitem.id}>
         {listitem.content}
-        <i class="fa fa-close" aria-hidden="true"></i>
+        <i className="fa fa-close" aria-hidden="true"></i>
       </li>
     ));
     return elements;
   }
 
   render() {
+    const { containerName, instructions, title } = this.props;
     return (
-      <div className="subject-input-add">
-        <p className="instructions">Hit "Enter" to confirm, Click a pill to remove</p>
+      <div className={containerName}>
+        <h3 className="title">{title}</h3>
+        <p className="instructions">{instructions}</p>
         <input
           className="input input-add-list"
           id="add"

@@ -12,6 +12,10 @@
         float: left;
     }
 
+    .subject-input-submit {
+        display: none;
+    }
+
     .edit {
         float: right;
         width: 50%;
@@ -39,3 +43,75 @@
         }
     }
 }
+
+// Edit Profile
+
+.profile {
+    .edit-text-input-group {
+        float: left;
+        width: 100%;
+
+        .edit-text-input-group-main {
+            float: left;
+            width: 100%;
+
+            .input.subject-name {
+                width: 100%;
+                float: left;
+            }
+
+            .subject-name_children {
+                width: 100%;
+                float: left;
+            }
+        }
+    }
+}
+
+.subject-input-form {
+    .button {
+      @extend .button-primary;
+    }
+  
+    .input {
+      @extend .input;
+    }
+  }
+  
+  .edit-text-input-group-main {
+    .input {
+      @extend .input;
+    }
+  }
+  
+  .subject-button_edit,
+  .subject-button_remove {
+    @extend .button;
+  }
+  
+  .subject-button_edit {
+    .edit {
+      color: black;
+      
+      .button_text,
+      .fa-pencil-square-o {
+        color: $color-secondary;
+      }
+    }
+  
+    .save {
+      color: black;
+      .button_text,
+      .fa-check {
+        color: green;
+      }
+    }
+  }
+  
+  .subject-button_remove {
+    .button_text,
+    .fa-trash {
+      color: red;
+    }
+  }
+  
