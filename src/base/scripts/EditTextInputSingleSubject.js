@@ -87,18 +87,22 @@ export default class EditTextInputSingleSubject extends React.Component {
     }
 
     const saveButtonComp = (
-      <button className="button button-primary" onClick={this.handleSaveSubject}>
-        <span className='save'>Save</span>
-        <i className="fa fa-check" aria-hidden="true"></i>
+      <button className="button subject-button_save" onClick={this.handleSaveSubject}>
+        <div className="save">
+          <span className="save_text">save</span>
+          <i className="fa fa-check" aria-hidden="true"></i>
+        </div>
       </button>
     );
 
     const showSaveButton = editing ? saveButtonComp : null;
 
     const editButtonComp = (
-      <button className="button button-primary" onClick={this.handleEditSubject}>
-          <span className='edit'>Edit</span>
-        <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+      <button className="button subject-button_edit" onClick={this.handleEditSubject}>
+        <div className="edit">
+          <span className="edit_text">edit</span>
+          <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </div>
       </button>
     );
 
@@ -106,11 +110,9 @@ export default class EditTextInputSingleSubject extends React.Component {
 
     return (
       <div className={containerName}>
-        <div className="box">
-          {display}
-          {showEditButton}
-          {showSaveButton}
-        </div>
+        {display}
+        {showEditButton}
+        {showSaveButton}
       </div>
     );
   }

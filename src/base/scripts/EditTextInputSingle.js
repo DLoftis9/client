@@ -61,7 +61,6 @@ export default class EditTextInputSingle extends React.Component {
 
     return (
       <section className={containerName}>
-        <h1 className="title is-1">React.js Editable Question List</h1>
         <List>{displaySetInputList}</List>
       </section>
     );

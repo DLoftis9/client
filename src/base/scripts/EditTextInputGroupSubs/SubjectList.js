@@ -35,18 +35,18 @@ const Subject = props => (
     <button className="button subject-button_edit" onClick={props.handleToggleEditing}>
       {props.isEditing ? (
         <div className="save">
-          <p className="button_text">Save</p>
+          <span className="save_text">save</span>
           <i className="fa fa-check" aria-hidden="true"></i>
         </div>
       ) : (
         <div className="edit">
-          <p className="button_text">Edit</p>
+          <span className="edit_text">edit</span>
           <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
         </div>
       )}
     </button>
     <button className="button subject-button_remove" onClick={props.handleRemove}>
-      <p className="button_text">Remove</p>
+      <p className="remove_text">remove</p>
       <i className="fa fa-trash" aria-hidden="true"></i>
     </button>
   </li>

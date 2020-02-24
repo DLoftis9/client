@@ -2,116 +2,121 @@
 @import '../../.././base/styles/_variables.scss';
 
 .profile {
-    .edit,
-    .website,
-    .profile_bio,
-    .profile_email,
-    .profile_number,
-    .profile_gender {
-        width: 100%;
-        float: left;
+  .edit,
+  .website,
+  .profile_bio,
+  .profile_email,
+  .profile_number,
+  .profile_gender {
+    width: 100%;
+    float: left;
+  }
+
+  .subject-input-submit {
+    display: none;
+  }
+
+  .edit {
+    float: right;
+    width: 50%;
+
+    .fa-pencil,
+    .icon-text {
+      display: inline-block;
+    }
+  }
+
+  .post-response {
+    border-bottom: 1px solid $color-light_gray;
+    padding: 10px;
+  }
+
+  .post-response-user {
+    .avatar {
+      width: 100%;
     }
 
-    .subject-input-submit {
-        display: none;
+    .post_input {
+      width: 100%;
+      min-height: 100px;
     }
-
-    .edit {
-        float: right;
-        width: 50%;
-
-        .fa-pencil,
-        .icon-text {
-            // float: right;
-            display: inline-block;
-        }
-    }
-
-    .post-response {
-        border-bottom: 1px solid $color-light_gray;
-        padding: 10px;
-    }
-
-    .post-response-user {
-        .avatar {
-            width: 100%;
-        }
-    
-        .post_input {
-            width: 100%;
-            min-height: 100px;
-        }
-    }
+  }
 }
 
 // Edit Profile
 
 .profile {
-    .edit-text-input-group {
-        float: left;
+  .edit-text-input-group {
+    float: left;
+    width: 100%;
+
+    .edit-text-input-group-main {
+      float: left;
+      width: 100%;
+
+      .input.subject-name {
         width: 100%;
+        float: left;
+      }
 
-        .edit-text-input-group-main {
-            float: left;
-            width: 100%;
-
-            .input.subject-name {
-                width: 100%;
-                float: left;
-            }
-
-            .subject-name_children {
-                width: 100%;
-                float: left;
-            }
-        }
+      .subject-name_children {
+        width: 100%;
+        float: left;
+      }
     }
+  }
+
+  .edit-text-input-single {
+    float: left;
+    width: 100%;
+
+    .subject-button_edit {
+      @extend .button;
+    }
+  }
 }
 
 .subject-input-form {
-    .button {
-      @extend .button-primary;
-    }
-  
-    .input {
-      @extend .input;
-    }
+  .button {
+    @extend .button-primary;
   }
-  
-  .edit-text-input-group-main {
-    .input {
-      @extend .input;
-    }
+
+  .input {
+    @extend .input;
   }
-  
-  .subject-button_edit,
-  .subject-button_remove {
-    @extend .button;
+}
+
+.edit-text-input-group-main {
+  .input {
+    @extend .input;
   }
-  
-  .subject-button_edit {
-    .edit {
-      color: black;
-      
-      .button_text,
-      .fa-pencil-square-o {
-        color: $color-secondary;
-      }
-    }
-  
-    .save {
-      color: black;
-      .button_text,
-      .fa-check {
-        color: green;
-      }
-    }
-  }
-  
-  .subject-button_remove {
+}
+
+.subject-button_edit,
+.subject-button_remove {
+  @extend .button;
+}
+
+  .edit {
+    color: black;
+
     .button_text,
-    .fa-trash {
-      color: red;
+    .fa-pencil-square-o {
+      color: $color-secondary;
     }
   }
-  
+
+  .save {
+    color: black;
+    .button_text,
+    .fa-check {
+      color: green;
+    }
+  }
+
+.subject-button_remove {
+  .button_text,
+  .fa-trash {
+    color: red;
+  }
+}
