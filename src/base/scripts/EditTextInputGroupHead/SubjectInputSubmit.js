@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SubjectInputForm = props => (
-  <form className="subject-input-form" onSubmit={props.newGuestSubmitHandler}>
+  <form className="subject-input-form" onSubmit={props.newSubjectSubmitHandler}>
     <input
       className="input"
       type="text"
@@ -18,7 +18,7 @@ const SubjectInputForm = props => (
 );
 
 SubjectInputForm.propTypes = {
-  newGuestSubmitHandler: PropTypes.func.isRequired,
+  newSubjectSubmitHandler: PropTypes.func.isRequired,
   pendingSubject: PropTypes.string.isRequired,
   handleNameInput: PropTypes.func.isRequired,
 };
@@ -32,7 +32,7 @@ SubjectInputForm.propTypes = {
 const SubjectInputSubmit = props => (
   <div className="subject-input-submit">
     <SubjectInputForm
-      newGuestSubmitHandler={props.newGuestSubmitHandler}
+      newSubjectSubmitHandler={props.newSubjectSubmitHandler}
       pendingSubject={props.pendingSubject}
       handleNameInput={props.handleNameInput}
     />
@@ -40,11 +40,9 @@ const SubjectInputSubmit = props => (
 );
 
 SubjectInputSubmit.propTypes = {
-  newGuestSubmitHandler: PropTypes.func.isRequired,
+  newSubjectSubmitHandler: PropTypes.func.isRequired,
   pendingSubject: PropTypes.string.isRequired,
   handleNameInput: PropTypes.func.isRequired,
-  subjectHeader: PropTypes.string.isRequired,
-  subjectParagraph: PropTypes.string.isRequired,
 };
 
 export default SubjectInputSubmit;

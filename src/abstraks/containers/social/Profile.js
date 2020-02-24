@@ -11,12 +11,20 @@ import SubjectInputAdds from '../../../base/scripts/SubjectInputAdds';
 
 const DATA = [
   {
-    type: 'INPUT',
-    text: 'Input One Blah',
+    type: 'Location',
+    text: 'San Dieg, CA',
   },
   {
-    type: 'INPUT',
-    text: 'Just a test',
+    type: 'Email',
+    text: 'email@test.com',
+  },
+  {
+    type: 'Email',
+    text: 'email@test.com',
+  },
+  {
+    type: 'Websites',
+    text: 'email@test.com',
   },
 ];
 export default class Profile extends React.PureComponent {
@@ -48,8 +56,8 @@ export default class Profile extends React.PureComponent {
             <Avatar userName={authUser.name} />
 
             {/*  */}
-            <EditTextInput setInputs={DATA} />
             <EditTextInputGroup title="Bio" />
+            <EditTextInput setInputs={DATA} />
             <SubjectInputAdds instructions={instructions} title={title} />
             {/*  */}
             <Tabs>

@@ -9,6 +9,7 @@ export default class EditTextInputGroup extends Component {
     subjects: [
       {
         name: 'Bio',
+        isEditing: false,
       },
     ],
     pendingSubject: '',
@@ -66,7 +67,7 @@ export default class EditTextInputGroup extends Component {
 
   handleNameInput = e => this.setState({ pendingSubject: e.target.value });
 
-  newGuestSubmitHandler = e => {
+  newSubjectSubmitHandler = e => {
     e.preventDefault();
     const id = this.newSubjectId();
     this.setState({
@@ -90,7 +91,7 @@ export default class EditTextInputGroup extends Component {
       <div className={containerName}>
         <h3 className="title">{title}</h3>
         <SubjectInputSubmit
-          newGuestSubmitHandler={this.newGuestSubmitHandler}
+          newSubjectSubmitHandler={this.newSubjectSubmitHandler}
           pendingSubject={this.state.pendingSubject}
           handleNameInput={this.handleNameInput}
         />

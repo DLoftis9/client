@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { CSSTransitionGroup } from 'react-transition-group';
 
 import SubjectInputAdds from '../../../base/scripts/SubjectInputAdds';
+import EditTextInputGroup from '../../../base/scripts/EditTextInputGroup';
 
 export default class Test extends React.PureComponent {
   static propTypes = {
@@ -17,7 +18,8 @@ export default class Test extends React.PureComponent {
     const { containerName } = this.props;
     return (
       <div className={containerName}>
-        <SubjectInputAdds />
+        <SubjectInputAdds title="Subject Input Adds" instructions="INstructions here" />
+        <EditTextInputGroup title="Test Title" />
       </div>
     );
   }

@@ -32,7 +32,7 @@ const Subject = props => (
     <SubjectName isEditing={props.isEditing} handleNameEdits={e => props.setName(e.target.value)}>
       {props.name}
     </SubjectName>
-    <button className="button subject-button_edit" onClick={props.handeToggleEditing}>
+    <button className="button subject-button_edit" onClick={props.handleToggleEditing}>
       {props.isEditing ? (
         <div className="save">
           <p className="button_text">Save</p>
@@ -55,7 +55,7 @@ const Subject = props => (
 Subject.propTypes = {
   name: PropTypes.string.isRequired,
   isEditing: PropTypes.bool.isRequired,
-  handeToggleEditing: PropTypes.func.isRequired,
+  handleToggleEditing: PropTypes.func.isRequired,
   setName: PropTypes.func.isRequired,
   handleRemove: PropTypes.func.isRequired,
 };
@@ -68,15 +68,15 @@ Subject.propTypes = {
 
 const SubjectList = props => (
   <ul className="subject-list">
-    {props.subjects.map((guest, index) => (
+    {props.subjects.map((subject, index) => (
       <Subject
         key={index}
-        name={guest.name}
-        isConfirmed={guest.isConfirmed}
-        isEditing={guest.isEditing}
-        handeToggleEditing={() => props.toggleEditing(guest.id)}
-        setName={text => props.setName(text, guest.id)}
-        handleRemove={() => props.removeSubject(guest.id)}
+        name={subject.name}
+        isConfirmed={subject.isConfirmed}
+        isEditing={subject.isEditing}
+        handleToggleEditing={() => props.toggleEditing(subject.id)}
+        setName={text => props.setName(text, subject.id)}
+        handleRemove={() => props.removeSubject(subject.id)}
       />
     ))}
   </ul>
