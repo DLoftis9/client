@@ -1,17 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import EditInputMessage from './EditInputMessage';
+import EditTextInputSingleMessage from './EditTextInputSingleMessage';
 
-export default class EditSubjectInput extends React.Component {
+export default class EditTextInputSingleSubject extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       editing: props.editing,
       text: props.text,
       showError: false,
+      labelName: props.labelName,
+      labelNameEditing: props.labelNameEditing,
     };
   }
+
+  static propTypes = {
+    containerName: PropTypes.string,
+  };
+
+  static defaultProps = {
+    containerName: 'edit-text-input-single-subject',
+  };
 
   handleEditSubject = () => {
     this.props.setEditing(true);
@@ -40,33 +50,30 @@ export default class EditSubjectInput extends React.Component {
   };
 
   render() {
-    const { editing, text, showError } = this.state;
+    const { containerName } = this.props;
+    const { editing, text, showError, labelName, labelNameEditing } = this.state;
 
-    // Error for individual input field
     let showErrorMessage = showError ? (
-      <EditInputMessage messageClass="error" message="Please fill in blank input." />
+      <EditTextInputSingleMessage
+        messageClass="is-danger"
+        header="Error"
+        message="Please fill in blank input."
+      />
     ) : null;
 
-    // Input label while editing
     const subjectInputWrapper = (
       <div className="subject-input-wrapper">
-        <label className="label">Editing:</label>
+        <label className="label">{labelNameEditing}</label>
         <form className="form" onSubmit={this.handleSaveSubject}>
-          <input
-            className="input"
-            type={this.props.inputType}
-            defaultValue={text}
-            onChange={this.handleUpdateText}
-          />
+          <input className="input" defaultValue={text} onChange={this.handleUpdateText} />
         </form>
         {showErrorMessage}
       </div>
     );
 
-    // Wrapper Title
     const subjectWrapper = (
       <div className="subject-wrapper">
-        <label className="label">Label:</label>
+        <label className="label">{labelName}</label>
         <p className="paragraph">{text}</p>
       </div>
     );
@@ -79,24 +86,22 @@ export default class EditSubjectInput extends React.Component {
       display = subjectWrapper;
     }
 
-    // Save button
     const saveButtonComp = (
-      <button className="button button-primary" onClick={this.handleSaveSubject}>
+      <button className="button subject-button_save" onClick={this.handleSaveSubject}>
         <div className="save">
-          <p className="button_text">Save</p>
-          <i className="fa fa-check" aria-hidden="true"></i>
+          <span className="save_text">save</span>
+          <i className="edit-icon fa fa-check" aria-hidden="true"></i>
         </div>
       </button>
     );
 
     const showSaveButton = editing ? saveButtonComp : null;
 
-    // Edit button
     const editButtonComp = (
-      <button className="button button-primary" onClick={this.handleEditSubject}>
+      <button className="button subject-button_edit" onClick={this.handleEditSubject}>
         <div className="edit">
-          <p className="button_text">Edit</p>
-          <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+          <span className="edit_text">edit</span>
+          <i className="edit-icon fa fa-pencil-square-o" aria-hidden="true"></i>
         </div>
       </button>
     );
@@ -104,7 +109,7 @@ export default class EditSubjectInput extends React.Component {
     const showEditButton = !editing ? editButtonComp : null;
 
     return (
-      <li className="list-item subject-container">
+      <li className={containerName}>
         {display}
         {showEditButton}
         {showSaveButton}

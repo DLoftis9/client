@@ -5,17 +5,30 @@ import Tabs from '../../../base/scripts/Tabs';
 import PostResponse from '../../components/social/PostResponse';
 import FollowLayout from '../../components/social/FollowLayout';
 import Avatar from '../../components/social/Avatar';
-import EditTextInput from '../../../base/scripts/EditTextInput';
 import EditTextInputGroup from '../../../base/scripts/EditTextInputGroup';
+import SubjectInputAdds from '../../../base/scripts/SubjectInputAdds';
+import EditTextInputSingle from '../../../base/scripts/EditTextInputSingle';
 
 const DATA = [
+  // This constant is necessary to create editable text inputs
+  // Type must ALWAYS be set to 'INPUT' for the elements to appear
   {
     type: 'INPUT',
-    text: 'Input One Blah',
+    text: 'San Dieg, CA',
+    labelName: 'Location',
+    labelNameEditing: 'Editing Location',
   },
   {
     type: 'INPUT',
-    text: 'Just a test',
+    text: 'email@test.com',
+    labelName: 'Email',
+    labelNameEditing: 'Editing Email',
+  },
+  {
+    type: 'INPUT',
+    text: 'www.test.com',
+    labelName: 'Website',
+    labelNameEditing: 'Editing Website',
   },
 ];
 export default class Profile extends React.PureComponent {
@@ -27,13 +40,17 @@ export default class Profile extends React.PureComponent {
     containerName: PropTypes.string,
     buttonText: PropTypes.string,
     buttonClassName: PropTypes.string,
+    instructions: PropTypes.string,
+    title: PropTypes.string,
   };
 
   static defaultProps = {
     containerName: 'profile',
+    instructions: 'Hit "Enter" to confirm, Click a pill to remove',
+    title: 'Skills',
   };
   render() {
-    const { context, containerName } = this.props;
+    const { context, containerName, instructions, title } = this.props;
     const authUser = context.authenticatedUser;
     return (
       <div className={containerName}>
@@ -43,8 +60,9 @@ export default class Profile extends React.PureComponent {
             <Avatar userName={authUser.name} />
 
             {/*  */}
-            <EditTextInput setInputs={DATA} />
-            <EditTextInputGroup subjectHeader="Skills" subjectParagraph="Add a skill" />
+            <EditTextInputGroup title="Bio" />
+            <EditTextInputSingle setInputs={DATA} />
+            <SubjectInputAdds instructions={instructions} title={title} />
             {/*  */}
             <Tabs>
               <div className="posts" label="Posts">

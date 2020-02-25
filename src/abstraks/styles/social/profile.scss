@@ -2,40 +2,75 @@
 @import '../../.././base/styles/_variables.scss';
 
 .profile {
-    .edit,
-    .website,
-    .profile_bio,
-    .profile_email,
-    .profile_number,
-    .profile_gender {
-        width: 100%;
-        float: left;
+  .website,
+  .profile_bio,
+  .profile_email,
+  .profile_number,
+  .profile_gender {
+    width: 100%;
+    float: left;
+  }
+
+  .subject-input-submit {
+    display: none;
+  }
+
+  .post-response {
+    border-bottom: 1px solid $color-light_gray;
+    padding: 10px;
+  }
+
+  .post-response-user {
+    .avatar {
+      width: 100%;
     }
 
-    .edit {
-        float: right;
-        width: 50%;
+    .post_input {
+      width: 100%;
+      min-height: 100px;
+    }
+  }
 
-        .fa-pencil,
-        .icon-text {
-            // float: right;
-            display: inline-block;
-        }
+  .edit-text-input-group {
+    border-bottom: 1px solid $color-light_gray;
+
+    .title {
+      color: $color-medium_gray;
     }
 
-    .post-response {
-        border-bottom: 1px solid $color-light_gray;
-        padding: 10px;
+    .input {
+      @extend .input;
     }
 
-    .post-response-user {
-        .avatar {
-            width: 100%;
-        }
-    
-        .post_input {
-            width: 100%;
-            min-height: 100px;
-        }
+    .subject-list {
+      padding-left: 0;
     }
+
+    .subject-button_remove {
+      display: none;
+    }
+  }
+
+  .edit-text-input-single {
+    border-bottom: 1px solid $color-light_gray;
+    .unordered-list {
+      padding-left: 0;
+    }
+
+    .label {
+      color: $color-medium_gray;
+    }
+  }
+
+  .subject-input-adds {
+    border-bottom: 1px solid $color-light_gray;
+
+    .title {
+      color: $color-medium_gray;
+    }
+
+    .instructions {
+      color: $color-light_gray;
+    }
+  }
 }

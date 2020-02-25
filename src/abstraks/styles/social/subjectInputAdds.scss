@@ -1,9 +1,14 @@
 @import '../_variables.scss';
 @import '../../.././base/styles/_variables.scss';
 
-.subject-input-add {
+.subject-input-adds {
   width: 100%;
   float: left;
+
+    .paragraph {
+        color: $color-light_gray;
+        text-align: center;
+    }
 
   .listItem {
     color: $color-white;
