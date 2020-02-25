@@ -2,116 +2,75 @@
 @import '../../.././base/styles/_variables.scss';
 
 .profile {
-    .edit,
-    .website,
-    .profile_bio,
-    .profile_email,
-    .profile_number,
-    .profile_gender {
-        width: 100%;
-        float: left;
+  .website,
+  .profile_bio,
+  .profile_email,
+  .profile_number,
+  .profile_gender {
+    width: 100%;
+    float: left;
+  }
+
+  .subject-input-submit {
+    display: none;
+  }
+
+  .post-response {
+    border-bottom: 1px solid $color-light_gray;
+    padding: 10px;
+  }
+
+  .post-response-user {
+    .avatar {
+      width: 100%;
     }
 
-    .subject-input-submit {
-        display: none;
+    .post_input {
+      width: 100%;
+      min-height: 100px;
+    }
+  }
+
+  .edit-text-input-group {
+    border-bottom: 1px solid $color-light_gray;
+
+    .title {
+      color: $color-medium_gray;
     }
 
-    .edit {
-        float: right;
-        width: 50%;
-
-        .fa-pencil,
-        .icon-text {
-            // float: right;
-            display: inline-block;
-        }
-    }
-
-    .post-response {
-        border-bottom: 1px solid $color-light_gray;
-        padding: 10px;
-    }
-
-    .post-response-user {
-        .avatar {
-            width: 100%;
-        }
-    
-        .post_input {
-            width: 100%;
-            min-height: 100px;
-        }
-    }
-}
-
-// Edit Profile
-
-.profile {
-    .edit-text-input-group {
-        float: left;
-        width: 100%;
-
-        .edit-text-input-group-main {
-            float: left;
-            width: 100%;
-
-            .input.subject-name {
-                width: 100%;
-                float: left;
-            }
-
-            .subject-name_children {
-                width: 100%;
-                float: left;
-            }
-        }
-    }
-}
-
-.subject-input-form {
-    .button {
-      @extend .button-primary;
-    }
-  
     .input {
       @extend .input;
     }
-  }
-  
-  .edit-text-input-group-main {
-    .input {
-      @extend .input;
+
+    .subject-list {
+      padding-left: 0;
+    }
+
+    .subject-button_remove {
+      display: none;
     }
   }
-  
-  .subject-button_edit,
-  .subject-button_remove {
-    @extend .button;
-  }
-  
-  .subject-button_edit {
-    .edit {
-      color: black;
-      
-      .button_text,
-      .fa-pencil-square-o {
-        color: $color-secondary;
-      }
+
+  .edit-text-input-single {
+    border-bottom: 1px solid $color-light_gray;
+    .unordered-list {
+      padding-left: 0;
     }
-  
-    .save {
-      color: black;
-      .button_text,
-      .fa-check {
-        color: green;
-      }
+
+    .label {
+      color: $color-medium_gray;
     }
   }
-  
-  .subject-button_remove {
-    .button_text,
-    .fa-trash {
-      color: red;
+
+  .subject-input-adds {
+    border-bottom: 1px solid $color-light_gray;
+
+    .title {
+      color: $color-medium_gray;
+    }
+
+    .instructions {
+      color: $color-light_gray;
     }
   }
-  
+}

@@ -1,14 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Message = ({ messageClass, header, message }) => {
-  return (
-    <article className={`message ${messageClass}`}>
-      <div className="message-header">{header}</div>
-      <div className="message-body">{message}</div>
-    </article>
-  );
-};
+import EditTextInputSingleMessage from './EditTextInputSingleMessage';
 
 export default class EditTextInputSingleSubject extends React.Component {
   constructor(props) {
@@ -17,17 +10,26 @@ export default class EditTextInputSingleSubject extends React.Component {
       editing: props.editing,
       text: props.text,
       showError: false,
+      labelName: props.labelName,
+      labelNameEditing: props.labelNameEditing,
     };
   }
 
-  handleEditQuestion = () => {
-    const { editing } = this.state;
+  static propTypes = {
+    containerName: PropTypes.string,
+  };
+
+  static defaultProps = {
+    containerName: 'edit-text-input-single-subject',
+  };
+
+  handleEditSubject = () => {
     this.props.setEditing(true);
     this.setState({ editing: true });
   };
 
-  handleSaveQuestion = () => {
-    const { editing, text } = this.state;
+  handleSaveSubject = () => {
+    const { text } = this.state;
 
     if (text !== '') {
       this.props.setEditing(false);
@@ -48,67 +50,70 @@ export default class EditTextInputSingleSubject extends React.Component {
   };
 
   render() {
-    const { children } = this.props;
-    const { editing, text, showError } = this.state;
+    const { containerName } = this.props;
+    const { editing, text, showError, labelName, labelNameEditing } = this.state;
 
     let showErrorMessage = showError ? (
-      <Message
+      <EditTextInputSingleMessage
         messageClass="is-danger"
-        header="Question Error"
+        header="Error"
         message="Please fill in blank input."
       />
     ) : null;
 
-    const questionInputWrapper = (
-      <div className="question-input-wrapper">
-        <strong>Edit Question:</strong>
-        <form onSubmit={this.handleSaveQuestion}>
+    const subjectInputWrapper = (
+      <div className="subject-input-wrapper">
+        <label className="label">{labelNameEditing}</label>
+        <form className="form" onSubmit={this.handleSaveSubject}>
           <input className="input" defaultValue={text} onChange={this.handleUpdateText} />
         </form>
         {showErrorMessage}
       </div>
     );
 
-    const questionWrapper = (
-      <div className="question-wrapper">
-        <strong>Question:</strong>
-        <br />
-        <h3 className="title is-3">{text}</h3>
+    const subjectWrapper = (
+      <div className="subject-wrapper">
+        <label className="label">{labelName}</label>
+        <p className="paragraph">{text}</p>
       </div>
     );
 
     let display;
 
     if (editing) {
-      display = questionInputWrapper;
+      display = subjectInputWrapper;
     } else {
-      display = questionWrapper;
+      display = subjectWrapper;
     }
 
     const saveButtonComp = (
-      <button className="button button-primary" onClick={this.handleSaveQuestion}>
-        <i className="fa fa-save"></i>Save
+      <button className="button subject-button_save" onClick={this.handleSaveSubject}>
+        <div className="save">
+          <span className="save_text">save</span>
+          <i className="edit-icon fa fa-check" aria-hidden="true"></i>
+        </div>
       </button>
     );
 
     const showSaveButton = editing ? saveButtonComp : null;
 
     const editButtonComp = (
-      <button className="button button-primary" onClick={this.handleEditQuestion}>
-        <i className="fa fa-edit"></i>Edit
+      <button className="button subject-button_edit" onClick={this.handleEditSubject}>
+        <div className="edit">
+          <span className="edit_text">edit</span>
+          <i className="edit-icon fa fa-pencil-square-o" aria-hidden="true"></i>
+        </div>
       </button>
     );
 
     const showEditButton = !editing ? editButtonComp : null;
 
     return (
-      <div className="question-container">
-        <div className="box">
-          {display}
-          {showEditButton}
-          {showSaveButton}
-        </div>
-      </div>
+      <li className={containerName}>
+        {display}
+        {showEditButton}
+        {showSaveButton}
+      </li>
     );
   }
 }

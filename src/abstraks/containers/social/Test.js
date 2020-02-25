@@ -4,21 +4,25 @@ import PropTypes from 'prop-types';
 import EditTextInputSingle from '../../../base/scripts/EditTextInputSingle';
 
 const DATA = [
+  // This constant is necessary to create editable text inputs
+  // Type must ALWAYS be set to 'INPUT' for the elements to appear
   {
-    type: 'Location',
+    type: 'INPUT',
     text: 'San Dieg, CA',
+    labelName: 'Location',
+    labelNameEditing: 'Editing Location',
   },
   {
-    type: 'Email',
+    type: 'INPUT',
     text: 'email@test.com',
+    labelName: 'Email',
+    labelNameEditing: 'Editing Email',
   },
   {
-    type: 'Email',
-    text: 'email@test.com',
-  },
-  {
-    type: 'Websites',
-    text: 'email@test.com',
+    type: 'INPUT',
+    text: 'www.test.com',
+    labelName: 'Website',
+    labelNameEditing: 'Editing Website',
   },
 ];
 

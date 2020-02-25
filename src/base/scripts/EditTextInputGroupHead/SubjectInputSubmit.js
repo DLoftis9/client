@@ -12,7 +12,7 @@ const SubjectInputForm = props => (
     />
     <button className="button" type="submit" name="submit" value="submit">
       <p className="button_text">Add</p>
-      <i className="fa fa-plus" aria-hidden="true"></i>
+      <i className="edit-icon fa fa-plus" aria-hidden="true"></i>
     </button>
   </form>
 );

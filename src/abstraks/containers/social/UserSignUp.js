@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Form from '../../components/social/Form';
+import PropTypes from 'prop-types';
 
 export default class UserSignUp extends Component {
   state = {
@@ -10,50 +11,71 @@ export default class UserSignUp extends Component {
     errors: [],
   };
 
+  static propTypes = {
+    containerName: PropTypes.string,
+  };
+
+  static defaultProps = {
+    containerName: 'user-sign-up',
+  };
+
   render() {
+    const { containerName } = this.props;
     const { name, username, password, errors } = this.state;
 
     return (
-      <div className="bounds">
-        <div className="grid-33 centered signin">
-          <h1>Sign Up</h1>
-          <Form
-            cancel={this.cancel}
-            errors={errors}
-            submit={this.submit}
-            submitButtonText="Sign Up"
-            elements={() => (
-              <React.Fragment>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  value={name}
-                  onChange={this.change}
-                  placeholder="Name"
+      <div className={containerName}>
+        <div className={containerName + `_wrapper`}>
+          <div className={containerName + `_container container`}>
+            <div className={containerName + `_row row`}>
+              <div className={containerName + `_content`}>
+                <h1 className="header-one">Sign Up</h1>
+                <Form
+                  cancel={this.cancel}
+                  errors={errors}
+                  submit={this.submit}
+                  submitButtonText="Sign Up"
+                  elements={() => (
+                    <React.Fragment>
+                      <label className="label">Name</label>
+                      <input
+                        className="input"
+                        id="name"
+                        name="name"
+                        type="text"
+                        value={name}
+                        onChange={this.change}
+                        placeholder="Name"
+                      />
+                      <label className="label">User Name</label>
+                      <input
+                        className="input"
+                        id="username"
+                        name="username"
+                        type="text"
+                        value={username}
+                        onChange={this.change}
+                        placeholder="User Name"
+                      />
+                      <label className="label">Password</label>
+                      <input
+                        className="input"
+                        id="password"
+                        name="password"
+                        type="password"
+                        value={password}
+                        onChange={this.change}
+                        placeholder="Password"
+                      />
+                    </React.Fragment>
+                  )}
                 />
-                <input
-                  id="username"
-                  name="username"
-                  type="text"
-                  value={username}
-                  onChange={this.change}
-                  placeholder="User Name"
-                />
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  value={password}
-                  onChange={this.change}
-                  placeholder="Password"
-                />
-              </React.Fragment>
-            )}
-          />
-          <p>
-            Already have a user account? <Link to="/signin">Click here</Link> to sign in!
-          </p>
+                <p className="navigate-signin">
+                  Already have a user account? <Link to="/signin">Click here</Link> to sign in!
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
