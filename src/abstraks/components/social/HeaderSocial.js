@@ -112,14 +112,14 @@ export default class HeaderSocial extends React.PureComponent {
               // If authUser is falsy (the authenticatedUser state is null, for example),
               // the Header class renders the default navigation, displaying the "Sign Up"
               // and "Sign In" links
-              <React.Fragment>
-                <Link className="signup" to="/signup">
+              <div className="logged-out_links">
+                <Link className="anchor signup" to="/signup">
                   Sign Up
                 </Link>
-                <Link className="signin" to="/signin">
+                <Link className="anchor signin" to="/signin">
                   Sign In
                 </Link>
-              </React.Fragment>
+              </div>
             )}
           </nav>
         </div>

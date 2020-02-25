@@ -4,6 +4,12 @@
 .header-social {
   background-color: $color-primary;
 
+  .navbar__container--mobile {
+    .navbar__mobileMenuIcon {
+      color: $color-white;
+    }
+  }
+
   .header__container {
     background-color: $color-primary;
   }
@@ -79,6 +85,15 @@
           position: absolute;
           z-index: 1;
         }
+      }
+    }
+  
+    .logged-out_links {
+      padding-top: 25px;
+
+      .anchor {
+        color: $color-white;
+        margin-left: 30px;
       }
     }
   }
