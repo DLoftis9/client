@@ -20,9 +20,9 @@ export default props => {
   return (
     <div className="form">
       <form className="form-element" onSubmit={handleSubmit}>
-        <div className="inputs">{elements()}</div>
+        <div className="form-element_inputs">{elements()}</div>
         <ErrorsDisplay errors={errors} />
-        <button className="button button-primary" type="submit">
+        <button className="button button-primary submit" type="submit">
           {submitButtonText}
         </button>
       </form>

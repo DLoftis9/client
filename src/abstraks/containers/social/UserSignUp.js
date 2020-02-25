@@ -37,41 +37,51 @@ export default class UserSignUp extends Component {
                   submitButtonText="Sign Up"
                   elements={() => (
                     <React.Fragment>
-                      <label className="label">Name</label>
-                      <input
-                        className="input"
-                        id="name"
-                        name="name"
-                        type="text"
-                        value={name}
-                        onChange={this.change}
-                        placeholder="Name"
-                      />
-                      <label className="label">User Name</label>
-                      <input
-                        className="input"
-                        id="username"
-                        name="username"
-                        type="text"
-                        value={username}
-                        onChange={this.change}
-                        placeholder="User Name"
-                      />
-                      <label className="label">Password</label>
-                      <input
-                        className="input"
-                        id="password"
-                        name="password"
-                        type="password"
-                        value={password}
-                        onChange={this.change}
-                        placeholder="Password"
-                      />
+                      <div className="input_name">
+                        <label className="label">Name</label>
+                        <input
+                          className="input"
+                          id="name"
+                          name="name"
+                          type="text"
+                          value={name}
+                          onChange={this.change}
+                          placeholder="Name"
+                        />
+                      </div>
+                      <div className="input_user-name">
+                        <label className="label">User Name</label>
+                        <input
+                          className="input"
+                          id="username"
+                          name="username"
+                          type="text"
+                          value={username}
+                          onChange={this.change}
+                          placeholder="User Name"
+                        />
+                      </div>
+                      <div className="input_password">
+                        <label className="label">Password</label>
+                        <input
+                          className="input"
+                          id="password"
+                          name="password"
+                          type="password"
+                          value={password}
+                          onChange={this.change}
+                          placeholder="Password"
+                        />
+                      </div>
                     </React.Fragment>
                   )}
                 />
-                <p className="navigate-signin">
-                  Already have a user account? <Link to="/signin">Click here</Link> to sign in!
+                <p className="account-redirect">
+                  Already have a user account?{' '}
+                  <Link className="anchor account-redirect_link" to="/signin">
+                    Click here
+                  </Link>{' '}
+                  to sign in!
                 </p>
               </div>
             </div>
