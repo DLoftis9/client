@@ -28,7 +28,7 @@ export default class UserSignIn extends Component {
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
               <div className={containerName + `_content`}>
-                <h1>Sign In</h1>
+                <h1 className="header-one">Sign In</h1>
                 <Form
                   cancel={this.cancel}
                   errors={errors}
@@ -63,8 +63,12 @@ export default class UserSignIn extends Component {
                     </React.Fragment>
                   )}
                 />
-                <p>
-                  Don't have a user account? <Link to="/signup">Click here</Link> to sign up!
+                <p className="account-redirect">
+                  Don't have a user account?{' '}
+                  <Link className="anchor account-redirect_link" to="/signup">
+                    Click here
+                  </Link>{' '}
+                  to sign up!
                 </p>
               </div>
             </div>

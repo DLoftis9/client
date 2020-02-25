@@ -94,7 +94,30 @@
       .anchor {
         color: $color-white;
         margin-left: 30px;
+
+        @media #{$medium} {
+          float: none;
+          width: auto;
+        }
       }
+    }
+  }
+}
+
+.menu__body {
+  .logged-out_links {
+    text-align: center;
+    padding: 25px 15px 0 15px;
+
+    .anchor {
+      color: $color-white;
+      float: left;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    @media #{$medium} {
+      padding: 0;
     }
   }
 }

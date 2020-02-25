@@ -76,8 +76,12 @@ export default class UserSignUp extends Component {
                     </React.Fragment>
                   )}
                 />
-                <p className="navigate-signin">
-                  Already have a user account? <Link to="/signin">Click here</Link> to sign in!
+                <p className="account-redirect">
+                  Already have a user account?{' '}
+                  <Link className="anchor account-redirect_link" to="/signin">
+                    Click here
+                  </Link>{' '}
+                  to sign in!
                 </p>
               </div>
             </div>
