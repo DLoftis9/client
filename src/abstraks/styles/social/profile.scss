@@ -2,7 +2,6 @@
 @import '../../.././base/styles/_variables.scss';
 
 .profile {
-  .edit,
   .website,
   .profile_bio,
   .profile_email,
@@ -14,16 +13,6 @@
 
   .subject-input-submit {
     display: none;
-  }
-
-  .edit {
-    float: right;
-    width: 50%;
-
-    .fa-pencil,
-    .icon-text {
-      display: inline-block;
-    }
   }
 
   .post-response {
@@ -41,82 +30,47 @@
       min-height: 100px;
     }
   }
-}
 
-// Edit Profile
-
-.profile {
   .edit-text-input-group {
-    float: left;
-    width: 100%;
+    border-bottom: 1px solid $color-light_gray;
 
-    .edit-text-input-group-main {
-      float: left;
-      width: 100%;
+    .title {
+      color: $color-medium_gray;
+    }
 
-      .input.subject-name {
-        width: 100%;
-        float: left;
-      }
+    .input {
+      @extend .input;
+    }
 
-      .subject-name_children {
-        width: 100%;
-        float: left;
-      }
+    .subject-list {
+      padding-left: 0;
+    }
+
+    .subject-button_remove {
+      display: none;
     }
   }
 
   .edit-text-input-single {
-    float: left;
-    width: 100%;
-
-    .subject-button_edit {
-      @extend .button;
+    border-bottom: 1px solid $color-light_gray;
+    .unordered-list {
+      padding-left: 0;
     }
-  }
-}
 
-.subject-input-form {
-  .button {
-    @extend .button-primary;
-  }
-
-  .input {
-    @extend .input;
-  }
-}
-
-.edit-text-input-group-main {
-  .input {
-    @extend .input;
-  }
-}
-
-.subject-button_edit,
-.subject-button_remove {
-  @extend .button;
-}
-
-  .edit {
-    color: black;
-
-    .button_text,
-    .fa-pencil-square-o {
-      color: $color-secondary;
+    .label {
+      color: $color-medium_gray;
     }
   }
 
-  .save {
-    color: black;
-    .button_text,
-    .fa-check {
-      color: green;
-    }
-  }
+  .subject-input-adds {
+    border-bottom: 1px solid $color-light_gray;
 
-.subject-button_remove {
-  .button_text,
-  .fa-trash {
-    color: red;
+    .title {
+      color: $color-medium_gray;
+    }
+
+    .instructions {
+      color: $color-light_gray;
+    }
   }
 }

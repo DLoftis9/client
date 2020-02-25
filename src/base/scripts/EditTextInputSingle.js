@@ -16,7 +16,7 @@ const INPUTLIST = [{}];
 const List = ({ children }) => {
   return (
     <div className="list-container">
-      <ul>{children}</ul>
+      <ul className="unordered-list">{children}</ul>
     </div>
   );
 };

@@ -64,7 +64,7 @@ export default class EditTextInputSingleSubject extends React.Component {
     const subjectInputWrapper = (
       <div className="subject-input-wrapper">
         <label className="label">{labelNameEditing}</label>
-        <form onSubmit={this.handleSaveSubject}>
+        <form className="form" onSubmit={this.handleSaveSubject}>
           <input className="input" defaultValue={text} onChange={this.handleUpdateText} />
         </form>
         {showErrorMessage}
@@ -90,7 +90,7 @@ export default class EditTextInputSingleSubject extends React.Component {
       <button className="button subject-button_save" onClick={this.handleSaveSubject}>
         <div className="save">
           <span className="save_text">save</span>
-          <i className="fa fa-check" aria-hidden="true"></i>
+          <i className="edit-icon fa fa-check" aria-hidden="true"></i>
         </div>
       </button>
     );
@@ -101,7 +101,7 @@ export default class EditTextInputSingleSubject extends React.Component {
       <button className="button subject-button_edit" onClick={this.handleEditSubject}>
         <div className="edit">
           <span className="edit_text">edit</span>
-          <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+          <i className="edit-icon fa fa-pencil-square-o" aria-hidden="true"></i>
         </div>
       </button>
     );
@@ -109,11 +109,11 @@ export default class EditTextInputSingleSubject extends React.Component {
     const showEditButton = !editing ? editButtonComp : null;
 
     return (
-      <div className={containerName}>
+      <li className={containerName}>
         {display}
         {showEditButton}
         {showSaveButton}
-      </div>
+      </li>
     );
   }
 }

@@ -1,0 +1,83 @@
+@import '../_variables.scss';
+@import '../../.././base/styles/_variables.scss';
+
+// Base Classes
+.subject-button_edit,
+.subject-button_remove {
+  @extend .button;
+}
+
+.edit {
+  .edit_text,
+  .fa-pencil-square-o {
+    color: $color-secondary;
+
+    &:hover {
+        color: $color-secondary-hover;
+    }
+  }
+}
+
+.save {
+  .save_text,
+  .fa-check {
+    color: $color-primary;
+
+    &:hover {
+        color: $color-primary-hover;
+    }
+  }
+}
+
+.subject-button_remove {
+  .remove_text,
+  .fa-trash {
+    color: $color-error;
+  }
+}
+
+.edit-icon {
+  @media #{$medium} {
+    margin-left: 10px;
+  }
+}
+
+// Edit Profile
+.profile {
+  .edit-text-input-group {
+    float: left;
+    width: 100%;
+
+    .edit-text-input-group-main {
+      float: left;
+      width: 100%;
+
+      .input.subject-name {
+        width: 100%;
+        float: left;
+      }
+
+      .subject-name_children {
+        width: 100%;
+        float: left;
+      }
+    }
+  }
+
+  .edit-text-input-single {
+    float: left;
+    width: 100%;
+
+    .subject-button_edit {
+      @extend .button;
+    }
+  }
+}
+
+.edit-text-input-single {
+  .edit-text-input-single-subject {
+    .form {
+      margin-top: 15px;
+    }
+  }
+}
