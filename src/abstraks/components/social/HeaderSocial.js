@@ -5,19 +5,23 @@ import PropTypes from 'prop-types';
 import MobileMenu from '../../../base/scripts/MobileMenu';
 import Toggle from '../../../base/scripts/Toggle';
 import LogoWhite from '../LogoWhite';
+import HeaderContent from './HeaderContent';
 import LoggedOutLinks from './LoggedOutLinks';
 
 // implement dropdown menu https://codepen.io/taylorharwood/pen/EggrOO
 export default class HeaderSocial extends React.PureComponent {
   static propTypes = {
-    divClass: PropTypes.string.isRequired,
-    buttonClass: PropTypes.string.isRequired,
-    buttonIcon: PropTypes.string.isRequired,
-    menuTitle: PropTypes.string.isRequired,
+    divClass: PropTypes.string,
+    buttonClass: PropTypes.string,
+    buttonIcon: PropTypes.string,
+    menuTitle: PropTypes.string,
     menuContent: PropTypes.object,
     menuContentThird: PropTypes.object,
     menuNav: PropTypes.object,
     componentName: PropTypes.string,
+
+    authUser: PropTypes.object,
+    authUserName: PropTypes.object,
   };
 
   static defaultProps = {

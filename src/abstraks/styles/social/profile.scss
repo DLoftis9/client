@@ -16,18 +16,39 @@
   }
 
   .post-response {
-    border-bottom: 1px solid $color-light_gray;
     padding: 10px;
+
+    .avatar {
+      padding: 0;
+    }
   }
 
   .post-response-user {
+    border-bottom: 1px solid $color-light_gray;
+    padding-bottom: 40px;
+
     .avatar {
       width: 100%;
+      padding: 0;
     }
 
     .post_input {
       width: 100%;
       min-height: 100px;
+      margin-top: 20px;
+
+      @media #{$medium} {
+        margin-top: 0;
+      }
+    }
+
+    .post_button {
+      width: auto;
+      float: right;
+    }
+
+    .input {
+      min-height: 150px;
     }
   }
 
