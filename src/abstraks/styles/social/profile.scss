@@ -64,6 +64,17 @@
 
   .subject-input-adds {
     border-bottom: 1px solid $color-light_gray;
+    padding: 0 15px 30px 15px;
+
+    @media #{$medium} {
+      padding: 0;
+    }
+
+    .wrapper {
+      float: left;
+      width: 100%;
+      height: 200px;
+    }
 
     .title {
       color: $color-medium_gray;
@@ -71,6 +82,11 @@
 
     .instructions {
       color: $color-light_gray;
+    }
+
+    .paragraph {
+      float: left;
+      width: 100%;
     }
   }
 }
