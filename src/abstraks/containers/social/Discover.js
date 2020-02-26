@@ -4,12 +4,17 @@ import DiscoverLayout from '../../components/social/DiscoverLayout';
 
 export default class Discover extends React.PureComponent {
   static propTypes = {
-    containerName: PropTypes.string.isRequired,
+    containerName: PropTypes.string,
+    viewLinkText: PropTypes.string,
+    viewLinkClassName: PropTypes.string,
+    followButtonClassName: PropTypes.string,
+    followButtonText: PropTypes.string
   };
 
   static defaultProps = {
     containerName: 'discover',
   };
+
   render() {
     const { containerName } = this.props;
     return (

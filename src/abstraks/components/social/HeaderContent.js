@@ -8,7 +8,7 @@ import LoggedOutLinks from './LoggedOutLinks';
 
 const propTypes = {
   authUser: PropTypes.object.isRequired,
-  authUserName: PropTypes.object.isRequired,
+  authUserName: PropTypes.string.isRequired,
 };
 
 const HeaderContent = props => (

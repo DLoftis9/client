@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 const propTypes = {
   componentName: PropTypes.string,
-  viewButtonText: PropTypes.string.isRequired,
-  viewButtonClassName: PropTypes.string.isRequired,
+  viewLinkText: PropTypes.string.isRequired,
+  viewLinkClassName: PropTypes.string.isRequired,
   followButtonClassName: PropTypes.string.isRequired,
   followButtonText: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
@@ -28,12 +28,12 @@ const DiscoverLayout = props => (
       </div>
 
       <div className="view">
-        <Link className={props.viewLinkClassName}>{props.viewLinkText}</Link>
+        <Link to='/discover' className={props.viewLinkClassName}>{props.viewLinkText}</Link>
       </div>
 
-      <Link className="follow">
+      <div className="follow">
         <button className={props.followButtonClassName}>{props.followButtonText}</button>
-      </Link>
+      </div>
     </div>
   </div>
 );
