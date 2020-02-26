@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import PostWidget from '../../components/social/PostWidget';
 import PostResponse from '../../components/social/PostResponse';
+import PostResponseComments from '../../components/social/PostResponseComments';
 
 export default class PostFeed extends React.PureComponent {
   static propTypes = {
@@ -22,6 +23,7 @@ export default class PostFeed extends React.PureComponent {
             <h1>The PostFeed page</h1>
             <PostWidget authUserName={authUser.name} />
             <PostResponse />
+            <PostResponseComments />
           </div>
         </div>
       </div>

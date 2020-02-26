@@ -6,6 +6,11 @@
     width: 100%;
     
     .post-widget {
+        display: none;
+        @media #{$medium} {
+            display: block;
+        }
+
         .post {
             width: 100%;
             float: left;
