@@ -2,32 +2,45 @@
 @import '../../.././base/styles/_variables.scss';
 
 .discover {
-    .discover-layout {
-        float: left;
-        width: 33.33333333%;
-        padding: 10px;
+  .discover-layout {
+    float: left;
+    width: 33.33333333%;
+    padding: 10px;
 
-        .discover-layout_items {
-            background-color: $color-white_gray;
-            width: 100%;
-            float: left;
-        }
-
-        .avatar,
-        .user-name,
-        .view,
-        .follow {
-            float: left;
-        }
-
-        .avatar,
-        .user-name {
-            width: 100%;
-        }
-
-        .view,
-        .follow {
-            width: 50%;
-        }
+    .discover-layout_items {
+      background-color: $color-white_gray;
+      width: 100%;
+      float: left;
     }
+
+    .avatar,
+    .user-name,
+    .view,
+    .follow {
+      float: left;
+    }
+
+    .avatar,
+    .user-name {
+      width: 100%;
+    }
+
+    .view,
+    .follow {
+      width: 100%;
+
+      @media #{$medium} {
+        width: 50%;
+      }
+    }
+
+    .user-name,
+    .view {
+      text-align: center;
+
+      @media #{$medium} {
+        text-align: left;
+      }
+    }
+  }
 }

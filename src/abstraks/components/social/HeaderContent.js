@@ -14,10 +14,6 @@ const propTypes = {
 const HeaderContent = props => (
   <>
     {props.authUser ? (
-      // If authUser evaluates to a truthy value (there is an authenticated
-      // user in state), the Header class renders a <span> element containing
-      // a "Welcome" message that displays the user name. Render the user's
-      // name with {authUser.name}
       <React.Fragment>
         <div className="avatar">
           <div className="avatar-image">
@@ -25,13 +21,12 @@ const HeaderContent = props => (
           </div>
         </div>
 
-        <span className="triangle-top"></span>
-        <ul className="menu">
+        <ul className="contents">
           <li className="avatar-name">
             <h2 className="user-name">{props.authUserName}</h2>
           </li>
-          <li className="listItem edit-profile">
-            <Link className="anchor edit-profile_anchor" to="/editprofile">
+          <li className="listItem profile">
+            <Link className="anchor profile_anchor" to="/editprofile">
               Profile
             </Link>
           </li>

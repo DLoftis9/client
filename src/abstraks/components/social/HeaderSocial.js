@@ -14,10 +14,7 @@ export default class HeaderSocial extends React.PureComponent {
     divClass: PropTypes.string,
     buttonClass: PropTypes.string,
     buttonIcon: PropTypes.string,
-    menuTitle: PropTypes.string,
     menuContent: PropTypes.object,
-    menuContentThird: PropTypes.object,
-    menuNav: PropTypes.object,
     componentName: PropTypes.string,
 
     authUser: PropTypes.object,
@@ -28,7 +25,6 @@ export default class HeaderSocial extends React.PureComponent {
     divClass: 'navbar__mobileMenu',
     buttonClass: 'navbar__mobileMenuIcon',
     buttonIcon: 'fa fa-bars',
-    menuTitle: '',
     componentName: 'header-social',
   };
 
