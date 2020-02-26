@@ -2,6 +2,8 @@
 @import '../../.././base/styles/_variables.scss';
 
 .header-social {
+  float: left;
+  width: 100%;
   background-color: $color-primary;
 
   .navbar__container--mobile {

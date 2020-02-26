@@ -2,6 +2,9 @@
 @import '../../.././base/styles/_variables.scss';
 
 .discover {
+  float: left;
+  width: 100%;
+  
   .discover-layout {
     float: left;
     width: 33.33333333%;

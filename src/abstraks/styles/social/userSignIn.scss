@@ -2,6 +2,9 @@
 @import '../../.././base/styles/_variables.scss';
 
 .user-sign-in {
+  float: left;
+  width: 100%;
+  
   .user-sign-in_wrapper {
     // background-image: url('https://d173eg0xl75rn9.cloudfront.net/assets/backgrounds/register_background.svg');
     height: 100%;

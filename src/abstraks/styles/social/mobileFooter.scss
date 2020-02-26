@@ -1,0 +1,38 @@
+@import '../_variables.scss';
+@import '../../.././base/styles/_variables.scss';
+
+.mobile-footer {
+  background-color: $color-dark_gray;
+  float: left;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  color: $color-white;
+
+  @media #{$medium} {
+    display: none;
+  }
+
+  .tab {
+    padding: 5px 0 0 0;
+    width: 25%;
+    height: 60px;
+    float: left;
+    text-align: center;
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      border-right: 1px solid $color-medium_gray;
+    }
+
+    .tab_text {
+      margin-top: 0;
+    }
+
+    &:hover {
+        color: $color-dark_gray;
+        background-color: $color-white;
+    }
+  }
+}

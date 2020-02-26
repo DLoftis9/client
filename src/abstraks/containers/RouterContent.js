@@ -28,6 +28,7 @@ import PrivacyPolicy from './social/PrivacyPolicy';
 
 // Social Components
 import HeaderSocial from '../components/social/HeaderSocial';
+import MobileFooter from '../components/social/MobileFooter';
 import UserSignOut from '../components/social/UserSignOut';
 
 // Social Base
@@ -182,6 +183,7 @@ import Issue29p24 from '../components/publication-pages/Issue29p24';
 // Subscribing (connecting) the components to context – the data and
 // actions are shared throughout the component tree
 const HeaderWithContext = withContext(HeaderSocial);
+const MobileFooterWithContext = withContext(MobileFooter);
 const AuthWithContext = withContext(Authenticated);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
@@ -392,6 +394,7 @@ const RouterContent = () => (
       the router can successfully render all pages */}
       <Route component={NotFound} />
     </Switch>
+    <MobileFooterWithContext />
   </div>
 );
 

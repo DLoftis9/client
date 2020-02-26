@@ -2,6 +2,9 @@
 @import '../../.././base/styles/_variables.scss';
 
 .post-feed {
+    float: left;
+    width: 100%;
+    
     .post-widget {
         .post {
             width: 100%;
