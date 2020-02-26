@@ -16,6 +16,9 @@ const PostResponseComments = props => (
         <div className="avatar-image">
           <i className="fa fa-user" aria-hidden="true"></i>
         </div>
+        <div className="avatar-name">
+          <p className="user-name">Random Person</p>
+        </div>
       </div>
       <textarea
         className="input post_input"

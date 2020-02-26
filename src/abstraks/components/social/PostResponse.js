@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PostResponseComments from './PostResponseComments';
-
 const propTypes = {
   componentName: PropTypes.string.isRequired,
 };
@@ -24,6 +22,9 @@ const PostResponse = props => (
           </div>
         </div>
         <div className="post">
+          <div className="post-image">
+            <i class="fa fa-picture-o" aria-hidden="true"></i>
+          </div>
           <p className="post-paragraph paragraph">
             Uniquely cultivate premium supply chains after world-class leadership skills. Completely
             implement installed base models with global e-markets. Efficiently foster high-quality
@@ -41,7 +42,6 @@ const PostResponse = props => (
         </div>
       </div>
     </div>
-    <PostResponseComments />
   </React.Fragment>
 );
 
