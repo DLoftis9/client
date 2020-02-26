@@ -2,6 +2,9 @@
 @import '../../.././base/styles/_variables.scss';
 
 .profile {
+  float: left;
+  width: 100%;
+  
   .website,
   .profile_bio,
   .profile_email,

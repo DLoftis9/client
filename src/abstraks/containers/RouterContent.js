@@ -16,6 +16,7 @@ import UserSignUp from './social/UserSignUp';
 import UserSignIn from './social/UserSignIn';
 import Authenticated from './social/Authenticated';
 import CreatePost from './social/CreatePost';
+import Tools from './social/Tools';
 import EditPost from './social/EditPost';
 import EditProfile from './social/EditProfile';
 import Following from './social/Following';
@@ -28,6 +29,7 @@ import PrivacyPolicy from './social/PrivacyPolicy';
 
 // Social Components
 import HeaderSocial from '../components/social/HeaderSocial';
+import MobileFooter from '../components/social/MobileFooter';
 import UserSignOut from '../components/social/UserSignOut';
 
 // Social Base
@@ -182,10 +184,12 @@ import Issue29p24 from '../components/publication-pages/Issue29p24';
 // Subscribing (connecting) the components to context – the data and
 // actions are shared throughout the component tree
 const HeaderWithContext = withContext(HeaderSocial);
+const MobileFooterWithContext = withContext(MobileFooter);
 const AuthWithContext = withContext(Authenticated);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
 const CreatePostWithContext = withContext(CreatePost);
+const ToolsWithContext = withContext(Tools);
 const EditPostWithContext = withContext(EditPost);
 const EditProfileWithContext = withContext(EditProfile);
 const FollowingWithContext = withContext(Following);
@@ -236,6 +240,7 @@ const RouterContent = () => (
       <Route path="/signup" component={UserSignUpWithContext} />
       <Route path="/signout" component={UserSignOutWithContext} />
       <Route path="/createpost" component={CreatePostWithContext} />
+      <Route path="/tools" component={ToolsWithContext} />
       <Route path="/editpost" component={EditPostWithContext} />
       <Route path="/editprofile" component={EditProfileWithContext} />
       <Route path="/following" component={FollowingWithContext} />
@@ -392,6 +397,7 @@ const RouterContent = () => (
       the router can successfully render all pages */}
       <Route component={NotFound} />
     </Switch>
+    <MobileFooterWithContext />
   </div>
 );
 
