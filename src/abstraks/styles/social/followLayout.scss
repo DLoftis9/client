@@ -2,24 +2,43 @@
 @import '../../.././base/styles/_variables.scss';
 
 .follow-layout {
-    width: 100%;
+  width: 100%;
+  float: left;
+
+  .avatar,
+  .user-name {
     float: left;
+  }
 
-    .avatar,
-    .user-name,
-    .follow {
-        float: left;
-    }
-    
-    .avatar {
-        width: 50px;
+  .avatar {
+    width: auto;
+    padding: 15px 15px;
+  }
+
+  .user-name {
+    width: 50%;
+  }
+
+  .follow {
+      float: right;
+    width: auto;
+
+    @media #{$medium} {
+      width: 25%;
     }
 
-    .user-name {
-        width: 50%;
+    .button {
+      width: 100%;
     }
+  }
+}
 
-    .follow {
-        width: 25%;
-    }
+.unfollow_button {
+  background-color: $color-secondary;
+  border-color: $color-secondary;
+}
+
+.follow_button {
+  background-color: $color-primary;
+  border-color: $color-primary;
 }

@@ -94,24 +94,26 @@ export default class SubjectInputAdds extends React.Component {
     const { containerName, instructions, title } = this.props;
     return (
       <div className={containerName}>
-        <h3 className="title">{title}</h3>
-        <p className="instructions">{instructions}</p>
-        <input
-          className="input input-add-list"
-          id="add"
-          type="text"
-          name="initvalue"
-          autoComplete="off"
-          maxLength="70"
-          onFocus={this.handleFocus}
-          onChange={this.handleChange}
-          onKeyPress={this.handleKeypress}
-          onBlur={this.handleBlur}
-          value={this.state.content_add}
-        />
-        <p className="paragraph" id="helperspan" ref={el => (this.helperspan = el)}>
-          {this.state.content_add}
-        </p>
+        <div className="wrapper">
+          <h3 className="title">{title}</h3>
+          <p className="instructions">{instructions}</p>
+          <input
+            className="input input-add-list"
+            id="add"
+            type="text"
+            name="initvalue"
+            autoComplete="off"
+            maxLength="70"
+            onFocus={this.handleFocus}
+            onChange={this.handleChange}
+            onKeyPress={this.handleKeypress}
+            onBlur={this.handleBlur}
+            value={this.state.content_add}
+          />
+          <p className="paragraph" id="helperspan" ref={el => (this.helperspan = el)}>
+            {this.state.content_add}
+          </p>
+        </div>
         {this.makeAddedList()}
       </div>
     );

@@ -49,6 +49,7 @@ export default class Profile extends React.PureComponent {
     instructions: 'Hit "Enter" to confirm, Click a pill to remove',
     title: 'Skills',
   };
+
   render() {
     const { context, containerName, instructions, title } = this.props;
     const authUser = context.authenticatedUser;
