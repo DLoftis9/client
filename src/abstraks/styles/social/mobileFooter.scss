@@ -14,6 +14,10 @@
     display: none;
   }
 
+  .anchor {
+    color: $color-white;
+  }
+
   .tab {
     padding: 5px 0 0 0;
     width: 25%;
@@ -31,8 +35,8 @@
     }
 
     &:hover {
-        color: $color-dark_gray;
-        background-color: $color-white;
+      color: $color-dark_gray;
+      background-color: $color-white;
     }
   }
 }

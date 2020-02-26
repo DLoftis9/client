@@ -16,6 +16,7 @@ import UserSignUp from './social/UserSignUp';
 import UserSignIn from './social/UserSignIn';
 import Authenticated from './social/Authenticated';
 import CreatePost from './social/CreatePost';
+import Tools from './social/Tools';
 import EditPost from './social/EditPost';
 import EditProfile from './social/EditProfile';
 import Following from './social/Following';
@@ -188,6 +189,7 @@ const AuthWithContext = withContext(Authenticated);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
 const CreatePostWithContext = withContext(CreatePost);
+const ToolsWithContext = withContext(Tools);
 const EditPostWithContext = withContext(EditPost);
 const EditProfileWithContext = withContext(EditProfile);
 const FollowingWithContext = withContext(Following);
@@ -238,6 +240,7 @@ const RouterContent = () => (
       <Route path="/signup" component={UserSignUpWithContext} />
       <Route path="/signout" component={UserSignOutWithContext} />
       <Route path="/createpost" component={CreatePostWithContext} />
+      <Route path="/tools" component={ToolsWithContext} />
       <Route path="/editpost" component={EditPostWithContext} />
       <Route path="/editprofile" component={EditProfileWithContext} />
       <Route path="/following" component={FollowingWithContext} />
