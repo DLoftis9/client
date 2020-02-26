@@ -1,3 +1,41 @@
 @import '../_variables.scss';
 @import '../../.././base/styles/_variables.scss';
 
+.create-post {
+  float: left;
+  width: 100%;
+  padding: 0 15px;
+
+  .post {
+    float: left;
+    width: 100%;
+
+    .post_input {
+      float: left;
+      width: 100%;
+      min-height: 150px;
+      margin-top: 40px;
+    }
+
+    .camera-post {
+      float: right;
+      width: auto;
+      margin-top: 40px;
+
+      .fa-camera,
+      .post_button {
+        width: auto;
+        float: left;
+      }
+
+      .fa-camera {
+          font-size: 30px;
+          margin-top: 10px;
+      }
+
+      .post_button {
+        margin-left: 30px;
+      }
+    }
+  }
+}

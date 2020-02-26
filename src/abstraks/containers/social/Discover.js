@@ -8,7 +8,7 @@ export default class Discover extends React.PureComponent {
     viewLinkText: PropTypes.string,
     viewLinkClassName: PropTypes.string,
     followButtonClassName: PropTypes.string,
-    followButtonText: PropTypes.string
+    followButtonText: PropTypes.string,
   };
 
   static defaultProps = {

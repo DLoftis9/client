@@ -28,7 +28,9 @@ const DiscoverLayout = props => (
       </div>
 
       <div className="view">
-        <Link to='/discover' className={props.viewLinkClassName}>{props.viewLinkText}</Link>
+        <Link to="/discover" className={props.viewLinkClassName}>
+          {props.viewLinkText}
+        </Link>
       </div>
 
       <div className="follow">
