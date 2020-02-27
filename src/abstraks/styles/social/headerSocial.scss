@@ -8,10 +8,20 @@
 
   .header__container {
     background-color: $color-primary;
+    padding: 0 0 0 15px;
+
+    @media #{$medium} {
+      padding: 0 15px 0 15px;
+    }
 
     .navbar__container {
       float: right;
       width: auto;
+      padding: 0 0 0 15px;
+
+      @media #{$medium} {
+        padding: 0 15px 0 15px;
+      }
 
       .header-social-nav {
         float: right;
@@ -29,6 +39,7 @@
 
         .toggle {
           padding-top: 25px;
+          display: none;
 
           @media #{$medium} {
             display: block;

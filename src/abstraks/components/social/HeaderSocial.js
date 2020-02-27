@@ -6,6 +6,8 @@ import Toggle from '../../../base/scripts/Toggle';
 import LogoWhite from '../LogoWhite';
 import LoggedOutLinks from './LoggedOutLinks';
 
+import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
+
 // implement dropdown menu https://codepen.io/taylorharwood/pen/EggrOO
 export default class HeaderSocial extends React.PureComponent {
   static propTypes = {
@@ -48,6 +50,8 @@ export default class HeaderSocial extends React.PureComponent {
                       <i className="fa fa-user" aria-hidden="true"></i>
                     </div>
                   </div>
+
+                  <MenuSlideIn />
 
                   <Toggle
                     openContent={
