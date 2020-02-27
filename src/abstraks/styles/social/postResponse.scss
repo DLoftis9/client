@@ -27,10 +27,44 @@
   @media #{$medium} {
     padding: 0;
   }
+
+  .post {
+    .post-image,
+    .post-paragraph {
+      width: 100%;
+      display: block;
+    }
+  }
 }
 
-.post-timestamp {
-  color: $color-medium_gray;
+.response-info {
+  .fa-heart,
+  .fa-comment-o,
+  .post-time {
+    width: auto;
+    display: inline-block;
+
+    .post-timestamp {
+      color: $color-medium_gray;
+    }
+  }
+
+  .fa-comment-o {
+    .post-comment-number {
+      font-family: $font-family;
+    }
+    margin-left: 10px;
+  }
+
+  .fa-heart {
+    .post-heart-number {
+      font-family: $font-family;
+    }
+  }
+
+  .post-time {
+    margin-left: 50px;
+  }
 }
 
 .post-response-user {
@@ -39,13 +73,24 @@
   width: 100%;
 
   .avatar {
-
+    width: 20%;
     @media #{$medium} {
       width: 100%;
     }
   }
 
   .post_input {
-    width: 100%;
+    width: 80%;
+    float: left;
+    margin-bottom: 20px;
+
+    @media #{$medium} {
+      width: 100%;
+    }
+  }
+
+  .post_button {
+    width: auto;
+    float: right;
   }
 }

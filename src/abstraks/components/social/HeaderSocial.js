@@ -2,35 +2,27 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import MobileMenu from '../../../base/scripts/MobileMenu';
 import Toggle from '../../../base/scripts/Toggle';
 import LogoWhite from '../LogoWhite';
-import HeaderContent from './HeaderContent';
 import LoggedOutLinks from './LoggedOutLinks';
 
 // implement dropdown menu https://codepen.io/taylorharwood/pen/EggrOO
 export default class HeaderSocial extends React.PureComponent {
   static propTypes = {
-    divClass: PropTypes.string,
-    buttonClass: PropTypes.string,
-    buttonIcon: PropTypes.string,
-    menuContent: PropTypes.object,
     componentName: PropTypes.string,
+    openContent: PropTypes.object,
 
     authUser: PropTypes.object,
     authUserName: PropTypes.object,
   };
 
   static defaultProps = {
-    divClass: 'navbar__mobileMenu',
-    buttonClass: 'navbar__mobileMenuIcon',
-    buttonIcon: 'fa fa-bars',
     componentName: 'header-social',
   };
 
   render() {
     // const getHeaderContent = <HeaderContent />;
-    const { context, divClass, buttonClass, buttonIcon, componentName } = this.props;
+    const { context, componentName } = this.props;
 
     // The value of authUser is either an object holding the
     // authenticated user's name and username values, or null.
@@ -43,16 +35,7 @@ export default class HeaderSocial extends React.PureComponent {
         <div className={componentName + ` container header__container header__menu`}>
           <LogoWhite />
 
-          <div className="navbar__container--mobile">
-            <MobileMenu
-              divClass={divClass}
-              buttonClass={buttonClass}
-              buttonIcon={buttonIcon}
-              menuContent={<HeaderContent authUser={authUser} authUserName={authUser.name} />}
-            />
-          </div>
-          {/* <Toggle openContent={}/> */}
-          <div className="navbar__container--desktop">
+          <div className="navbar__container">
             <nav className={componentName + `-nav`}>
               {authUser ? (
                 // If authUser evaluates to a truthy value (there is an authenticated
