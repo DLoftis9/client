@@ -8,8 +8,8 @@ class SlidingMenu extends React.Component {
   render() {
     return (
       <div className={'sliding-menu animated ' + this.props.slideClass}>
-        <button type="button" onClick={this.props.onClick}>
-          <i class="fa fa-times" aria-hidden="true"></i>
+        <button className="sliding-menu_button" type="button" onClick={this.props.onClick}>
+          <i class="close-icon fa fa-close" aria-hidden="true"></i>
         </button>
         {this.props.children}
       </div>
@@ -27,7 +27,6 @@ export default class MenuSlideIn extends React.Component {
   }
 
   handleClick() {
-    console.log(this.state.toggleMenu);
     this.setState({ toggleMenu: !this.state.toggleMenu });
   }
 
@@ -37,8 +36,10 @@ export default class MenuSlideIn extends React.Component {
 
     return (
       <div className="menu-slide-in">
-        <button className="button" type="button" onClick={this.handleClick}>
-          <span className="open">Hamburger</span>
+        <button className="button menu-slide_button" type="button" onClick={this.handleClick}>
+          <span className="open">
+            <i class="open-icon fa fa-bars" aria-hidden="true"></i>
+          </span>
         </button>
         <SlidingMenu slideClass={slideClass} onClick={this.handleClick}>
           <span className="glyphicon glyphicon-home">Home</span>

@@ -9,50 +9,9 @@
 .menu-slide-in {
   position: relative;
   width: 100%;
-
-  > button {
-    position: relative;
-    top: 50%;
-    transform: translate(0%, -50%);
-  }
 }
 
 .slide-menu {
   right: 0px;
   display: block;
 }
-
-// @keyframes slideInLeft {
-//   from {
-//     transform: translate3d(-100%, 0, 0);
-//     visibility: visible;
-//   }
-
-//   to {
-//     transform: translate3d(0, 0, 0);
-//   }
-// }
-
-// .slideInLeft {
-//   animation-name: slideInLeft;
-// }
-
-// @keyframes slideInRight {
-//   from {
-//     transform: translate3d(100%, 0, 0);
-//     visibility: visible;
-//   }
-
-//   to {
-//     transform: translate3d(0, 0, 0);
-//   }
-// }
-
-// .slideInRight {
-//   animation-name: slideInRight;
-// }
-
-// .animated {
-//   animation-duration: 1s;
-//   animation-fill-mode: both;
-// }
