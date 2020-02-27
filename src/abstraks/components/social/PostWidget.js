@@ -29,8 +29,10 @@ const PostWidget = props => (
           type="text"
           placeholder="What's on your mind?"
         />
-        <i className="fa fa-camera" aria-hidden="true"></i>
-        <button className="button button-primary submit post_button">Post</button>
+        <div className="camera-post">
+          <i className="fa fa-camera" aria-hidden="true"></i>
+          <button className="button button-primary submit post_button">Post</button>
+        </div>
       </div>
     </div>
   </div>

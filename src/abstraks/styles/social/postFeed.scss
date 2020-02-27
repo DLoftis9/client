@@ -4,6 +4,7 @@
 .post-feed {
     float: left;
     width: 100%;
+    margin-bottom: 5em;
     
     .post-widget {
         display: none;
@@ -45,12 +46,19 @@
 
     .post-response,
     .post-widget {
-        border-bottom: 1px solid gray;
+        border-bottom: 1px solid $color-light_gray;
         float: left;
         width: 100%;
     }
 
-    .post-response-user,
+    .post-response {
+        padding-bottom: 40px;
+    }
+
+    .post-response-user {
+        padding: 40px 10px 0 10px;
+    }
+
     .post-response-comments {
         padding: 0 10px;
     }

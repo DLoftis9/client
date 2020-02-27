@@ -8,6 +8,7 @@ import PostResponseComments from '../../components/social/PostResponseComments';
 export default class PostFeed extends React.PureComponent {
   static propTypes = {
     containerName: PropTypes.string.isRequired,
+    authUserName: PropTypes.object,
   };
 
   static defaultProps = {
