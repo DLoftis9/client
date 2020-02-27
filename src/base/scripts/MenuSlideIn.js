@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class SlidingMenu extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <div className={'sliding-menu animated ' + this.props.slideClass}>
-        <button className="sliding-menu_button" type="button" onClick={this.props.onClick}>
-          <i class="close-icon fa fa-close" aria-hidden="true"></i>
-        </button>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+const SlidingMenu = props => (
+  <div className={'sliding-menu animated ' + props.slideClass}>
+    <button className="sliding-menu_button" type="button" onClick={props.onClick}>
+      <i className="close-icon fa fa-close" aria-hidden="true"></i>
+    </button>
+    {props.children}
+  </div>
+);
+
+SlidingMenu.propTypes = {
+  slideClass: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  children: PropTypes.array.isRequired,
+};
 
 export default class MenuSlideIn extends React.Component {
   constructor(props) {
@@ -38,7 +37,7 @@ export default class MenuSlideIn extends React.Component {
       <div className="menu-slide-in">
         <button className="button menu-slide_button" type="button" onClick={this.handleClick}>
           <span className="open">
-            <i class="open-icon fa fa-bars" aria-hidden="true"></i>
+            <i className="open-icon fa fa-bars" aria-hidden="true"></i>
           </span>
         </button>
         <SlidingMenu slideClass={slideClass} onClick={this.handleClick}>
