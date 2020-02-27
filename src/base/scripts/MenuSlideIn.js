@@ -33,7 +33,7 @@ export default class MenuSlideIn extends React.Component {
 
   render() {
     let slideClass;
-    this.state.toggleMenu ? (slideClass = 'slideInLeft slide-menu') : (slideClass = 'slideInRight');
+    this.state.toggleMenu ? (slideClass = 'slideInRight slide-menu') : (slideClass = 'slideInLeft');
 
     return (
       <div className="menu-slide-in">
