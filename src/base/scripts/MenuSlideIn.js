@@ -9,7 +9,7 @@ class SlidingMenu extends React.Component {
     return (
       <div className={'sliding-menu animated ' + this.props.slideClass}>
         <button type="button" onClick={this.props.onClick}>
-          <span className="glyphicon glyphicon-arrow-left"></span>
+          <i class="fa fa-times" aria-hidden="true"></i>
         </button>
         {this.props.children}
       </div>
@@ -36,15 +36,15 @@ export default class MenuSlideIn extends React.Component {
     this.state.toggleMenu ? (slideClass = 'slideInLeft slide-menu') : (slideClass = 'slideInRight');
 
     return (
-      <div className="main-container">
-        <button type="button" onClick={this.handleClick}>
-          <span className="glyphicon glyphicon-menu-hamburger"></span>
+      <div className="menu-slide-in">
+        <button className="button" type="button" onClick={this.handleClick}>
+          <span className="open">Hamburger</span>
         </button>
         <SlidingMenu slideClass={slideClass} onClick={this.handleClick}>
-          <span className="glyphicon glyphicon-home"></span>
-          <span className="glyphicon glyphicon-cloud-download"></span>
-          <span className="glyphicon glyphicon-trash"></span>
-          <span className="glyphicon glyphicon-upload"></span>
+          <span className="glyphicon glyphicon-home">Home</span>
+          <span className="glyphicon glyphicon-cloud-download">Cloud</span>
+          <span className="glyphicon glyphicon-trash">Trash</span>
+          <span className="glyphicon glyphicon-upload">Upload</span>
         </SlidingMenu>
       </div>
     );
