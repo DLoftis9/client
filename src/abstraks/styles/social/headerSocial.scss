@@ -6,124 +6,98 @@
   width: 100%;
   background-color: $color-primary;
 
-  .navbar__container--mobile {
-    .navbar__mobileMenuIcon {
-      color: $color-white;
-    }
-  }
-
-  .navbar__container--desktop {
-    float: right;
-  }
-
   .header__container {
     background-color: $color-primary;
-  }
 
-  .header-social-nav {
-    float: right;
-
-    @media #{$medium} {
+    .navbar__container {
+      float: right;
       width: auto;
-    }
 
-    .avatar,
-    .toggle {
-      float: left;
-      width: auto;
-    }
-
-    .avatar {
-      color: $color-white;
-      padding: 20px 20px 0 0;
-    }
-
-    .toggle {
-      padding-top: 25px;
-      display: none;
-
-      @media #{$medium} {
-        display: block;
-      }
-
-      .triangle-top {
-        display: inline-block;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 10px 10px 10px;
-        border-color: transparent transparent $color-white_gray transparent;
-        margin-top: 15px;
-      }
-
-      .menu {
-        width: 200px;
-        right: 240px;
-        margin-top: 25px;
-        background-color: $color-white_gray;
-        padding: 0 30px 30px 30px;
-        border-radius: 5px;
-        font-family: $font-family;
-        box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-        .listItem {
-          padding: 10px 0;
-        }
-
-        .avatar-name,
-        .log-out {
-          width: 100%;
-          float: left;
-        }
-
-        .log-out {
-          border-top: 1px solid $color-medium_gray;
-          padding-top: 10px;
-        }
-      }
-
-      .menu,
-      .triangle-top {
-        display: none;
+      .header-social-nav {
+        float: right;
 
         @media #{$medium} {
-          display: block;
-          position: absolute;
-          z-index: 1;
-        }
-      }
-    }
-
-    .logged-out_links {
-      padding-top: 25px;
-
-      .anchor {
-        color: $color-white;
-        margin-left: 30px;
-
-        @media #{$medium} {
-          float: none;
           width: auto;
         }
+
+        .avatar {
+          color: $color-white;
+          padding: 20px 20px 0 0;
+          float: left;
+          width: auto;
+        }
+
+        .toggle {
+          padding-top: 25px;
+
+          @media #{$medium} {
+            display: block;
+            float: left;
+            width: auto;
+          }
+
+          .triangle-top {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 10px 10px 10px;
+            border-color: transparent transparent $color-white_gray transparent;
+            margin-top: 15px;
+          }
+
+          .menu {
+            right: 0;
+            margin-top: 25px;
+            background-color: $color-white_gray;
+            padding: 0 30px 30px 30px;
+            border-radius: 5px;
+            font-family: $font-family;
+            box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+            @media #{$medium} {
+              width: 200px;
+              right: 240px;
+            }
+
+            .listItem {
+              padding: 10px 0;
+            }
+
+            .avatar-name,
+            .log-out {
+              width: 100%;
+              float: left;
+            }
+
+            .log-out {
+              border-top: 1px solid $color-medium_gray;
+              padding-top: 10px;
+            }
+          }
+
+          .menu,
+          .triangle-top {
+            display: block;
+            position: absolute;
+            z-index: 1;
+          }
+        }
+
+        .logged-out_links {
+          padding-top: 25px;
+
+          .anchor {
+            color: $color-white;
+            margin-left: 30px;
+
+            @media #{$medium} {
+              float: none;
+              width: auto;
+            }
+          }
+        }
       }
-    }
-  }
-}
-
-.menu__body {
-  .logged-out_links {
-    text-align: center;
-    padding: 25px 15px 0 15px;
-
-    .anchor {
-      color: $color-white;
-      float: left;
-      width: 100%;
-      margin-bottom: 30px;
-    }
-
-    @media #{$medium} {
-      padding: 0;
     }
   }
 }
@@ -132,31 +106,4 @@
 .header-social:before {
   content: ' ';
   display: table;
-}
-
-// HeaderContent - mobile
-.menu__body {
-  color: $color-white;
-
-  .listItem {
-    margin: 20px 0;
-    .anchor {
-      color: $color-white;
-    }
-  }
-
-  .menu__row {
-    .avatar {
-      .avatar-image {
-        margin-left: 40%;
-      }
-    }
-
-    .contents {
-      float: left;
-    width: 100%;
-      text-align: center;
-      padding-left: 0;
-    }
-  }
 }
