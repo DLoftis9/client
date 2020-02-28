@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import PostWidget from '../../components/social/PostWidget';
+import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
+import HeaderContent from '../../components/social/HeaderContent';
 
 export default class CreatePost extends React.PureComponent {
   static propTypes = {
@@ -17,14 +19,17 @@ export default class CreatePost extends React.PureComponent {
     const authUser = context.authenticatedUser;
 
     return (
-      <div className={containerName}>
-        <div className={containerName + `_container container`}>
-          <div className={containerName + `_row row`}>
-            <h1>CreatePost</h1>
-            <PostWidget authUserName={authUser.name} />
+      <>
+        <MenuSlideIn bodyContent={<HeaderContent authUserName={authUser.name} />} />
+        <div className={containerName}>
+          <div className={containerName + `_container container`}>
+            <div className={containerName + `_row row`}>
+              <h1>CreatePost</h1>
+              <PostWidget authUserName={authUser.name} />
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

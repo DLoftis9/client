@@ -8,6 +8,8 @@ import Avatar from '../../components/social/Avatar';
 import EditTextInputGroup from '../../../base/scripts/EditTextInputGroup';
 import SubjectInputAdds from '../../../base/scripts/SubjectInputAdds';
 import EditTextInputSingle from '../../../base/scripts/EditTextInputSingle';
+import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
+import HeaderContent from '../../components/social/HeaderContent';
 
 const DATA = [
   // This constant is necessary to create editable text inputs
@@ -54,35 +56,38 @@ export default class Profile extends React.PureComponent {
     const { context, containerName, instructions, title } = this.props;
     const authUser = context.authenticatedUser;
     return (
-      <div className={containerName}>
-        <div className={containerName + `_container container`}>
-          <div className={containerName + `_row row`}>
-            <h1>The Profile page</h1>
-            <Avatar userName={authUser.name} />
+      <>
+        <MenuSlideIn bodyContent={<HeaderContent authUserName={authUser.name} />} />
+        <div className={containerName}>
+          <div className={containerName + `_container container`}>
+            <div className={containerName + `_row row`}>
+              <h1>The Profile page</h1>
+              <Avatar userName={authUser.name} />
 
-            {/*  */}
-            <EditTextInputGroup title="Bio" />
-            <EditTextInputSingle setInputs={DATA} />
-            <SubjectInputAdds instructions={instructions} title={title} />
-            {/*  */}
-            <Tabs>
-              <div className="posts" label="Posts">
-                <PostResponse />
-              </div>
-              <div className="following" label="Following">
-                <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
-                <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
-                <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
-              </div>
-              <div className="followers" label="Followers">
-                <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
-                <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
-                <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
-              </div>
-            </Tabs>
+              {/*  */}
+              <EditTextInputGroup title="Bio" />
+              <EditTextInputSingle setInputs={DATA} />
+              <SubjectInputAdds instructions={instructions} title={title} />
+              {/*  */}
+              <Tabs>
+                <div className="posts" label="Posts">
+                  <PostResponse />
+                </div>
+                <div className="following" label="Following">
+                  <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
+                  <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
+                  <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
+                </div>
+                <div className="followers" label="Followers">
+                  <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
+                  <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
+                  <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
+                </div>
+              </Tabs>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

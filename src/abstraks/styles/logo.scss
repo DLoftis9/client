@@ -5,8 +5,6 @@
 
 .logo {
   float: left;
-  width: 50%;
-  margin-top: 10px;
 
   @media #{$medium} {
     display: inline-block;
@@ -24,35 +22,25 @@
     margin-bottom: 10px;
     padding-top: 10px;
   }
+
+  .logo__container.col__container {
+    padding-left: 0;
+    float: left;
+    margin-top: 0;
+
+    .logo__image {
+      width: 125px;
+      float: left;
+
+      @media #{$medium} {
+        float: none;
+      }
+    }
+  }
 }
 
 .logo:after,
 .logo:before {
   content: ' ';
   display: table;
-}
-
-.logo__container {
-  margin-top: 5%;
-
-  @media #{$medium} {
-    margin-top: 3%;
-  }
-
-  @media #{$large} {
-    width: 70%;
-  }
-}
-
-.logo__container.col__container {
-  padding-left: 0;
-}
-
-.logo__image {
-  width: 125px;
-  float: left;
-
-  @media #{$medium} {
-    float: none;
-  }
 }

@@ -1,3 +1,111 @@
 @import '.././_variables.scss';
 @import '../../.././base/styles/_variables.scss';
 @import './button.scss';
+
+// css for button when menu is closed
+.sliding-menu {
+  padding: 8px;
+  background-color: $color-dark_gray;
+  color: $color-white;
+  font-size: 1.5em;
+  z-index: 1;
+  width: 300px;
+
+  .sliding-menu_button {
+    border: none;
+    float: right;
+    margin: 15px 15px 0 0;
+    background-color: $color-dark_gray;
+    width: 90%;
+
+    .close-icon {
+      color: $color-white;
+      font-size: 40px;
+      float: right;
+    }
+  }
+}
+
+// css for button when menu is closed
+.menu-slide-in {
+  width: 50%;
+  float: right;
+  height: 55px;
+  background-color: $color-primary;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+
+  @media #{$medium} {
+    display: none;
+  }
+
+  .menu-slide_button {
+    color: $color-white;
+    width: 60px;
+    float: right;
+    margin: 5px 15px 0 0;
+    background-color: transparent;
+
+    .open .open-icon {
+        font-size: 24px;
+    }
+  }
+
+  .header-content {
+    float: left;
+    text-align: left;
+
+    .menu {
+      .avatar-name {
+        width: 100%;
+      }
+
+      .listItem {
+        float: left;
+        width: 100%;
+      }
+
+      .log-out_listItem {
+        border-top: 1px solid $color-white;
+        margin-top: 30px;
+      }
+    }
+  }
+}
+
+// @keyframes slideInLeft {
+//   from {
+//     transform: translate3d(-100%, 0, 0);
+//     visibility: visible;
+//   }
+
+//   to {
+//     transform: translate3d(0, 0, 0);
+//   }
+// }
+
+// .slideInLeft {
+//   animation-name: slideInLeft;
+// }
+
+// @keyframes slideInRight {
+//   from {
+//     transform: translate3d(100%, 0, 0);
+//     visibility: visible;
+//   }
+
+//   to {
+//     transform: translate3d(0, 0, 0);
+//   }
+// }
+
+// .slideInRight {
+//   animation-name: slideInRight;
+// }
+
+// .animated {
+//   animation-duration: 1s;
+//   animation-fill-mode: both;
+// }
