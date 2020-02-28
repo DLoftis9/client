@@ -59,34 +59,34 @@ export default class HeaderSocial extends React.PureComponent {
                           <li className="avatar-name">
                             <h2 className="user-name">{authUser.name}</h2>
                           </li>
-                          <li className="listItem edit-profile">
-                            <Link className="anchor edit-profile_anchor" to="/editprofile">
+                          <li className="listItem edit-profile_listItem">
+                            <Link className="anchor edit-profile_anchor" to="/profile">
                               Profile
                             </Link>
                           </li>
-                          <li className="listItem discover">
+                          <li className="listItem discover_listItem">
                             <Link className="anchor discover_anchor" to="/discover">
                               Discover
                             </Link>
                           </li>
 
-                          <li className="listItem settings">
+                          <li className="listItem settings_listItem">
                             <Link className="anchor settings_anchor" to="/settings">
                               Settings
                             </Link>
                           </li>
 
-                          <li className="listItem privacy-policy">
+                          <li className="listItem privacy-policy_listItem">
                             <Link className="anchor privacy-policy_anchor" to="/privacy-policy">
                               Privacy Policy
                             </Link>
                           </li>
-                          <li className="listItem termsOfUse">
-                            <Link className="anchor termsOfUse_anchor" to="/terms-of-use">
+                          <li className="listItem terms-of-use_listItem">
+                            <Link className="anchor terms-of-use_anchor" to="/terms-of-use">
                               Terms Of Use
                             </Link>
                           </li>
-                          <li className="listItem log-out">
+                          <li className="listItem log-out_listItem">
                             <Link className="anchor log-out_anchor" to="/signout">
                               Sign Out
                             </Link>

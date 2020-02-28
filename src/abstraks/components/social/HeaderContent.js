@@ -19,7 +19,7 @@ const HeaderContent = props => (
     <ul className="menu">
       <Avatar userName={props.authUserName} />
       <li className="listItem edit-profile_listItem">
-        <Link className="anchor edit-profile_anchor" to="/editprofile">
+        <Link className="anchor edit-profile_anchor" to="/profile">
           Profile
         </Link>
       </li>
