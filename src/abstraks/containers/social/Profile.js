@@ -57,36 +57,36 @@ export default class Profile extends React.PureComponent {
     const authUser = context.authenticatedUser;
     return (
       <>
-      <MenuSlideIn bodyContent={<HeaderContent authUserName={authUser.name} />} />
-      <div className={containerName}>
-        <div className={containerName + `_container container`}>
-          <div className={containerName + `_row row`}>
-            <h1>The Profile page</h1>
-            <Avatar userName={authUser.name} />
+        <MenuSlideIn bodyContent={<HeaderContent authUserName={authUser.name} />} />
+        <div className={containerName}>
+          <div className={containerName + `_container container`}>
+            <div className={containerName + `_row row`}>
+              <h1>The Profile page</h1>
+              <Avatar userName={authUser.name} />
 
-            {/*  */}
-            <EditTextInputGroup title="Bio" />
-            <EditTextInputSingle setInputs={DATA} />
-            <SubjectInputAdds instructions={instructions} title={title} />
-            {/*  */}
-            <Tabs>
-              <div className="posts" label="Posts">
-                <PostResponse />
-              </div>
-              <div className="following" label="Following">
-                <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
-                <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
-                <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
-              </div>
-              <div className="followers" label="Followers">
-                <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
-                <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
-                <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
-              </div>
-            </Tabs>
+              {/*  */}
+              <EditTextInputGroup title="Bio" />
+              <EditTextInputSingle setInputs={DATA} />
+              <SubjectInputAdds instructions={instructions} title={title} />
+              {/*  */}
+              <Tabs>
+                <div className="posts" label="Posts">
+                  <PostResponse />
+                </div>
+                <div className="following" label="Following">
+                  <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
+                  <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
+                  <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
+                </div>
+                <div className="followers" label="Followers">
+                  <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
+                  <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
+                  <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
+                </div>
+              </Tabs>
+            </div>
           </div>
         </div>
-      </div>
       </>
     );
   }
