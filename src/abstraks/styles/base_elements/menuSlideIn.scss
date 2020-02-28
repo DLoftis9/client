@@ -5,19 +5,23 @@
 // css for button when menu is closed
 .sliding-menu {
   padding: 8px;
-  background-color: blue;
-  color: #ffffff;
+  background-color: $color-dark_gray;
+  color: $color-white;
   font-size: 1.5em;
   z-index: 1;
+  width: 300px;
 
   .sliding-menu_button {
-    color: red;
-    display: inline-block;
     border: none;
-    text-align: left;
+    float: right;
+    margin: 15px 15px 0 0;
+    background-color: $color-dark_gray;
+    width: 90%;
 
     .close-icon {
-      color: orange;
+      color: $color-white;
+      font-size: 40px;
+      float: right;
     }
   }
 }
@@ -26,10 +30,44 @@
 .menu-slide-in {
   width: 50%;
   float: right;
-  
+  height: 55px;
+  background-color: $color-primary;
+
+  @media #{$medium} {
+    display: none;
+  }
+
   .menu-slide_button {
-    background-color: #000000;
-    color: yellow;
+    color: $color-white;
+    width: 60px;
+    float: right;
+    margin: 5px 15px 0 0;
+    background-color: transparent;
+
+    .open .open-icon {
+        font-size: 24px;
+    }
+  }
+
+  .header-content {
+    float: left;
+    text-align: left;
+
+    .menu {
+      .avatar-name {
+        width: 100%;
+      }
+
+      .listItem {
+        float: left;
+        width: 100%;
+      }
+
+      .log-out_listItem {
+        border-top: 1px solid $color-white;
+        margin-top: 30px;
+      }
+    }
   }
 }
 

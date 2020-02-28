@@ -8,11 +8,13 @@
 
   @media #{$medium} {
     width: 100%;
+    height: 50px;
   }
 
   .header__container {
     background-color: $color-primary;
     padding: 0 0 0 15px;
+    height: 55px;
 
     @media #{$medium} {
       padding: 0 15px 0 15px;
@@ -35,10 +37,15 @@
         }
 
         .avatar {
-          color: $color-white;
-          padding: 20px 20px 0 0;
-          float: left;
-          width: auto;
+          display: none;
+
+          @media #{$medium} {
+            display: block;
+            color: $color-white;
+            padding: 20px 20px 0 0;
+            float: left;
+            width: auto;
+          }
         }
 
         .toggle {

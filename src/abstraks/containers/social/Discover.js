@@ -21,7 +21,7 @@ export default class Discover extends React.PureComponent {
   };
 
   render() {
-    const { context, containerName, bodyContent, authUserName } = this.props;
+    const { context, containerName } = this.props;
     const authUser = context.authenticatedUser;
 
     return (

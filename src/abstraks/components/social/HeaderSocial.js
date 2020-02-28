@@ -34,7 +34,7 @@ export default class HeaderSocial extends React.PureComponent {
     const authUser = context.authenticatedUser;
     return (
       <div className={componentName}>
-        <div className={componentName + ` container header__container header__menu`}>
+        <div className={componentName + `_container header__container header__menu`}>
           <LogoWhite />
 
           <div className="navbar__container">

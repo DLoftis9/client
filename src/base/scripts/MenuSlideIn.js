@@ -14,7 +14,7 @@ const SlidingMenu = props => (
 SlidingMenu.propTypes = {
   slideClass: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  children: PropTypes.array.isRequired,
+  children: PropTypes.object.isRequired,
 };
 
 export default class MenuSlideIn extends React.Component {
