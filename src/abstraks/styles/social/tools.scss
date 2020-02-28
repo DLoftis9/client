@@ -1,9 +1,15 @@
 @import '../_variables.scss';
 @import '../../.././base/styles/_variables.scss';
 
+// Container
 .tools {
   float: left;
   width: 100%;
   padding: 0 15px;
   margin: 3.5em 0 5em 0;
+}
+
+.tools.menu-slide-in {
+  height: 60px;
+  margin: 0;
 }
