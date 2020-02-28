@@ -1,8 +1,14 @@
 @import '../_variables.scss';
 @import '../../.././base/styles/_variables.scss';
 
+// Container
 .test {
     margin: 3.5em 0 5em 0;
     float: left;
     width: 100%;
 }
+
+.test.menu-slide-in {
+    height: 60px;
+    margin: 0;
+  }

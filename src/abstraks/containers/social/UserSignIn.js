@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import Form from '../../components/social/Form';
+import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 
 export default class UserSignIn extends Component {
   state = {
@@ -12,6 +14,7 @@ export default class UserSignIn extends Component {
 
   static propTypes = {
     containerName: PropTypes.string,
+    extraClassName: PropTypes.string,
   };
 
   static defaultProps = {
@@ -23,58 +26,61 @@ export default class UserSignIn extends Component {
     const { username, password, errors } = this.state;
 
     return (
-      <div className={containerName}>
-        <div className={containerName + `_wrapper`}>
-          <div className={containerName + `_container container`}>
-            <div className={containerName + `_row row`}>
-              <div className={containerName + `_content`}>
-                <h1 className="header-one">Sign In</h1>
-                <Form
-                  cancel={this.cancel}
-                  errors={errors}
-                  submit={this.submit}
-                  submitButtonText="Sign In"
-                  elements={() => (
-                    <React.Fragment>
-                      <div className="input_user-name">
-                        <label className="label">User Name</label>
-                        <input
-                          className="input"
-                          id="username"
-                          name="username"
-                          type="text"
-                          value={username}
-                          onChange={this.change}
-                          placeholder="User Name"
-                        />
-                      </div>
-                      <div className="input_password">
-                        <label className="label">Password</label>
-                        <input
-                          className="input"
-                          id="password"
-                          name="password"
-                          type="password"
-                          value={password}
-                          onChange={this.change}
-                          placeholder="Password"
-                        />
-                      </div>
-                    </React.Fragment>
-                  )}
-                />
-                <p className="account-redirect">
-                  Don't have a user account?{' '}
-                  <Link className="anchor account-redirect_link" to="/signup">
-                    Click here
-                  </Link>{' '}
-                  to sign up!
-                </p>
+      <>
+        <MenuSlideIn extraClassName={containerName} />
+        <div className={containerName}>
+          <div className={containerName + `_wrapper`}>
+            <div className={containerName + `_container container`}>
+              <div className={containerName + `_row row`}>
+                <div className={containerName + `_content`}>
+                  <h1 className="header-one">Sign In</h1>
+                  <Form
+                    cancel={this.cancel}
+                    errors={errors}
+                    submit={this.submit}
+                    submitButtonText="Sign In"
+                    elements={() => (
+                      <React.Fragment>
+                        <div className="input_user-name">
+                          <label className="label">User Name</label>
+                          <input
+                            className="input"
+                            id="username"
+                            name="username"
+                            type="text"
+                            value={username}
+                            onChange={this.change}
+                            placeholder="User Name"
+                          />
+                        </div>
+                        <div className="input_password">
+                          <label className="label">Password</label>
+                          <input
+                            className="input"
+                            id="password"
+                            name="password"
+                            type="password"
+                            value={password}
+                            onChange={this.change}
+                            placeholder="Password"
+                          />
+                        </div>
+                      </React.Fragment>
+                    )}
+                  />
+                  <p className="account-redirect">
+                    Don't have a user account?{' '}
+                    <Link className="anchor account-redirect_link" to="/signup">
+                      Click here
+                    </Link>{' '}
+                    to sign up!
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 

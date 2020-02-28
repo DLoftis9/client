@@ -1,6 +1,7 @@
 @import '../_variables.scss';
 @import '../../.././base/styles/_variables.scss';
 
+// Container
 .user-sign-in {
   float: left;
   width: 100%;
@@ -73,5 +74,14 @@
         float: left;
       }
     }
+  }
+}
+
+.user-sign-in.menu-slide-in {
+  height: 60px;
+  margin: 0;
+  
+  .menu-slide_button {
+    display: none;
   }
 }

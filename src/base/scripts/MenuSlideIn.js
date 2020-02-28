@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 const SlidingMenu = props => (
   <div className={'sliding-menu animated ' + props.slideClass}>
@@ -29,6 +28,7 @@ export default class MenuSlideIn extends React.Component {
   static propTypes = {
     bodyContent: PropTypes.object.isRequired,
     componentName: PropTypes.string,
+    extraClassName: PropTypes.string,
   };
 
   static defaultProps = {
@@ -40,12 +40,12 @@ export default class MenuSlideIn extends React.Component {
   }
 
   render() {
-    const { bodyContent, componentName } = this.props;
+    const { bodyContent, componentName, extraClassName } = this.props;
     let slideClass;
     this.state.toggleMenu ? (slideClass = 'slideInRight slide-menu') : (slideClass = 'slideInLeft');
 
     return (
-      <div className={componentName}>
+      <div className={extraClassName + ` ` + componentName}>
         <button className="button menu-slide_button" type="button" onClick={this.handleClick}>
           <span className="open">
             <i className="open-icon fa fa-bars" aria-hidden="true"></i>

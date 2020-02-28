@@ -17,13 +17,13 @@
 
   .anchor {
     color: $color-white;
+    width: 25%;
+    float: left;
   }
 
   .tab {
     padding: 5px 0 0 0;
-    width: 25%;
     height: 60px;
-    float: left;
     text-align: center;
     &:nth-child(1),
     &:nth-child(2),

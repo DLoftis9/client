@@ -7,6 +7,7 @@ import HeaderContent from '../../components/social/HeaderContent';
 export default class Tools extends React.PureComponent {
   static propTypes = {
     containerName: PropTypes.string.isRequired,
+    extraClassName: PropTypes.string,
   };
 
   static defaultProps = {
@@ -17,7 +18,10 @@ export default class Tools extends React.PureComponent {
     const authUser = context.authenticatedUser;
     return (
       <>
-        <MenuSlideIn bodyContent={<HeaderContent authUserName={authUser.name} />} />
+        <MenuSlideIn
+          extraClassName={containerName}
+          bodyContent={<HeaderContent authUserName={authUser.name} />}
+        />
         <div className={containerName}>
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
