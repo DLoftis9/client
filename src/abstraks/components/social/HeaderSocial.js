@@ -6,8 +6,6 @@ import Toggle from '../../../base/scripts/Toggle';
 import LogoWhite from '../LogoWhite';
 import LoggedOutLinks from './LoggedOutLinks';
 
-import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
-
 // implement dropdown menu https://codepen.io/taylorharwood/pen/EggrOO
 export default class HeaderSocial extends React.PureComponent {
   static propTypes = {
@@ -16,6 +14,8 @@ export default class HeaderSocial extends React.PureComponent {
 
     authUser: PropTypes.object,
     authUserName: PropTypes.object,
+
+    headerContent: PropTypes.array,
   };
 
   static defaultProps = {
@@ -24,7 +24,7 @@ export default class HeaderSocial extends React.PureComponent {
 
   render() {
     // const getHeaderContent = <HeaderContent />;
-    const { context, componentName } = this.props;
+    const { context, componentName, headerContent } = this.props;
 
     // The value of authUser is either an object holding the
     // authenticated user's name and username values, or null.
@@ -50,8 +50,6 @@ export default class HeaderSocial extends React.PureComponent {
                       <i className="fa fa-user" aria-hidden="true"></i>
                     </div>
                   </div>
-
-                  <MenuSlideIn />
 
                   <Toggle
                     openContent={

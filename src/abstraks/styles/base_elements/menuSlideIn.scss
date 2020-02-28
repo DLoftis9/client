@@ -8,6 +8,7 @@
   background-color: blue;
   color: #ffffff;
   font-size: 1.5em;
+  z-index: 1;
 
   .sliding-menu_button {
     color: red;
@@ -23,6 +24,9 @@
 
 // css for button when menu is closed
 .menu-slide-in {
+  width: 50%;
+  float: right;
+  
   .menu-slide_button {
     background-color: #000000;
     color: yellow;

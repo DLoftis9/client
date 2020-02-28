@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
-
 export default class Test extends React.PureComponent {
   static propTypes = {
     containerName: PropTypes.string,
@@ -14,6 +12,6 @@ export default class Test extends React.PureComponent {
 
   render() {
     const { containerName } = this.props;
-    return <div className={containerName}>{/* <MenuSlideIn /> */}</div>;
+    return <div className={containerName}></div>;
   }
 }
