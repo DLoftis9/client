@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const SlidingMenu = props => (
   <div className={'sliding-menu animated ' + props.slideClass}>
@@ -13,7 +14,7 @@ const SlidingMenu = props => (
 SlidingMenu.propTypes = {
   slideClass: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  children: PropTypes.array.isRequired,
+  children: PropTypes.object.isRequired,
 };
 
 export default class MenuSlideIn extends React.Component {
@@ -25,26 +26,33 @@ export default class MenuSlideIn extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  static propTypes = {
+    bodyContent: PropTypes.object.isRequired,
+    componentName: PropTypes.string,
+  };
+
+  static defaultProps = {
+    componentName: 'menu-slide-in',
+  };
+
   handleClick() {
     this.setState({ toggleMenu: !this.state.toggleMenu });
   }
 
   render() {
+    const { bodyContent, componentName } = this.props;
     let slideClass;
     this.state.toggleMenu ? (slideClass = 'slideInRight slide-menu') : (slideClass = 'slideInLeft');
 
     return (
-      <div className="menu-slide-in">
+      <div className={componentName}>
         <button className="button menu-slide_button" type="button" onClick={this.handleClick}>
           <span className="open">
             <i className="open-icon fa fa-bars" aria-hidden="true"></i>
           </span>
         </button>
         <SlidingMenu slideClass={slideClass} onClick={this.handleClick}>
-          <span className="glyphicon glyphicon-home">Home</span>
-          <span className="glyphicon glyphicon-cloud-download">Cloud</span>
-          <span className="glyphicon glyphicon-trash">Trash</span>
-          <span className="glyphicon glyphicon-upload">Upload</span>
+          {bodyContent}
         </SlidingMenu>
       </div>
     );

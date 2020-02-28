@@ -3,12 +3,21 @@
 
 .header-social {
   float: left;
-  width: 100%;
+  width: 50%;
   background-color: $color-primary;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+
+  @media #{$medium} {
+    width: 100%;
+    height: 50px;
+  }
 
   .header__container {
     background-color: $color-primary;
     padding: 0 0 0 15px;
+    height: 55px;
 
     @media #{$medium} {
       padding: 0 15px 0 15px;
@@ -18,9 +27,12 @@
       float: right;
       width: auto;
       padding: 0 0 0 15px;
+      display: none;
 
       @media #{$medium} {
         padding: 0 15px 0 15px;
+        display: block;
+        margin-top: 0;
       }
 
       .header-social-nav {
@@ -31,20 +43,25 @@
         }
 
         .avatar {
-          color: $color-white;
-          padding: 20px 20px 0 0;
-          float: left;
-          width: auto;
+          display: none;
+
+          @media #{$medium} {
+            display: block;
+            color: $color-white;
+            padding: 5px 20px 0 0;
+            float: left;
+            width: auto;
+          }
         }
 
         .toggle {
-          padding-top: 25px;
           display: none;
 
           @media #{$medium} {
             display: block;
             float: left;
             width: auto;
+            padding-top: 15px;
           }
 
           .triangle-top {
@@ -68,20 +85,19 @@
 
             @media #{$medium} {
               width: 200px;
-              right: 240px;
             }
 
             .listItem {
-              padding: 10px 0;
+              margin: 10px 0;
             }
 
             .avatar-name,
-            .log-out {
+            .log-out_listItem {
               width: 100%;
               float: left;
             }
 
-            .log-out {
+            .log-out_listItem {
               border-top: 1px solid $color-medium_gray;
               padding-top: 10px;
             }

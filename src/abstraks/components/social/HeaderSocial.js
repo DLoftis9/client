@@ -6,8 +6,6 @@ import Toggle from '../../../base/scripts/Toggle';
 import LogoWhite from '../LogoWhite';
 import LoggedOutLinks from './LoggedOutLinks';
 
-import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
-
 // implement dropdown menu https://codepen.io/taylorharwood/pen/EggrOO
 export default class HeaderSocial extends React.PureComponent {
   static propTypes = {
@@ -16,6 +14,8 @@ export default class HeaderSocial extends React.PureComponent {
 
     authUser: PropTypes.object,
     authUserName: PropTypes.object,
+
+    headerContent: PropTypes.array,
   };
 
   static defaultProps = {
@@ -24,7 +24,7 @@ export default class HeaderSocial extends React.PureComponent {
 
   render() {
     // const getHeaderContent = <HeaderContent />;
-    const { context, componentName } = this.props;
+    const { context, componentName, headerContent } = this.props;
 
     // The value of authUser is either an object holding the
     // authenticated user's name and username values, or null.
@@ -34,7 +34,7 @@ export default class HeaderSocial extends React.PureComponent {
     const authUser = context.authenticatedUser;
     return (
       <div className={componentName}>
-        <div className={componentName + ` container header__container header__menu`}>
+        <div className={componentName + `_container header__container header__menu`}>
           <LogoWhite />
 
           <div className="navbar__container">
@@ -51,8 +51,6 @@ export default class HeaderSocial extends React.PureComponent {
                     </div>
                   </div>
 
-                  <MenuSlideIn />
-
                   <Toggle
                     openContent={
                       <>
@@ -61,34 +59,34 @@ export default class HeaderSocial extends React.PureComponent {
                           <li className="avatar-name">
                             <h2 className="user-name">{authUser.name}</h2>
                           </li>
-                          <li className="listItem edit-profile">
-                            <Link className="anchor edit-profile_anchor" to="/editprofile">
+                          <li className="listItem edit-profile_listItem">
+                            <Link className="anchor edit-profile_anchor" to="/profile">
                               Profile
                             </Link>
                           </li>
-                          <li className="listItem discover">
+                          <li className="listItem discover_listItem">
                             <Link className="anchor discover_anchor" to="/discover">
                               Discover
                             </Link>
                           </li>
 
-                          <li className="listItem settings">
+                          <li className="listItem settings_listItem">
                             <Link className="anchor settings_anchor" to="/settings">
                               Settings
                             </Link>
                           </li>
 
-                          <li className="listItem privacy-policy">
+                          <li className="listItem privacy-policy_listItem">
                             <Link className="anchor privacy-policy_anchor" to="/privacy-policy">
                               Privacy Policy
                             </Link>
                           </li>
-                          <li className="listItem termsOfUse">
-                            <Link className="anchor termsOfUse_anchor" to="/terms-of-use">
+                          <li className="listItem terms-of-use_listItem">
+                            <Link className="anchor terms-of-use_anchor" to="/terms-of-use">
                               Terms Of Use
                             </Link>
                           </li>
-                          <li className="listItem log-out">
+                          <li className="listItem log-out_listItem">
                             <Link className="anchor log-out_anchor" to="/signout">
                               Sign Out
                             </Link>

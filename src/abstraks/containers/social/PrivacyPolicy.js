@@ -1,22 +1,31 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
-export default class Following extends React.PureComponent {
+
+import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
+import HeaderContent from '../../components/social/HeaderContent';
+
+export default class PrivacyPolicy extends React.PureComponent {
   static propTypes = {
     containerName: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
-    containerName: 'following',
+    containerName: 'privacy-policy',
   };
   render() {
-    const { containerName } = this.props;
+    const { context, containerName } = this.props;
+    const authUser = context.authenticatedUser;
     return (
-      <div className={containerName}>
-        <div className="grid-100">
-          <h1>Privacy Policy</h1>
+      <>
+        <MenuSlideIn bodyContent={<HeaderContent authUserName={authUser.name} />} />
+        <div className={containerName}>
+          <div className={containerName + `_container container`}>
+            <div className={containerName + `_row row`}>
+              <h1>Privacy Policy</h1>
+            </div>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }

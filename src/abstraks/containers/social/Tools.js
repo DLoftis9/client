@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-export default class CreatePost extends React.PureComponent {
+
+import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
+import HeaderContent from '../../components/social/HeaderContent';
+
+export default class Tools extends React.PureComponent {
   static propTypes = {
     containerName: PropTypes.string.isRequired,
   };
@@ -9,13 +13,19 @@ export default class CreatePost extends React.PureComponent {
     containerName: 'tools',
   };
   render() {
-    const { containerName } = this.props;
+    const { context, containerName } = this.props;
+    const authUser = context.authenticatedUser;
     return (
-      <div className={containerName}>
-        <div className="grid-100">
-          <h1>The Tools page</h1>
+      <>
+        <MenuSlideIn bodyContent={<HeaderContent authUserName={authUser.name} />} />
+        <div className={containerName}>
+          <div className={containerName + `_container container`}>
+            <div className={containerName + `_row row`}>
+              <h1>Tools</h1>
+            </div>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }
