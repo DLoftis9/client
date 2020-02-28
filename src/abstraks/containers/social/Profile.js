@@ -8,6 +8,8 @@ import Avatar from '../../components/social/Avatar';
 import EditTextInputGroup from '../../../base/scripts/EditTextInputGroup';
 import SubjectInputAdds from '../../../base/scripts/SubjectInputAdds';
 import EditTextInputSingle from '../../../base/scripts/EditTextInputSingle';
+import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
+import HeaderContent from '../../components/social/HeaderContent';
 
 const DATA = [
   // This constant is necessary to create editable text inputs
@@ -54,6 +56,8 @@ export default class Profile extends React.PureComponent {
     const { context, containerName, instructions, title } = this.props;
     const authUser = context.authenticatedUser;
     return (
+      <>
+      <MenuSlideIn bodyContent={<HeaderContent authUserName={authUser.name} />} />
       <div className={containerName}>
         <div className={containerName + `_container container`}>
           <div className={containerName + `_row row`}>
@@ -83,6 +87,7 @@ export default class Profile extends React.PureComponent {
           </div>
         </div>
       </div>
+      </>
     );
   }
 }
