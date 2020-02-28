@@ -32,6 +32,9 @@
   float: right;
   height: 55px;
   background-color: $color-primary;
+  position: fixed;
+  top: 0;
+  right: 0;
 
   @media #{$medium} {
     display: none;

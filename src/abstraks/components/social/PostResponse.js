@@ -23,7 +23,7 @@ const PostResponse = props => (
         </div>
         <div className="post">
           <div className="post-image">
-            <i class="image fa fa-picture-o" aria-hidden="true"></i>
+            <i className="image fa fa-picture-o" aria-hidden="true"></i>
           </div>
           <p className="post-paragraph paragraph">
             Uniquely cultivate premium supply chains after world-class leadership skills. Completely

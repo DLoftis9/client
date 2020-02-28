@@ -5,6 +5,8 @@
   float: left;
   width: 50%;
   background-color: $color-primary;
+  position: fixed;
+  top: 0;
 
   @media #{$medium} {
     width: 100%;
