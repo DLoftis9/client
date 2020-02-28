@@ -23,8 +23,7 @@ export default class HeaderSocial extends React.PureComponent {
   };
 
   render() {
-    // const getHeaderContent = <HeaderContent />;
-    const { context, componentName, headerContent } = this.props;
+    const { context, componentName } = this.props;
 
     // The value of authUser is either an object holding the
     // authenticated user's name and username values, or null.
