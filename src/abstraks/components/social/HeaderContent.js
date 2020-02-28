@@ -23,11 +23,6 @@ const HeaderContent = props => (
           Profile
         </Link>
       </li>
-      <li className="listItem discover_listItem">
-        <Link className="anchor discover_anchor" to="/discover">
-          Discover
-        </Link>
-      </li>
 
       <li className="listItem settings_listItem">
         <Link className="anchor settings_anchor" to="/settings">

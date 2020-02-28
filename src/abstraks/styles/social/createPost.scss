@@ -1,6 +1,7 @@
 @import '../_variables.scss';
 @import '../../.././base/styles/_variables.scss';
 
+// Container
 .create-post {
   float: left;
   width: 100%;
@@ -39,4 +40,9 @@
       }
     }
   }
+}
+
+.create-post.menu-slide-in {
+  height: 60px;
+  margin: 0;
 }

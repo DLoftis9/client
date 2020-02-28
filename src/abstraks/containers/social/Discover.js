@@ -14,6 +14,7 @@ export default class Discover extends React.PureComponent {
     followButtonText: PropTypes.string,
     bodyContent: PropTypes.object,
     authUserName: PropTypes.string,
+    extraClassName: PropTypes.string,
   };
 
   static defaultProps = {
@@ -26,7 +27,10 @@ export default class Discover extends React.PureComponent {
 
     return (
       <>
-        <MenuSlideIn bodyContent={<HeaderContent authUserName={authUser.name} />} />
+        <MenuSlideIn
+          extraClassName={containerName}
+          bodyContent={<HeaderContent authUserName={authUser.name} />}
+        />
         <div className={containerName}>
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
