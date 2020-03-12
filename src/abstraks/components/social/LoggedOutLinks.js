@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const propTypes = {
-  componentName: PropTypes.string,
-  userName: PropTypes.string.isRequired,
+  componentName: PropTypes.string
 };
 
 const defaultProps = {

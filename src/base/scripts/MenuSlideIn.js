@@ -13,7 +13,7 @@ const SlidingMenu = props => (
 SlidingMenu.propTypes = {
   slideClass: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  children: PropTypes.object.isRequired,
+  children: PropTypes.array.isRequired,
 };
 
 export default class MenuSlideIn extends React.Component {
@@ -26,9 +26,10 @@ export default class MenuSlideIn extends React.Component {
   }
 
   static propTypes = {
-    bodyContent: PropTypes.object.isRequired,
+    bodyContent: PropTypes.object,
     componentName: PropTypes.string,
     extraClassName: PropTypes.string,
+    children: PropTypes.array
   };
 
   static defaultProps = {
@@ -40,7 +41,7 @@ export default class MenuSlideIn extends React.Component {
   }
 
   render() {
-    const { bodyContent, componentName, extraClassName } = this.props;
+    const { children, bodyContent, componentName, extraClassName } = this.props;
     let slideClass;
     this.state.toggleMenu ? (slideClass = 'slideInRight slide-menu') : (slideClass = 'slideInLeft');
 
@@ -52,7 +53,7 @@ export default class MenuSlideIn extends React.Component {
           </span>
         </button>
         <SlidingMenu slideClass={slideClass} onClick={this.handleClick}>
-          {bodyContent}
+          {bodyContent} {children}
         </SlidingMenu>
       </div>
     );
