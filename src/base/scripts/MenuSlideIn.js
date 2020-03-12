@@ -29,7 +29,7 @@ export default class MenuSlideIn extends React.Component {
     bodyContent: PropTypes.object,
     componentName: PropTypes.string,
     extraClassName: PropTypes.string,
-    children: PropTypes.array
+    children: PropTypes.array,
   };
 
   static defaultProps = {
