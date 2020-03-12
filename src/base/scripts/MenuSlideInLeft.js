@@ -26,16 +26,16 @@ const MenuSlideInLeft = () => (
     but hey, it's pure CSS magic. */}
 
       <ul className="menu">
-        <span >
+        <span>
           <li>Home</li>
         </span>
-        <span >
+        <span>
           <li>About</li>
         </span>
-        <span >
+        <span>
           <li>Info</li>
         </span>
-        <span >
+        <span>
           <li>Contact</li>
         </span>
       </ul>

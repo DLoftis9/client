@@ -16,6 +16,7 @@ export default class UserSignUp extends Component {
   static propTypes = {
     containerName: PropTypes.string,
     extraClassName: PropTypes.string,
+    bodyContent: PropTypes.object,
   };
 
   static defaultProps = {
