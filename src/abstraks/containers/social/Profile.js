@@ -65,7 +65,7 @@ export default class Profile extends React.PureComponent {
         <div className={containerName}>
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
-              <h1>The Profile page</h1>
+              <h1>{authUser.name}'s Profile</h1>
               <Avatar userName={authUser.name} />
 
               {/*  */}

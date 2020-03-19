@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   componentName: PropTypes.string.isRequired,
-  authUserName: PropTypes.object.isRequired,
 };
 
 const defaultProps = {

@@ -97,7 +97,7 @@ export default class UserSignIn extends Component {
 
   submit = () => {
     const { context } = this.props;
-    const { from } = this.props.location.state || { from: { pathname: '/authenticated' } };
+    const { from } = this.props.location.state || { from: { pathname: '/profile' } };
     const { username, password } = this.state;
 
     // signIn() is an asynchronous operation that calls the getUser API
