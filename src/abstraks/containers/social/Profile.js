@@ -16,7 +16,7 @@ const DATA = [
   // Type must ALWAYS be set to 'INPUT' for the elements to appear
   {
     type: 'INPUT',
-    text: 'San Dieg, CA',
+    text: 'San Diego, CA',
     labelName: 'Location',
     labelNameEditing: 'Editing Location',
   },
