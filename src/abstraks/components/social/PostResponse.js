@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   componentName: PropTypes.string.isRequired,
+  toggleLike: PropTypes.bool.isRequired,
+  likeMethod: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -31,9 +33,17 @@ const PostResponse = props => (
             bandwidth and strategic value. Globally.
           </p>
           <div className="response-info">
-            <i className="fa fa-heart" aria-hidden="true">
-              <p className="post-heart-number">9</p>
-            </i>
+            <div className="like-widget">
+              <button onClick={props.likeMethod} className="button_like" aria-label="Like">
+                {props.toggleLike ? (
+                  <i className="icon_unlike fa fa-heart-o" aria-hidden="true"></i>
+                ) : (
+                  <i className="icon_like fa fa-heart" aria-hidden="true"></i>
+                )}
+              </button>
+            </div>
+            <p className="post-heart-number">{props.totalLikes}</p>
+
             <i className="fa fa-comment-o" aria-hidden="true">
               <p className="post-comment-number">11</p>
             </i>
