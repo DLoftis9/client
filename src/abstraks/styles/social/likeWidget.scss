@@ -2,13 +2,12 @@
 @import '../../.././base/styles/_variables.scss';
 
 .like-widget {
-    .button_like {
-        border: none;
+  .button_like {
+    border: none;
 
-        .icon_unlike,
-        .icon_like {
-            color: red;
-        }
+    .icon_unlike,
+    .icon_like {
+      color: red;
     }
-    
+  }
 }

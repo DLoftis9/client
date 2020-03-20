@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import LikeWidget from './LikeWidget';
+
 const propTypes = {
-  componentName: PropTypes.string.isRequired,
-  toggleLike: PropTypes.bool.isRequired,
-  likeMethod: PropTypes.func.isRequired,
+  componentName: PropTypes.string,
+  likeMethod: PropTypes.bool,
+  toggleLike: PropTypes.func,
 };
 
 const defaultProps = {
@@ -33,15 +35,7 @@ const PostResponse = props => (
             bandwidth and strategic value. Globally.
           </p>
           <div className="response-info">
-            <div className="like-widget">
-              <button onClick={props.likeMethod} className="button_like" aria-label="Like">
-                {props.toggleLike ? (
-                  <i className="icon_unlike fa fa-heart-o" aria-hidden="true"></i>
-                ) : (
-                  <i className="icon_like fa fa-heart" aria-hidden="true"></i>
-                )}
-              </button>
-            </div>
+            <LikeWidget likeMethod={props.likeMethod} toggleLike={props.toggleLike} />
             <p className="post-heart-number">{props.totalLikes}</p>
 
             <i className="fa fa-comment-o" aria-hidden="true">

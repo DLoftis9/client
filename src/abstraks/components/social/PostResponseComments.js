@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import LikeWidget from './LikeWidget';
+
 const propTypes = {
   componentName: PropTypes.string.isRequired,
+  likeMethod: PropTypes.bool,
+  toggleLike: PropTypes.func,
 };
 
 const defaultProps = {
@@ -44,9 +48,7 @@ const PostResponseComments = props => (
             Compellingly facilitate market-driven.
           </p>
           <div className="response-info">
-            <i className="fa fa-heart" aria-hidden="true">
-              <p className="post-heart-number">9</p>
-            </i>
+            <LikeWidget likeMethod={props.likeMethod} toggleLike={props.toggleLike} />
             <i className="fa fa-comment-o" aria-hidden="true">
               <p className="post-comment-number">11</p>
             </i>
