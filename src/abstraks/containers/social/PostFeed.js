@@ -29,7 +29,7 @@ export default class PostFeed extends React.PureComponent {
         <div className={containerName}>
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
-              <h1>The PostFeed page</h1>
+              <h1>PostFeed</h1>
               <PostWidget authUserName={authUser.name} />
               <PostResponse />
               <PostResponseComments />

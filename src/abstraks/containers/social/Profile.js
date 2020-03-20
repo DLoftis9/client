@@ -16,7 +16,7 @@ const DATA = [
   // Type must ALWAYS be set to 'INPUT' for the elements to appear
   {
     type: 'INPUT',
-    text: 'San Dieg, CA',
+    text: 'San Diego, CA',
     labelName: 'Location',
     labelNameEditing: 'Editing Location',
   },
@@ -65,7 +65,7 @@ export default class Profile extends React.PureComponent {
         <div className={containerName}>
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
-              <h1>The Profile page</h1>
+              <h1>{authUser.name}'s Profile</h1>
               <Avatar userName={authUser.name} />
 
               {/*  */}
