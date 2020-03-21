@@ -38,6 +38,11 @@ export default class Profile extends React.PureComponent {
     setInputs: DATA,
   };
 
+  toggleLikeClick = () => {
+    const { context } = this.props;
+    context.actions.handleLikeClick();
+  };
+
   static propTypes = {
     containerName: PropTypes.string,
     buttonText: PropTypes.string,
@@ -45,6 +50,8 @@ export default class Profile extends React.PureComponent {
     instructions: PropTypes.string,
     title: PropTypes.string,
     extraClassName: PropTypes.string,
+    toggleLike: PropTypes.bool,
+    likeMethod: PropTypes.func,
   };
 
   static defaultProps = {
@@ -56,6 +63,7 @@ export default class Profile extends React.PureComponent {
   render() {
     const { context, containerName, instructions, title } = this.props;
     const authUser = context.authenticatedUser;
+    const isToggleOn = context.isToggleOn;
     return (
       <>
         <MenuSlideIn
@@ -75,7 +83,7 @@ export default class Profile extends React.PureComponent {
               {/*  */}
               <Tabs>
                 <div className="posts" label="Posts">
-                  <PostResponse />
+                  <PostResponse toggleLike={isToggleOn} likeMethod={this.toggleLikeClick} />
                 </div>
                 <div className="following" label="Following">
                   <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
