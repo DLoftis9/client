@@ -95,7 +95,7 @@ export class Provider extends Component {
       // on sign out), the user will not be able to access the private routes and
       // data until they sign in.
 
-      Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 5 });
+      Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 10 });
     }
     return user;
   };
