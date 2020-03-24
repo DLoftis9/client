@@ -89,6 +89,40 @@ export class Provider extends Component {
     return <Context.Provider value={value}>{this.props.children}</Context.Provider>;
   }
 
+  handleEditSubject = () => {
+    this.setState(() => {
+      return {
+        editing: true,
+      };
+    });
+  };
+
+  handleSaveSubject = () => {
+    const { text } = this.state;
+
+    if (text !== '') {
+      this.setState(() => {
+        return {
+          editing: false,
+          text,
+        };
+      });
+    } else {
+      this.setState({ showError: true });
+    }
+  };
+
+  handleUpdateText = e => {
+    e.preventDefault();
+    const { value } = e.target;
+    this.setState(() => {
+      return { text: value };
+    });
+    this.setState(() => {
+      return { showError: false };
+    });
+  };
+
   handleEditingQuestion = boolean => {
     this.setState(() => {
       return {
