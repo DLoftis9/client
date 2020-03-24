@@ -50,8 +50,6 @@ export default class Profile extends React.PureComponent {
     instructions: PropTypes.string,
     title: PropTypes.string,
     extraClassName: PropTypes.string,
-    toggleLike: PropTypes.bool,
-    likeMethod: PropTypes.func,
   };
 
   static defaultProps = {
@@ -68,13 +66,13 @@ export default class Profile extends React.PureComponent {
       <>
         <MenuSlideIn
           extraClassName={containerName}
-          bodyContent={<HeaderContent authUserName={authUser.name} />}
+          bodyContent={<HeaderContent authUserName={authUser.username} />}
         />
         <div className={containerName}>
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
-              <h1>{authUser.name}'s Profile</h1>
-              <Avatar userName={authUser.name} />
+              <h1>{authUser.username}'s Profile</h1>
+              <Avatar userName={authUser.username} />
 
               {/*  */}
               <EditTextInputGroup title="Bio" />
