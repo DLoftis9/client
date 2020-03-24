@@ -7,9 +7,9 @@ import FollowLayout from '../../components/social/FollowLayout';
 import Avatar from '../../components/social/Avatar';
 import EditTextInputGroup from '../../../base/scripts/EditTextInputGroup';
 import SubjectInputAdds from '../../../base/scripts/SubjectInputAdds';
-import EditTextInputSingle from '../../../base/scripts/EditTextInputSingle';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
+import EditTextInputSingle from '../../components/social/EditTextInputSingle';
 
 const DATA = [
   // This constant is necessary to create editable text inputs
@@ -43,6 +43,11 @@ export default class Profile extends React.PureComponent {
     context.actions.handleLikeClick();
   };
 
+  editQuestion = () => {
+    const { context } = this.props;
+    context.actions.handleEditingQuestion();
+  };
+
   static propTypes = {
     containerName: PropTypes.string,
     buttonText: PropTypes.string,
@@ -62,6 +67,9 @@ export default class Profile extends React.PureComponent {
     const { context, containerName, instructions, title } = this.props;
     const authUser = context.authenticatedUser;
     const isToggleOn = context.isToggleOn;
+    const inputList = context.inputList;
+    const isEditingQuestion = context.isEditingQuestion;
+    const showInputSingleError = context.showInputSingleError;
     return (
       <>
         <MenuSlideIn

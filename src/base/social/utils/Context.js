@@ -21,17 +21,28 @@ const Context = React.createContext();
 // that returns a Provider component which provides the application state and
 // any actions or event handlers that need to be shared between components,
 // via a required value prop.
+
+const INPUTLIST = [{}]; //ref EditTextInputSingle
 export class Provider extends Component {
   // If authenticatedUser is null (there is no authenticated user), for SocialHeader
   // display the default header. Otherwise, display the user name in
   // the header in a "Welcome" message alongside a "Sign Out" link.
+
   state = {
     // Set the initial state of the Provider class to the value stored in the
     // 'authenticatedUser' cookie or null. Retrieve the value of the cookie
     // using Cookies.getJSON(), which takes the cookie name ('authenticatedUser')
     // as a parameter
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
-    isToggleOn: true,
+    isToggleOn: true, // ref LikeWidget
+    inputList: INPUTLIST, // ref EditTextInputSingle
+    isEditingQuestion: false, // ref EditTextInputSingle
+    showInputSingleError: false, // ref EditTextInputSingle
+    editing: false, // ref EditTextInputSingleSubject
+    text: '', // ref EditTextInputSingleSubject
+    showError: false, // ref EditTextInputSingleSubject
+    labelName: '', // ref EditTextInputSingleSubject
+    labelNameEditing: '', // ref EditTextInputSingleSubject
   };
 
   constructor() {
@@ -40,15 +51,36 @@ export class Provider extends Component {
   }
 
   render() {
-    const { authenticatedUser, isToggleOn } = this.state;
+    const {
+      authenticatedUser,
+      isToggleOn,
+      inputList,
+      isEditingQuestion,
+      showInputSingleError,
+      editing,
+      text,
+      showError,
+      labelName,
+      labelNameEditing,
+    } = this.state;
+
     const value = {
       authenticatedUser,
       isToggleOn,
+      inputList,
+      isEditingQuestion,
+      showInputSingleError,
+      editing,
+      text,
+      showError,
+      labelName,
+      labelNameEditing,
       data: this.data,
       actions: {
         signIn: this.signIn,
         signOut: this.signOut,
         handleLikeClick: this.handleLikeClick,
+        handleEditingQuestion: this.handleEditingQuestion,
       },
     };
 
@@ -56,6 +88,14 @@ export class Provider extends Component {
     // throughout the component tree.
     return <Context.Provider value={value}>{this.props.children}</Context.Provider>;
   }
+
+  handleEditingQuestion = boolean => {
+    this.setState(() => {
+      return {
+        isEditingQuestion: boolean,
+      };
+    });
+  };
 
   handleLikeClick = () => {
     this.setState(prevState => {
