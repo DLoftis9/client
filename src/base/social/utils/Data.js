@@ -124,7 +124,7 @@ export default class Data {
 
   // get user's bio
   async getUserBio(bio) {
-    const response = await this.api(`/users/bio/:_id`, 'GET', null, true, { bio });
+    const response = await this.api(`/users/bio/:_id`, 'GET', null, true, bio);
     if (response.status === 200) {
       return response.json().then(data => data);
     } else if (response.status === 401) {
@@ -136,7 +136,7 @@ export default class Data {
 
   // create user's bio
   async createUserBio(bio) {
-    const response = await this.api(`/users/bio/:_id`, 'POST', null, true, { bio });
+    const response = await this.api(`/users/bio/:_id`, 'POST', null, true, bio);
     if (response.status === 200) {
       return response.json().then(data => data);
     } else if (response.status === 401) {
@@ -148,7 +148,7 @@ export default class Data {
 
   // edit user's bio
   async editUserBio(bio) {
-    const response = await this.api(`/users/bio/:_id`, 'PUT', null, true, { bio });
+    const response = await this.api(`/users/bio/:_id`, 'PUT', null, true, bio);
     if (response.status === 200) {
       return response.json().then(data => data);
     } else if (response.status === 401) {
@@ -160,7 +160,7 @@ export default class Data {
 
   // get user's location
   async getUserLocation(location) {
-    const response = await this.api(`/users/location/:_id`, 'GET', null, true, { location });
+    const response = await this.api(`/users/location/:_id`, 'GET', null, true, location);
     if (response.status === 200) {
       return response.json().then(data => data);
     } else if (response.status === 401) {
@@ -184,7 +184,7 @@ export default class Data {
 
   // edit user's location
   async editUserLocation(location) {
-    const response = await this.api(`/users/location/:_id`, 'PUT', null, true, { location });
+    const response = await this.api(`/users/location/:_id`, 'PUT', null, true, location);
     if (response.status === 200) {
       return response.json().then(data => data);
     } else if (response.status === 401) {
@@ -208,7 +208,7 @@ export default class Data {
 
   // create user's website
   async createUserWebsite(website) {
-    const response = await this.api(`/users/website/:_id`, 'POST', null, true, { website });
+    const response = await this.api(`/users/website/:_id`, 'POST', null, true, website);
     if (response.status === 200) {
       return response.json().then(data => data);
     } else if (response.status === 401) {
@@ -220,7 +220,7 @@ export default class Data {
 
   // edit user's website
   async editUserWebsite(website) {
-    const response = await this.api(`/users/website/:_id`, 'PUT', null, true, { website });
+    const response = await this.api(`/users/website/:_id`, 'PUT', null, true, website);
     if (response.status === 200) {
       return response.json().then(data => data);
     } else if (response.status === 401) {
@@ -232,7 +232,7 @@ export default class Data {
 
   // get user's skills
   async getUserSkills(skills) {
-    const response = await this.api(`/users/skills/:_id`, 'GET', null, true, { skills });
+    const response = await this.api(`/users/skills/:_id`, 'GET', null, true, skills);
     if (response.status === 200) {
       return response.json().then(data => data);
     } else if (response.status === 401) {
@@ -244,7 +244,7 @@ export default class Data {
 
   // create user's skills
   async createUserSkills(skills) {
-    const response = await this.api(`/users/skills/:_id`, 'POST', null, true, { skills });
+    const response = await this.api(`/users/skills/:_id`, 'POST', null, true, skills);
     if (response.status === 200) {
       return response.json().then(data => data);
     } else if (response.status === 401) {
@@ -256,7 +256,7 @@ export default class Data {
 
   // edit user's skills
   async editUserSkills(skills) {
-    const response = await this.api(`/users/skills/:_id`, 'PUT', null, true, { skills });
+    const response = await this.api(`/users/skills/:_id`, 'PUT', null, true, skills);
     if (response.status === 200) {
       return response.json().then(data => data);
     } else if (response.status === 401) {
