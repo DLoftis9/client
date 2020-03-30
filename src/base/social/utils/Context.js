@@ -22,7 +22,26 @@ const Context = React.createContext();
 // any actions or event handlers that need to be shared between components,
 // via a required value prop.
 
-const INPUTLIST = [{}]; //ref EditTextInputSingle
+const PROFILEDATA = [
+  {
+    type: 'INPUT',
+    text: '',
+    labelName: 'Location',
+    labelNameEditing: 'Editing Location',
+  },
+  {
+    type: 'INPUT',
+    text: 'email@test.com',
+    labelName: 'Email',
+    labelNameEditing: 'Editing Email',
+  },
+  {
+    type: 'INPUT',
+    text: 'www.test.com',
+    labelName: 'Website',
+    labelNameEditing: 'Editing Website',
+  },
+]; //ref EditTextInputSingle
 export class Provider extends Component {
   // If authenticatedUser is null (there is no authenticated user), for SocialHeader
   // display the default header. Otherwise, display the user name in
@@ -35,7 +54,7 @@ export class Provider extends Component {
     // as a parameter
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
     isToggleOn: true, // ref LikeWidget
-    inputList: INPUTLIST, // ref EditTextInputSingle
+    inputList: PROFILEDATA, // ref EditTextInputSingle
     isEditingQuestion: false, // ref EditTextInputSingle
     showInputSingleError: false, // ref EditTextInputSingle
     editing: false, // ref EditTextInputSingleSubject
@@ -89,6 +108,7 @@ export class Provider extends Component {
     return <Context.Provider value={value}>{this.props.children}</Context.Provider>;
   }
 
+  // EditTextInputSingle component logic
   handleEditSubject = () => {
     this.setState(() => {
       return {
@@ -130,6 +150,7 @@ export class Provider extends Component {
       };
     });
   };
+  // EditTextInputSingle component logic end
 
   handleLikeClick = () => {
     this.setState(prevState => {

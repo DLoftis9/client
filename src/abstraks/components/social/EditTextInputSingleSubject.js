@@ -55,7 +55,7 @@ export default class EditTextInputSingleSubject extends React.Component {
 
     let showErrorMessage = showError ? (
       <EditTextInputSingleMessage
-        messageClass="is-danger"
+        messageClass="error"
         header="Error"
         message="Please fill in blank input."
       />

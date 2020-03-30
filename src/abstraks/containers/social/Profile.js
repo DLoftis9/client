@@ -11,32 +11,32 @@ import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
 import EditTextInputSingle from '../../components/social/EditTextInputSingle';
 
-const DATA = [
-  // This constant is necessary to create editable text inputs
-  // Type must ALWAYS be set to 'INPUT' for the elements to appear
-  {
-    type: 'INPUT',
-    text: 'San Diego, CA',
-    labelName: 'Location',
-    labelNameEditing: 'Editing Location',
-  },
-  {
-    type: 'INPUT',
-    text: 'email@test.com',
-    labelName: 'Email',
-    labelNameEditing: 'Editing Email',
-  },
-  {
-    type: 'INPUT',
-    text: 'www.test.com',
-    labelName: 'Website',
-    labelNameEditing: 'Editing Website',
-  },
-];
+// const DATA = [
+//   // This constant is necessary to create editable text inputs
+//   // Type must ALWAYS be set to 'INPUT' for the elements to appear
+//   {
+//     type: 'INPUT',
+//     text: 'San Diego, CA',
+//     labelName: 'Location',
+//     labelNameEditing: 'Editing Location',
+//   },
+//   {
+//     type: 'INPUT',
+//     text: 'email@test.com',
+//     labelName: 'Email',
+//     labelNameEditing: 'Editing Email',
+//   },
+//   {
+//     type: 'INPUT',
+//     text: 'www.test.com',
+//     labelName: 'Website',
+//     labelNameEditing: 'Editing Website',
+//   },
+// ];
 export default class Profile extends React.PureComponent {
-  state = {
-    setInputs: DATA,
-  };
+  // state = {
+  //   setInputs: DATA,
+  // };
 
   toggleLikeClick = () => {
     const { context } = this.props;
@@ -70,6 +70,7 @@ export default class Profile extends React.PureComponent {
     const inputList = context.inputList;
     const isEditingQuestion = context.isEditingQuestion;
     const showInputSingleError = context.showInputSingleError;
+
     return (
       <>
         <MenuSlideIn
@@ -84,7 +85,7 @@ export default class Profile extends React.PureComponent {
 
               {/*  */}
               <EditTextInputGroup title="Bio" />
-              <EditTextInputSingle setInputs={DATA} />
+              <EditTextInputSingle setInputs={inputList} />
               <SubjectInputAdds instructions={instructions} title={title} />
               {/*  */}
               <Tabs>
