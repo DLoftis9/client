@@ -42,9 +42,6 @@ export default class Profile extends React.PureComponent {
     const authUser = context.authenticatedUser;
     const isToggleOn = context.isToggleOn;
     const inputList = context.inputList;
-    const isEditingQuestion = context.isEditingQuestion;
-    const showInputSingleError = context.showInputSingleError;
-
     return (
       <>
         <MenuSlideIn

@@ -55,13 +55,9 @@ export class Provider extends Component {
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
     isToggleOn: true, // ref LikeWidget
     inputList: PROFILEDATA, // ref EditTextInputSingle
-    isEditingQuestion: false, // ref EditTextInputSingle
-    showInputSingleError: false, // ref EditTextInputSingle
     editing: false, // ref EditTextInputSingleSubject
     text: '', // ref EditTextInputSingleSubject
     showError: false, // ref EditTextInputSingleSubject
-    labelName: '', // ref EditTextInputSingleSubject
-    labelNameEditing: '', // ref EditTextInputSingleSubject
   };
 
   constructor() {
@@ -70,36 +66,20 @@ export class Provider extends Component {
   }
 
   render() {
-    const {
-      authenticatedUser,
-      isToggleOn,
-      inputList,
-      isEditingQuestion,
-      showInputSingleError,
-      editing,
-      text,
-      showError,
-      labelName,
-      labelNameEditing,
-    } = this.state;
+    const { authenticatedUser, isToggleOn, inputList, editing, text, showError } = this.state;
 
     const value = {
       authenticatedUser,
       isToggleOn,
       inputList,
-      isEditingQuestion,
-      showInputSingleError,
       editing,
       text,
       showError,
-      labelName,
-      labelNameEditing,
       data: this.data,
       actions: {
         signIn: this.signIn,
         signOut: this.signOut,
         handleLikeClick: this.handleLikeClick,
-        handleEditingQuestion: this.handleEditingQuestion,
       },
     };
 
@@ -109,14 +89,6 @@ export class Provider extends Component {
   }
 
   // EditTextInputSingle component logic
-  handleEditSubject = () => {
-    this.setState(() => {
-      return {
-        editing: true,
-      };
-    });
-  };
-
   handleSaveSubject = () => {
     const { text } = this.state;
 
@@ -140,14 +112,6 @@ export class Provider extends Component {
     });
     this.setState(() => {
       return { showError: false };
-    });
-  };
-
-  handleEditingQuestion = boolean => {
-    this.setState(() => {
-      return {
-        isEditingQuestion: boolean,
-      };
     });
   };
   // EditTextInputSingle component logic end

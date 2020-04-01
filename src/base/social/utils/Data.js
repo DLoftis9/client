@@ -122,6 +122,19 @@ export default class Data {
     }
   }
 
+  //  edit user's email
+  async editUserEmail(email) {
+    const response = await this.api(`/users/email/:_id`, 'PUT', null, true, email);
+
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else if (response.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
   // get user's bio
   async getUserBio(bio) {
     const response = await this.api(`/users/bio/:_id`, 'GET', null, true, bio);
