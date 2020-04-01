@@ -53,7 +53,28 @@ export default class Profile extends React.PureComponent {
 
               {/*  */}
               <EditTextInputGroup title="Bio" />
-              <EditTextInputSingle setInputs={inputList} />
+              <EditTextInputSingle
+                setInputs={[
+                  {
+                    type: 'INPUT',
+                    text: '',
+                    labelName: 'Location',
+                    labelNameEditing: 'Editing Location',
+                  },
+                  {
+                    type: 'INPUT',
+                    text: 'email@test.com',
+                    labelName: 'Email',
+                    labelNameEditing: 'Editing Email',
+                  },
+                  {
+                    type: 'INPUT',
+                    text: 'www.test.com',
+                    labelName: 'Website',
+                    labelNameEditing: 'Editing Website',
+                  },
+                ]}
+              />
               <SubjectInputAdds instructions={instructions} title={title} />
               {/*  */}
               <Tabs>

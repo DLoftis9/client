@@ -22,26 +22,6 @@ const Context = React.createContext();
 // any actions or event handlers that need to be shared between components,
 // via a required value prop.
 
-const PROFILEDATA = [
-  {
-    type: 'INPUT',
-    text: '',
-    labelName: 'Location',
-    labelNameEditing: 'Editing Location',
-  },
-  {
-    type: 'INPUT',
-    text: 'email@test.com',
-    labelName: 'Email',
-    labelNameEditing: 'Editing Email',
-  },
-  {
-    type: 'INPUT',
-    text: 'www.test.com',
-    labelName: 'Website',
-    labelNameEditing: 'Editing Website',
-  },
-]; //ref EditTextInputSingle
 export class Provider extends Component {
   // If authenticatedUser is null (there is no authenticated user), for SocialHeader
   // display the default header. Otherwise, display the user name in
@@ -108,7 +88,8 @@ export class Provider extends Component {
   }
 
   // EditTextInputSingle component logic
-  handleSaveSubject = () => {
+  handleSaveSubject = async email => {
+    const userEmail = await this.data.editUserEmail(email);
     const { text } = this.state;
 
     if (text !== '') {

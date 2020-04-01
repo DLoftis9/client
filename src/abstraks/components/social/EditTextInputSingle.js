@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 
 import EditTextInputSingleSubject from './EditTextInputSingleSubject';
 
-const INPUTLIST = [{}];
+// const INPUTLIST = [{}];
 
 const List = ({ children }) => {
   return (
@@ -23,7 +23,7 @@ const List = ({ children }) => {
 
 export default class EditTextInputSingle extends React.Component {
   state = {
-    inputList: INPUTLIST,
+    // inputList: INPUTLIST,
     isEditingQuestion: false,
     showInputSingleError: false,
   };
