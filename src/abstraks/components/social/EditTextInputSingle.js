@@ -6,7 +6,7 @@
 // All other components that have to do with this
 // component are in ./EditSubjectInput.js => ./EditInputMessage
 
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import EditTextInputSingleSubject from './EditTextInputSingleSubject';

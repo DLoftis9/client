@@ -54,7 +54,26 @@ export class Provider extends Component {
     // as a parameter
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
     isToggleOn: true, // ref LikeWidget
-    inputList: PROFILEDATA, // ref EditTextInputSingle
+    inputList: [
+      {
+        type: 'INPUT',
+        text: '',
+        labelName: 'Location',
+        labelNameEditing: 'Editing Location',
+      },
+      {
+        type: 'INPUT',
+        text: 'email@test.com',
+        labelName: 'Email',
+        labelNameEditing: 'Editing Email',
+      },
+      {
+        type: 'INPUT',
+        text: 'www.test.com',
+        labelName: 'Website',
+        labelNameEditing: 'Editing Website',
+      },
+    ], // ref EditTextInputSingle
     editing: false, // ref EditTextInputSingleSubject
     text: '', // ref EditTextInputSingleSubject
     showError: false, // ref EditTextInputSingleSubject

@@ -17,11 +17,6 @@ export default class Profile extends React.PureComponent {
     context.actions.handleLikeClick();
   };
 
-  editQuestion = () => {
-    const { context } = this.props;
-    context.actions.handleEditingQuestion();
-  };
-
   static propTypes = {
     containerName: PropTypes.string,
     buttonText: PropTypes.string,
@@ -40,6 +35,7 @@ export default class Profile extends React.PureComponent {
   render() {
     const { context, containerName, instructions, title } = this.props;
     const authUser = context.authenticatedUser;
+    const emailUser = context.authenticatedUser;
     const isToggleOn = context.isToggleOn;
     const inputList = context.inputList;
     return (
@@ -53,6 +49,7 @@ export default class Profile extends React.PureComponent {
             <div className={containerName + `_row row`}>
               <h1>{authUser.username}'s Profile</h1>
               <Avatar userName={authUser.username} />
+              <p>{emailUser.email}</p>
 
               {/*  */}
               <EditTextInputGroup title="Bio" />
