@@ -24,6 +24,7 @@ export default class Test extends React.PureComponent {
     const { context, containerName } = this.props;
     const { email, errors } = this.state;
     const authUser = context.authenticatedUser;
+    const emailUser = context.authenticatedUser;
     return (
       <>
         <MenuSlideIn
@@ -34,6 +35,8 @@ export default class Test extends React.PureComponent {
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
               <h1>test</h1>
+              <p>{authUser.username}</p>
+              <p>{emailUser.email}</p>
               <FormSign
                 errors={errors}
                 submit={this.submit}

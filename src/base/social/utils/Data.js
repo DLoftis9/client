@@ -92,6 +92,20 @@ export default class Data {
     }
   }
 
+  // edit user's email
+  async editUserEmail(email) {
+    const response = await this.api(`/users/email/:id`, 'PUT', null, true, email);
+
+    console.log(response);
+    if (response.status === 200) {
+      return [];
+    } else if (response.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
   // edit user's username
   async editUserName(username) {
     const response = await this.api('/users/email/:_id', 'PUT', username);
@@ -117,19 +131,6 @@ export default class Data {
       return response.json().then(data => {
         return data.errors;
       });
-    } else {
-      throw new Error();
-    }
-  }
-
-  //  edit user's email
-  async editUserEmail(email) {
-    const response = await this.api(`/users/email/:_id`, 'PUT', null, true, email);
-    console.log(response);
-    if (response.status === 200) {
-      return [];
-    } else if (response.status === 401) {
-      return null;
     } else {
       throw new Error();
     }
