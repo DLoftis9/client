@@ -76,6 +76,7 @@ export class Provider extends Component {
       showError,
       data: this.data,
       actions: {
+        updateEmail: this.updateEmail,
         signIn: this.signIn,
         signOut: this.signOut,
         handleLikeClick: this.handleLikeClick,
@@ -122,6 +123,20 @@ export class Provider extends Component {
         isToggleOn: !prevState.isToggleOn,
       };
     });
+  };
+
+  updateEmail = async (email) => {
+    const userEmail = await this.data.editUserEmail(email);
+
+    if (userEmail !== null) {
+      this.setState(() => {
+        return {
+          authenticatedUser: userEmail,
+        };
+      });
+    }
+
+    return userEmail;
   };
 
   // The signIn function is an asynchronous function that takes a username

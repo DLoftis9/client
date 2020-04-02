@@ -94,7 +94,7 @@ export default class Data {
 
   // edit user's username
   async editUserName(username) {
-    const response = await this.api('/users:_id', 'PUT', username);
+    const response = await this.api('/users/email/:_id', 'PUT', username);
     console.log(response);
     if (response.status === 201) {
       return [];
@@ -125,9 +125,9 @@ export default class Data {
   //  edit user's email
   async editUserEmail(email) {
     const response = await this.api(`/users/email/:_id`, 'PUT', null, true, email);
-
+    console.log(response);
     if (response.status === 200) {
-      return response.json().then(data => data);
+      return [];
     } else if (response.status === 401) {
       return null;
     } else {
