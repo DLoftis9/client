@@ -125,7 +125,7 @@ export class Provider extends Component {
     });
   };
 
-  updateEmail = async (email) => {
+  updateEmail = async email => {
     const userEmail = await this.data.editUserEmail(email);
 
     if (userEmail !== null) {
@@ -134,6 +134,8 @@ export class Provider extends Component {
           authenticatedUser: userEmail,
         };
       });
+
+      // Cookies.set('authenticatedUser', JSON.stringify(userEmail), { expires: 10 });
     }
 
     return userEmail;

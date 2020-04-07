@@ -94,7 +94,7 @@ export default class Data {
 
   // edit user's email
   async editUserEmail(email) {
-    const response = await this.api(`/users/email/:id`, 'PUT', null, true, email);
+    const response = await this.api(`/users/email/:_id`, 'PUT', null, true, email);
 
     console.log(response);
     if (response.status === 200) {
