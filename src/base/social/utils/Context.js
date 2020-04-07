@@ -135,7 +135,7 @@ export class Provider extends Component {
         };
       });
 
-      // Cookies.set('authenticatedUser', JSON.stringify(userEmail), { expires: 10 });
+      Cookies.remove('authenticatedUser')
     }
 
     return userEmail;
