@@ -1,5 +1,5 @@
 import React from 'react';
-import RouterContent from './containers/RouterContent';
+import AppRouter from './containers/AppRouter';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
@@ -12,7 +12,7 @@ const App = () => (
     {/* <ScrollToTop allows pages to be rendered at 
     the _top when a link is activated */}
     <ScrollToTop />
-    <RouterContent />
+    <AppRouter />
   </Router>
 );
 
