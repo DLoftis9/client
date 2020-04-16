@@ -19,8 +19,13 @@ export default class UserSignUp extends Component {
   static defaultProps = {
     containerName: 'user-sign-up',
   };
+
+  handleChange = name => {};
+
   render() {
     const { containerName } = this.props;
+    const { name, username, password, errors } = this.state;
+
     return (
       <>
         <div className={containerName}>
@@ -37,8 +42,8 @@ export default class UserSignUp extends Component {
                         id="name"
                         name="name"
                         type="text"
-                        // value={name}
-                        onChange={this.change}
+                        value={name}
+                        onChange={this.handleChange('name')}
                         placeholder="Name"
                       />
                     </div>
@@ -52,8 +57,8 @@ export default class UserSignUp extends Component {
                         id="username"
                         name="username"
                         type="text"
-                        // value={username}
-                        onChange={this.change}
+                        value={username}
+                        onChange={this.handleChange('email')}
                         placeholder="User Name"
                       />
                     </div>
@@ -67,8 +72,8 @@ export default class UserSignUp extends Component {
                         id="password"
                         name="password"
                         type="password"
-                        // value={password}
-                        onChange={this.change}
+                        value={password}
+                        onChange={this.handleChange('password')}
                         placeholder="Password"
                       />
                     </div>

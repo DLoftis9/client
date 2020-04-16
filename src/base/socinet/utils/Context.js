@@ -31,7 +31,6 @@ export class Provider extends Component {
     // using Cookies.getJSON(), which takes the cookie name ('authenticatedUser')
     // as a parameter
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
-    isToggleOn: true,
   };
 
   constructor() {
@@ -40,15 +39,13 @@ export class Provider extends Component {
   }
 
   render() {
-    const { authenticatedUser, isToggleOn } = this.state;
+    const { authenticatedUser } = this.state;
     const value = {
       authenticatedUser,
-      isToggleOn,
       data: this.data,
       actions: {
         signIn: this.signIn,
         signOut: this.signOut,
-        handleLikeClick: this.handleLikeClick,
       },
     };
 
@@ -57,13 +54,6 @@ export class Provider extends Component {
     return <Context.Provider value={value}>{this.props.children}</Context.Provider>;
   }
 
-  handleLikeClick = () => {
-    this.setState(prevState => {
-      return {
-        isToggleOn: !prevState.isToggleOn,
-      };
-    });
-  };
 
   // The signIn function is an asynchronous function that takes a username
   // and password as arguments. signIn uses those credentials to call the
