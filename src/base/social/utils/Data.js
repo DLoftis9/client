@@ -26,6 +26,7 @@ export default class Data {
     if (body !== null) {
       options.body = JSON.stringify(body);
     }
+
     // When making a request to a protected route on the server,
     // authentication is required (the requiresAuth is true). In that
     // case, encode the user credentials and set the HTTP Authorization
@@ -76,6 +77,7 @@ export default class Data {
 
   async createUser(user) {
     const response = await this.api('/users', 'POST', user);
+    console.log(response);
     if (response.status === 201) {
       return [];
     } else if (response.status === 400) {

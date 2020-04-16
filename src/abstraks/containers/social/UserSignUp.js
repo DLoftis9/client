@@ -16,6 +16,7 @@ export default class UserSignUp extends Component {
   static propTypes = {
     containerName: PropTypes.string,
     extraClassName: PropTypes.string,
+    bodyContent: PropTypes.object,
   };
 
   static defaultProps = {
@@ -152,7 +153,7 @@ export default class UserSignUp extends Component {
           context.actions.signIn(username, password).then(() => {
             // Once the promise is fulfilled (the user was authenticated),
             // we'll navigate the user to the /authenticated URL path.
-            this.props.history.push('/authenticated');
+            this.props.history.push('/profile');
           });
         }
       })
