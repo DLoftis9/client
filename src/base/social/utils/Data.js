@@ -64,6 +64,8 @@ export default class Data {
   // getUser() makes a GET request to the /users endpoint, and returns a JSON
   // object containing user credentials. And createUser() makes a POST request,
   // sending new user data to the /users endpoint.
+
+  // get user's login data
   async getUser(username, password) {
     const response = await this.api(`/users`, 'GET', null, true, { username, password });
     if (response.status === 200) {
@@ -75,6 +77,7 @@ export default class Data {
     }
   }
 
+  // create new user
   async createUser(user) {
     const response = await this.api('/users', 'POST', user);
     console.log(response);
@@ -84,6 +87,194 @@ export default class Data {
       return response.json().then(data => {
         return data.errors;
       });
+    } else {
+      throw new Error();
+    }
+  }
+
+  // edit user's email
+  async editUserEmail(email) {
+    const response = await this.api(`/users/email/:_id`, 'PUT', null, true, email);
+
+    console.log(response);
+    if (response.status === 200) {
+      return [];
+    } else if (response.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
+  // edit user's username
+  async editUserName(username) {
+    const response = await this.api('/users/email/:_id', 'PUT', username);
+    console.log(response);
+    if (response.status === 201) {
+      return [];
+    } else if (response.status === 400) {
+      return response.json().then(data => {
+        return data.errors;
+      });
+    } else {
+      throw new Error();
+    }
+  }
+
+  // edit user's password
+  async editUserPassword(password) {
+    const response = await this.api('/users/:_id', 'PUT', password);
+    console.log(response);
+    if (response.status === 201) {
+      return [];
+    } else if (response.status === 400) {
+      return response.json().then(data => {
+        return data.errors;
+      });
+    } else {
+      throw new Error();
+    }
+  }
+
+  // get user's bio
+  async getUserBio(bio) {
+    const response = await this.api(`/users/bio/:_id`, 'GET', null, true, bio);
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else if (response.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
+  // create user's bio
+  async createUserBio(bio) {
+    const response = await this.api(`/users/bio/:_id`, 'POST', null, true, bio);
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else if (response.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
+  // edit user's bio
+  async editUserBio(bio) {
+    const response = await this.api(`/users/bio/:_id`, 'PUT', null, true, bio);
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else if (response.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
+  // get user's location
+  async getUserLocation(location) {
+    const response = await this.api(`/users/location/:_id`, 'GET', null, true, location);
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else if (response.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
+  // create user's location
+  async createUserLocation(location) {
+    const response = await this.api(`/users/location/:_id`, 'POST', null, true, { location });
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else if (response.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
+  // edit user's location
+  async editUserLocation(location) {
+    const response = await this.api(`/users/location/:_id`, 'PUT', null, true, location);
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else if (response.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
+  // get user's website
+  async getUserWebsite(website) {
+    const response = await this.api(`/users/website/:_id`, 'GET', null, true, { website });
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else if (response.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
+  // create user's website
+  async createUserWebsite(website) {
+    const response = await this.api(`/users/website/:_id`, 'POST', null, true, website);
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else if (response.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
+  // edit user's website
+  async editUserWebsite(website) {
+    const response = await this.api(`/users/website/:_id`, 'PUT', null, true, website);
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else if (response.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
+  // get user's skills
+  async getUserSkills(skills) {
+    const response = await this.api(`/users/skills/:_id`, 'GET', null, true, skills);
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else if (response.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
+  // create user's skills
+  async createUserSkills(skills) {
+    const response = await this.api(`/users/skills/:_id`, 'POST', null, true, skills);
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else if (response.status === 401) {
+      return null;
+    } else {
+      throw new Error();
+    }
+  }
+
+  // edit user's skills
+  async editUserSkills(skills) {
+    const response = await this.api(`/users/skills/:_id`, 'PUT', null, true, skills);
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else if (response.status === 401) {
+      return null;
     } else {
       throw new Error();
     }

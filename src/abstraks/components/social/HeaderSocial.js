@@ -56,7 +56,7 @@ export default class HeaderSocial extends React.PureComponent {
                         <span className="triangle-top"></span>
                         <ul className="menu">
                           <li className="avatar-name">
-                            <h2 className="user-name">{authUser.name}</h2>
+                            <h2 className="user-name">{authUser.username}</h2>
                           </li>
                           <li className="listItem edit-profile_listItem">
                             <Link className="anchor edit-profile_anchor" to="/profile">

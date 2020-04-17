@@ -6,12 +6,12 @@
 // All other components that have to do with this
 // component are in ./EditSubjectInput.js => ./EditInputMessage
 
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import EditTextInputSingleSubject from './EditTextInputSingleSubject';
 
-const INPUTLIST = [{}];
+// const INPUTLIST = [{}];
 
 const List = ({ children }) => {
   return (
@@ -23,7 +23,7 @@ const List = ({ children }) => {
 
 export default class EditTextInputSingle extends React.Component {
   state = {
-    inputList: INPUTLIST,
+    // inputList: INPUTLIST,
     isEditingQuestion: false,
     showInputSingleError: false,
   };
@@ -66,34 +66,3 @@ export default class EditTextInputSingle extends React.Component {
     );
   }
 }
-
-// Example use
-
-// const DATA = [
-//   // This constant is necessary to create editable text inputs
-//   // Type must ALWAYS be set to 'INPUT' for the elements to appear
-//   {
-//     type: 'INPUT',
-//     text: 'San Diego, CA',
-//     labelName: 'Location',
-//     labelNameEditing: 'Editing Location',
-//   },
-//   {
-//     type: 'INPUT',
-//     text: 'email@test.com',
-//     labelName: 'Email',
-//     labelNameEditing: 'Editing Email',
-//   },
-//   {
-//     type: 'INPUT',
-//     text: 'www.test.com',
-//     labelName: 'Website',
-//     labelNameEditing: 'Editing Website',
-//   },
-// ];
-
-// state = {
-//   setInputs: DATA,
-// };
-
-// <EditTextInputSingle setInputs={DATA} />

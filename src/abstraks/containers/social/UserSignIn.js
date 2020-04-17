@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import Form from '../../components/social/Form';
+import FormSign from '../../components/social/FormSign';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 
 export default class UserSignIn extends Component {
@@ -34,8 +34,7 @@ export default class UserSignIn extends Component {
               <div className={containerName + `_row row`}>
                 <div className={containerName + `_content`}>
                   <h1 className="header-one">Sign In</h1>
-                  <Form
-                    cancel={this.cancel}
+                  <FormSign
                     errors={errors}
                     submit={this.submit}
                     submitButtonText="Sign In"
@@ -138,9 +137,5 @@ export default class UserSignIn extends Component {
         // know that something went wrong
         this.props.history.push('/error');
       });
-  };
-
-  cancel = () => {
-    this.props.history.push('/');
   };
 }

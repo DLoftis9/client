@@ -21,17 +21,42 @@ const Context = React.createContext();
 // that returns a Provider component which provides the application state and
 // any actions or event handlers that need to be shared between components,
 // via a required value prop.
+
 export class Provider extends Component {
   // If authenticatedUser is null (there is no authenticated user), for SocialHeader
   // display the default header. Otherwise, display the user name in
   // the header in a "Welcome" message alongside a "Sign Out" link.
+
   state = {
     // Set the initial state of the Provider class to the value stored in the
     // 'authenticatedUser' cookie or null. Retrieve the value of the cookie
     // using Cookies.getJSON(), which takes the cookie name ('authenticatedUser')
     // as a parameter
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
-    isToggleOn: true,
+    isToggleOn: true, // ref LikeWidget
+    inputList: [
+      {
+        type: 'INPUT',
+        text: '',
+        labelName: 'Location',
+        labelNameEditing: 'Editing Location',
+      },
+      {
+        type: 'INPUT',
+        text: 'email@test.com',
+        labelName: 'Email',
+        labelNameEditing: 'Editing Email',
+      },
+      {
+        type: 'INPUT',
+        text: 'www.test.com',
+        labelName: 'Website',
+        labelNameEditing: 'Editing Website',
+      },
+    ], // ref EditTextInputSingle
+    editing: false, // ref EditTextInputSingleSubject
+    text: '', // ref EditTextInputSingleSubject
+    showError: false, // ref EditTextInputSingleSubject
   };
 
   constructor() {
@@ -40,12 +65,18 @@ export class Provider extends Component {
   }
 
   render() {
-    const { authenticatedUser, isToggleOn } = this.state;
+    const { authenticatedUser, isToggleOn, inputList, editing, text, showError } = this.state;
+
     const value = {
       authenticatedUser,
       isToggleOn,
+      inputList,
+      editing,
+      text,
+      showError,
       data: this.data,
       actions: {
+        updateEmail: this.updateEmail,
         signIn: this.signIn,
         signOut: this.signOut,
         handleLikeClick: this.handleLikeClick,
@@ -57,12 +88,57 @@ export class Provider extends Component {
     return <Context.Provider value={value}>{this.props.children}</Context.Provider>;
   }
 
+  // EditTextInputSingle component logic
+  handleSaveSubject = async email => {
+    const userEmail = await this.data.editUserEmail(email);
+    const { text } = this.state;
+
+    if (text !== '') {
+      this.setState(() => {
+        return {
+          editing: false,
+          text,
+        };
+      });
+    } else {
+      this.setState({ showError: true });
+    }
+  };
+
+  handleUpdateText = e => {
+    e.preventDefault();
+    const { value } = e.target;
+    this.setState(() => {
+      return { text: value };
+    });
+    this.setState(() => {
+      return { showError: false };
+    });
+  };
+  // EditTextInputSingle component logic end
+
   handleLikeClick = () => {
     this.setState(prevState => {
       return {
         isToggleOn: !prevState.isToggleOn,
       };
     });
+  };
+
+  updateEmail = async email => {
+    const userEmail = await this.data.editUserEmail(email);
+
+    if (userEmail !== null) {
+      this.setState(() => {
+        return {
+          authenticatedUser: userEmail,
+        };
+      });
+
+      Cookies.remove('authenticatedUser');
+    }
+
+    return userEmail;
   };
 
   // The signIn function is an asynchronous function that takes a username
@@ -95,7 +171,7 @@ export class Provider extends Component {
       // on sign out), the user will not be able to access the private routes and
       // data until they sign in.
 
-      Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 5 });
+      Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 10 });
     }
     return user;
   };

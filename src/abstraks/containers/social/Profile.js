@@ -7,37 +7,11 @@ import FollowLayout from '../../components/social/FollowLayout';
 import Avatar from '../../components/social/Avatar';
 import EditTextInputGroup from '../../../base/scripts/EditTextInputGroup';
 import SubjectInputAdds from '../../../base/scripts/SubjectInputAdds';
-import EditTextInputSingle from '../../../base/scripts/EditTextInputSingle';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
+import EditTextInputSingle from '../../components/social/EditTextInputSingle';
 
-const DATA = [
-  // This constant is necessary to create editable text inputs
-  // Type must ALWAYS be set to 'INPUT' for the elements to appear
-  {
-    type: 'INPUT',
-    text: 'San Diego, CA',
-    labelName: 'Location',
-    labelNameEditing: 'Editing Location',
-  },
-  {
-    type: 'INPUT',
-    text: 'email@test.com',
-    labelName: 'Email',
-    labelNameEditing: 'Editing Email',
-  },
-  {
-    type: 'INPUT',
-    text: 'www.test.com',
-    labelName: 'Website',
-    labelNameEditing: 'Editing Website',
-  },
-];
 export default class Profile extends React.PureComponent {
-  state = {
-    setInputs: DATA,
-  };
-
   toggleLikeClick = () => {
     const { context } = this.props;
     context.actions.handleLikeClick();
@@ -50,8 +24,6 @@ export default class Profile extends React.PureComponent {
     instructions: PropTypes.string,
     title: PropTypes.string,
     extraClassName: PropTypes.string,
-    toggleLike: PropTypes.bool,
-    likeMethod: PropTypes.func,
   };
 
   static defaultProps = {
@@ -63,22 +35,46 @@ export default class Profile extends React.PureComponent {
   render() {
     const { context, containerName, instructions, title } = this.props;
     const authUser = context.authenticatedUser;
+    const emailUser = context.authenticatedUser;
     const isToggleOn = context.isToggleOn;
+    const inputList = context.inputList;
     return (
       <>
         <MenuSlideIn
           extraClassName={containerName}
-          bodyContent={<HeaderContent authUserName={authUser.name} />}
+          bodyContent={<HeaderContent authUserName={authUser.username} />}
         />
         <div className={containerName}>
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
-              <h1>{authUser.name}'s Profile</h1>
-              <Avatar userName={authUser.name} />
+              <h1>{authUser.username}'s Profile</h1>
+              <Avatar userName={authUser.username} />
+              <p>{emailUser.email}</p>
 
               {/*  */}
               <EditTextInputGroup title="Bio" />
-              <EditTextInputSingle setInputs={DATA} />
+              <EditTextInputSingle
+                setInputs={[
+                  {
+                    type: 'INPUT',
+                    text: '',
+                    labelName: 'Location',
+                    labelNameEditing: 'Editing Location',
+                  },
+                  {
+                    type: 'INPUT',
+                    text: 'email@test.com',
+                    labelName: 'Email',
+                    labelNameEditing: 'Editing Email',
+                  },
+                  {
+                    type: 'INPUT',
+                    text: 'www.test.com',
+                    labelName: 'Website',
+                    labelNameEditing: 'Editing Website',
+                  },
+                ]}
+              />
               <SubjectInputAdds instructions={instructions} title={title} />
               {/*  */}
               <Tabs>

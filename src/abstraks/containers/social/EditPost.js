@@ -21,7 +21,7 @@ export default class EditPost extends React.PureComponent {
       <>
         <MenuSlideIn
           extraClassName={containerName}
-          bodyContent={<HeaderContent authUserName={authUser.name} />}
+          bodyContent={<HeaderContent authUserName={authUser.username} />}
         />
         <div className={containerName}>
           <div className={containerName + `_container container`}>

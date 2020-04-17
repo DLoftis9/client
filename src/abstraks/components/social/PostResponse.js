@@ -5,8 +5,6 @@ import LikeWidget from './LikeWidget';
 
 const propTypes = {
   componentName: PropTypes.string,
-  likeMethod: PropTypes.bool,
-  toggleLike: PropTypes.func,
 };
 
 const defaultProps = {

@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
-import HeaderContent from '../../components/social/HeaderContent';
+import { Link } from 'react-router-dom';
 
 export default class NotFound extends React.PureComponent {
   static propTypes = {
@@ -14,19 +12,31 @@ export default class NotFound extends React.PureComponent {
     containerName: 'not-found',
   };
   render() {
-    const { context, containerName } = this.props;
-    const authUser = context.authenticatedUser;
+    const { containerName } = this.props;
     return (
       <>
-        <MenuSlideIn
-          extraClassName={containerName}
-          bodyContent={<HeaderContent authUserName={authUser.name} />}
-        />
         <div className={containerName}>
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
               <h1>Not Found</h1>
               <p>Sorry! We couldn't find the page you're looking for.</p>
+
+              <p className="account-redirect">
+                You may{' '}
+                <Link className="anchor account-redirect_link" to="/signin">
+                  Sign In
+                </Link>
+                <span> | </span>
+                <Link className="anchor account-redirect_link" to="/signup">
+                  Sign Up
+                </Link>
+                <span> | </span>
+                <Link className="anchor account-redirect_link" to="/">
+                  Return Home
+                </Link>
+                <span> | </span>
+                to sign in!
+              </p>
             </div>
           </div>
         </div>

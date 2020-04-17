@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Form from '../../components/social/Form';
+import FormSign from '../../components/social/FormSign';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 
 export default class UserSignUp extends Component {
   state = {
-    name: '',
+    email: '',
     username: '',
     password: '',
     errors: [],
@@ -25,7 +25,7 @@ export default class UserSignUp extends Component {
 
   render() {
     const { containerName } = this.props;
-    const { name, username, password, errors } = this.state;
+    const { email, username, password, errors } = this.state;
 
     return (
       <>
@@ -36,23 +36,22 @@ export default class UserSignUp extends Component {
               <div className={containerName + `_row row`}>
                 <div className={containerName + `_content`}>
                   <h1 className="header-one">Sign Up</h1>
-                  <Form
-                    cancel={this.cancel}
+                  <FormSign
                     errors={errors}
                     submit={this.submit}
                     submitButtonText="Sign Up"
                     elements={() => (
                       <React.Fragment>
                         <div className="input_name">
-                          <label className="label">Name</label>
+                          <label className="label">Email</label>
                           <input
                             className="input"
-                            id="name"
-                            name="name"
-                            type="text"
-                            value={name}
+                            id="email"
+                            name="email"
+                            type="email"
+                            value={email}
                             onChange={this.change}
-                            placeholder="Name"
+                            placeholder="Email"
                           />
                         </div>
                         <div className="input_user-name">
@@ -118,11 +117,11 @@ export default class UserSignUp extends Component {
   // via a prop named context.
   submit = () => {
     const { context } = this.props;
-    const { name, username, password } = this.state;
+    const { email, username, password } = this.state;
 
     // Create user
     const user = {
-      name,
+      email,
       username,
       password,
     };
@@ -176,9 +175,5 @@ export default class UserSignUp extends Component {
         // written in components/NotFound.js.
         this.props.history.push('/error');
       });
-  };
-
-  cancel = () => {
-    this.props.history.push('/');
   };
 }
