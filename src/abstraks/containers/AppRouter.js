@@ -36,6 +36,7 @@ import MobileFooter from '../components/social/MobileFooter';
 import UserSignOut from '../components/social/UserSignOut';
 
 // Social Base
+import socinetContext from '../../base/socinet/utils/Context';
 import withContext from '../../base/social/utils/Context';
 import PrivateRoute from '../../base/social/components/PrivateRoute';
 
@@ -204,6 +205,9 @@ const TermsWithContext = withContext(Terms);
 const PrivacyPolicyWithContext = withContext(PrivacyPolicy);
 const TestWithContext = withContext(Test);
 
+// socinet containers and components
+const SignUpWithContext = socinetContext(SignUp);
+
 // This subscribes the UserSignOut component to context changes, that
 // way it'll be able to reference the signOut action (which calls the
 // signOut function) from within the component.
@@ -256,7 +260,7 @@ const RouterContent = () => (
       <Route path="/test" component={TestWithContext} />
 
       {/* Socionet Routes */}
-      <Route path="/signup-net" component={SignUp} />
+      <Route path="/signup-net" component={SignUpWithContext} />
 
       <Route path="/Publication/issue26p1" component={Issue26p1} />
       <Route path="/Publication/issue26p2" component={Issue26p2} />

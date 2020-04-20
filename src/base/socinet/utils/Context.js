@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Cookies from 'js-cookie';
 import Data from './Data';
 
 const Context = React.createContext();
@@ -30,7 +29,6 @@ export class Provider extends Component {
     // 'authenticatedUser' cookie or null. Retrieve the value of the cookie
     // using Cookies.getJSON(), which takes the cookie name ('authenticatedUser')
     // as a parameter
-    authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
   };
 
   constructor() {
@@ -39,67 +37,14 @@ export class Provider extends Component {
   }
 
   render() {
-    const { authenticatedUser } = this.state;
     const value = {
-      authenticatedUser,
       data: this.data,
-      actions: {
-        signIn: this.signIn,
-        signOut: this.signOut,
-      },
     };
 
     // value represents an object containing the context to be shared
     // throughout the component tree.
     return <Context.Provider value={value}>{this.props.children}</Context.Provider>;
   }
-
-
-  // The signIn function is an asynchronous function that takes a username
-  // and password as arguments. signIn uses those credentials to call the
-  // getUser() method in Data.js, which makes a GET request to the protected
-  // /users route on the server and returns the user data.
-  signIn = async (username, password) => {
-    const user = await this.data.getUser(username, password);
-    if (user !== null) {
-      this.setState(() => {
-        return {
-          authenticatedUser: user,
-        };
-      });
-
-      // A cookie is a file managed by the web browser that can save
-      // information from a website.
-
-      // A cookie that stores the authenticated user data (user and username).
-      // first argument passed to Cookies.set() specifies the name of the cookie to set.
-      // The second argument specifies the value to store in the cookie.
-
-      // The method Cookies.getJSON(), which reads a cookie and parses its
-      // stringified value to JSON (according to JSON.parse).
-      // When the app loads (or reloads), the authenticatedUser state will either be
-      // the user object stored in the cookie or null. If there is a user in state
-      // (a cookie exists), the authenticatedUser data persists, which means that the
-      // PrivateRoute and Header components continue to render the user data and
-      // Authenticated component. If the value in state is null (which is also set
-      // on sign out), the user will not be able to access the private routes and
-      // data until they sign in.
-
-      Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 5 });
-    }
-    return user;
-  };
-
-  // This removes the name and username properties from state – the user is no longer
-  // authenticated and cannot view the private components. Like the signIn function,
-  // it's passed the signOut function as an action to <Context.Provider> to
-  // make it available to all components connected to context changes.
-  signOut = () => {
-    this.setState({ authenticatedUser: null });
-    // Cookies.remove() method, which deletes a cookie created by Cookies.set()
-    // Passing Cookies.remove() the name of the cookie to delete ('authenticatedUser')
-    Cookies.remove('authenticatedUser');
-  };
 }
 
 export const Consumer = Context.Consumer;
