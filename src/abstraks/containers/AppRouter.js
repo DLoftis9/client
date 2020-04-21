@@ -15,7 +15,7 @@ import Public from './social/Public';
 import NotFound from './social/NotFound';
 import Test from './social/Test';
 
-import UserSignUp from './social/UserSignUp';
+// import UserSignUp from './social/UserSignUp';
 import UserSignIn from './social/UserSignIn';
 import Authenticated from './social/Authenticated';
 import CreatePost from './social/CreatePost';
@@ -36,7 +36,6 @@ import MobileFooter from '../components/social/MobileFooter';
 import UserSignOut from '../components/social/UserSignOut';
 
 // Social Base
-import socinetContext from '../../base/socinet/utils/Context';
 import withContext from '../../base/social/utils/Context';
 import PrivateRoute from '../../base/social/components/PrivateRoute';
 
@@ -190,7 +189,7 @@ import Issue29p24 from '../components/publication-pages/Issue29p24';
 const HeaderWithContext = withContext(HeaderSocial);
 const MobileFooterWithContext = withContext(MobileFooter);
 const AuthWithContext = withContext(Authenticated);
-const UserSignUpWithContext = withContext(UserSignUp);
+// const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
 const CreatePostWithContext = withContext(CreatePost);
 const ToolsWithContext = withContext(Tools);
@@ -206,7 +205,7 @@ const PrivacyPolicyWithContext = withContext(PrivacyPolicy);
 const TestWithContext = withContext(Test);
 
 // socinet containers and components
-const SignUpWithContext = socinetContext(SignUp);
+const SignUpWithContext = withContext(SignUp);
 
 // This subscribes the UserSignOut component to context changes, that
 // way it'll be able to reference the signOut action (which calls the
@@ -244,7 +243,7 @@ const RouterContent = () => (
       <PrivateRoute path="/authenticated" component={AuthWithContext} />
       <Route exact path="/public" component={Public} />
       <Route path="/signin" component={UserSignInWithContext} />
-      <Route path="/signup" component={UserSignUpWithContext} />
+      {/* <Route path="/signup" component={UserSignUpWithContext} /> */}
       <Route path="/signout" component={UserSignOutWithContext} />
       <Route path="/createpost" component={CreatePostWithContext} />
       <Route path="/tools" component={ToolsWithContext} />
@@ -260,7 +259,7 @@ const RouterContent = () => (
       <Route path="/test" component={TestWithContext} />
 
       {/* Socionet Routes */}
-      <Route path="/signup-net" component={SignUpWithContext} />
+      <Route path="/signup" component={SignUpWithContext} />
 
       <Route path="/Publication/issue26p1" component={Issue26p1} />
       <Route path="/Publication/issue26p2" component={Issue26p2} />

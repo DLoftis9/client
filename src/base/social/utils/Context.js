@@ -125,22 +125,6 @@ export class Provider extends Component {
     });
   };
 
-  updateEmail = async email => {
-    const userEmail = await this.data.editUserEmail(email);
-
-    if (userEmail !== null) {
-      this.setState(() => {
-        return {
-          authenticatedUser: userEmail,
-        };
-      });
-
-      Cookies.remove('authenticatedUser');
-    }
-
-    return userEmail;
-  };
-
   // The signIn function is an asynchronous function that takes a username
   // and password as arguments. signIn uses those credentials to call the
   // getUser() method in Data.js, which makes a GET request to the protected
