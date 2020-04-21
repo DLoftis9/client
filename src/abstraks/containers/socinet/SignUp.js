@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Form from '../../components/social/Form';
+import FormSubmit from '../../components/social/FormSubmit';
+import ErrorDisplay from '../../components/social/ErrorDisplay';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 
 export default class SignUp extends Component {
@@ -32,6 +33,8 @@ export default class SignUp extends Component {
         [name]: value,
       };
     });
+
+    this.setState({ errors: '' });
   };
 
   // The submit function that creates a new user and sends their
@@ -69,7 +72,7 @@ export default class SignUp extends Component {
         // check if the returned PromiseValue is an array of errors.
         // If it is, we will set the errors state of the UserSignUp
         // class to the returned errors.
-        if (errors.length) {
+        if (errors) {
           this.setState({ errors });
         }
         // else {
@@ -112,8 +115,7 @@ export default class SignUp extends Component {
               <div className={containerName + `_row row`}>
                 <div className={containerName + `_content`}>
                   <h1 className="header-one">Sign Up</h1>
-                  <Form
-                    errors={errors}
+                  <FormSubmit
                     submit={this.submit}
                     submitButtonText="Sign Up"
                     elements={() => (
@@ -157,7 +159,13 @@ export default class SignUp extends Component {
                       </React.Fragment>
                     )}
                   />
-                  {/* <div>{errors}</div> */}
+
+                  <div className="error form-error" style={{ display: errors ? '' : 'none' }}>
+                    <ul className="unordered-list">
+                      <ErrorDisplay errors={errors} />
+                    </ul>
+                  </div>
+
                   <p className="account-redirect">
                     Already have a user account?{' '}
                     <Link className="anchor account-redirect_link" to="/signin">

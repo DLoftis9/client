@@ -8,7 +8,7 @@ import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 export default class UserSignUp extends Component {
   state = {
     email: '',
-    username: '',
+    name: '',
     password: '',
     errors: [],
   };
@@ -25,7 +25,7 @@ export default class UserSignUp extends Component {
 
   render() {
     const { containerName } = this.props;
-    const { email, username, password, errors } = this.state;
+    const { email, name, password, errors } = this.state;
 
     return (
       <>
@@ -58,10 +58,10 @@ export default class UserSignUp extends Component {
                           <label className="label">User Name</label>
                           <input
                             className="input"
-                            id="username"
-                            name="username"
+                            id="name"
+                            name="name"
                             type="text"
-                            value={username}
+                            value={name}
                             onChange={this.change}
                             placeholder="User Name"
                           />
@@ -117,12 +117,12 @@ export default class UserSignUp extends Component {
   // via a prop named context.
   submit = () => {
     const { context } = this.props;
-    const { email, username, password } = this.state;
+    const { email, name, password } = this.state;
 
     // Create user
     const user = {
       email,
-      username,
+      name,
       password,
     };
 
@@ -149,7 +149,7 @@ export default class UserSignUp extends Component {
           // If the response returns no errors (or an empty array)
           // it means that a new user was successfully created and
           // sent to the server.
-          context.actions.signIn(username, password).then(() => {
+          context.actions.signIn(name, password).then(() => {
             // Once the promise is fulfilled (the user was authenticated),
             // we'll navigate the user to the /authenticated URL path.
             this.props.history.push('/profile');
