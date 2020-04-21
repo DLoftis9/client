@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Form from '../../components/social/Form';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 
-export default class UserSignUp extends Component {
+export default class SignUp extends Component {
   state = {
     email: '',
     name: '',
@@ -21,6 +21,82 @@ export default class UserSignUp extends Component {
 
   static defaultProps = {
     containerName: 'user-sign-up',
+  };
+
+  change = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+
+    this.setState(() => {
+      return {
+        [name]: value,
+      };
+    });
+  };
+
+  // The submit function that creates a new user and sends their
+  // credentials to the Express server. A new user will be created
+  // using the state initialized in the UserSignUp class and the
+  // createUser() method defined in Data.js. The UserSignUp
+  // component is a component "with context", meaning it's subscribed
+  // to the application context – the data is passed to the component
+  // via a prop named context.
+  submit = () => {
+    const { context } = this.props;
+    const { email, name, password } = this.state;
+
+    // Create user
+    const user = {
+      email,
+      name,
+      password,
+    };
+
+    // The createUser() method, which can be accessed via the destructured
+    // context variable. Context itself is an object which currently has
+    // only one property, data. In Context.js, passed Context.Provider
+    // a value prop whose value was an object with a data property. The
+    // authentication API utilities provided to app are available via the
+    // context.data property.
+
+    // createUser() is an asynchronous operation that returns a promise.
+    // The resolved value of the promise is either an array of errors
+    // (sent from the API if the response is 400), or an empty array
+    // (if the response is 201).
+    context.data
+      .signUpUser(user, console.log('user created'))
+      .then(errors => {
+        // check if the returned PromiseValue is an array of errors.
+        // If it is, we will set the errors state of the UserSignUp
+        // class to the returned errors.
+        if (errors.length) {
+          this.setState({ errors });
+        }
+        // else {
+
+        //   this.props.history.push('/');
+        // }
+      })
+      .catch(err => {
+        // The catch() method chained to the promise sequence handles
+        // a rejected promise returned by createUser(). For example,
+        // if there's an issue with the /users endpoint, the API is down,
+        // or there's a network connectivity issue, the function passed
+        // to catch() will get called.
+        console.log(err);
+        // In the event of an error, router will change the current URL from
+        // /signup to /error. Redirecting the user to another route.
+        // Navigating to the /error route will display a "Not Found" message
+        // in the browser, providing a user-friendly way to let users know
+        // that something went wrong.
+
+        // /error does not match any URL path defined inside the <Switch>
+        // component of App.js. Because of this, when the URL path changes
+        // to /error, the router is going to render the NotFound component
+        // written in components/NotFound.js.
+
+        // this.props.history.push('/error');
+      });
   };
 
   render() {
@@ -81,6 +157,7 @@ export default class UserSignUp extends Component {
                       </React.Fragment>
                     )}
                   />
+                  {/* <div>{errors}</div> */}
                   <p className="account-redirect">
                     Already have a user account?{' '}
                     <Link className="anchor account-redirect_link" to="/signin">
@@ -96,84 +173,4 @@ export default class UserSignUp extends Component {
       </>
     );
   }
-
-  change = event => {
-    const name = event.target.name;
-    const value = event.target.value;
-
-    this.setState(() => {
-      return {
-        [name]: value,
-      };
-    });
-  };
-
-  // The submit function that creates a new user and sends their
-  // credentials to the Express server. A new user will be created
-  // using the state initialized in the UserSignUp class and the
-  // createUser() method defined in Data.js. The UserSignUp
-  // component is a component "with context", meaning it's subscribed
-  // to the application context – the data is passed to the component
-  // via a prop named context.
-  submit = () => {
-    const { context } = this.props;
-    const { email, name, password } = this.state;
-
-    // Create user
-    const user = {
-      email,
-      name,
-      password,
-    };
-
-    // The createUser() method, which can be accessed via the destructured
-    // context variable. Context itself is an object which currently has
-    // only one property, data. In Context.js, passed Context.Provider
-    // a value prop whose value was an object with a data property. The
-    // authentication API utilities provided to app are available via the
-    // context.data property.
-
-    // createUser() is an asynchronous operation that returns a promise.
-    // The resolved value of the promise is either an array of errors
-    // (sent from the API if the response is 400), or an empty array
-    // (if the response is 201).
-    context.data
-      .signUpUser(user, console.log('user created'))
-      // .then(errors => {
-      //   // check if the returned PromiseValue is an array of errors.
-      //   // If it is, we will set the errors state of the UserSignUp
-      //   // class to the returned errors.
-      //   if (errors.length) {
-      //     this.setState({ errors });
-      //   } else {
-      //     // If the response returns no errors (or an empty array)
-      //     // it means that a new user was successfully created and
-      //     // sent to the server.
-      //     context.actions.signIn(name, password).then(() => {
-      //       // Once the promise is fulfilled (the user was authenticated),
-      //       // we'll navigate the user to the /authenticated URL path.
-      //       this.props.history.push('/profile');
-      //     });
-      //   }
-      // })
-      .catch(err => {
-        // The catch() method chained to the promise sequence handles
-        // a rejected promise returned by createUser(). For example,
-        // if there's an issue with the /users endpoint, the API is down,
-        // or there's a network connectivity issue, the function passed
-        // to catch() will get called.
-        console.log(err);
-        // In the event of an error, router will change the current URL from
-        // /signup to /error. Redirecting the user to another route.
-        // Navigating to the /error route will display a "Not Found" message
-        // in the browser, providing a user-friendly way to let users know
-        // that something went wrong.
-
-        // /error does not match any URL path defined inside the <Switch>
-        // component of App.js. Because of this, when the URL path changes
-        // to /error, the router is going to render the NotFound component
-        // written in components/NotFound.js.
-        this.props.history.push('/error');
-      });
-  };
 }
