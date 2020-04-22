@@ -129,33 +129,14 @@ export class Provider extends Component {
   // and password as arguments. signIn uses those credentials to call the
   // getUser() method in Data.js, which makes a GET request to the protected
   // /users route on the server and returns the user data.
-  signIn = async (username, password) => {
-    const user = await this.data.getUser(username, password);
+  signIn = async (email, password) => {
+    const user = await this.data.getUser(email, password);
     if (user !== null) {
       this.setState(() => {
         return {
           authenticatedUser: user,
         };
       });
-
-      // A cookie is a file managed by the web browser that can save
-      // information from a website.
-
-      // A cookie that stores the authenticated user data (user and username).
-      // first argument passed to Cookies.set() specifies the name of the cookie to set.
-      // The second argument specifies the value to store in the cookie.
-
-      // The method Cookies.getJSON(), which reads a cookie and parses its
-      // stringified value to JSON (according to JSON.parse).
-      // When the app loads (or reloads), the authenticatedUser state will either be
-      // the user object stored in the cookie or null. If there is a user in state
-      // (a cookie exists), the authenticatedUser data persists, which means that the
-      // PrivateRoute and Header components continue to render the user data and
-      // Authenticated component. If the value in state is null (which is also set
-      // on sign out), the user will not be able to access the private routes and
-      // data until they sign in.
-
-      Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 10 });
     }
     return user;
   };

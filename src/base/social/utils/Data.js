@@ -106,4 +106,19 @@ export default class Data {
       throw new Error();
     }
   }
+
+  // sign-in user
+  async signInUser(user) {
+    const response = await this.api('/signin', 'POST', user);
+    console.log(response);
+    if (response.status === 201) {
+      return [];
+    } else if (response.status === 400 || response.status === 401) {
+      return response.json().then(data => {
+        return data.error;
+      });
+    } else {
+      throw new Error();
+    }
+  }
 }

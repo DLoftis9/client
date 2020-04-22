@@ -244,7 +244,7 @@ const RouterContent = () => (
       the specified path.*/}
       <PrivateRoute path="/authenticated" component={AuthWithContext} />
       <Route exact path="/public" component={Public} />
-      <Route path="/signin" component={UserSignInWithContext} />
+      {/* <Route path="/signin" component={UserSignInWithContext} /> */}
       {/* <Route path="/signup" component={UserSignUpWithContext} /> */}
       <Route path="/signout" component={UserSignOutWithContext} />
       <Route path="/createpost" component={CreatePostWithContext} />
@@ -263,7 +263,6 @@ const RouterContent = () => (
       {/* Socionet Routes */}
       <Route path="/signup" component={SignUpWithContext} />
       <Route path="/signin" component={SignInWithContext} />
-      
 
       <Route path="/Publication/issue26p1" component={Issue26p1} />
       <Route path="/Publication/issue26p2" component={Issue26p2} />

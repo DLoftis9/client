@@ -9,7 +9,6 @@ import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 export default class SignIn extends Component {
   state = {
     email: '',
-    name: '',
     password: '',
     errors: [],
   };
@@ -37,64 +36,35 @@ export default class SignIn extends Component {
     this.setState({ errors: '' });
   };
 
-  // The submit function that creates a new user and sends their
-  // credentials to the Express server. A new user will be created
-  // using the state initialized in the UserSignUp class and the
-  // createUser() method defined in Data.js. The UserSignUp
-  // component is a component "with context", meaning it's subscribed
-  // to the application context – the data is passed to the component
-  // via a prop named context.
   submit = () => {
     const { context } = this.props;
+    const { from } = this.props.location.state || { from: { pathname: '/profile' } };
     const { email, password } = this.state;
 
-    // Create user
-    const user = {
-      email,
-      password,
-    };
-
-    // The createUser() method, which can be accessed via the destructured
-    // context variable. Context itself is an object which currently has
-    // only one property, data. In Context.js, passed Context.Provider
-    // a value prop whose value was an object with a data property. The
-    // authentication API utilities provided to app are available via the
-    // context.data property.
-
-    // createUser() is an asynchronous operation that returns a promise.
-    // The resolved value of the promise is either an array of errors
-    // (sent from the API if the response is 400), or an empty array
-    // (if the response is 201).
-    context.data
-      .signUpUser(user, console.log('user created'))
-      .then(errors => {
-        // check if the returned PromiseValue is an array of errors.
-        // If it is, we will set the errors state of the UserSignUp
-        // class to the returned errors.
-        if (errors) {
-          this.setState({ errors });
+    // signIn() is an asynchronous operation that calls the getUser API
+    // method (written in Data.js) and returns a promise. The resolved
+    // value of the promise is either an object holding the authenticated
+    // user's name and username values (sent from the API if the response
+    // is 201), or null (if the response is a 401 Unauthorized HTTP status code).
+    context.actions
+      .signIn(email, password, console.log('user logged-in'))
+      .then(user => {
+        if (user === null) {
+          // If the returned promise value is null, set the errors state of the
+          // UserSignIn class to an array which holds the string 'Sign-in was
+          // unsuccessful' (this will be the validation message displayed to the user).
+          this.setState(() => {
+            return { errors: ['Sign-in was unsuccessful'] };
+          });
         } else {
-
-          this.props.history.push('/');
+          this.props.history.push(from);
         }
       })
       .catch(err => {
-        // The catch() method chained to the promise sequence handles
-        // a rejected promise returned by createUser(). For example,
-        // if there's an issue with the /users endpoint, the API is down,
-        // or there's a network connectivity issue, the function passed
-        // to catch() will get called.
         console.log(err);
-        // In the event of an error, router will change the current URL from
-        // /signup to /error. Redirecting the user to another route.
-        // Navigating to the /error route will display a "Not Found" message
-        // in the browser, providing a user-friendly way to let users know
-        // that something went wrong.
-
-        // /error does not match any URL path defined inside the <Switch>
-        // component of App.js. Because of this, when the URL path changes
-        // to /error, the router is going to render the NotFound component
-        // written in components/NotFound.js.
+        // In the event of an error, use history and the push() method to navigate
+        // the user from /signin to /error, providing a user-friendly way to let them
+        // know that something went wrong
 
         this.props.history.push('/error');
       });
@@ -102,7 +72,7 @@ export default class SignIn extends Component {
 
   render() {
     const { containerName } = this.props;
-    const { email, name, password, errors } = this.state;
+    const { email, password, errors } = this.state;
 
     return (
       <>
@@ -112,13 +82,13 @@ export default class SignIn extends Component {
             <div className={containerName + `_container container`}>
               <div className={containerName + `_row row`}>
                 <div className={containerName + `_content`}>
-                  <h1 className="header-one">Sign Up</h1>
+                  <h1 className="header-one">Sign In</h1>
                   <FormSubmit
                     submit={this.submit}
-                    submitButtonText="Sign Up"
+                    submitButtonText="Sign In"
                     elements={() => (
                       <React.Fragment>
-                        <div className="input_name">
+                        <div className="input_email">
                           <label className="label">Email</label>
                           <input
                             className="input"
@@ -130,18 +100,7 @@ export default class SignIn extends Component {
                             placeholder="Email"
                           />
                         </div>
-                        {/* <div className="input_user-name">
-                          <label className="label">User Name</label>
-                          <input
-                            className="input"
-                            id="name"
-                            name="name"
-                            type="text"
-                            value={name}
-                            onChange={this.change}
-                            placeholder="User Name"
-                          />
-                        </div> */}
+
                         <div className="input_password">
                           <label className="label">Password</label>
                           <input

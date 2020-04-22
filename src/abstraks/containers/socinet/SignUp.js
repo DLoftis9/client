@@ -75,7 +75,6 @@ export default class SignUp extends Component {
         if (errors) {
           this.setState({ errors });
         } else {
-
           this.props.history.push('/');
         }
       })
@@ -119,7 +118,7 @@ export default class SignUp extends Component {
                     submitButtonText="Sign Up"
                     elements={() => (
                       <React.Fragment>
-                        <div className="input_name">
+                        <div className="input_email">
                           <label className="label">Email</label>
                           <input
                             className="input"
