@@ -6,7 +6,7 @@ import FormSubmit from '../../components/social/FormSubmit';
 import ErrorDisplay from '../../components/social/ErrorDisplay';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 
-export default class SignUp extends Component {
+export default class SignIn extends Component {
   state = {
     email: '',
     name: '',
@@ -21,7 +21,7 @@ export default class SignUp extends Component {
   };
 
   static defaultProps = {
-    containerName: 'user-sign-up',
+    containerName: 'user-sign-in',
   };
 
   change = event => {
@@ -46,12 +46,11 @@ export default class SignUp extends Component {
   // via a prop named context.
   submit = () => {
     const { context } = this.props;
-    const { email, name, password } = this.state;
+    const { email, password } = this.state;
 
     // Create user
     const user = {
       email,
-      name,
       password,
     };
 
@@ -131,7 +130,7 @@ export default class SignUp extends Component {
                             placeholder="Email"
                           />
                         </div>
-                        <div className="input_user-name">
+                        {/* <div className="input_user-name">
                           <label className="label">User Name</label>
                           <input
                             className="input"
@@ -142,7 +141,7 @@ export default class SignUp extends Component {
                             onChange={this.change}
                             placeholder="User Name"
                           />
-                        </div>
+                        </div> */}
                         <div className="input_password">
                           <label className="label">Password</label>
                           <input
@@ -167,7 +166,7 @@ export default class SignUp extends Component {
 
                   <p className="account-redirect">
                     Already have a user account?{' '}
-                    <Link className="anchor account-redirect_link" to="/signup">
+                    <Link className="anchor account-redirect_link" to="/signin">
                       Click here
                     </Link>{' '}
                     to sign in!

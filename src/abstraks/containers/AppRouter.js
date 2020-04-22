@@ -9,6 +9,7 @@ import TermsOfUse from './TermsOfUse';
 
 // Socinet Containers
 import SignUp from './socinet/SignUp';
+import SignIn from './socinet/SignIn';
 
 // Social Containers
 import Public from './social/Public';
@@ -206,6 +207,7 @@ const TestWithContext = withContext(Test);
 
 // socinet containers and components
 const SignUpWithContext = withContext(SignUp);
+const SignInWithContext = withContext(SignIn);
 
 // This subscribes the UserSignOut component to context changes, that
 // way it'll be able to reference the signOut action (which calls the
@@ -260,6 +262,8 @@ const RouterContent = () => (
 
       {/* Socionet Routes */}
       <Route path="/signup" component={SignUpWithContext} />
+      <Route path="/signin" component={SignInWithContext} />
+      
 
       <Route path="/Publication/issue26p1" component={Issue26p1} />
       <Route path="/Publication/issue26p2" component={Issue26p2} />
