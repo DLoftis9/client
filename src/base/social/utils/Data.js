@@ -27,28 +27,6 @@ export default class Data {
       options.body = JSON.stringify(body);
     }
 
-    // When making a request to a protected route on the server,
-    // authentication is required (the requiresAuth is true). In that
-    // case, encode the user credentials and set the HTTP Authorization
-    // request header to the Basic Authentication type, followed by the
-    // encoded user credentials
-    if (requiresAuth) {
-      // In the Basic auth scheme, a server requests authentication
-      // information (a user ID and password) from a client. The client
-      // passes the authentication information to the server in an
-      // Authorization header using base-64 encoding.
-
-      // The btoa() method creates a base-64 encoded ASCII string from a
-      // "string" of data. btoa() is used to encode the username and
-      // password credentials passed to the api() method. The credentials
-      // will be passed as an object containing username and password properties.
-      const encodedCredentials = btoa(`${credentials.username}:${credentials.password}`);
-
-      // Set an Authorization header on each request that requires authentication
-      // by adding an Authorization property to the headers object.
-      options.headers['Authorization'] = `Basic ${encodedCredentials}`;
-    }
-
     // fetch() accepts an optional second parameter: a configuration object
     // that controls a number of different settings you can apply to the request.
 
@@ -58,37 +36,10 @@ export default class Data {
     return fetch(url, options);
   }
 
-  // The getUser() and createUser() methods perform the async operations that
-  // create and get an authenticated user of the social app, using the api() method.
-
-  // getUser() makes a GET request to the /users endpoint, and returns a JSON
-  // object containing user credentials. And createUser() makes a POST request,
-  // sending new user data to the /users endpoint.
-
-  // get user's login data
-  async getUser(username, password) {
-    const response = await this.api(`/users`, 'GET', null, true, { username, password });
-    if (response.status === 200) {
-      return response.json().then(data => data);
-    } else if (response.status === 401) {
-      return null;
-    } else {
-      throw new Error();
-    }
-  }
-
-  // create new user
-  async createUser(user) {
-    const response = await this.api('/users', 'POST', user);
-    console.log(response);
-    if (response.status === 201) {
-      return [];
-    } else if (response.status === 400) {
-      return response.json().then(data => {
-        return data.errors;
-      });
-    } else {
-      throw new Error();
+  authenticate(jwt, next) {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('jwt', JSON.stringify(jwt));
+      // next();
     }
   }
 
@@ -110,9 +61,16 @@ export default class Data {
   // sign-in user
   async signInUser(user) {
     const response = await this.api('/signin', 'POST', user);
-    console.log(response);
-    if (response.status === 201) {
-      return [];
+    console.log('response from signInUser() in data.js: ', response);
+
+    if (response.status === 200) {
+      return response.json().then(data => {
+        console.log('response from 200 signInUser() in data.js: ', data.token);
+        this.authenticate(data.token, () => {
+          console.log('response from authenticate(): ', data.token);
+        })
+        
+      });
     } else if (response.status === 400 || response.status === 401) {
       return response.json().then(data => {
         return data.error;

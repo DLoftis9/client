@@ -11,6 +11,7 @@ export default class SignIn extends Component {
     email: '',
     password: '',
     errors: [],
+    redirectToReferer: false,
   };
 
   static propTypes = {
@@ -36,35 +37,45 @@ export default class SignIn extends Component {
     this.setState({ errors: '' });
   };
 
+  authenticate(jwt, next) {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('jwt', JSON.stringify(jwt));
+      next();
+    }
+  }
+
   submit = () => {
     const { context } = this.props;
-    const { from } = this.props.location.state || { from: { pathname: '/profile' } };
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
     const { email, password } = this.state;
+    const user = {
+      email,
+      password,
+    };
 
     // signIn() is an asynchronous operation that calls the getUser API
     // method (written in Data.js) and returns a promise. The resolved
     // value of the promise is either an object holding the authenticated
     // user's name and username values (sent from the API if the response
     // is 201), or null (if the response is a 401 Unauthorized HTTP status code).
-    context.actions
-      .signIn(email, password, console.log('user logged-in'))
-      .then(user => {
-        if (user === null) {
-          // If the returned promise value is null, set the errors state of the
-          // UserSignIn class to an array which holds the string 'Sign-in was
-          // unsuccessful' (this will be the validation message displayed to the user).
-          this.setState(() => {
-            return { errors: ['Sign-in was unsuccessful'] };
-          });
+
+    context.data
+      .signInUser(user)
+      .then(errors => {
+        if (errors) {
+          this.setState({ errors });
         } else {
+          this.authenticate(context.data, () => {
+            this.setState({ redirectToReferer: true });
+          });
+
           this.props.history.push(from);
+          console.log('logged from submit in SignIn: ', 'user logged-in');
+          console.log('logging user: ', 'user logged-in');
         }
       })
       .catch(err => {
         console.log(err);
-        // In the event of an error, use history and the push() method to navigate
-        // the user from /signin to /error, providing a user-friendly way to let them
-        // know that something went wrong
 
         this.props.history.push('/error');
       });

@@ -33,6 +33,7 @@ export class Provider extends Component {
     // using Cookies.getJSON(), which takes the cookie name ('authenticatedUser')
     // as a parameter
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
+    userStorage: null,
     isToggleOn: true, // ref LikeWidget
     inputList: [
       {
@@ -88,6 +89,8 @@ export class Provider extends Component {
     return <Context.Provider value={value}>{this.props.children}</Context.Provider>;
   }
 
+  
+
   // EditTextInputSingle component logic
   handleSaveSubject = async email => {
     const userEmail = await this.data.editUserEmail(email);
@@ -130,15 +133,15 @@ export class Provider extends Component {
   // getUser() method in Data.js, which makes a GET request to the protected
   // /users route on the server and returns the user data.
   signIn = async (email, password) => {
-    const user = await this.data.getUser(email, password);
+    const user = await this.data.signInUser(email, password);
     if (user !== null) {
       this.setState(() => {
         return {
-          authenticatedUser: user,
+          userStorage: user,
         };
       });
     }
-    return user;
+    return user && console.log(user);
   };
 
   // This removes the name and username properties from state – the user is no longer

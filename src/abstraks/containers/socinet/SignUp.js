@@ -67,7 +67,7 @@ export default class SignUp extends Component {
     // (sent from the API if the response is 400), or an empty array
     // (if the response is 201).
     context.data
-      .signUpUser(user, console.log('user created'))
+      .signUpUser(user)
       .then(errors => {
         // check if the returned PromiseValue is an array of errors.
         // If it is, we will set the errors state of the UserSignUp
@@ -76,6 +76,7 @@ export default class SignUp extends Component {
           this.setState({ errors });
         } else {
           this.props.history.push('/');
+          console.log('user created');
         }
       })
       .catch(err => {
