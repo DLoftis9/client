@@ -92,6 +92,7 @@ export default class Data {
     }
   }
 
+  // create new user
   async signUpUser(user) {
     const response = await this.api('/signup', 'POST', user);
     console.log(response);
