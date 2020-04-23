@@ -6,7 +6,6 @@ import Avatar from './Avatar';
 
 const propTypes = {
   componentName: PropTypes.string,
-  authUserName: PropTypes.string.isRequired,
   userName: PropTypes.string,
 };
 
@@ -17,7 +16,7 @@ const defaultProps = {
 const HeaderContent = props => (
   <div className={props.componentName}>
     <ul className="menu">
-      <Avatar userName={props.authUserName} />
+      <Avatar userName="Autehnticated User's Name" />
       <li className="listItem edit-profile_listItem">
         <Link className="anchor edit-profile_anchor" to="/profile">
           Profile

@@ -17,8 +17,6 @@ import NotFound from './social/NotFound';
 import Test from './social/Test';
 
 // import UserSignUp from './social/UserSignUp';
-import UserSignIn from './social/UserSignIn';
-import Authenticated from './social/Authenticated';
 import CreatePost from './social/CreatePost';
 import Tools from './social/Tools';
 import EditPost from './social/EditPost';
@@ -189,9 +187,7 @@ import Issue29p24 from '../components/publication-pages/Issue29p24';
 // actions are shared throughout the component tree
 const HeaderWithContext = withContext(HeaderSocial);
 const MobileFooterWithContext = withContext(MobileFooter);
-const AuthWithContext = withContext(Authenticated);
-// const UserSignUpWithContext = withContext(UserSignUp);
-const UserSignInWithContext = withContext(UserSignIn);
+
 const CreatePostWithContext = withContext(CreatePost);
 const ToolsWithContext = withContext(Tools);
 const EditPostWithContext = withContext(EditPost);
@@ -242,10 +238,7 @@ const RouterContent = () => (
       <PrivateRoute> will work similar to how <Route> works. It will render 
       the private component passed to its component prop when the URL matches 
       the specified path.*/}
-      <PrivateRoute path="/authenticated" component={AuthWithContext} />
-      <Route exact path="/public" component={Public} />
-      {/* <Route path="/signin" component={UserSignInWithContext} /> */}
-      {/* <Route path="/signup" component={UserSignUpWithContext} /> */}
+
       <Route path="/signout" component={UserSignOutWithContext} />
       <Route path="/createpost" component={CreatePostWithContext} />
       <Route path="/tools" component={ToolsWithContext} />

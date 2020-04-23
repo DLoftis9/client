@@ -12,6 +12,7 @@ export default class SignUp extends Component {
     name: '',
     password: '',
     errors: [],
+    open: false,
   };
 
   static propTypes = {
@@ -103,7 +104,7 @@ export default class SignUp extends Component {
 
   render() {
     const { containerName } = this.props;
-    const { email, name, password, errors } = this.state;
+    const { email, name, password, errors, open } = this.state;
 
     return (
       <>
@@ -165,9 +166,17 @@ export default class SignUp extends Component {
                     </ul>
                   </div>
 
-                  <p className="account-redirect">
+                  <div className="success" style={{ display: open ? '' : 'none' }}>
+                    You have successfully created an account!{' '}
+                    <Link className="anchor account-redirect_link" to="/signin">
+                      Click here
+                    </Link>{' '}
+                    to sign in!
+                  </div>
+
+                  <p className="account-redirect" style={{ display: open ? 'none' : '' }}>
                     Already have a user account?{' '}
-                    <Link className="anchor account-redirect_link" to="/signup">
+                    <Link className="anchor account-redirect_link" to="/signin">
                       Click here
                     </Link>{' '}
                     to sign in!

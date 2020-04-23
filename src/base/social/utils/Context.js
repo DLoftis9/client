@@ -89,8 +89,6 @@ export class Provider extends Component {
     return <Context.Provider value={value}>{this.props.children}</Context.Provider>;
   }
 
-  
-
   // EditTextInputSingle component logic
   handleSaveSubject = async email => {
     const userEmail = await this.data.editUserEmail(email);

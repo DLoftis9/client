@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import FormSubmit from '../../components/social/FormSubmit';
 import ErrorDisplay from '../../components/social/ErrorDisplay';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
+import Loader from '../../../base/scripts/Loader';
 
 export default class SignIn extends Component {
   state = {
     email: '',
     password: '',
-    errors: [],
+    error: '',
     redirectToReferer: false,
+    loading: false,
   };
 
   static propTypes = {
@@ -34,7 +35,7 @@ export default class SignIn extends Component {
       };
     });
 
-    this.setState({ errors: '' });
+    this.setState({ error: '' });
   };
 
   authenticate(jwt, next) {
@@ -44,46 +45,53 @@ export default class SignIn extends Component {
     }
   }
 
-  submit = () => {
-    const { context } = this.props;
-    const { from } = this.props.location.state || { from: { pathname: '/' } };
+  signin = user => {
+    return fetch('http://localhost:5000/api/signin', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+
+      body: JSON.stringify(user),
+    })
+      .then(response => {
+        return response.json();
+      })
+      .catch(err => console.log(err));
+  };
+
+  submit = event => {
+    event.preventDefault();
+
+    this.setState({ loading: true });
     const { email, password } = this.state;
     const user = {
       email,
       password,
     };
 
-    // signIn() is an asynchronous operation that calls the getUser API
-    // method (written in Data.js) and returns a promise. The resolved
-    // value of the promise is either an object holding the authenticated
-    // user's name and username values (sent from the API if the response
-    // is 201), or null (if the response is a 401 Unauthorized HTTP status code).
+    console.log(user);
 
-    context.data
-      .signInUser(user)
-      .then(errors => {
-        if (errors) {
-          this.setState({ errors });
-        } else {
-          this.authenticate(context.data, () => {
-            this.setState({ redirectToReferer: true });
-          });
-
-          this.props.history.push(from);
-          console.log('logged from submit in SignIn: ', 'user logged-in');
-          console.log('logging user: ', 'user logged-in');
-        }
-      })
-      .catch(err => {
-        console.log(err);
-
-        this.props.history.push('/error');
-      });
+    this.signin(user).then(data => {
+      if (data.error) {
+        this.setState({ error: data.error, loading: false });
+      } else {
+        // authenticate
+        this.authenticate(data, () => {
+          // redirect
+          this.setState({ redirectToReferer: true });
+        });
+      }
+    });
   };
 
   render() {
     const { containerName } = this.props;
-    const { email, password, errors } = this.state;
+    const { email, password, error, redirectToReferer, loading } = this.state;
+    if (redirectToReferer) {
+      return <Redirect to="/profile" />;
+    }
 
     return (
       <>
@@ -94,53 +102,58 @@ export default class SignIn extends Component {
               <div className={containerName + `_row row`}>
                 <div className={containerName + `_content`}>
                   <h1 className="header-one">Sign In</h1>
-                  <FormSubmit
-                    submit={this.submit}
-                    submitButtonText="Sign In"
-                    elements={() => (
-                      <React.Fragment>
-                        <div className="input_email">
-                          <label className="label">Email</label>
-                          <input
-                            className="input"
-                            id="email"
-                            name="email"
-                            type="email"
-                            value={email}
-                            onChange={this.change}
-                            placeholder="Email"
-                          />
-                        </div>
 
-                        <div className="input_password">
-                          <label className="label">Password</label>
-                          <input
-                            className="input"
-                            id="password"
-                            name="password"
-                            type="password"
-                            value={password}
-                            onChange={this.change}
-                            placeholder="Password"
-                          />
-                        </div>
-                      </React.Fragment>
-                    )}
-                  />
+                  <form className="form">
+                    <div className="input_email">
+                      <label className="label">Email</label>
+                      <input
+                        className="input"
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={email}
+                        onChange={this.change}
+                        placeholder="Email"
+                      />
+                    </div>
 
-                  <div className="error form-error" style={{ display: errors ? '' : 'none' }}>
+                    <div className="input_password">
+                      <label className="label">Password</label>
+                      <input
+                        className="input"
+                        id="password"
+                        name="password"
+                        type="password"
+                        value={password}
+                        onChange={this.change}
+                        placeholder="Password"
+                      />
+                    </div>
+
+                    <button
+                      onClick={this.submit}
+                      className="button button-primary submit"
+                      type="submit"
+                    >
+                      Sign In
+                    </button>
+                  </form>
+
+                  <p className="account-redirect">
+                    Don't have a user account?{' '}
+                    <Link className="anchor account-redirect_link" to="/signup">
+                      Click here
+                    </Link>{' '}
+                    to sign up!
+                  </p>
+
+                  <div className="error form-error" style={{ display: error ? '' : 'none' }}>
                     <ul className="unordered-list">
-                      <ErrorDisplay errors={errors} />
+                      <ErrorDisplay errors={error} />
                     </ul>
                   </div>
 
-                  <p className="account-redirect">
-                    Already have a user account?{' '}
-                    <Link className="anchor account-redirect_link" to="/signin">
-                      Click here
-                    </Link>{' '}
-                    to sign in!
-                  </p>
+                  {loading ? <Loader /> : ''}
                 </div>
               </div>
             </div>
