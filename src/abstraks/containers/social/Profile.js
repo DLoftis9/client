@@ -39,19 +39,21 @@ export default class Profile extends React.PureComponent {
       <>
         <MenuSlideIn
           extraClassName={containerName}
-          bodyContent={<HeaderContent 
-            // authUserName={authUser.username} 
-            />}
+          bodyContent={
+            <HeaderContent
+            // authUserName={authUser.username}
+            />
+          }
         />
         <div className={containerName}>
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
-              <h1 className='header-one'>
+              <h1 className="header-one">
                 {/* {authUser.username} */}
                 User's Profile
-                </h1>
-              <Avatar 
-              // userName={authUser.username} 
+              </h1>
+              <Avatar
+              // userName={authUser.username}
               />
               {/* <p>{emailUser.email}</p> */}
 

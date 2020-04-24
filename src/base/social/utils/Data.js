@@ -53,7 +53,7 @@ export default class Data {
       return response.json().then(data => {
         return data.error;
       });
-    } 
+    }
   }
 
   // sign-in user
@@ -66,8 +66,7 @@ export default class Data {
         console.log('response from 200 signInUser() in data.js: ', data.token);
         this.authenticate(data.token, () => {
           console.log('response from authenticate(): ', data.token);
-        })
-        
+        });
       });
     } else if (response.status === 400 || response.status === 401) {
       return response.json().then(data => {
