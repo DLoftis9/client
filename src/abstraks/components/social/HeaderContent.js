@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { signout, isAuthenticated } from '../../../base/social/utils/auth';
 
 import Avatar from './Avatar';
 
 const propTypes = {
   componentName: PropTypes.string,
-  authUserName: PropTypes.string.isRequired,
   userName: PropTypes.string,
 };
 
@@ -17,9 +17,9 @@ const defaultProps = {
 const HeaderContent = props => (
   <div className={props.componentName}>
     <ul className="menu">
-      <Avatar userName={props.authUserName} />
+      <Avatar userName={isAuthenticated().user.name} />
       <li className="listItem edit-profile_listItem">
-        <Link className="anchor edit-profile_anchor" to="/profile">
+        <Link className="anchor edit-profile_anchor" to={`/user/${isAuthenticated().user._id}`}>
           Profile
         </Link>
       </li>
