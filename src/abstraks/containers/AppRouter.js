@@ -35,7 +35,6 @@ import UserSignOut from '../components/social/UserSignOut';
 
 // Social Base
 import withContext from '../../base/social/utils/Context';
-import PrivateRoute from '../../base/social/components/PrivateRoute';
 
 // issue 26 pages
 import Issue26p1 from '../components/publication-pages/Issue26p1';
@@ -228,15 +227,7 @@ const RouterContent = () => (
       {/* When React renders a component that subscribes to context, 
       it will read the context value passed to it from its Provider. */}
 
-      {/* The PrivateRoute component will serve as a high-order component 
-      for any routes that you want to protect and make accessible to 
-      authenticated users only. The component will either allow the user 
-      to continue to the specified private component, or redirect them to 
-      the sign in page if they are not logged in. 
-      
-      <PrivateRoute> will work similar to how <Route> works. It will render 
-      the private component passed to its component prop when the URL matches 
-      the specified path.*/}
+      <Route path="/user/:userId" component={ProfileWithContext} />
 
       <Route path="/signout" component={UserSignOutWithContext} />
       <Route path="/createpost" component={CreatePostWithContext} />
@@ -245,7 +236,6 @@ const RouterContent = () => (
       <Route path="/editprofile" component={EditProfileWithContext} />
       <Route path="/following" component={FollowingWithContext} />
       <Route path="/postfeed" component={PostFeedWithContext} />
-      <Route path="/profile" component={ProfileWithContext} />
       <Route path="/settings" component={SettingsWithContext} />
       <Route path="/discover" component={DiscoverWithContext} />
       <Route path="/terms-of-use" component={TermsWithContext} />

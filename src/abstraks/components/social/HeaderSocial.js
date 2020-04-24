@@ -7,32 +7,6 @@ import Toggle from '../../../base/scripts/Toggle';
 import LogoWhite from '../LogoWhite';
 import LoggedOutLinks from './LoggedOutLinks';
 
-// export const signout = next => {
-//   if (typeof window !== 'undefined') localStorage.removeItem('jwt');
-//   next();
-
-//   return fetch('http://localhost:5000/api/signout', {
-//     method: 'GET',
-//   })
-//     .then(response => {
-//       console.log('signout', response);
-//       return response.json();
-//     })
-//     .catch(err => console.log(err));
-// };
-
-// export const isAuthenticated = () => {
-//   if (typeof window == 'undefined') {
-//     return false;
-//   }
-
-//   if (localStorage.getItem('jwt')) {
-//     return JSON.parse(localStorage.getItem('jwt'));
-//   } else {
-//     return false;
-//   }
-// };
-
 class HeaderSocial extends React.PureComponent {
   static propTypes = {
     componentName: PropTypes.string,
@@ -84,13 +58,15 @@ class HeaderSocial extends React.PureComponent {
                         <span className="triangle-top"></span>
                         <ul className="menu">
                           <li className="avatar-name">
-                            <h2 className="user-name">{isAuthenticated().user.name}</h2>
+                            <Link to={`/user/${isAuthenticated().user._id}`}>
+                              <h2 className="user-name">{isAuthenticated().user.name}</h2>
+                            </Link>
                           </li>
                           <li className="listItem edit-profile_listItem">
                             <Link
                               className="anchor edit-profile_anchor"
                               style={isActive(history, '/profile')}
-                              to="/profile"
+                              to={`/user/${isAuthenticated().user._id}`}
                             >
                               Profile
                             </Link>

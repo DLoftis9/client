@@ -1,4 +1,5 @@
 export const signin = user => {
+  // `${process.env.REACT_APP_API_URL}/signin`
   return fetch('http://localhost:5000/api/signin', {
     method: 'POST',
     headers: {
@@ -45,4 +46,19 @@ export const isAuthenticated = () => {
   } else {
     return false;
   }
+};
+
+export const read = (userId, token) => {
+  return fetch(`http://localhost:5000/api/user/${userId}`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
 };
