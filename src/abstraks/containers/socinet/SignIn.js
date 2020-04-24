@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { signin, authenticate } from '../../../base/social/utils/auth';
 import ErrorDisplay from '../../components/social/ErrorDisplay';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import Loader from '../../../base/scripts/Loader';
@@ -38,28 +39,14 @@ export default class SignIn extends Component {
     this.setState({ error: '' });
   };
 
-  authenticate(jwt, next) {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('jwt', JSON.stringify(jwt));
-      next();
-    }
-  }
+  //   authenticate(jwt, next) {
+  //     if (typeof window !== 'undefined') {
+  //       localStorage.setItem('jwt', JSON.stringify(jwt));
+  //       next();
+  //     }
+  //   }
 
-  signin = user => {
-    return fetch('http://localhost:5000/api/signin', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-
-      body: JSON.stringify(user),
-    })
-      .then(response => {
-        return response.json();
-      })
-      .catch(err => console.log(err));
-  };
+  // signin()
 
   submit = event => {
     event.preventDefault();
@@ -73,12 +60,12 @@ export default class SignIn extends Component {
 
     console.log(user);
 
-    this.signin(user).then(data => {
+    signin(user).then(data => {
       if (data.error) {
         this.setState({ error: data.error, loading: false });
       } else {
         // authenticate
-        this.authenticate(data, () => {
+        authenticate(data, () => {
           // redirect
           this.setState({ redirectToReferer: true });
         });

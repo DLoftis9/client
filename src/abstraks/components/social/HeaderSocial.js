@@ -2,23 +2,36 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { signout, isAuthenticated } from '../../../base/social/utils/auth';
 import Toggle from '../../../base/scripts/Toggle';
 import LogoWhite from '../LogoWhite';
 import LoggedOutLinks from './LoggedOutLinks';
 
-export const signout = next => {
-  if (typeof window !== 'undefined') localStorage.removeItem('jwt');
-  next();
+// export const signout = next => {
+//   if (typeof window !== 'undefined') localStorage.removeItem('jwt');
+//   next();
 
-  return fetch('http://localhost:5000/api/signout', {
-    method: 'GET',
-  })
-    .then(response => {
-      console.log('signout', response);
-      return response.json();
-    })
-    .catch(err => console.log(err));
-};
+//   return fetch('http://localhost:5000/api/signout', {
+//     method: 'GET',
+//   })
+//     .then(response => {
+//       console.log('signout', response);
+//       return response.json();
+//     })
+//     .catch(err => console.log(err));
+// };
+
+// export const isAuthenticated = () => {
+//   if (typeof window == 'undefined') {
+//     return false;
+//   }
+
+//   if (localStorage.getItem('jwt')) {
+//     return JSON.parse(localStorage.getItem('jwt'));
+//   } else {
+//     return false;
+//   }
+// };
 
 class HeaderSocial extends React.PureComponent {
   static propTypes = {
@@ -47,7 +60,9 @@ class HeaderSocial extends React.PureComponent {
     // In the return statement we'll conditionally render the
     // header nav content based on the value of authUser
     // (the authenticatedUser state).
-    const authUser = context.authenticatedUser;
+
+    // const authUser = context.authenticatedUser;
+
     return (
       <div className={componentName}>
         <div className={componentName + `_container header__container header__menu`}>
@@ -55,7 +70,7 @@ class HeaderSocial extends React.PureComponent {
 
           <div className="navbar__container">
             <nav className={componentName + `-nav`}>
-              {authUser ? (
+              {isAuthenticated() ? (
                 <React.Fragment>
                   <div className="avatar">
                     <div className="avatar-image">
@@ -69,7 +84,7 @@ class HeaderSocial extends React.PureComponent {
                         <span className="triangle-top"></span>
                         <ul className="menu">
                           <li className="avatar-name">
-                            <h2 className="user-name">{'Authenticated User Name'}</h2>
+                            <h2 className="user-name">{isAuthenticated().user.name}</h2>
                           </li>
                           <li className="listItem edit-profile_listItem">
                             <Link
@@ -119,12 +134,12 @@ class HeaderSocial extends React.PureComponent {
                             </Link>
                           </li>
                           <li className="listItem log-out_listItem">
-                            <a
+                            <button
                               className="anchor log-out_anchor"
                               onClick={() => signout(() => history.push('/signin'))}
                             >
                               Sign Out
-                            </a>
+                            </button>
                           </li>
                         </ul>
                       </>
