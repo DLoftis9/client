@@ -12,7 +12,6 @@ import SignUp from './socinet/SignUp';
 import SignIn from './socinet/SignIn';
 
 // Social Containers
-import Public from './social/Public';
 import NotFound from './social/NotFound';
 import Test from './social/Test';
 

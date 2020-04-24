@@ -1,13 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Toggle from '../../../base/scripts/Toggle';
 import LogoWhite from '../LogoWhite';
 import LoggedOutLinks from './LoggedOutLinks';
 
-// implement dropdown menu https://codepen.io/taylorharwood/pen/EggrOO
-export default class HeaderSocial extends React.PureComponent {
+export const signout = next => {
+  if (typeof window !== 'undefined') localStorage.removeItem('jwt');
+  next();
+
+  return fetch('http://localhost:5000/api/signout', {
+    method: 'GET',
+  })
+    .then(response => {
+      console.log('signout', response);
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+class HeaderSocial extends React.PureComponent {
   static propTypes = {
     componentName: PropTypes.string,
     openContent: PropTypes.object,
@@ -23,7 +36,11 @@ export default class HeaderSocial extends React.PureComponent {
   };
 
   render() {
-    const { context, componentName } = this.props;
+    const { context, componentName, history } = this.props;
+    const isActive = (history, path) => {
+      if (history.location.pathname === path) return { color: '#ff9900' };
+      else return { color: '#ff0000' };
+    };
 
     // The value of authUser is either an object holding the
     // authenticated user's name and username values, or null.
@@ -39,10 +56,6 @@ export default class HeaderSocial extends React.PureComponent {
           <div className="navbar__container">
             <nav className={componentName + `-nav`}>
               {authUser ? (
-                // If authUser evaluates to a truthy value (there is an authenticated
-                // user in state), the Header class renders a <span> element containing
-                // a "Welcome" message that displays the user name. Render the user's
-                // name with {authUser.name}
                 <React.Fragment>
                   <div className="avatar">
                     <div className="avatar-image">
@@ -56,39 +69,62 @@ export default class HeaderSocial extends React.PureComponent {
                         <span className="triangle-top"></span>
                         <ul className="menu">
                           <li className="avatar-name">
-                            <h2 className="user-name">{authUser.username}</h2>
+                            <h2 className="user-name">{'Authenticated User Name'}</h2>
                           </li>
                           <li className="listItem edit-profile_listItem">
-                            <Link className="anchor edit-profile_anchor" to="/profile">
+                            <Link
+                              className="anchor edit-profile_anchor"
+                              style={isActive(history, '/profile')}
+                              to="/profile"
+                            >
                               Profile
                             </Link>
                           </li>
                           <li className="listItem discover_listItem">
-                            <Link className="anchor discover_anchor" to="/discover">
+                            <Link
+                              className="anchor discover_anchor"
+                              style={isActive(history, '/discover')}
+                              to="/discover"
+                            >
                               Discover
                             </Link>
                           </li>
 
                           <li className="listItem settings_listItem">
-                            <Link className="anchor settings_anchor" to="/settings">
+                            <Link
+                              className="anchor settings_anchor"
+                              style={isActive(history, '/settings')}
+                              to="/settings"
+                            >
                               Settings
                             </Link>
                           </li>
 
                           <li className="listItem privacy-policy_listItem">
-                            <Link className="anchor privacy-policy_anchor" to="/privacy-policy">
+                            <Link
+                              className="anchor privacy-policy_anchor"
+                              style={isActive(history, '/privacy-policy')}
+                              to="/privacy-policy"
+                            >
                               Privacy Policy
                             </Link>
                           </li>
                           <li className="listItem terms-of-use_listItem">
-                            <Link className="anchor terms-of-use_anchor" to="/terms-of-use">
+                            <Link
+                              className="anchor terms-of-use_anchor"
+                              style={isActive(history, '/terms-of-use')}
+                              to="/terms-of-use"
+                            >
                               Terms Of Use
                             </Link>
                           </li>
                           <li className="listItem log-out_listItem">
-                            <Link className="anchor log-out_anchor" to="/signout">
+                            <a
+                              className="anchor log-out_anchor"
+                              onClick={() => signout(() => history.push('/signin'))}
+                            >
                               Sign Out
-                            </Link>
+                            </a>
                           </li>
                         </ul>
                       </>
@@ -108,3 +144,5 @@ export default class HeaderSocial extends React.PureComponent {
     );
   }
 }
+
+export default withRouter(HeaderSocial);

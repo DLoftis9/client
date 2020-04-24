@@ -1,6 +1,6 @@
 import React from 'react';
 import AppRouter from './containers/AppRouter';
-import { Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 import ScrollToTop from '../base/scripts/ScrollToTop';

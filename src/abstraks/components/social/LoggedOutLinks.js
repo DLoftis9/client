@@ -10,7 +10,7 @@ const defaultProps = {
   componentName: 'logged-out_links',
 };
 
-const LoggedOutLinks = props => (
+const LoggedOutLinks = (props, { history }) => (
   <div className={props.componentName}>
     <Link className="anchor signup" to="/signup">
       Sign Up
