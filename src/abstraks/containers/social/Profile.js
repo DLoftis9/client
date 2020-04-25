@@ -1,47 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Tabs from '../../../base/scripts/Tabs';
-import PostResponse from '../../components/social/PostResponse';
-import FollowLayout from '../../components/social/FollowLayout';
+import { isAuthenticated, read } from '../../../base/social/utils/auth';
+
 import Avatar from '../../components/social/Avatar';
-import EditTextInputGroup from '../../../base/scripts/EditTextInputGroup';
-import SubjectInputAdds from '../../../base/scripts/SubjectInputAdds';
-import EditTextInputSingle from '../../../base/scripts/EditTextInputSingle';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
+import { Redirect, Link } from 'react-router-dom';
 
-const DATA = [
-  // This constant is necessary to create editable text inputs
-  // Type must ALWAYS be set to 'INPUT' for the elements to appear
-  {
-    type: 'INPUT',
-    text: 'San Diego, CA',
-    labelName: 'Location',
-    labelNameEditing: 'Editing Location',
-  },
-  {
-    type: 'INPUT',
-    text: 'email@test.com',
-    labelName: 'Email',
-    labelNameEditing: 'Editing Email',
-  },
-  {
-    type: 'INPUT',
-    text: 'www.test.com',
-    labelName: 'Website',
-    labelNameEditing: 'Editing Website',
-  },
-];
 export default class Profile extends React.PureComponent {
-  state = {
-    setInputs: DATA,
+  constructor() {
+    super();
+    this.state = {
+      user: '',
+      redirectToSignin: false,
+    };
+  }
+
+  init = userId => {
+    const token = isAuthenticated().token;
+
+    read(userId, token).then(data => {
+      if (data.error) {
+        this.setState({ redirectToSignin: true });
+      } else {
+        this.setState({ user: data });
+      }
+    });
   };
 
-  toggleLikeClick = () => {
-    const { context } = this.props;
-    context.actions.handleLikeClick();
-  };
+  componentDidMount() {
+    console.log('user id from route params: ', this.props.match.params.userId);
+
+    const userId = this.props.match.params.userId;
+
+    this.init(userId);
+  }
 
   static propTypes = {
     containerName: PropTypes.string,
@@ -50,8 +44,6 @@ export default class Profile extends React.PureComponent {
     instructions: PropTypes.string,
     title: PropTypes.string,
     extraClassName: PropTypes.string,
-    toggleLike: PropTypes.bool,
-    likeMethod: PropTypes.func,
   };
 
   static defaultProps = {
@@ -61,41 +53,39 @@ export default class Profile extends React.PureComponent {
   };
 
   render() {
-    const { context, containerName, instructions, title } = this.props;
-    const authUser = context.authenticatedUser;
-    const isToggleOn = context.isToggleOn;
+    const { containerName } = this.props;
+    const { redirectToSignin, user } = this.state;
+    if (redirectToSignin) {
+      return <Redirect to="/signin" />;
+    }
+
     return (
       <>
         <MenuSlideIn
           extraClassName={containerName}
-          bodyContent={<HeaderContent authUserName={authUser.name} />}
+          bodyContent={<HeaderContent authUserName={isAuthenticated().user.name} />}
         />
         <div className={containerName}>
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
-              <h1>{authUser.name}'s Profile</h1>
-              <Avatar userName={authUser.name} />
+              <div className="user-info">
+                <h1 className="header-one">{isAuthenticated().user.name}'s Profile</h1>
+                <Avatar userName={isAuthenticated().user.name} />
+                <p>Email: {isAuthenticated().user.email}</p>
+                <p>{`Joined ${new Date(user.created).toDateString()}`}</p>
+              </div>
 
-              {/*  */}
-              <EditTextInputGroup title="Bio" />
-              <EditTextInputSingle setInputs={DATA} />
-              <SubjectInputAdds instructions={instructions} title={title} />
-              {/*  */}
-              <Tabs>
-                <div className="posts" label="Posts">
-                  <PostResponse toggleLike={isToggleOn} likeMethod={this.toggleLikeClick} />
-                </div>
-                <div className="following" label="Following">
-                  <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
-                  <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
-                  <FollowLayout buttonText="UnFollow" buttonClassName="button unfollow_button" />
-                </div>
-                <div className="followers" label="Followers">
-                  <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
-                  <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
-                  <FollowLayout buttonText="Follow" buttonClassName="button follow_button" />
-                </div>
-              </Tabs>
+              <div className="user-manage">
+                {isAuthenticated().user && isAuthenticated().user._id == user._id && (
+                  <>
+                    <button>
+                      <Link to={`/user/edit/${user._id}`}>Edit Profile</Link>
+                    </button>
+
+                    <button>delete</button>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>

@@ -35,7 +35,6 @@ export default class UserSignIn extends Component {
                 <div className={containerName + `_content`}>
                   <h1 className="header-one">Sign In</h1>
                   <Form
-                    cancel={this.cancel}
                     errors={errors}
                     submit={this.submit}
                     submitButtonText="Sign In"
@@ -138,9 +137,5 @@ export default class UserSignIn extends Component {
         // know that something went wrong
         this.props.history.push('/error');
       });
-  };
-
-  cancel = () => {
-    this.props.history.push('/');
   };
 }

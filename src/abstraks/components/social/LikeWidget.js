@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   componentName: PropTypes.string,
-  likeMethod: PropTypes.bool.isRequired,
-  toggleLike: PropTypes.func.isRequired,
+  likeMethod: PropTypes.func,
+  toggleLike: PropTypes.bool,
 };
 
 const defaultProps = {

@@ -21,17 +21,43 @@ const Context = React.createContext();
 // that returns a Provider component which provides the application state and
 // any actions or event handlers that need to be shared between components,
 // via a required value prop.
+
 export class Provider extends Component {
   // If authenticatedUser is null (there is no authenticated user), for SocialHeader
   // display the default header. Otherwise, display the user name in
   // the header in a "Welcome" message alongside a "Sign Out" link.
+
   state = {
     // Set the initial state of the Provider class to the value stored in the
     // 'authenticatedUser' cookie or null. Retrieve the value of the cookie
     // using Cookies.getJSON(), which takes the cookie name ('authenticatedUser')
     // as a parameter
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
-    isToggleOn: true,
+    userStorage: null,
+    isToggleOn: true, // ref LikeWidget
+    inputList: [
+      {
+        type: 'INPUT',
+        text: '',
+        labelName: 'Location',
+        labelNameEditing: 'Editing Location',
+      },
+      {
+        type: 'INPUT',
+        text: 'email@test.com',
+        labelName: 'Email',
+        labelNameEditing: 'Editing Email',
+      },
+      {
+        type: 'INPUT',
+        text: 'www.test.com',
+        labelName: 'Website',
+        labelNameEditing: 'Editing Website',
+      },
+    ], // ref EditTextInputSingle
+    editing: false, // ref EditTextInputSingleSubject
+    text: '', // ref EditTextInputSingleSubject
+    showError: false, // ref EditTextInputSingleSubject
   };
 
   constructor() {
@@ -40,12 +66,18 @@ export class Provider extends Component {
   }
 
   render() {
-    const { authenticatedUser, isToggleOn } = this.state;
+    const { authenticatedUser, isToggleOn, inputList, editing, text, showError } = this.state;
+
     const value = {
       authenticatedUser,
       isToggleOn,
+      inputList,
+      editing,
+      text,
+      showError,
       data: this.data,
       actions: {
+        updateEmail: this.updateEmail,
         signIn: this.signIn,
         signOut: this.signOut,
         handleLikeClick: this.handleLikeClick,
@@ -56,6 +88,35 @@ export class Provider extends Component {
     // throughout the component tree.
     return <Context.Provider value={value}>{this.props.children}</Context.Provider>;
   }
+
+  // EditTextInputSingle component logic
+  handleSaveSubject = async email => {
+    const userEmail = await this.data.editUserEmail(email);
+    const { text } = this.state;
+
+    if (text !== '') {
+      this.setState(() => {
+        return {
+          editing: false,
+          text,
+        };
+      });
+    } else {
+      this.setState({ showError: true });
+    }
+  };
+
+  handleUpdateText = e => {
+    e.preventDefault();
+    const { value } = e.target;
+    this.setState(() => {
+      return { text: value };
+    });
+    this.setState(() => {
+      return { showError: false };
+    });
+  };
+  // EditTextInputSingle component logic end
 
   handleLikeClick = () => {
     this.setState(prevState => {
@@ -69,35 +130,16 @@ export class Provider extends Component {
   // and password as arguments. signIn uses those credentials to call the
   // getUser() method in Data.js, which makes a GET request to the protected
   // /users route on the server and returns the user data.
-  signIn = async (username, password) => {
-    const user = await this.data.getUser(username, password);
+  signIn = async (email, password) => {
+    const user = await this.data.signInUser(email, password);
     if (user !== null) {
       this.setState(() => {
         return {
-          authenticatedUser: user,
+          userStorage: user,
         };
       });
-
-      // A cookie is a file managed by the web browser that can save
-      // information from a website.
-
-      // A cookie that stores the authenticated user data (user and username).
-      // first argument passed to Cookies.set() specifies the name of the cookie to set.
-      // The second argument specifies the value to store in the cookie.
-
-      // The method Cookies.getJSON(), which reads a cookie and parses its
-      // stringified value to JSON (according to JSON.parse).
-      // When the app loads (or reloads), the authenticatedUser state will either be
-      // the user object stored in the cookie or null. If there is a user in state
-      // (a cookie exists), the authenticatedUser data persists, which means that the
-      // PrivateRoute and Header components continue to render the user data and
-      // Authenticated component. If the value in state is null (which is also set
-      // on sign out), the user will not be able to access the private routes and
-      // data until they sign in.
-
-      Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 5 });
     }
-    return user;
+    return user && console.log(user);
   };
 
   // This removes the name and username properties from state – the user is no longer

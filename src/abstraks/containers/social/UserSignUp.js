@@ -7,8 +7,8 @@ import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 
 export default class UserSignUp extends Component {
   state = {
+    email: '',
     name: '',
-    username: '',
     password: '',
     errors: [],
   };
@@ -25,7 +25,7 @@ export default class UserSignUp extends Component {
 
   render() {
     const { containerName } = this.props;
-    const { name, username, password, errors } = this.state;
+    const { email, name, password, errors } = this.state;
 
     return (
       <>
@@ -37,32 +37,31 @@ export default class UserSignUp extends Component {
                 <div className={containerName + `_content`}>
                   <h1 className="header-one">Sign Up</h1>
                   <Form
-                    cancel={this.cancel}
                     errors={errors}
                     submit={this.submit}
                     submitButtonText="Sign Up"
                     elements={() => (
                       <React.Fragment>
                         <div className="input_name">
-                          <label className="label">Name</label>
+                          <label className="label">Email</label>
                           <input
                             className="input"
-                            id="name"
-                            name="name"
-                            type="text"
-                            value={name}
+                            id="email"
+                            name="email"
+                            type="email"
+                            value={email}
                             onChange={this.change}
-                            placeholder="Name"
+                            placeholder="Email"
                           />
                         </div>
                         <div className="input_user-name">
                           <label className="label">User Name</label>
                           <input
                             className="input"
-                            id="username"
-                            name="username"
+                            id="name"
+                            name="name"
                             type="text"
-                            value={username}
+                            value={name}
                             onChange={this.change}
                             placeholder="User Name"
                           />
@@ -118,12 +117,12 @@ export default class UserSignUp extends Component {
   // via a prop named context.
   submit = () => {
     const { context } = this.props;
-    const { name, username, password } = this.state;
+    const { email, name, password } = this.state;
 
     // Create user
     const user = {
+      email,
       name,
-      username,
       password,
     };
 
@@ -150,7 +149,7 @@ export default class UserSignUp extends Component {
           // If the response returns no errors (or an empty array)
           // it means that a new user was successfully created and
           // sent to the server.
-          context.actions.signIn(username, password).then(() => {
+          context.actions.signIn(name, password).then(() => {
             // Once the promise is fulfilled (the user was authenticated),
             // we'll navigate the user to the /authenticated URL path.
             this.props.history.push('/profile');
@@ -176,9 +175,5 @@ export default class UserSignUp extends Component {
         // written in components/NotFound.js.
         this.props.history.push('/error');
       });
-  };
-
-  cancel = () => {
-    this.props.history.push('/');
   };
 }
