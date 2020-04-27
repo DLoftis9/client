@@ -29,7 +29,7 @@ export default class Discover extends React.PureComponent {
       <>
         <MenuSlideIn
           extraClassName={containerName}
-          bodyContent={<HeaderContent authUserName={authUser.username} />}
+          bodyContent={<HeaderContent authUserName="user name" />}
         />
         <div className={containerName}>
           <div className={containerName + `_container container`}>

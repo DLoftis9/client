@@ -15,7 +15,6 @@ import SignIn from './socinet/SignIn';
 import NotFound from './social/NotFound';
 import Test from './social/Test';
 
-// import UserSignUp from './social/UserSignUp';
 import CreatePost from './social/CreatePost';
 import Tools from './social/Tools';
 import EditPost from './social/EditPost';
@@ -27,6 +26,7 @@ import Settings from './social/Settings';
 import Discover from './social/Discover';
 import Terms from './social/Terms';
 import PrivacyPolicy from './social/PrivacyPolicy';
+import Users from './social/Users';
 
 // Social Components
 import HeaderSocial from '../components/social/HeaderSocial';
@@ -197,6 +197,7 @@ const SettingsWithContext = withContext(Settings);
 const DiscoverWithContext = withContext(Discover);
 const TermsWithContext = withContext(Terms);
 const PrivacyPolicyWithContext = withContext(PrivacyPolicy);
+const UsersWithContext = withContext(Users);
 const TestWithContext = withContext(Test);
 
 // socinet containers and components
@@ -240,6 +241,7 @@ const RouterContent = () => (
       <Route path="/discover" component={DiscoverWithContext} />
       <Route path="/terms-of-use" component={TermsWithContext} />
       <Route path="/privacy-policy" component={PrivacyPolicyWithContext} />
+      <Route path="/users" component={UsersWithContext} />
       <Route path="/test" component={TestWithContext} />
 
       {/* Socionet Routes */}
