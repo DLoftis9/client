@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
-import { isAuthenticated, read, update } from '../../../base/social/utils/auth';
+import { isAuthenticated, read, update, updatePhoto } from '../../../base/social/utils/auth';
 import ErrorDisplay from '../../components/social/ErrorDisplay';
 
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
@@ -44,7 +44,7 @@ export default class EditProfile extends React.PureComponent {
   };
 
   componentDidMount() {
-    console.log('user id from route params: ', this.props.match.params.userId);
+    this.userData = new FormData();
 
     const userId = this.props.match.params.userId;
 
@@ -54,7 +54,7 @@ export default class EditProfile extends React.PureComponent {
   isValid = () => {
     const { name, email, password } = this.state;
 
-    if (name.length == 0) {
+    if (name.length === 0) {
       this.setState({
         error: ['Name is required'],
         loading: false,
@@ -81,6 +81,7 @@ export default class EditProfile extends React.PureComponent {
     return true;
   };
 
+  // method for handling input fields
   change = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -92,6 +93,13 @@ export default class EditProfile extends React.PureComponent {
     });
 
     this.setState({ error: '' });
+  };
+
+  // method for handling photo uploads
+  handlePhoto = name => event => {
+    const value = name === 'photo' ? event.target.files[0] : event.target.value;
+    this.userData.set(name, value);
+    this.setState({ [name]: value });
   };
 
   submit = event => {
@@ -109,7 +117,20 @@ export default class EditProfile extends React.PureComponent {
       const userId = this.props.match.params.userId;
       const token = isAuthenticated().token;
 
+      // the user parameter handles input data
+      // the this.userData parameter handles photo data
       update(userId, token, user).then(data => {
+        if (data.error) {
+          this.setState({ error: data.error, loading: false });
+        } else {
+          // authenticate
+          this.setState({
+            redirectToProfile: true,
+          });
+        }
+      });
+
+      updatePhoto(userId, token, this.userData).then(data => {
         if (data.error) {
           this.setState({ error: data.error, loading: false });
         } else {
@@ -144,6 +165,17 @@ export default class EditProfile extends React.PureComponent {
             <div className={containerName + `_row row`}>
               <h1>Edit Post</h1>
               <form className="form">
+                <div className="input_photo">
+                  <label className="label">Profile Photo</label>
+                  <input
+                    className="input_photo"
+                    id="photo"
+                    type="file"
+                    accept="image/*"
+                    onChange={this.handlePhoto('photo')}
+                  />
+                </div>
+
                 <div className="input_name">
                   <label className="label">Name</label>
                   <input

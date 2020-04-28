@@ -1,3 +1,8 @@
+// TO DO:
+// refactor methods into Context
+// check why environment variable is not working
+// check why user that isn't signed in cannot check /users path without throwing an error in other browsers
+
 export const signin = user => {
   // `${process.env.REACT_APP_API_URL}/signin`
   return fetch('http://localhost:5000/api/signin', {
@@ -97,6 +102,22 @@ export const update = (userId, token, user) => {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(user),
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+export const updatePhoto = (userId, token, user) => {
+  console.log('USER DATA UPDATE: ', user);
+  return fetch(`http://localhost:5000/api/user/${userId}`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: user,
   })
     .then(response => {
       return response.json();

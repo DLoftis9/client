@@ -11,7 +11,7 @@ import Avatar from './Avatar';
 
 const propTypes = {
   componentName: PropTypes.string,
-  userName: PropTypes.string,
+  userName: PropTypes.object,
 };
 
 const defaultProps = {

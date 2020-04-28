@@ -234,23 +234,25 @@ const RouterContent = () => (
       <PrivateRoute> will work similar to how <Route> works. It will render 
       the private component passed to its component prop when the URL matches 
       the specified path.*/}
-      <PrivateRoute path="/authenticated" component={AuthWithContext} />
-      <Route exact path="/public" component={Public} />
-      <Route path="/signin" component={UserSignInWithContext} />
-      <Route path="/signup" component={UserSignUpWithContext} />
-      <Route path="/signout" component={UserSignOutWithContext} />
-      <Route path="/createpost" component={CreatePostWithContext} />
-      <Route path="/tools" component={ToolsWithContext} />
-      <Route path="/editpost" component={EditPostWithContext} />
-      <Route path="/editprofile" component={EditProfileWithContext} />
-      <Route path="/following" component={FollowingWithContext} />
-      <Route path="/postfeed" component={PostFeedWithContext} />
-      <Route path="/profile" component={ProfileWithContext} />
-      <Route path="/settings" component={SettingsWithContext} />
-      <Route path="/discover" component={DiscoverWithContext} />
-      <Route path="/terms-of-use" component={TermsWithContext} />
-      <Route path="/privacy-policy" component={PrivacyPolicyWithContext} />
-      <Route path="/test" component={TestWithContext} />
+
+      {/* Original implementation with Context */}
+      {/* <PrivateRoute path="/authenticated" component={AuthWithContext} /> */}
+
+      <Route exact path="/signin" component={UserSignInWithContext} />
+      <Route exact path="/signup" component={UserSignUpWithContext} />
+      <PrivateRoute exact path="/editprofile" component={EditProfileWithContext} />
+      <PrivateRoute exact path="/profile" component={ProfileWithContext} />
+      <Route exact path="/signout" component={UserSignOutWithContext} />
+      <Route exact path="/createpost" component={CreatePostWithContext} />
+      <Route exact path="/tools" component={ToolsWithContext} />
+      <Route exact path="/editpost" component={EditPostWithContext} />
+      <Route exact path="/following" component={FollowingWithContext} />
+      <Route exact path="/postfeed" component={PostFeedWithContext} />
+      <Route exact path="/settings" component={SettingsWithContext} />
+      <Route exact path="/discover" component={DiscoverWithContext} />
+      <Route exact path="/terms-of-use" component={TermsWithContext} />
+      <Route exact path="/privacy-policy" component={PrivacyPolicyWithContext} />
+      <Route exact path="/test" component={TestWithContext} />
 
       <Route path="/Publication/issue26p1" component={Issue26p1} />
       <Route path="/Publication/issue26p2" component={Issue26p2} />

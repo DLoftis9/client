@@ -40,9 +40,10 @@ export default class Tools extends React.PureComponent {
 
     return (
       <>
+        {/* menu for small devices */}
         <MenuSlideIn
-          extraClassName={containerName}
-          bodyContent={<HeaderContent authUserName={isAuthenticated().user.name} />}
+          // extraClassName={containerName}
+          bodyContent={<HeaderContent />}
         />
         <div className={containerName}>
           <div className={containerName + `_container container`}>
@@ -53,7 +54,6 @@ export default class Tools extends React.PureComponent {
                   return (
                     <li className="list-item" key={i}>
                       <Avatar userName={user.name} />
-                      {/* <div className="email">{user.email}</div> */}
                       <Link to={`/user/${user._id}`} className="anchor anchor_view">
                         View
                       </Link>
