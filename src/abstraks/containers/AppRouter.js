@@ -234,7 +234,7 @@ const RouterContent = () => (
       <Route path="/createpost" component={CreatePostWithContext} />
       <Route path="/tools" component={ToolsWithContext} />
       <Route path="/editpost" component={EditPostWithContext} />
-      <Route path="/editprofile" component={EditProfileWithContext} />
+      <Route path="/editprofile/:userId" component={EditProfileWithContext} />
       <Route path="/following" component={FollowingWithContext} />
       <Route path="/postfeed" component={PostFeedWithContext} />
       <Route path="/settings" component={SettingsWithContext} />

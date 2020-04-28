@@ -63,6 +63,7 @@ export default class Profile extends React.PureComponent {
   render() {
     const { containerName } = this.props;
     const { redirectToSignin, user } = this.state;
+
     if (redirectToSignin) {
       return <Redirect to="/signin" />;
     }
@@ -87,7 +88,7 @@ export default class Profile extends React.PureComponent {
                 {isAuthenticated().user && isAuthenticated().user._id === user._id && (
                   <>
                     <button>
-                      <Link to={`/user/edit/${user._id}`}>Edit Profile</Link>
+                      <Link to={`/editProfile/${user._id}`}>Edit Profile</Link>
                     </button>
 
                     <DeleteUser userId={user._id} />

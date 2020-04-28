@@ -28,6 +28,12 @@ const HeaderContent = props => (
         </Link>
       </li>
 
+      <li className="listItem discover_listItem">
+        <Link className="anchor discover_anchor" to="/users">
+          Discover
+        </Link>
+      </li>
+
       <li className="listItem settings_listItem">
         <Link className="anchor settings_anchor" to="/settings">
           Settings
@@ -39,6 +45,7 @@ const HeaderContent = props => (
           Privacy Policy
         </Link>
       </li>
+
       <li className="listItem termsOfUse_listItem">
         <Link className="anchor termsOfUse_anchor" to="/terms-of-use">
           Terms Of Use
