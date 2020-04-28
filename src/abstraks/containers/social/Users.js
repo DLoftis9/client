@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { isAuthenticated, list } from '../../../base/social/utils/auth';
 
+import Avatar from '../../components/social/Avatar';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
 
@@ -50,14 +52,11 @@ export default class Tools extends React.PureComponent {
                 {users.map((user, i) => {
                   return (
                     <li class="list-item" key={i}>
-                      <div className="avatar">
-                        <div className="avatar-image">
-                          <i className="fa fa-user" aria-hidden="true"></i>
-                        </div>
-                      </div>
-                      <div className="name">{user.name}</div>
-                      <div className="email">{user.email}</div>
-                      <div className="anchor anchor_view">View</div>
+                      <Avatar userName={user.name} />
+                      {/* <div className="email">{user.email}</div> */}
+                      <Link to={`/user/${user._id}`} className="anchor anchor_view">
+                        View
+                      </Link>
                     </li>
                   );
                 })}

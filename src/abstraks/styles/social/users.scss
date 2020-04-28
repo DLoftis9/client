@@ -2,26 +2,38 @@
 @import '../../.././base/styles/_variables.scss';
 
 // USER Container
-.user {
-  margin: 3.5em 0 5em 0;
-  float: left;
-  width: 100%;
-}
+// .user {
+//   margin: 3.5em 0 5em 0;
+//   float: left;
+//   width: 100%;
+// }
 
-.user.menu-slide-in {
-  height: 60px;
-  margin: 0;
-}
+// .user.menu-slide-in {
+//   height: 60px;
+//   margin: 0;
+// }
 
-// USERS container
+// ALL USERS container
 .users {
   margin-top: 4em;
 
   .user-card {
     .list-item {
       float: left;
-      width: 33.33333333%;
+      width: 90%;
       padding: 10px;
+      margin: 10px;
+      background-color: $color-white_gray;
+
+      @media #{$medium} {
+        width: 30%;
+      }
+    }
+
+    .anchor_view {
+      float: left;
+      width: 100%;
+      text-align: center;
     }
   }
 }

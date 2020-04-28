@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { isAuthenticated, read } from '../../../base/social/utils/auth';
 
 import Avatar from '../../components/social/Avatar';
+import DeleteUser from '../../components/social/DeleteUser';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
 import { Redirect, Link } from 'react-router-dom';
@@ -33,6 +34,12 @@ export default class Profile extends React.PureComponent {
     console.log('user id from route params: ', this.props.match.params.userId);
 
     const userId = this.props.match.params.userId;
+
+    this.init(userId);
+  }
+
+  componentWillReceiveProps(props) {
+    const userId = props.match.params.userId;
 
     this.init(userId);
   }
@@ -69,9 +76,9 @@ export default class Profile extends React.PureComponent {
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
               <div className="user-info">
-                <h1 className="header-one">{isAuthenticated().user.name}'s Profile</h1>
-                <Avatar userName={isAuthenticated().user.name} />
-                <p>Email: {isAuthenticated().user.email}</p>
+                <h1 className="header-one">{user.name}'s Profile</h1>
+                <Avatar userName={user.name} />
+                <p>Email: {user.email}</p>
                 <p>{`Joined ${new Date(user.created).toDateString()}`}</p>
               </div>
 
@@ -82,7 +89,7 @@ export default class Profile extends React.PureComponent {
                       <Link to={`/user/edit/${user._id}`}>Edit Profile</Link>
                     </button>
 
-                    <button>delete</button>
+                    <DeleteUser />
                   </>
                 )}
               </div>
