@@ -91,7 +91,7 @@ export class Provider extends Component {
 
   // EditTextInputSingle component logic
   handleSaveSubject = async email => {
-    const userEmail = await this.data.editUserEmail(email);
+    // const userEmail = await this.data.editUserEmail(email);
     const { text } = this.state;
 
     if (text !== '') {

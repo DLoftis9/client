@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { signout, isAuthenticated } from '../../../base/social/utils/auth';
+import {
+  // refactor component to receive signout functionality
+  // signout,
+  isAuthenticated,
+} from '../../../base/social/utils/auth';
 
 import Avatar from './Avatar';
 
@@ -40,11 +44,11 @@ const HeaderContent = props => (
           Terms Of Use
         </Link>
       </li>
-      <li className="listItem log-out_listItem">
+      {/* <li className="listItem log-out_listItem">
         <Link className="anchor log-out_anchor" to="/signout">
           Sign Out
         </Link>
-      </li>
+      </li> */}
     </ul>
   </div>
 );

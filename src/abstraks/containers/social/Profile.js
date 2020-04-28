@@ -37,8 +37,9 @@ export default class Profile extends React.PureComponent {
 
     this.init(userId);
   }
-
-  componentWillReceiveProps(props) {
+  // original lifecycle method that needs
+  // to be refactored componentWillReceiveProps
+  UNSAFE_componentWillReceiveProps(props) {
     const userId = props.match.params.userId;
 
     this.init(userId);
@@ -83,13 +84,13 @@ export default class Profile extends React.PureComponent {
               </div>
 
               <div className="user-manage">
-                {isAuthenticated().user && isAuthenticated().user._id == user._id && (
+                {isAuthenticated().user && isAuthenticated().user._id === user._id && (
                   <>
                     <button>
                       <Link to={`/user/edit/${user._id}`}>Edit Profile</Link>
                     </button>
 
-                    <DeleteUser />
+                    <DeleteUser userId={user._id} />
                   </>
                 )}
               </div>

@@ -51,7 +51,7 @@ export default class Tools extends React.PureComponent {
               <ul className="user-card">
                 {users.map((user, i) => {
                   return (
-                    <li class="list-item" key={i}>
+                    <li className="list-item" key={i}>
                       <Avatar userName={user.name} />
                       {/* <div className="email">{user.email}</div> */}
                       <Link to={`/user/${user._id}`} className="anchor anchor_view">
