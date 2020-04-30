@@ -100,7 +100,6 @@ export const update = (userId, token, user) => {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
-    //   'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
     body: user,
@@ -110,22 +109,3 @@ export const update = (userId, token, user) => {
     })
     .catch(err => console.log(err));
 };
-
-// method for updating just text
-// export const update = (userId, token, user) => {
-//     console.log('USER DATA UPDATE: ', user);
-
-//     return fetch(`http://localhost:5000/api/user/${userId}`, {
-//       method: 'PUT',
-//       headers: {
-//         Accept: 'application/json',
-//         'Content-Type': 'application/json',
-//         Authorization: `Bearer ${token}`,
-//       },
-//       body: JSON.stringify(user),
-//     })
-//       .then(response => {
-//         return response.json();
-//       })
-//       .catch(err => console.log(err));
-//   };

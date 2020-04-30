@@ -63,7 +63,7 @@ export default class EditProfile extends React.PureComponent {
 
     if (fileSize > 1000000) {
       this.setState({
-        error: 'File size should be less than 100kb',
+        error: ['File size should be less than 100mb'],
         loading: false,
       });
       return false;
@@ -97,12 +97,13 @@ export default class EditProfile extends React.PureComponent {
   };
 
   change = name => event => {
-    const value = name === 'photo' ? event.target.files[0] : event.target.value;
+    this.setState({ error: '' });
 
+    const value = name === 'photo' ? event.target.files[0] : event.target.value;
     const fileSize = name === 'photo' ? event.target.files[0].size : 0;
+
     this.userData.set(name, value);
     this.setState({ [name]: value, fileSize });
-    this.setState({ error: '' });
   };
 
   submit = event => {
