@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
-import { isAuthenticated, read, update, updatePhoto } from '../../../base/social/utils/auth';
+import { isAuthenticated, read, update } from '../../../base/social/utils/auth';
 import ErrorDisplay from '../../components/social/ErrorDisplay';
 
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
@@ -18,7 +18,9 @@ export default class EditProfile extends React.PureComponent {
       email: '',
       password: '',
       error: '',
+      fileSize: 0,
       redirectToProfile: false,
+      loading: false,
     };
   }
 
@@ -38,7 +40,12 @@ export default class EditProfile extends React.PureComponent {
       if (data.error) {
         this.setState({ redirectToProfile: true });
       } else {
-        this.setState({ id: data._id, name: data.name, email: data.email, error: '' });
+        this.setState({
+          id: data._id,
+          name: data.name,
+          email: data.email,
+          error: '',
+        });
       }
     });
   };
@@ -52,7 +59,15 @@ export default class EditProfile extends React.PureComponent {
   }
 
   isValid = () => {
-    const { name, email, password } = this.state;
+    const { name, email, password, fileSize } = this.state;
+
+    if (fileSize > 1000000) {
+      this.setState({
+        error: 'File size should be less than 100kb',
+        loading: false,
+      });
+      return false;
+    }
 
     if (name.length === 0) {
       this.setState({
@@ -81,56 +96,36 @@ export default class EditProfile extends React.PureComponent {
     return true;
   };
 
-  // method for handling input fields
-  change = event => {
-    const name = event.target.name;
-    const value = event.target.value;
-
-    this.setState(() => {
-      return {
-        [name]: value,
-      };
-    });
-
-    this.setState({ error: '' });
-  };
-
-  // method for handling photo uploads
-  handlePhoto = name => event => {
+  change = name => event => {
     const value = name === 'photo' ? event.target.files[0] : event.target.value;
+
+    const fileSize = name === 'photo' ? event.target.files[0].size : 0;
     this.userData.set(name, value);
-    this.setState({ [name]: value });
+    this.setState({ [name]: value, fileSize });
+    this.setState({ error: '' });
   };
 
   submit = event => {
     event.preventDefault();
+    this.setState({ loading: true });
 
     if (this.isValid()) {
-      this.setState({ loading: true });
-      const { name, email, password } = this.state;
-      const user = {
-        name,
-        email,
-        password: password || undefined,
-      };
+      // this.setState({ loading: true });
+      // const { name, email, password } = this.state;
+      // const user = {
+      //   name,
+      //   email,
+      //   password: password || undefined,
+      // };
 
       const userId = this.props.match.params.userId;
       const token = isAuthenticated().token;
 
       // the user parameter handles input data
       // the this.userData parameter handles photo data
-      update(userId, token, user).then(data => {
-        if (data.error) {
-          this.setState({ error: data.error, loading: false });
-        } else {
-          // authenticate
-          this.setState({
-            redirectToProfile: true,
-          });
-        }
-      });
 
-      updatePhoto(userId, token, this.userData).then(data => {
+      // to update just text, replace this.userData with just user
+      update(userId, token, this.userData).then(data => {
         if (data.error) {
           this.setState({ error: data.error, loading: false });
         } else {
@@ -163,7 +158,7 @@ export default class EditProfile extends React.PureComponent {
         <div className={containerName}>
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
-              <h1>Edit Post</h1>
+              <h1>Edit Profile</h1>
               <form className="form">
                 <div className="input_photo">
                   <label className="label">Profile Photo</label>
@@ -172,7 +167,7 @@ export default class EditProfile extends React.PureComponent {
                     id="photo"
                     type="file"
                     accept="image/*"
-                    onChange={this.handlePhoto('photo')}
+                    onChange={this.change('photo')}
                   />
                 </div>
 
@@ -184,7 +179,7 @@ export default class EditProfile extends React.PureComponent {
                     name="name"
                     type="name"
                     value={name}
-                    onChange={this.change}
+                    onChange={this.change('name')}
                     placeholder="Name"
                   />
                 </div>
@@ -197,7 +192,7 @@ export default class EditProfile extends React.PureComponent {
                     name="email"
                     type="email"
                     value={email}
-                    onChange={this.change}
+                    onChange={this.change('email')}
                     placeholder="Email"
                   />
                 </div>
@@ -210,7 +205,7 @@ export default class EditProfile extends React.PureComponent {
                     name="password"
                     type="password"
                     value={password}
-                    onChange={this.change}
+                    onChange={this.change('password')}
                     placeholder="Password"
                   />
                 </div>
