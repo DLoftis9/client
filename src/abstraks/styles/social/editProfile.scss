@@ -2,5 +2,24 @@
 @import '../../.././base/styles/_variables.scss';
 
 .edit-profile {
-    margin-top: 4em;
+  margin-top: 4em;
+
+  .edit-profile_image {
+    float: left;
+    width: 70%;
+
+    @media #{$medium} {
+      width: 30%;
+    }
+
+    .profile-image {
+      height: 200px;
+      width: auto;
+    }
+  }
+
+  .form {
+    float: left;
+    width: 100%;
+  }
 }

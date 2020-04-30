@@ -28,6 +28,11 @@
       @media #{$medium} {
         width: 30%;
       }
+
+      .users_image {
+        width: auto;
+        height: 200px;
+      }
     }
 
     .anchor_view {

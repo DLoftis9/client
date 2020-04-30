@@ -53,7 +53,18 @@ export default class Tools extends React.PureComponent {
                 {users.map((user, i) => {
                   return (
                     <li className="list-item" key={i}>
-                      <Avatar userName={user.name} />
+                      <Link to={`/user/${user._id}`}>
+                        <div to={`/user/${user._id}`} className={containerName + `_image`}>
+                          <img
+                            className={containerName + `-image image`}
+                            src={`http://localhost:5000/api/user/photo/${user._id}`}
+                            onError={i =>
+                              (i.target.src = `https://abstraksresources.s3-us-west-1.amazonaws.com/images/avatar.svg`)
+                            }
+                            alt={user.name}
+                          />
+                        </div>
+                      </Link>
                       <Link to={`/user/${user._id}`} className="anchor anchor_view">
                         View
                       </Link>

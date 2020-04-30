@@ -150,6 +150,14 @@ export default class EditProfile extends React.PureComponent {
       return <Redirect to={`/user/${id}`} />;
     }
 
+    const photoUrl = id ? (
+      `http://localhost:5000/api/user/photo/${id}?${new Date().getTime()}`
+    ) : (
+      <div className="avatar-image default-image">
+        <i className="fa fa-user" aria-hidden="true"></i>
+      </div>
+    );
+
     return (
       <>
         <MenuSlideIn
@@ -160,6 +168,18 @@ export default class EditProfile extends React.PureComponent {
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
               <h1>Edit Profile</h1>
+
+              <div className={containerName + `_image`}>
+                <img
+                  className="profile-image"
+                  src={photoUrl}
+                  onError={i =>
+                    (i.target.src = `https://abstraksresources.s3-us-west-1.amazonaws.com/images/avatar.svg`)
+                  }
+                  alt={name}
+                />
+              </div>
+
               <form className="form">
                 <div className="input_photo">
                   <label className="label">Profile Photo</label>
@@ -219,13 +239,11 @@ export default class EditProfile extends React.PureComponent {
                   Update
                 </button>
               </form>
-
               <div className="error form-error" style={{ display: error ? '' : 'none' }}>
                 <ul className="unordered-list">
                   <ErrorDisplay errors={error} />
                 </ul>
               </div>
-
               {loading ? <Loader /> : ''}
             </div>
           </div>

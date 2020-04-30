@@ -68,6 +68,10 @@ export default class Profile extends React.PureComponent {
       return <Redirect to="/signin" />;
     }
 
+    const photoUrl = user._id
+      ? `http://localhost:5000/api/user/photo/${user._id}?${new Date().getTime()}`
+      : `https://abstraksresources.s3-us-west-1.amazonaws.com/images/avatar.svg`;
+
     return (
       <>
         <MenuSlideIn
@@ -79,7 +83,16 @@ export default class Profile extends React.PureComponent {
             <div className={containerName + `_row row`}>
               <div className="user-info">
                 <h1 className="header-one">{user.name}'s Profile</h1>
-                <Avatar userName={user.name} />
+                <div className={containerName + `_image`}>
+                  <img
+                    className={containerName + `-image`}
+                    src={photoUrl}
+                    onError={i =>
+                      (i.target.src = `https://abstraksresources.s3-us-west-1.amazonaws.com/images/avatar.svg`)
+                    }
+                    alt={user.name}
+                  />
+                </div>
                 <p>Email: {user.email}</p>
                 <p>{`Joined ${new Date(user.created).toDateString()}`}</p>
               </div>
