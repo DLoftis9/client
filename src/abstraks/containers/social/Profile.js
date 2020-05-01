@@ -108,6 +108,10 @@ export default class Profile extends React.PureComponent {
                   </>
                 )}
               </div>
+
+              <div className="user-manage">
+                <p className="user-about">{user.about}</p>
+              </div>
             </div>
           </div>
         </div>

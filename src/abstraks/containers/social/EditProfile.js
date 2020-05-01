@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
-import { isAuthenticated, read, update } from '../../../base/social/utils/auth';
+import { isAuthenticated, read, update, updateUser } from '../../../base/social/utils/auth';
 import ErrorDisplay from '../../components/social/ErrorDisplay';
 
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
@@ -17,6 +17,7 @@ export default class EditProfile extends React.PureComponent {
       name: '',
       email: '',
       password: '',
+      about: '',
       error: '',
       fileSize: 0,
       redirectToProfile: false,
@@ -44,6 +45,7 @@ export default class EditProfile extends React.PureComponent {
           id: data._id,
           name: data.name,
           email: data.email,
+          about: data.about,
           error: '',
         });
       }
@@ -130,9 +132,12 @@ export default class EditProfile extends React.PureComponent {
         if (data.error) {
           this.setState({ error: data.error, loading: false });
         } else {
-          // authenticate
-          this.setState({
-            redirectToProfile: true,
+          // updating user data in local storage
+          updateUser(data, () => {
+            // authenticate
+            this.setState({
+              redirectToProfile: true,
+            });
           });
         }
       });
@@ -144,7 +149,7 @@ export default class EditProfile extends React.PureComponent {
       // context,
       containerName,
     } = this.props;
-    const { id, name, email, password, redirectToProfile, error, loading } = this.state;
+    const { id, name, email, password, about, redirectToProfile, error, loading } = this.state;
 
     if (redirectToProfile) {
       return <Redirect to={`/user/${id}`} />;
@@ -198,7 +203,7 @@ export default class EditProfile extends React.PureComponent {
                     className="input"
                     id="name"
                     name="name"
-                    type="name"
+                    type="text"
                     value={name}
                     onChange={this.change('name')}
                     placeholder="Name"
@@ -228,6 +233,19 @@ export default class EditProfile extends React.PureComponent {
                     value={password}
                     onChange={this.change('password')}
                     placeholder="Password"
+                  />
+                </div>
+
+                <div className="input_about">
+                  <label className="label">About</label>
+                  <textarea
+                    className="input"
+                    id="about"
+                    name="about"
+                    type="text"
+                    value={about}
+                    onChange={this.change('about')}
+                    placeholder="About"
                   />
                 </div>
 
