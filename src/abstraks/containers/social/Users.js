@@ -55,7 +55,7 @@ export default class Tools extends React.PureComponent {
                 {users.map((user, i) => {
                   return (
                     <li className="list-item" key={i}>
-                      <Link className='anchor_card' to={`/user/${user._id}`}>
+                      <Link className="anchor_card" to={`/user/${user._id}`}>
                         <div to={`/user/${user._id}`} className={containerName + `_image`}>
                           <img
                             className={containerName + `-image image`}
