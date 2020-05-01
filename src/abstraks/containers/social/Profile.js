@@ -5,6 +5,7 @@ import config from '../../../base/social/utils/config';
 import { isAuthenticated, read } from '../../../base/social/utils/auth';
 
 import Avatar from '../../components/social/Avatar';
+import LikeWidget from '../../components/social/LikeWidget';
 import DeleteUser from '../../components/social/DeleteUser';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
@@ -18,6 +19,17 @@ export default class Profile extends React.PureComponent {
       redirectToSignin: false,
     };
   }
+
+  // check for like functionality
+  checkLike = user => {
+    const jwt = isAuthenticated();
+    const match = user.followers.find(follower => {
+      // one id has many other ids(followers) and vice versa
+      return follower._id === jwt.user._id;
+    });
+    
+    return match;
+  };
 
   init = userId => {
     const token = isAuthenticated().token;
@@ -100,7 +112,7 @@ export default class Profile extends React.PureComponent {
               </div>
 
               <div className="user-manage">
-                {isAuthenticated().user && isAuthenticated().user._id === user._id && (
+                {isAuthenticated().user && isAuthenticated().user._id === user._id ? (
                   <>
                     <button>
                       <Link to={`/editProfile/${user._id}`}>Edit Profile</Link>
@@ -108,6 +120,8 @@ export default class Profile extends React.PureComponent {
 
                     <DeleteUser userId={user._id} />
                   </>
+                ) : (
+                  <LikeWidget />
                 )}
               </div>
 
