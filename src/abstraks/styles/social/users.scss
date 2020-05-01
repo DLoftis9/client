@@ -30,8 +30,15 @@
       }
 
       .users_image {
-        width: auto;
-        height: 200px;
+        @media #{$medium} {
+          width: auto;
+          height: 200px;
+
+          .image {
+            width: 200px;
+          }
+        }
+        
       }
     }
 

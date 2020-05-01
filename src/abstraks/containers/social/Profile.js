@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import config from '../../../base/social/utils/config';
 import { isAuthenticated, read } from '../../../base/social/utils/auth';
 
 import Avatar from '../../components/social/Avatar';
@@ -61,6 +62,7 @@ export default class Profile extends React.PureComponent {
   };
 
   render() {
+    const url = config.apiBaseUrl;
     const { containerName } = this.props;
     const { redirectToSignin, user } = this.state;
 
@@ -69,7 +71,7 @@ export default class Profile extends React.PureComponent {
     }
 
     const photoUrl = user._id
-      ? `http://localhost:5000/api/user/photo/${user._id}?${new Date().getTime()}`
+      ? `${url}/user/photo/${user._id}?${new Date().getTime()}`
       : `https://abstraksresources.s3-us-west-1.amazonaws.com/images/avatar.svg`;
 
     return (

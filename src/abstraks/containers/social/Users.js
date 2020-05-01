@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import config from '../../../base/social/utils/config';
 import { isAuthenticated, list } from '../../../base/social/utils/auth';
 
 import Avatar from '../../components/social/Avatar';
@@ -35,6 +36,7 @@ export default class Tools extends React.PureComponent {
     containerName: 'users',
   };
   render() {
+    const url = config.apiBaseUrl;
     const { containerName } = this.props;
     const { users } = this.state;
 
@@ -53,11 +55,11 @@ export default class Tools extends React.PureComponent {
                 {users.map((user, i) => {
                   return (
                     <li className="list-item" key={i}>
-                      <Link to={`/user/${user._id}`}>
+                      <Link className='anchor_card' to={`/user/${user._id}`}>
                         <div to={`/user/${user._id}`} className={containerName + `_image`}>
                           <img
                             className={containerName + `-image image`}
-                            src={`http://localhost:5000/api/user/photo/${user._id}`}
+                            src={`${url}/user/photo/${user._id}`}
                             onError={i =>
                               (i.target.src = `https://abstraksresources.s3-us-west-1.amazonaws.com/images/avatar.svg`)
                             }

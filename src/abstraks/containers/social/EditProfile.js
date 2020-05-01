@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
+import config from '../../../base/social/utils/config';
 import { isAuthenticated, read, update, updateUser } from '../../../base/social/utils/auth';
 import ErrorDisplay from '../../components/social/ErrorDisplay';
 
@@ -154,9 +155,10 @@ export default class EditProfile extends React.PureComponent {
     if (redirectToProfile) {
       return <Redirect to={`/user/${id}`} />;
     }
+    const url = config.apiBaseUrl;
 
     const photoUrl = id ? (
-      `http://localhost:5000/api/user/photo/${id}?${new Date().getTime()}`
+      `${url}/user/photo/${id}?${new Date().getTime()}`
     ) : (
       <div className="avatar-image default-image">
         <i className="fa fa-user" aria-hidden="true"></i>
