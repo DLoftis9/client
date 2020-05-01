@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isAuthenticated } from '../../../base/social/utils/auth';
+
 import DiscoverLayout from '../../components/social/DiscoverLayout';
 
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
@@ -22,14 +24,16 @@ export default class Discover extends React.PureComponent {
   };
 
   render() {
-    const { context, containerName } = this.props;
-    const authUser = context.authenticatedUser;
+    const {
+      // context,
+      containerName,
+    } = this.props;
 
     return (
       <>
         <MenuSlideIn
           extraClassName={containerName}
-          bodyContent={<HeaderContent authUserName={authUser.username} />}
+          bodyContent={<HeaderContent authUserName={isAuthenticated().user.name} />}
         />
         <div className={containerName}>
           <div className={containerName + `_container container`}>

@@ -23,7 +23,11 @@ class HeaderSocial extends React.PureComponent {
   };
 
   render() {
-    const { context, componentName, history } = this.props;
+    const {
+      // context,
+      componentName,
+      history,
+    } = this.props;
     const isActive = (history, path) => {
       if (history.location.pathname === path) return { color: '#ff9900' };
       else return { color: '#ff0000' };
@@ -74,8 +78,8 @@ class HeaderSocial extends React.PureComponent {
                           <li className="listItem discover_listItem">
                             <Link
                               className="anchor discover_anchor"
-                              style={isActive(history, '/discover')}
-                              to="/discover"
+                              style={isActive(history, '/users')}
+                              to="/users"
                             >
                               Discover
                             </Link>

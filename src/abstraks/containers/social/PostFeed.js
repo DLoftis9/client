@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isAuthenticated } from '../../../base/social/utils/auth';
 
 import PostWidget from '../../components/social/PostWidget';
 import PostResponse from '../../components/social/PostResponse';
@@ -25,19 +26,19 @@ export default class PostFeed extends React.PureComponent {
 
   render() {
     const { context, containerName } = this.props;
-    const authUser = context.authenticatedUser;
+
     const isToggleOn = context.isToggleOn;
     return (
       <>
         <MenuSlideIn
           extraClassName={containerName}
-          bodyContent={<HeaderContent authUserName={authUser.username} />}
+          bodyContent={<HeaderContent authUserName={isAuthenticated().user.name} />}
         />
         <div className={containerName}>
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
               <h1>PostFeed</h1>
-              <PostWidget authUserName={authUser.name} />
+              <PostWidget authUserName={isAuthenticated().user.name} />
               <PostResponse toggleLike={isToggleOn} likeMethod={this.toggleLikeClick} />
               <PostResponseComments toggleLike={isToggleOn} likeMethod={this.toggleLikeClick} />
             </div>

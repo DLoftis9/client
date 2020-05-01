@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { signout, isAuthenticated } from '../../../base/social/utils/auth';
+import {
+  // refactor component to receive signout functionality
+  // signout,
+  isAuthenticated,
+} from '../../../base/social/utils/auth';
 
 import Avatar from './Avatar';
 
 const propTypes = {
   componentName: PropTypes.string,
-  userName: PropTypes.string,
+  userName: PropTypes.object,
 };
 
 const defaultProps = {
@@ -24,6 +28,12 @@ const HeaderContent = props => (
         </Link>
       </li>
 
+      <li className="listItem discover_listItem">
+        <Link className="anchor discover_anchor" to="/users">
+          Discover
+        </Link>
+      </li>
+
       <li className="listItem settings_listItem">
         <Link className="anchor settings_anchor" to="/settings">
           Settings
@@ -35,16 +45,17 @@ const HeaderContent = props => (
           Privacy Policy
         </Link>
       </li>
+
       <li className="listItem termsOfUse_listItem">
         <Link className="anchor termsOfUse_anchor" to="/terms-of-use">
           Terms Of Use
         </Link>
       </li>
-      <li className="listItem log-out_listItem">
+      {/* <li className="listItem log-out_listItem">
         <Link className="anchor log-out_anchor" to="/signout">
           Sign Out
         </Link>
-      </li>
+      </li> */}
     </ul>
   </div>
 );
