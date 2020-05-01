@@ -39,15 +39,6 @@ export default class SignIn extends Component {
     this.setState({ error: '' });
   };
 
-  //   authenticate(jwt, next) {
-  //     if (typeof window !== 'undefined') {
-  //       localStorage.setItem('jwt', JSON.stringify(jwt));
-  //       next();
-  //     }
-  //   }
-
-  // signin()
-
   submit = event => {
     event.preventDefault();
 
