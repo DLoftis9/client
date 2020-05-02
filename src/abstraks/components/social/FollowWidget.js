@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { follow } from '../../../base/social/utils/auth';
+import { follow, unfollow } from '../../../base/social/utils/auth';
 
 export default class FollowWidget extends Component {
   static propTypes = {
@@ -15,6 +15,10 @@ export default class FollowWidget extends Component {
     this.props.onButtonClick(follow);
   };
 
+  unfollowClick = () => {
+    this.props.onButtonClick(unfollow);
+  };
+
   render() {
     const { componentName } = this.props;
 
@@ -22,11 +26,15 @@ export default class FollowWidget extends Component {
       <div className={componentName}>
         {!this.props.following ? (
           <button onClick={this.followClick} className="button follow_button" aria-label="follow">
-            <span>Follow</span>
+            <span className="follow_text">Follow</span>
           </button>
         ) : (
-          <button className="button unfollow_button" aria-label="follow">
-            <span>UnFollow</span>
+          <button
+            onClick={this.unfollowClick}
+            className="button unfollow_button"
+            aria-label="unfollow"
+          >
+            <span className="unfollow_text">UnFollow</span>
           </button>
         )}
       </div>

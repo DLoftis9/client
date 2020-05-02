@@ -56,7 +56,7 @@ export default class Tools extends React.PureComponent {
                   return (
                     <li className="list-item" key={i}>
                       <Link className="anchor_card" to={`/user/${user._id}`}>
-                        <div to={`/user/${user._id}`} className={containerName + `_image`}>
+                        <div className={containerName + `_image`}>
                           <img
                             className={containerName + `-image image`}
                             src={`${url}/user/photo/${user._id}`}
@@ -66,6 +66,7 @@ export default class Tools extends React.PureComponent {
                             alt={user.name}
                           />
                         </div>
+                        <p className="user_name">{`${user.name}`}</p>
                       </Link>
                       <Link to={`/user/${user._id}`} className="anchor anchor_view">
                         View
