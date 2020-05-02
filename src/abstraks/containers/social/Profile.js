@@ -5,7 +5,7 @@ import config from '../../../base/social/utils/config';
 import { isAuthenticated, read } from '../../../base/social/utils/auth';
 
 import Avatar from '../../components/social/Avatar';
-import LikeWidget from '../../components/social/LikeWidget';
+import FollowWidget from '../../components/social/FollowWidget';
 import DeleteUser from '../../components/social/DeleteUser';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
@@ -15,20 +15,35 @@ export default class Profile extends React.PureComponent {
   constructor() {
     super();
     this.state = {
-      user: '',
+      user: { following: [], followers: [] },
       redirectToSignin: false,
+      following: false,
+      error: '',
     };
   }
 
   // check for like functionality
-  checkLike = user => {
+  checkFollow = user => {
     const jwt = isAuthenticated();
     const match = user.followers.find(follower => {
       // one id has many other ids(followers) and vice versa
       return follower._id === jwt.user._id;
     });
-    
+
     return match;
+  };
+
+  clickFollowButton = callApi => {
+    const userId = isAuthenticated().user._id;
+    const token = isAuthenticated().token;
+
+    callApi(userId, token, this.state.user._id).then(data => {
+      if (data.error) {
+        this.setState({ error: data.error });
+      } else {
+        this.setState({ user: data, following: !this.state.following });
+      }
+    });
   };
 
   init = userId => {
@@ -38,7 +53,8 @@ export default class Profile extends React.PureComponent {
       if (data.error) {
         this.setState({ redirectToSignin: true });
       } else {
-        this.setState({ user: data });
+        let following = this.checkFollow(data);
+        this.setState({ user: data, following });
       }
     });
   };
@@ -121,7 +137,10 @@ export default class Profile extends React.PureComponent {
                     <DeleteUser userId={user._id} />
                   </>
                 ) : (
-                  <LikeWidget />
+                  <FollowWidget
+                    following={this.state.following}
+                    onButtonClick={this.clickFollowButton}
+                  />
                 )}
               </div>
 

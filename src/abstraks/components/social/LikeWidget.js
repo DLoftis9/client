@@ -11,12 +11,15 @@ const defaultProps = {
 
 const LikeWidget = props => (
   <div className={props.componentName}>
-    <button className="button_like" aria-label="Like">
-      <i className="icon_like fa fa-heart" aria-hidden="true"></i>
-    </button>
-    <button className="button_like" aria-label="Like">
-      <i className="icon_unlike fa fa-heart-o" aria-hidden="true"></i>
-    </button>
+    {!props.following ? (
+      <button className="button_like" aria-label="Like">
+        <i className="icon_unlike fa fa-heart-o" aria-hidden="true"></i>
+      </button>
+    ) : (
+      <button className="button_like" aria-label="Like">
+        <i className="icon_like fa fa-heart" aria-hidden="true"></i>
+      </button>
+    )}
   </div>
 );
 
