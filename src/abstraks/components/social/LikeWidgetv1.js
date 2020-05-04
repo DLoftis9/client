@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   componentName: PropTypes.string,
+  likeMethod: PropTypes.func,
+  toggleLike: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -11,15 +13,13 @@ const defaultProps = {
 
 const LikeWidget = props => (
   <div className={props.componentName}>
-    {!props.following ? (
-      <button className="button_like" aria-label="Like">
+    <button onClick={props.likeMethod} className="button_like" aria-label="Like">
+      {props.toggleLike ? (
         <i className="icon_unlike fa fa-heart-o" aria-hidden="true"></i>
-      </button>
-    ) : (
-      <button className="button_like" aria-label="Like">
+      ) : (
         <i className="icon_like fa fa-heart" aria-hidden="true"></i>
-      </button>
-    )}
+      )}
+    </button>
   </div>
 );
 

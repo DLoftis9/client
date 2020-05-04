@@ -3,22 +3,27 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import config from '../../../base/social/utils/config';
-import { isAuthenticated, list } from '../../../base/social/utils/auth';
+import { isAuthenticated, findPeople, follow } from '../../../base/social/utils/auth';
 
 import Avatar from '../../components/social/Avatar';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
 
-export default class Tools extends React.PureComponent {
+export default class FindUsers extends React.PureComponent {
   constructor() {
     super();
     this.state = {
       users: [],
+      error: '',
+      open: false,
     };
   }
 
   componentDidMount() {
-    list().then(data => {
+    const userId = isAuthenticated().user._id;
+    const token = isAuthenticated().token;
+
+    findPeople(userId, token).then(data => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -27,18 +32,37 @@ export default class Tools extends React.PureComponent {
     });
   }
 
+  clickFollow = (user, i) => {
+    const userId = isAuthenticated().user._id;
+    const token = isAuthenticated().token;
+
+    follow(userId, token, user._id).then(data => {
+      if (data.error) {
+        this.setState({ error: data.error });
+      } else {
+        let toFollow = this.state.users;
+        toFollow.splice(i, 1);
+        this.setState({
+          users: toFollow,
+          open: true,
+          followMessage: `Following ${user.name}`,
+        });
+      }
+    });
+  };
+
   static propTypes = {
     containerName: PropTypes.string.isRequired,
     extraClassName: PropTypes.string,
   };
 
   static defaultProps = {
-    containerName: 'users',
+    containerName: 'find-users',
   };
   render() {
     const url = config.apiBaseUrl;
     const { containerName } = this.props;
-    const { users } = this.state;
+    const { users, open, followMessage } = this.state;
 
     return (
       <>
@@ -50,7 +74,10 @@ export default class Tools extends React.PureComponent {
         <div className={containerName}>
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
-              <h1>Users</h1>
+              <h1>Find Users</h1>
+
+              <>{open && <p>{followMessage}</p>}</>
+
               <ul className="user-card">
                 {users.map((user, i) => {
                   return (
@@ -71,6 +98,12 @@ export default class Tools extends React.PureComponent {
                       <Link to={`/user/${user._id}`} className="anchor anchor_view">
                         View
                       </Link>
+                      <button
+                        onClick={() => this.clickFollow(user, i)}
+                        className="button button-primary"
+                      >
+                        Follow
+                      </button>
                     </li>
                   );
                 })}
