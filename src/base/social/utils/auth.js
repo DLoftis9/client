@@ -1,15 +1,18 @@
+import config from './config';
 // TO DO:
 // refactor methods into Context
 // check why environment variable is not working
+// `${process.env.REACT_APP_API_URL}/signin`
 // check why user that isn't signed in cannot check /users path without throwing an error in other browsers
 
 // refactor signup method to be similar to signin(),
 // and so user can redirect to being logged in
 
+const url = config.apiBaseUrl;
+
 // method to sign in user
 export const signin = user => {
-  // `${process.env.REACT_APP_API_URL}/signin`
-  return fetch('http://localhost:5000/api/signin', {
+  return fetch(`${url}/signin`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -29,7 +32,7 @@ export const signout = next => {
   if (typeof window !== 'undefined') localStorage.removeItem('jwt');
   next();
 
-  return fetch('http://localhost:5000/api/signout', {
+  return fetch(`${url}/signout`, {
     method: 'GET',
   })
     .then(response => {
@@ -62,7 +65,7 @@ export const isAuthenticated = () => {
 
 // method to read user data based on ID
 export const read = (userId, token) => {
-  return fetch(`http://localhost:5000/api/user/${userId}`, {
+  return fetch(`${url}/user/${userId}`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -78,7 +81,7 @@ export const read = (userId, token) => {
 
 // method to list all users
 export const list = () => {
-  return fetch('http://localhost:5000/api/users', {
+  return fetch(`${url}/users`, {
     method: 'GET',
   })
     .then(response => {
@@ -89,7 +92,7 @@ export const list = () => {
 
 // method to delete user account
 export const remove = (userId, token) => {
-  return fetch(`http://localhost:5000/api/user/${userId}`, {
+  return fetch(`${url}/user/${userId}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',
@@ -107,7 +110,7 @@ export const remove = (userId, token) => {
 export const update = (userId, token, user) => {
   console.log('USER DATA UPDATE: ', user);
 
-  return fetch(`http://localhost:5000/api/user/${userId}`, {
+  return fetch(`${url}/user/${userId}`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
@@ -131,4 +134,51 @@ export const updateUser = (user, next) => {
       next();
     }
   }
+};
+
+export const follow = (userId, token, followId) => {
+  return fetch(`${url}/user/follow`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ userId, followId }),
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+export const unfollow = (userId, token, unfollowId) => {
+  return fetch(`${url}/user/unfollow`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ userId, unfollowId }),
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+export const findPeople = (userId, token) => {
+  return fetch(`${url}/user/findpeople/${userId}`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
 };
