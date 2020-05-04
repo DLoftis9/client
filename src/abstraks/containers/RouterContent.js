@@ -8,13 +8,11 @@ import Contact from './Contact';
 import TermsOfUse from './TermsOfUse';
 
 // Social Containers
-import Public from './social/Public';
 import NotFound from './social/NotFound';
 import Test from './social/Test';
 
 import UserSignUp from './social/UserSignUp';
 import UserSignIn from './social/UserSignIn';
-import Authenticated from './social/Authenticated';
 import CreatePost from './social/CreatePost';
 import Tools from './social/Tools';
 import EditPost from './social/EditPost';
@@ -22,6 +20,7 @@ import EditProfile from './social/EditProfile';
 import Following from './social/Following';
 import PostFeed from './social/PostFeed';
 import Profile from './social/Profile';
+import FindUsers from './social/FindUsers';
 import Settings from './social/Settings';
 import Discover from './social/Discover';
 import Terms from './social/Terms';
@@ -185,7 +184,7 @@ import Issue29p24 from '../components/publication-pages/Issue29p24';
 // actions are shared throughout the component tree
 const HeaderWithContext = withContext(HeaderSocial);
 const MobileFooterWithContext = withContext(MobileFooter);
-const AuthWithContext = withContext(Authenticated);
+const FindUsersWithContext = withContext(FindUsers);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
 const CreatePostWithContext = withContext(CreatePost);
@@ -240,8 +239,11 @@ const RouterContent = () => (
 
       <Route exact path="/signin" component={UserSignInWithContext} />
       <Route exact path="/signup" component={UserSignUpWithContext} />
-      <PrivateRoute exact path="/editprofile" component={EditProfileWithContext} />
-      <PrivateRoute exact path="/profile" component={ProfileWithContext} />
+
+      <PrivateRoute exact path="/editprofile/:userId" component={EditProfileWithContext} />
+      <PrivateRoute exact path="/profile/:userId" component={ProfileWithContext} />
+      <PrivateRoute exact path="/find-users" component={FindUsersWithContext} />
+
       <Route exact path="/signout" component={UserSignOutWithContext} />
       <Route exact path="/createpost" component={CreatePostWithContext} />
       <Route exact path="/tools" component={ToolsWithContext} />
@@ -250,6 +252,7 @@ const RouterContent = () => (
       <Route exact path="/postfeed" component={PostFeedWithContext} />
       <Route exact path="/settings" component={SettingsWithContext} />
       <Route exact path="/discover" component={DiscoverWithContext} />
+
       <Route exact path="/terms-of-use" component={TermsWithContext} />
       <Route exact path="/privacy-policy" component={PrivacyPolicyWithContext} />
       <Route exact path="/test" component={TestWithContext} />

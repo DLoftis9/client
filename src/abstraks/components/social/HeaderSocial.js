@@ -78,8 +78,8 @@ class HeaderSocial extends React.PureComponent {
                           <li className="listItem discover_listItem">
                             <Link
                               className="anchor discover_anchor"
-                              style={isActive(history, '/users')}
-                              to="/users"
+                              style={isActive(history, '/find-users')}
+                              to="/find-users"
                             >
                               Discover
                             </Link>

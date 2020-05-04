@@ -26,7 +26,7 @@ export default class Following extends React.PureComponent {
           return (
             <div key={i}>
               <div>
-                <Link to={`/user${person._id}`}>
+                <Link to={`/user/${person._id}`}>
                   <img
                     className="tab-image"
                     onError={i =>
