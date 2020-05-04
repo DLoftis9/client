@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import config from '../../../base/social/utils/config';
 import { isAuthenticated, read } from '../../../base/social/utils/auth';
+import Tabs from '../../../base/scripts/Tabs';
 
 import Avatar from '../../components/social/Avatar';
 import FollowWidget from '../../components/social/FollowWidget';
@@ -10,6 +11,8 @@ import DeleteUser from '../../components/social/DeleteUser';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
 import ProfileTabs from '../../components/social/ProfileTabs';
+import FollowingList from '../../components/social/FollowingList';
+import FollowersList from '../../components/social/FollowersList';
 import { Redirect, Link } from 'react-router-dom';
 
 export default class Profile extends React.PureComponent {
@@ -148,7 +151,18 @@ export default class Profile extends React.PureComponent {
               <div className="user-manage">
                 <p className="user-about">{user.about}</p>
               </div>
-              <ProfileTabs followers={user.followers} following={user.following} />
+              {/* <ProfileTabs followers={user.followers} following={user.following} /> */}
+              <Tabs>
+                <div className="followers" label="Followers">
+                  <FollowersList followers={user.followers} />
+                </div>
+                <div className="following" label="Following">
+                  <FollowingList following={user.following} />
+                </div>
+                <div className="post" label="Post">
+                  <h3>Post</h3>
+                </div>
+              </Tabs>
             </div>
           </div>
         </div>
