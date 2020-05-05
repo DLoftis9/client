@@ -10,7 +10,7 @@ import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
 import Loader from '../../../base/scripts/Loader';
 
-export default class NewPost extends React.PureComponent {
+export default class CreatePost extends React.PureComponent {
   constructor() {
     super();
     this.state = {
@@ -21,6 +21,7 @@ export default class NewPost extends React.PureComponent {
       user: {},
       fileSize: 0,
       loading: false,
+      redirectToProfile: false,
     };
   }
 
@@ -75,22 +76,12 @@ export default class NewPost extends React.PureComponent {
     this.setState({ loading: true });
 
     if (this.isValid()) {
-      const userId = isAuthenticated().user_.id;
+      const userId = isAuthenticated().user._id;
       const token = isAuthenticated().token;
 
       create(userId, token, this.postData).then(data => {
-        if (data.error) {
-          this.setState({ error: data.error, loading: false });
-        } else {
-          console.log('New Post: ', data);
-          // // updating user data in local storage
-          // updateUser(data, () => {
-          //   // authenticate
-          //   this.setState({
-          //     redirectToProfile: true,
-          //   });
-          // });
-        }
+        if (data.error) this.setState({ error: data.error, loading: false });
+        else console.log('New Post: ', data);
       });
     }
   };
@@ -149,12 +140,12 @@ export default class NewPost extends React.PureComponent {
                   />
                 </div>
 
-                <div className="input_name">
+                <div className="input_title">
                   <label className="label">Title</label>
                   <input
                     className="input"
                     id="title"
-                    title="name"
+                    name="title"
                     type="text"
                     value={title}
                     onChange={this.change('title')}
@@ -162,7 +153,7 @@ export default class NewPost extends React.PureComponent {
                   />
                 </div>
 
-                <div className="input_about">
+                <div className="input_body">
                   <label className="label">Body</label>
                   <textarea
                     className="input"
