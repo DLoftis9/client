@@ -234,7 +234,7 @@ const RouterContent = () => (
       <PrivateRoute path="/user/:userId" component={ProfileWithContext} />
 
       <Route path="/signout" component={UserSignOutWithContext} />
-      <Route path="/createpost" component={CreatePostWithContext} />
+      <PrivateRoute path="/createpost" component={CreatePostWithContext} />
       <Route path="/tools" component={ToolsWithContext} />
       <Route path="/editpost" component={EditPostWithContext} />
       <PrivateRoute path="/editprofile/:userId" component={EditProfileWithContext} />
