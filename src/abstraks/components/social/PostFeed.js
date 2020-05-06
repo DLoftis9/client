@@ -42,11 +42,19 @@ export default class PostFeed extends React.PureComponent {
           <h1>Post Feed</h1>
           <div className="post-card">
             {posts.map((post, i) => {
+              const posterId = post.postedBy ? `/user/${post.postedBy._id}` : '';
+              const posterName = post.postedBy ? post.postedBy.name : ' Unknown';
+
               return (
                 <div className="posts-list" key={i}>
-                  <h3 className="post_title header-three">{`${post.title}`}</h3>
-                  <p className="post_body paragraph">{`${post.body}`}</p>
+                  <h3 className="post_title header-three">{post.title}</h3>
+                  <p className="post_body paragraph">{post.body.substring(0, 250)}</p>
 
+                  <p className="posted-by">
+                    <span>Posted by: </span>
+                    <Link to={`${posterId}`}>{posterName}</Link> |{' '}
+                    <span className="callout">{new Date(post.created).toDateString()}</span>
+                  </p>
                   <Link to={`/posts/${post._id}`} className="anchor anchor_view">
                     Read more
                   </Link>

@@ -68,7 +68,7 @@ export default class SignIn extends Component {
     const { containerName } = this.props;
     const { email, password, error, redirectToReferer, loading } = this.state;
     if (redirectToReferer) {
-      return <Redirect to="/profile" />;
+      return <Redirect to="/home" />;
     }
 
     return (
