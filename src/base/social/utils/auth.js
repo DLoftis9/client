@@ -197,3 +197,14 @@ export const create = (userId, token, post) => {
     })
     .catch(err => console.log(err));
 };
+
+// method to fetch all posts
+export const fetchPosts = () => {
+  return fetch(`${url}/posts`, {
+    method: 'GET',
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};

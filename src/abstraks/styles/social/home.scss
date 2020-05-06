@@ -1,0 +1,10 @@
+@import '../_variables.scss';
+@import '../../.././base/styles/_variables.scss';
+
+// Container
+.home {
+  float: left;
+  width: 100%;
+  padding: 0 15px;
+  margin: 3.5em 0 5em 0;
+}

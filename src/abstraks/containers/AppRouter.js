@@ -16,11 +16,11 @@ import NotFound from './social/NotFound';
 import Test from './social/Test';
 
 import CreatePost from './social/CreatePost';
+import HomeFeed from './social/HomeFeed';
 import Tools from './social/Tools';
 import EditPost from './social/EditPost';
 import EditProfile from './social/EditProfile';
 import Following from './social/Following';
-import PostFeed from './social/PostFeed';
 import Profile from './social/Profile';
 import Settings from './social/Settings';
 import Discover from './social/Discover';
@@ -189,11 +189,11 @@ const HeaderWithContext = withContext(HeaderSocial);
 const MobileFooterWithContext = withContext(MobileFooter);
 
 const CreatePostWithContext = withContext(CreatePost);
+const HomeFeedWithContext = withContext(HomeFeed);
 const ToolsWithContext = withContext(Tools);
 const EditPostWithContext = withContext(EditPost);
 const EditProfileWithContext = withContext(EditProfile);
 const FollowingWithContext = withContext(Following);
-const PostFeedWithContext = withContext(PostFeed);
 const ProfileWithContext = withContext(Profile);
 const SettingsWithContext = withContext(Settings);
 const DiscoverWithContext = withContext(Discover);
@@ -231,15 +231,16 @@ const RouterContent = () => (
       {/* When React renders a component that subscribes to context, 
       it will read the context value passed to it from its Provider. */}
       {/* Socionet Routes */}
+      <Route path="/home" component={HomeFeedWithContext} />
       <PrivateRoute path="/user/:userId" component={ProfileWithContext} />
 
       <Route path="/signout" component={UserSignOutWithContext} />
       <PrivateRoute path="/createpost" component={CreatePostWithContext} />
+
       <Route path="/tools" component={ToolsWithContext} />
       <Route path="/editpost" component={EditPostWithContext} />
       <PrivateRoute path="/editprofile/:userId" component={EditProfileWithContext} />
       <Route path="/following" component={FollowingWithContext} />
-      <Route path="/postfeed" component={PostFeedWithContext} />
       <Route path="/settings" component={SettingsWithContext} />
       <Route path="/discover" component={DiscoverWithContext} />
       <Route path="/terms-of-use" component={TermsWithContext} />

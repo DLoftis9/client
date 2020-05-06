@@ -2,32 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isAuthenticated } from '../../../base/social/utils/auth';
 
-import PostWidget from '../../components/social/PostWidget';
-import PostResponse from '../../components/social/PostResponse';
-import PostResponseComments from '../../components/social/PostResponseComments';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
+import PostFeed from '../../components/social/PostFeed';
 
-export default class PostFeed extends React.PureComponent {
+export default class HomeFeed extends React.PureComponent {
   static propTypes = {
     containerName: PropTypes.string.isRequired,
-    authUserName: PropTypes.object,
     extraClassName: PropTypes.string,
   };
 
   static defaultProps = {
-    containerName: 'post-feed',
+    containerName: 'home',
   };
-
-  toggleLikeClick = () => {
-    const { context } = this.props;
-    context.actions.handleLikeClick();
-  };
-
   render() {
-    const { context, containerName } = this.props;
+    const {
+      // context,
+      containerName,
+    } = this.props;
 
-    const isToggleOn = context.isToggleOn;
     return (
       <>
         <MenuSlideIn
@@ -37,10 +30,8 @@ export default class PostFeed extends React.PureComponent {
         <div className={containerName}>
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
-              <h1>PostFeed</h1>
-              <PostWidget authUserName={isAuthenticated().user.name} />
-              <PostResponse toggleLike={isToggleOn} likeMethod={this.toggleLikeClick} />
-              <PostResponseComments toggleLike={isToggleOn} likeMethod={this.toggleLikeClick} />
+              <h1>Home Feed</h1>
+              <PostFeed />
             </div>
           </div>
         </div>

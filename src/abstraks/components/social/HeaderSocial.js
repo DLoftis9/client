@@ -62,8 +62,17 @@ class HeaderSocial extends React.PureComponent {
                         <span className="triangle-top"></span>
                         <ul className="menu">
                           <li className="avatar-name">
-                            <Link to={`/user/${isAuthenticated().user._id}`}>
-                              <h2 className="user-name">{isAuthenticated().user.name}</h2>
+                            <h2 className="user-name">{isAuthenticated().user.name}</h2>
+                          </li>
+
+                          <li className="listItem home_listItem">
+                            <Link
+                              className="anchor home_anchor"
+                              style={isActive(history, '/home')}
+                              to={`/home`}
+                            >
+                              <i className="fa fa-home"></i>
+                              <span>Home</span>
                             </Link>
                           </li>
 
