@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
-import config from '../../../base/social/utils/config';
 import { isAuthenticated, create } from '../../../base/social/utils/auth';
 import ErrorDisplay from '../../components/social/ErrorDisplay';
 
@@ -81,7 +80,14 @@ export default class CreatePost extends React.PureComponent {
 
       create(userId, token, this.postData).then(data => {
         if (data.error) this.setState({ error: data.error, loading: false });
-        else console.log('New Post: ', data);
+        else {
+          this.setState({
+            loading: false,
+            title: '',
+            body: '',
+            redirectToProfile: true,
+          });
+        }
       });
     }
   };
@@ -91,20 +97,11 @@ export default class CreatePost extends React.PureComponent {
       // context,
       containerName,
     } = this.props;
-    const { id, title, body, photo, user, error, loading } = this.state;
+    const { title, body, photo, user, error, loading, redirectToProfile } = this.state;
 
-    // if (redirectToProfile) {
-    //   return <Redirect to={`/user/${id}`} />;
-    // }
-    const url = config.apiBaseUrl;
-
-    const photoUrl = id ? (
-      `${url}/user/photo/${id}?${new Date().getTime()}`
-    ) : (
-      <div className="avatar-image default-image">
-        <i className="fa fa-user" aria-hidden="true"></i>
-      </div>
-    );
+    if (redirectToProfile) {
+      return <Redirect to={`/user/${user._id}`} />;
+    }
 
     return (
       <>
@@ -116,17 +113,6 @@ export default class CreatePost extends React.PureComponent {
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
               <h1>New Post</h1>
-
-              {/* <div className={containerName + `_image`}>
-                <img
-                  className="profile-image"
-                  src={photoUrl}
-                  onError={i =>
-                    (i.target.src = `https://abstraksresources.s3-us-west-1.amazonaws.com/images/avatar.svg`)
-                  }
-                  alt={name}
-                />
-              </div> */}
 
               <form className="form">
                 <div className="input_photo">

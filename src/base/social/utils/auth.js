@@ -1,12 +1,11 @@
 import config from './config';
-// TO DO:
-// refactor methods into Context
-// check why environment variable is not working
-// `${process.env.REACT_APP_API_URL}/signin`
-// check why user that isn't signed in cannot check /users path without throwing an error in other browsers
-
-// refactor signup method to be similar to signin(),
-// and so user can redirect to being logged in
+/**
+ * Better comments plugin
+ * todo:refactor methods into Context
+ * todo: check why environment variable is not working `${process.env.REACT_APP_API_URL}/signin`
+ * todo: check why user that isn't signed in cannot check /users path without throwing an error in other browsers
+ * todo: refactor signup method to be similar to signin(), and so user can redirect to being logged in
+ */
 
 const url = config.apiBaseUrl;
 
