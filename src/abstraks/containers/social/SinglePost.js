@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import config from '../../../base/social/utils/config';
-import { isAuthenticated, singlePost, deletePost } from '../../../base/social/utils/auth';
+import {
+  isAuthenticated,
+  singlePost,
+  deletePost,
+  like,
+  unlike,
+} from '../../../base/social/utils/auth';
 import Loader from '../../../base/scripts/Loader';
 
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
@@ -13,6 +19,14 @@ export default class SinglePost extends React.PureComponent {
     post: '',
     loading: false,
     redirectToHome: false,
+    like: false,
+    likes: 0,
+  };
+
+  checkLike = likes => {
+    const userId = isAuthenticated().user._id;
+    let match = likes.indexOf(userId) !== -1;
+    return match;
   };
 
   componentDidMount = () => {
@@ -21,7 +35,29 @@ export default class SinglePost extends React.PureComponent {
       if (data.error) {
         console.log(data.error);
       } else {
-        this.setState({ post: data });
+        this.setState({
+          post: data,
+          likes: data.likes.length,
+          like: this.checkLike(data.likes),
+        });
+      }
+    });
+  };
+
+  likeToggle = () => {
+    let callApi = this.state.like ? unlike : like;
+    const userId = isAuthenticated().user._id;
+    const postId = this.state.post._id;
+    const token = isAuthenticated().token;
+
+    callApi(userId, token, postId).then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        this.setState({
+          like: !this.state.like,
+          likes: data.likes.length,
+        });
       }
     });
   };
@@ -67,7 +103,7 @@ export default class SinglePost extends React.PureComponent {
       containerName,
     } = this.props;
 
-    const { post, redirectToHome } = this.state;
+    const { post, redirectToHome, like, likes } = this.state;
     const posterId = post.postedBy ? `/user/${post.postedBy._id}` : '';
     const posterName = post.postedBy ? post.postedBy.name : ' Unknown';
 
@@ -92,47 +128,55 @@ export default class SinglePost extends React.PureComponent {
               {!post ? (
                 <Loader />
               ) : (
-                <div className="post-card">
-                  {isAuthenticated().user && isAuthenticated().user._id === post.postedBy._id && (
-                    <div className="user_manage">
-                      <Link to={`edit/${post._id}`} className="edit">
-                        <i className="edit-icon fa fa-pencil-square-o" aria-hidden="true"></i>
-                        <p className="icon_text">Edit Post</p>
-                      </Link>
+                <>
+                  <div className="post-card">
+                    {isAuthenticated().user && isAuthenticated().user._id === post.postedBy._id && (
+                      <div className="user_manage">
+                        <Link to={`edit/${post._id}`} className="edit">
+                          <i className="edit-icon fa fa-pencil-square-o" aria-hidden="true"></i>
+                          <p className="icon_text">Edit Post</p>
+                        </Link>
 
-                      <button onClick={this.deleteConfirmed} className="delete">
-                        <i className="fa fa-close"></i>
-                        <p className="icon_text">Delete Post</p>
-                      </button>
-                    </div>
-                  )}
+                        <button onClick={this.deleteConfirmed} className="delete">
+                          <i className="fa fa-close"></i>
+                          <p className="icon_text">Delete Post</p>
+                        </button>
+                      </div>
+                    )}
 
-                  <h3 className="header-three">
-                    <Link to={`${posterId}`}>{posterName}</Link>
-                  </h3>
-                  <h2 className="post_title header-two">{post.title}</h2>
-                  <img
-                    src={`${url}/post/photo/${post._id}`}
-                    alt={post.title}
-                    onError={i =>
-                      (i.target.src =
-                        'https://abstraksresources.s3-us-west-1.amazonaws.com/images/defaultPost.svg')
-                    }
-                    className="image-thumb image"
-                  />
+                    <h3 className="header-three">
+                      <Link to={`${posterId}`}>{posterName}</Link>
+                    </h3>
+                    <h2 className="post_title header-two">{post.title}</h2>
+                    <img
+                      src={`${url}/post/photo/${post._id}`}
+                      alt={post.title}
+                      onError={i =>
+                        (i.target.src =
+                          'https://abstraksresources.s3-us-west-1.amazonaws.com/images/defaultPost.svg')
+                      }
+                      className="image-thumb image"
+                    />
 
-                  {/* the substring method controls how many characters are shown for the post body */}
-                  <p className="post_body paragraph">{post.body}</p>
+                    {/* the substring method controls how many characters are shown for the post body */}
+                    <p className="post_body paragraph">{post.body}</p>
 
-                  <p className="posted-by">
-                    <span className="callout">{new Date(post.created).toDateString()}</span>
-                  </p>
+                    <p className="posted-by">
+                      <span className="callout">{new Date(post.created).toDateString()}</span>
+                    </p>
 
-                  <Link to={`${posterId}`} className="anchor anchor_view">
-                    <i className="fa fa-arrow-left" />
-                    <p className="back-text">Back to {posterName}'s profile</p>
-                  </Link>
-                </div>
+                    <Link to={`${posterId}`} className="anchor anchor_view">
+                      <i className="fa fa-arrow-left" />
+                      <p className="back-text">Back to {posterName}'s profile</p>
+                    </Link>
+                  </div>
+                  <div className="user-response_menu">
+                    <p onClick={this.likeToggle} className="toggle-likes">
+                      Like Click
+                    </p>
+                    <p className="likes">{likes} Likes</p>
+                  </div>
+                </>
               )}
             </div>
           </div>

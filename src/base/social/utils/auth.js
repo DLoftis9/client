@@ -268,3 +268,37 @@ export const updatePost = (postId, token, post) => {
     })
     .catch(err => console.log(err));
 };
+
+// method to update like
+export const like = (userId, token, postId) => {
+  return fetch(`${url}/post/like`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ userId, postId }),
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method to update unlike
+export const unlike = (userId, token, postId) => {
+  return fetch(`${url}/post/unlike`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ userId, postId }),
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
