@@ -235,3 +235,36 @@ export const listByUser = (userId, token) => {
     })
     .catch(err => console.log(err));
 };
+
+// method to delete user account
+export const deletePost = (postId, token) => {
+  return fetch(`${url}/post/${postId}`, {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method to update single post
+export const updatePost = (postId, token, post) => {
+  console.log(postId, token, post);
+  return fetch(`${url}/post/${postId}`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: post,
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};

@@ -35,6 +35,9 @@ export default class DeleteUser extends React.PureComponent {
     });
   };
 
+  /**
+   * todo: refactor prompt to a component
+   */
   deleteConfirmed = () => {
     let answer = window.confirm('Are you sure you want to delete your account?');
 

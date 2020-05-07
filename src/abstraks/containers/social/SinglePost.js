@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import config from '../../../base/social/utils/config';
-import { isAuthenticated, singlePost } from '../../../base/social/utils/auth';
+import { isAuthenticated, singlePost, deletePost } from '../../../base/social/utils/auth';
 import Loader from '../../../base/scripts/Loader';
 
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
@@ -12,6 +12,7 @@ export default class SinglePost extends React.PureComponent {
   state = {
     post: '',
     loading: false,
+    redirectToHome: false,
   };
 
   componentDidMount = () => {
@@ -23,6 +24,32 @@ export default class SinglePost extends React.PureComponent {
         this.setState({ post: data });
       }
     });
+  };
+
+  // method to just delete post
+  removePost = () => {
+    const postId = this.props.match.params.postId;
+    const token = isAuthenticated().token;
+    deletePost(postId, token).then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        this.setState({
+          redirectToHome: true,
+        });
+      }
+    });
+  };
+
+  /**
+   * todo: refactor prompt to a component
+   */
+  deleteConfirmed = () => {
+    let answer = window.confirm('Are you sure you want to delete this post?');
+
+    if (answer) {
+      this.removePost();
+    }
   };
 
   static propTypes = {
@@ -40,9 +67,13 @@ export default class SinglePost extends React.PureComponent {
       containerName,
     } = this.props;
 
-    const { post, loading } = this.state;
+    const { post, loading, redirectToHome } = this.state;
     const posterId = post.postedBy ? `/user/${post.postedBy._id}` : '';
     const posterName = post.postedBy ? post.postedBy.name : ' Unknown';
+
+    if (redirectToHome) {
+      return <Redirect to="/home" />;
+    }
 
     return (
       <>
@@ -64,12 +95,12 @@ export default class SinglePost extends React.PureComponent {
                 <div className="post-card">
                   {isAuthenticated().user && isAuthenticated().user._id === post.postedBy._id && (
                     <div className="user_manage">
-                      <button className="edit">
+                      <Link to={`edit/${post._id}`} className="edit">
                         <i className="edit-icon fa fa-pencil-square-o" aria-hidden="true"></i>
                         <p className="icon_text">Edit Post</p>
-                      </button>
+                      </Link>
 
-                      <button className="delete">
+                      <button onClick={this.deleteConfirmed} className="delete">
                         <i className="fa fa-close"></i>
                         <p className="icon_text">Delete Post</p>
                       </button>
