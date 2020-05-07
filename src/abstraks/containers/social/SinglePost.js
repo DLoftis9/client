@@ -67,7 +67,7 @@ export default class SinglePost extends React.PureComponent {
       containerName,
     } = this.props;
 
-    const { post, loading, redirectToHome } = this.state;
+    const { post, redirectToHome } = this.state;
     const posterId = post.postedBy ? `/user/${post.postedBy._id}` : '';
     const posterName = post.postedBy ? post.postedBy.name : ' Unknown';
 

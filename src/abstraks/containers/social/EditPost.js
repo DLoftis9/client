@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import config from '../../../base/social/utils/config';
 import { isAuthenticated, singlePost, updatePost } from '../../../base/social/utils/auth';
 
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
@@ -108,11 +109,12 @@ export default class EditPost extends React.PureComponent {
     containerName: 'edit-post',
   };
   render() {
+    const url = config.apiBaseUrl;
     const {
       // context,
       containerName,
     } = this.props;
-    const { title, body, error, loading, redirectToProfile } = this.state;
+    const { id, title, body, error, loading, redirectToProfile } = this.state;
 
     if (redirectToProfile) {
       return <Redirect to={`/user/${isAuthenticated().user._id}`} />;
@@ -130,6 +132,20 @@ export default class EditPost extends React.PureComponent {
               <h2 className="header-two">{title}</h2>
 
               <form className="form">
+                {/*
+                 * todo:configure img to receive current post image
+                 */}
+                <div className={containerName + `_image`}>
+                  <img
+                    className="post-image"
+                    src={`${url}/post/photo/${id}?${new Date().getTime()}`}
+                    onError={i =>
+                      (i.target.src = `https://abstraksresources.s3-us-west-1.amazonaws.com/images/defaultPost.svg`)
+                    }
+                    alt={title}
+                  />
+                </div>
+
                 <div className="input_photo">
                   <label className="label">Post Photo</label>
                   <input
