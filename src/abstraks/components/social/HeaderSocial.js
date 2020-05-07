@@ -29,8 +29,8 @@ class HeaderSocial extends React.PureComponent {
       history,
     } = this.props;
     const isActive = (history, path) => {
-      if (history.location.pathname === path) return { color: '#ff9900' };
-      else return { color: '#ff0000' };
+      if (history.location.pathname === path) return { color: '#025302' };
+      else return { color: '#009900' };
     };
 
     // The value of authUser is either an object holding the
@@ -62,10 +62,20 @@ class HeaderSocial extends React.PureComponent {
                         <span className="triangle-top"></span>
                         <ul className="menu">
                           <li className="avatar-name">
-                            <Link to={`/user/${isAuthenticated().user._id}`}>
-                              <h2 className="user-name">{isAuthenticated().user.name}</h2>
+                            <h2 className="user-name">{isAuthenticated().user.name}</h2>
+                          </li>
+
+                          <li className="listItem home_listItem">
+                            <Link
+                              className="anchor home_anchor"
+                              style={isActive(history, '/home')}
+                              to={`/home`}
+                            >
+                              <i className="fa fa-home"></i>
+                              <span>Home</span>
                             </Link>
                           </li>
+
                           <li className="listItem edit-profile_listItem">
                             <Link
                               className="anchor edit-profile_anchor"
@@ -75,6 +85,17 @@ class HeaderSocial extends React.PureComponent {
                               Profile
                             </Link>
                           </li>
+
+                          <li className="listItem create-post_listItem">
+                            <Link
+                              className="anchor create-post_anchor"
+                              style={isActive(history, '/createpost')}
+                              to={`/createpost`}
+                            >
+                              Create Post
+                            </Link>
+                          </li>
+
                           <li className="listItem discover_listItem">
                             <Link
                               className="anchor discover_anchor"
@@ -104,6 +125,7 @@ class HeaderSocial extends React.PureComponent {
                               Privacy Policy
                             </Link>
                           </li>
+
                           <li className="listItem terms-of-use_listItem">
                             <Link
                               className="anchor terms-of-use_anchor"
@@ -113,6 +135,7 @@ class HeaderSocial extends React.PureComponent {
                               Terms Of Use
                             </Link>
                           </li>
+
                           <li className="listItem log-out_listItem">
                             <button
                               className="anchor log-out_anchor"

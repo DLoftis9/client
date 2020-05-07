@@ -28,12 +28,6 @@ const HeaderContent = props => (
         </Link>
       </li>
 
-      <li className="listItem discover_listItem">
-        <Link className="anchor discover_anchor" to="/find-users">
-          Discover
-        </Link>
-      </li>
-
       <li className="listItem settings_listItem">
         <Link className="anchor settings_anchor" to="/settings">
           Settings

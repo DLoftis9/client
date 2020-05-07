@@ -2,19 +2,9 @@
 @import '../../.././base/styles/_variables.scss';
 
 // Container
-.tools {
+.single-post {
   float: left;
   width: 100%;
   padding: 0 15px;
   margin: 3.5em 0 5em 0;
-}
-
-.tools.menu-slide-in {
-  height: 60px;
-  margin: 0;
-}
-
-.error.form-error {
-  float: left;
-  width: 100%;
 }

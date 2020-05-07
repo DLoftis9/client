@@ -1,12 +1,11 @@
 import config from './config';
-// TO DO:
-// refactor methods into Context
-// check why environment variable is not working
-// `${process.env.REACT_APP_API_URL}/signin`
-// check why user that isn't signed in cannot check /users path without throwing an error in other browsers
-
-// refactor signup method to be similar to signin(),
-// and so user can redirect to being logged in
+/**
+ * Better comments plugin
+ * todo:refactor methods into Context
+ * todo: check why environment variable is not working `${process.env.REACT_APP_API_URL}/signin`
+ * todo: check why user that isn't signed in cannot check /users path without throwing an error in other browsers
+ * todo: refactor signup method to be similar to signin(), and so user can redirect to being logged in
+ */
 
 const url = config.apiBaseUrl;
 
@@ -176,6 +175,44 @@ export const findPeople = (userId, token) => {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method for creating a post
+export const create = (userId, token, post) => {
+  return fetch(`${url}/post/new/${userId}`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: post,
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method to fetch all posts
+export const fetchPosts = () => {
+  return fetch(`${url}/posts`, {
+    method: 'GET',
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method to fetch single post
+export const singlePost = postId => {
+  return fetch(`${url}/post/${postId}`, {
+    method: 'GET',
   })
     .then(response => {
       return response.json();

@@ -5,7 +5,7 @@ import { isAuthenticated } from '../../../base/social/utils/auth';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
 
-export default class Settings extends React.PureComponent {
+export default class Tools extends React.PureComponent {
   static propTypes = {
     containerName: PropTypes.string.isRequired,
     extraClassName: PropTypes.string,
