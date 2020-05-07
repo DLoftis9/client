@@ -62,6 +62,23 @@ export default class SinglePost extends React.PureComponent {
                 <Loader />
               ) : (
                 <div className="post-card">
+                  {isAuthenticated().user && isAuthenticated().user._id === post.postedBy._id && (
+                    <div className="user_manage">
+                      <button className="edit">
+                        <i className="edit-icon fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <p className="icon_text">Edit Post</p>
+                      </button>
+
+                      <button className="delete">
+                        <i className="fa fa-close"></i>
+                        <p className="icon_text">Delete Post</p>
+                      </button>
+                    </div>
+                  )}
+
+                  <h3 className="header-three">
+                    <Link to={`${posterId}`}>{posterName}</Link>
+                  </h3>
                   <h2 className="post_title header-two">{post.title}</h2>
                   <img
                     src={`${url}/post/photo/${post._id}`}
@@ -77,10 +94,13 @@ export default class SinglePost extends React.PureComponent {
                   <p className="post_body paragraph">{post.body}</p>
 
                   <p className="posted-by">
-                    <span>Posted by: </span>
-                    <Link to={`${posterId}`}>{posterName}</Link> |{' '}
                     <span className="callout">{new Date(post.created).toDateString()}</span>
                   </p>
+
+                  <Link to={`${posterId}`} className="anchor anchor_view">
+                    <i className="fa fa-arrow-left" />
+                    <p className="back-text">Back to {posterName}'s profile</p>
+                  </Link>
                 </div>
               )}
             </div>

@@ -197,6 +197,7 @@ export default class EditProfile extends React.PureComponent {
                     accept="image/*"
                     onChange={this.change('photo')}
                   />
+                  <i className="fa fa-camera" aria-hidden="true"></i>
                 </div>
 
                 <div className="input_name">

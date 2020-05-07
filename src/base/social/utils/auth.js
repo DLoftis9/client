@@ -219,3 +219,19 @@ export const singlePost = postId => {
     })
     .catch(err => console.log(err));
 };
+
+// method to fetch all posts
+export const listByUser = (userId, token) => {
+  return fetch(`${url}/posts/by/${userId}`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};

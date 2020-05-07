@@ -33,3 +33,18 @@
   background-color: $color-secondary;
   border-color: $color-secondary;
 }
+
+.button-cancel {
+  background-color: $color-tertiary;
+  border-color: $color-tertiary;
+}
+
+.button-cancel:hover,
+.button-cancel:focus {
+  background-color: $color-tertiary-hover;
+}
+
+.button-cancel:active {
+  background-color: $color-tertiary;
+  border-color: $color-tertiary;
+}
