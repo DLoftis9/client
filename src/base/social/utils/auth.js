@@ -208,3 +208,14 @@ export const fetchPosts = () => {
     })
     .catch(err => console.log(err));
 };
+
+// method to fetch single post
+export const singlePost = postId => {
+  return fetch(`${url}/post/${postId}`, {
+    method: 'GET',
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};

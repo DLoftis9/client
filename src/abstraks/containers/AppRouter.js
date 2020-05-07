@@ -16,6 +16,7 @@ import NotFound from './social/NotFound';
 import Test from './social/Test';
 
 import CreatePost from './social/CreatePost';
+import SinglePost from './social/SinglePost';
 import HomeFeed from './social/HomeFeed';
 import Tools from './social/Tools';
 import EditPost from './social/EditPost';
@@ -189,6 +190,7 @@ const HeaderWithContext = withContext(HeaderSocial);
 const MobileFooterWithContext = withContext(MobileFooter);
 
 const CreatePostWithContext = withContext(CreatePost);
+const SinglePostWithContext = withContext(SinglePost);
 const HomeFeedWithContext = withContext(HomeFeed);
 const ToolsWithContext = withContext(Tools);
 const EditPostWithContext = withContext(EditPost);
@@ -232,6 +234,7 @@ const RouterContent = () => (
       it will read the context value passed to it from its Provider. */}
       {/* Socionet Routes */}
       <Route path="/home" component={HomeFeedWithContext} />
+      <Route path="/post/:postId" component={SinglePostWithContext} />
       <PrivateRoute path="/user/:userId" component={ProfileWithContext} />
 
       <Route path="/signout" component={UserSignOutWithContext} />
