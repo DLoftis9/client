@@ -233,29 +233,29 @@ const RouterContent = () => (
       {/* When React renders a component that subscribes to context, 
       it will read the context value passed to it from its Provider. */}
       {/* Socionet Routes */}
-      <Route path="/home" component={HomeFeedWithContext} />
-      <Route path="/post/:postId" component={SinglePostWithContext} />
-      <PrivateRoute path="/user/:userId" component={ProfileWithContext} />
-
-      <Route path="/signout" component={UserSignOutWithContext} />
-      <PrivateRoute path="/createpost" component={CreatePostWithContext} />
-
-      <Route path="/tools" component={ToolsWithContext} />
-      <Route path="/editpost" component={EditPostWithContext} />
-      <PrivateRoute path="/editprofile/:userId" component={EditProfileWithContext} />
-      <Route path="/following" component={FollowingWithContext} />
-      <Route path="/settings" component={SettingsWithContext} />
-      <Route path="/discover" component={DiscoverWithContext} />
-      <Route path="/terms-of-use" component={TermsWithContext} />
-      <Route path="/privacy-policy" component={PrivacyPolicyWithContext} />
-      <PrivateRoute exact path="/find-users" component={FindUsersWithContext} />
       <Route path="/test" component={TestWithContext} />
+      <Route exact path="/home" component={HomeFeedWithContext} />
+      <Route exact path="/post/:postId" component={SinglePostWithContext} />
+
+      <PrivateRoute exact path="/user/:userId" component={ProfileWithContext} />
+      <PrivateRoute exact path="/createpost" component={CreatePostWithContext} />
+      <PrivateRoute exact path="/post/edit/:postId" component={EditPostWithContext} />
+      <PrivateRoute exact path="/editprofile/:userId" component={EditProfileWithContext} />
+      <PrivateRoute exact path="/find-users" component={FindUsersWithContext} />
+
+      <Route exact path="/tools" component={ToolsWithContext} />
+      <Route exact path="/following" component={FollowingWithContext} />
+      <Route exact path="/settings" component={SettingsWithContext} />
+      <Route exact path="/discover" component={DiscoverWithContext} />
+      <Route exact path="/terms-of-use" component={TermsWithContext} />
+      <Route exact path="/privacy-policy" component={PrivacyPolicyWithContext} />
 
       {/* route to return ALL users */}
-      <Route path="/users" component={UsersWithContext} />
+      <Route exact path="/users" component={UsersWithContext} />
 
-      <Route path="/signup" component={SignUpWithContext} />
-      <Route path="/signin" component={SignInWithContext} />
+      <Route exact path="/signup" component={SignUpWithContext} />
+      <Route exact path="/signin" component={SignInWithContext} />
+      <Route exact path="/signout" component={UserSignOutWithContext} />
       {/* Socionet Routes END */}
 
       <Route path="/Publication/issue26p1" component={Issue26p1} />

@@ -25,7 +25,6 @@
             width: 200px;
           }
         }
-        
       }
     }
 
@@ -34,5 +33,23 @@
       width: 100%;
       text-align: center;
     }
+  }
+}
+
+// menu to show options for user to comment and like posts
+.user-response_menu {
+  background-color: $color-white;
+  border-top: 1px solid $color-light_gray;
+  float: left;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin-bottom: 60px;
+  color: $color-font-body;
+  height: 120px;
+
+  @media #{$medium} {
+    margin-bottom: 0;
   }
 }
