@@ -19,12 +19,13 @@ export default class SinglePost extends React.PureComponent {
     post: '',
     loading: false,
     redirectToHome: false,
+    redirectToSignin: false,
     like: false,
     likes: 0,
   };
 
   checkLike = likes => {
-    const userId = isAuthenticated().user._id;
+    const userId = isAuthenticated() && isAuthenticated().user._id;
     let match = likes.indexOf(userId) !== -1;
     return match;
   };
@@ -45,6 +46,12 @@ export default class SinglePost extends React.PureComponent {
   };
 
   likeToggle = () => {
+    if (isAuthenticated()) {
+      this.setState({
+        redirectToSignin: true,
+      });
+      return false;
+    }
     let callApi = this.state.like ? unlike : like;
     const userId = isAuthenticated().user._id;
     const postId = this.state.post._id;
@@ -103,12 +110,14 @@ export default class SinglePost extends React.PureComponent {
       containerName,
     } = this.props;
 
-    const { post, redirectToHome, like, likes } = this.state;
+    const { post, redirectToHome, redirectToSignin, like, likes } = this.state;
     const posterId = post.postedBy ? `/user/${post.postedBy._id}` : '';
     const posterName = post.postedBy ? post.postedBy.name : ' Unknown';
 
     if (redirectToHome) {
       return <Redirect to="/home" />;
+    } else if (redirectToSignin) {
+      return <Redirect tp={'/signin'} />;
     }
 
     return (
@@ -171,9 +180,18 @@ export default class SinglePost extends React.PureComponent {
                     </Link>
                   </div>
                   <div className="user-response_menu">
-                    <p onClick={this.likeToggle} className="toggle-likes">
-                      Like Click
-                    </p>
+                    <div className="like_toggle">
+                      {like ? (
+                        <span onClick={this.likeToggle}>
+                          <i className="icon_like fa fa-heart" aria-hidden="true"></i>
+                        </span>
+                      ) : (
+                        <span onClick={this.likeToggle}>
+                          <i className="icon_unlike fa fa-heart-o" aria-hidden="true"></i>
+                        </span>
+                      )}
+                    </div>
+
                     <p className="likes">{likes} Likes</p>
                   </div>
                 </>
