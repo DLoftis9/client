@@ -47,9 +47,21 @@
   bottom: 0;
   margin-bottom: 60px;
   color: $color-font-body;
-  height: 120px;
+  height: 250px;
+  overflow: scroll;
 
   @media #{$medium} {
     margin-bottom: 0;
+  }
+
+  .form {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    .input {
+      width: 100%;
+    }
   }
 }

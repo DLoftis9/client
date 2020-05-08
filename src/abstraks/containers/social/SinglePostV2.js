@@ -34,7 +34,6 @@ export default class SinglePost extends React.PureComponent {
 
   componentDidMount = () => {
     const postId = this.props.match.params.postId;
-
     singlePost(postId).then(data => {
       if (data.error) {
         console.log(data.error);
@@ -201,7 +200,7 @@ export default class SinglePost extends React.PureComponent {
                       )}
                     </div>
 
-                    <span className="likes">{likes} Likes</span>
+                    <p className="likes">{likes} Likes</p>
                     <Comment
                       postId={post._id}
                       comments={comments.reverse()}
