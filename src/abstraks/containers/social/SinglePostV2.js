@@ -34,7 +34,6 @@ export default class SinglePost extends React.PureComponent {
 
   componentDidMount = () => {
     const postId = this.props.match.params.postId;
-
     singlePost(postId).then(data => {
       if (data.error) {
         console.log(data.error);
@@ -191,17 +190,17 @@ export default class SinglePost extends React.PureComponent {
                   <div className="user-response_menu">
                     <div className="like_toggle">
                       {like ? (
-                        <span className="like" onClick={this.likeToggle}>
+                        <span onClick={this.likeToggle}>
                           <i className="icon_like fa fa-heart" aria-hidden="true"></i>
                         </span>
                       ) : (
-                        <span className="unlike" onClick={this.likeToggle}>
+                        <span onClick={this.likeToggle}>
                           <i className="icon_unlike fa fa-heart-o" aria-hidden="true"></i>
                         </span>
                       )}
-                      <span className="likes">{likes}</span>
                     </div>
 
+                    <p className="likes">{likes} Likes</p>
                     <Comment
                       postId={post._id}
                       comments={comments.reverse()}

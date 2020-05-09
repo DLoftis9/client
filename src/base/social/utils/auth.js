@@ -302,3 +302,37 @@ export const unlike = (userId, token, postId) => {
     })
     .catch(err => console.log(err));
 };
+
+// method to create comment
+export const comment = (userId, token, postId, comment) => {
+  return fetch(`${url}/post/comment`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ userId, postId, comment }),
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method to uncomment
+export const uncomment = (userId, token, postId, comment) => {
+  return fetch(`${url}/post/uncomment`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ userId, postId, comment }),
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
