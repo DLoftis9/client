@@ -52,32 +52,38 @@ export default class Comment extends React.PureComponent {
     } = this.props;
 
     return (
-      <div className={containerName}>
-        {/* {JSON.stringify(comments)} */}
+      <>
+        <span className="comments-total">
+          <i className="fa fa-comment-o" aria-hidden="true">
+            {comments.length}
+          </i>
+        </span>
 
-        <span className="comments-total">{comments.length} Comments</span>
-        {comments.map((comment, i) => (
-          <React.Fragment key={i}>
-            <div className="commenter-info">
-              <Link className="user-profile_image" to={`/user/${comment.postedBy._id}`}>
-                <img
-                  className="user-photo"
-                  onError={i =>
-                    (i.target.src =
-                      'https://abstraksresources.s3-us-west-1.amazonaws.com/images/avatar.svg')
-                  }
-                  src={`${url}/user/photo/${comment.postedBy._id}`}
-                  alt={comment.postedBy.name}
-                />
-              </Link>
-              <div className="commenter-message">
-                <Link className="user-profile_link" to={`/user/${comment.postedBy._id}`}>
-                  {comment.postedBy.name}{' '}
+        <div className={containerName}>
+          {/* {JSON.stringify(comments)} */}
+
+          {comments.map((comment, i) => (
+            <React.Fragment key={i}>
+              <div className="commenter-info">
+                <Link className="user-profile_image" to={`/user/${comment.postedBy._id}`}>
+                  <img
+                    className="user-photo"
+                    onError={i =>
+                      (i.target.src =
+                        'https://abstraksresources.s3-us-west-1.amazonaws.com/images/avatar.svg')
+                    }
+                    src={`${url}/user/photo/${comment.postedBy._id}`}
+                    alt={comment.postedBy.name}
+                  />
                 </Link>
-                <p className="text">{comment.text}</p>
-                <p className="user-post_info">
-                  <span className="date">{new Date(comment.created).toDateString()}</span>
-                  {/* <span>
+                <div className="commenter-message">
+                  <Link className="user-profile_link" to={`/user/${comment.postedBy._id}`}>
+                    {comment.postedBy.name}{' '}
+                  </Link>
+                  <p className="text">{comment.text}</p>
+                  <p className="user-post_info">
+                    <span className="date">{new Date(comment.created).toDateString()}</span>
+                    {/* <span>
                       {isAuthenticated().user &&
                         isAuthenticated().user._id === comment.postedBy._id && (
                           <>
@@ -88,20 +94,21 @@ export default class Comment extends React.PureComponent {
                           </>
                         )}
                     </span> */}
-                </p>
+                  </p>
+                </div>
               </div>
-            </div>
-          </React.Fragment>
-        ))}
-        <form className="form" onSubmit={this.addComment}>
-          <input
-            placeholder="Leave a comment"
-            className="input text-area"
-            type="text"
-            onChange={this.handleChange}
-          />
-        </form>
-      </div>
+            </React.Fragment>
+          ))}
+          <form className="form" onSubmit={this.addComment}>
+            <input
+              placeholder="Leave a comment"
+              className="input text-area"
+              type="text"
+              onChange={this.handleChange}
+            />
+          </form>
+        </div>
+      </>
     );
   }
 }

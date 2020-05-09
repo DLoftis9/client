@@ -191,17 +191,17 @@ export default class SinglePost extends React.PureComponent {
                   <div className="user-response_menu">
                     <div className="like_toggle">
                       {like ? (
-                        <span onClick={this.likeToggle}>
+                        <span className="like" onClick={this.likeToggle}>
                           <i className="icon_like fa fa-heart" aria-hidden="true"></i>
                         </span>
                       ) : (
-                        <span onClick={this.likeToggle}>
+                        <span className="unlike" onClick={this.likeToggle}>
                           <i className="icon_unlike fa fa-heart-o" aria-hidden="true"></i>
                         </span>
                       )}
+                      <span className="likes">{likes}</span>
                     </div>
 
-                    <span className="likes">{likes} Likes</span>
                     <Comment
                       postId={post._id}
                       comments={comments.reverse()}
