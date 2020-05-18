@@ -29,6 +29,7 @@ import Terms from './social/Terms';
 import PrivacyPolicy from './social/PrivacyPolicy';
 import Users from './social/Users';
 import FindUsers from './social/FindUsers';
+import ForgotPassword from './social/ForgotPassword';
 
 // Social Components
 import HeaderSocial from '../components/social/HeaderSocial';
@@ -235,6 +236,7 @@ const RouterContent = () => (
       {/* Socionet Routes */}
       <Route path="/test" component={TestWithContext} />
       <Route exact path="/home" component={HomeFeedWithContext} />
+      <Route exact path="/forgot-password" component={ForgotPassword} />
       <Route exact path="/post/:postId" component={SinglePostWithContext} />
 
       <PrivateRoute exact path="/user/:userId" component={ProfileWithContext} />
