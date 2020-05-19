@@ -177,6 +177,9 @@ export default class EditProfile extends React.PureComponent {
               <h1>Edit Profile</h1>
 
               <div className={containerName + `_image`}>
+                {/*
+                 * todo:configure img to receive current profile photo
+                 */}
                 <img
                   className="profile-image"
                   src={photoUrl}
@@ -197,6 +200,7 @@ export default class EditProfile extends React.PureComponent {
                     accept="image/*"
                     onChange={this.change('photo')}
                   />
+                  <i className="fa fa-camera" aria-hidden="true"></i>
                 </div>
 
                 <div className="input_name">

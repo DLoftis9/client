@@ -2,15 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import config from '../../../base/social/utils/config';
-import { isAuthenticated, read } from '../../../base/social/utils/auth';
+import { isAuthenticated, read, listByUser } from '../../../base/social/utils/auth';
 import Tabs from '../../../base/scripts/Tabs';
 
-import Avatar from '../../components/social/Avatar';
 import FollowWidget from '../../components/social/FollowWidget';
 import DeleteUser from '../../components/social/DeleteUser';
 import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
-import ProfileTabs from '../../components/social/ProfileTabs';
 import FollowingList from '../../components/social/FollowingList';
 import FollowersList from '../../components/social/FollowersList';
 import { Redirect, Link } from 'react-router-dom';
@@ -23,6 +21,7 @@ export default class Profile extends React.PureComponent {
       redirectToSignin: false,
       following: false,
       error: '',
+      posts: [],
     };
   }
 
@@ -59,6 +58,18 @@ export default class Profile extends React.PureComponent {
       } else {
         let following = this.checkFollow(data);
         this.setState({ user: data, following });
+        this.loadPosts(data._id);
+      }
+    });
+  };
+
+  loadPosts = userId => {
+    const token = isAuthenticated().token;
+    listByUser(userId, token).then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        this.setState({ posts: data });
       }
     });
   };
@@ -96,7 +107,7 @@ export default class Profile extends React.PureComponent {
   render() {
     const url = config.apiBaseUrl;
     const { containerName } = this.props;
-    const { redirectToSignin, user } = this.state;
+    const { redirectToSignin, user, posts } = this.state;
 
     if (redirectToSignin) {
       return <Redirect to="/signin" />;
@@ -159,10 +170,39 @@ export default class Profile extends React.PureComponent {
                 <div className="following" label="Following">
                   <FollowingList following={user.following} />
                 </div>
-                <div className="post" label="Post">
-                  <h3>Post</h3>
-                </div>
               </Tabs>
+
+              <div className="users-posts">
+                {posts.map((post, i) => {
+                  return (
+                    <React.Fragment key={i}>
+                      <h2 className="post_title header-two">{post.title}</h2>
+                      <img
+                        src={`${url}/post/photo/${post._id}`}
+                        alt={post.title}
+                        onError={i =>
+                          (i.target.src =
+                            'https://abstraksresources.s3-us-west-1.amazonaws.com/images/defaultPost.svg')
+                        }
+                        className="image-thumb image"
+                      />
+
+                      {/* the substring method controls how many characters are shown for the post body */}
+                      <p className="post_body paragraph">
+                        {post.body.substring(0, 250)}
+                        <Link to={`/post/${post._id}`} className="anchor anchor_view">
+                          <span className="read-more">Read more</span>
+                          <i className="fa fa-arrow-right" />
+                        </Link>
+                      </p>
+
+                      <p className="posted-by">
+                        <span className="callout">{new Date(post.created).toDateString()}</span>
+                      </p>
+                    </React.Fragment>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

@@ -1,12 +1,11 @@
 import config from './config';
-// TO DO:
-// refactor methods into Context
-// check why environment variable is not working
-// `${process.env.REACT_APP_API_URL}/signin`
-// check why user that isn't signed in cannot check /users path without throwing an error in other browsers
-
-// refactor signup method to be similar to signin(),
-// and so user can redirect to being logged in
+/**
+ * Better comments plugin
+ * todo:refactor methods into Context
+ * todo: check why environment variable is not working `${process.env.REACT_APP_API_URL}/signin`
+ * todo: check why user that isn't signed in cannot check /users path without throwing an error in other browsers
+ * todo: refactor signup method to be similar to signin(), and so user can redirect to being logged in
+ */
 
 const url = config.apiBaseUrl;
 
@@ -178,6 +177,194 @@ export const findPeople = (userId, token) => {
     },
   })
     .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method for creating a post
+export const create = (userId, token, post) => {
+  return fetch(`${url}/post/new/${userId}`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: post,
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method to fetch all posts
+export const fetchPosts = () => {
+  return fetch(`${url}/posts`, {
+    method: 'GET',
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method to fetch single post
+export const singlePost = postId => {
+  return fetch(`${url}/post/${postId}`, {
+    method: 'GET',
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method to fetch all posts
+export const listByUser = (userId, token) => {
+  return fetch(`${url}/posts/by/${userId}`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method to delete user account
+export const deletePost = (postId, token) => {
+  return fetch(`${url}/post/${postId}`, {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method to update single post
+export const updatePost = (postId, token, post) => {
+  console.log(postId, token, post);
+  return fetch(`${url}/post/${postId}`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: post,
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method to update like
+export const like = (userId, token, postId) => {
+  return fetch(`${url}/post/like`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ userId, postId }),
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method to update unlike
+export const unlike = (userId, token, postId) => {
+  return fetch(`${url}/post/unlike`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ userId, postId }),
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method to create comment
+export const comment = (userId, token, postId, comment) => {
+  return fetch(`${url}/post/comment`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ userId, postId, comment }),
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// method to uncomment
+export const uncomment = (userId, token, postId, comment) => {
+  return fetch(`${url}/post/uncomment`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ userId, postId, comment }),
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+export const forgotPassword = email => {
+  console.log('email: ', email);
+  return fetch(`${url}/forgot-password/`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email }),
+  })
+    .then(response => {
+      console.log('forgot password response: ', response);
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+export const resetPassword = resetInfo => {
+  return fetch(`${url}/reset-password/`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(resetInfo),
+  })
+    .then(response => {
+      console.log('forgot password response: ', response);
       return response.json();
     })
     .catch(err => console.log(err));

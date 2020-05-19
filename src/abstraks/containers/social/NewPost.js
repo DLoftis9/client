@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
+import config from '../../../base/social/utils/config';
 import { isAuthenticated, create } from '../../../base/social/utils/auth';
 import ErrorDisplay from '../../components/social/ErrorDisplay';
 
@@ -9,7 +10,7 @@ import MenuSlideIn from '../../../base/scripts/MenuSlideIn';
 import HeaderContent from '../../components/social/HeaderContent';
 import Loader from '../../../base/scripts/Loader';
 
-export default class CreatePost extends React.PureComponent {
+export default class NewPost extends React.PureComponent {
   constructor() {
     super();
     this.state = {
@@ -20,7 +21,6 @@ export default class CreatePost extends React.PureComponent {
       user: {},
       fileSize: 0,
       loading: false,
-      redirectToProfile: false,
     };
   }
 
@@ -75,18 +75,21 @@ export default class CreatePost extends React.PureComponent {
     this.setState({ loading: true });
 
     if (this.isValid()) {
-      const userId = isAuthenticated().user._id;
+      const userId = isAuthenticated().user_.id;
       const token = isAuthenticated().token;
 
       create(userId, token, this.postData).then(data => {
-        if (data.error) this.setState({ error: data.error, loading: false });
-        else {
-          this.setState({
-            loading: false,
-            title: '',
-            body: '',
-            redirectToProfile: true,
-          });
+        if (data.error) {
+          this.setState({ error: data.error, loading: false });
+        } else {
+          console.log('New Post: ', data);
+          // // updating user data in local storage
+          // updateUser(data, () => {
+          //   // authenticate
+          //   this.setState({
+          //     redirectToProfile: true,
+          //   });
+          // });
         }
       });
     }
@@ -97,11 +100,20 @@ export default class CreatePost extends React.PureComponent {
       // context,
       containerName,
     } = this.props;
-    const { title, body, photo, user, error, loading, redirectToProfile } = this.state;
+    const { id, title, body, photo, user, error, loading } = this.state;
 
-    if (redirectToProfile) {
-      return <Redirect to={`/user/${user._id}`} />;
-    }
+    // if (redirectToProfile) {
+    //   return <Redirect to={`/user/${id}`} />;
+    // }
+    const url = config.apiBaseUrl;
+
+    const photoUrl = id ? (
+      `${url}/user/photo/${id}?${new Date().getTime()}`
+    ) : (
+      <div className="avatar-image default-image">
+        <i className="fa fa-user" aria-hidden="true"></i>
+      </div>
+    );
 
     return (
       <>
@@ -113,6 +125,17 @@ export default class CreatePost extends React.PureComponent {
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
               <h1>New Post</h1>
+
+              {/* <div className={containerName + `_image`}>
+                <img
+                  className="profile-image"
+                  src={photoUrl}
+                  onError={i =>
+                    (i.target.src = `https://abstraksresources.s3-us-west-1.amazonaws.com/images/avatar.svg`)
+                  }
+                  alt={name}
+                />
+              </div> */}
 
               <form className="form">
                 <div className="input_photo">
@@ -126,12 +149,12 @@ export default class CreatePost extends React.PureComponent {
                   />
                 </div>
 
-                <div className="input_title">
+                <div className="input_name">
                   <label className="label">Title</label>
                   <input
                     className="input"
                     id="title"
-                    name="title"
+                    title="name"
                     type="text"
                     value={title}
                     onChange={this.change('title')}
@@ -139,7 +162,7 @@ export default class CreatePost extends React.PureComponent {
                   />
                 </div>
 
-                <div className="input_body">
+                <div className="input_about">
                   <label className="label">Body</label>
                   <textarea
                     className="input"

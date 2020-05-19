@@ -1,0 +1,16 @@
+@import '../_variables.scss';
+@import '../../.././base/styles/_variables.scss';
+
+// Container
+
+.error.form-error {
+  float: left;
+  width: 100%;
+}
+
+.success.form-success {
+  color: $color-white;
+  background-color: $color-primary;
+  padding: 5px 20px;
+  border-radius: 5px;
+}

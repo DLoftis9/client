@@ -36,13 +36,6 @@ export default class Data {
     return fetch(url, options);
   }
 
-  authenticate(jwt, next) {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('jwt', JSON.stringify(jwt));
-      // next();
-    }
-  }
-
   // create new user
   async signUpUser(user) {
     const response = await this.api('/signup', 'POST', user);
