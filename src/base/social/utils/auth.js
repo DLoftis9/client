@@ -339,7 +339,7 @@ export const uncomment = (userId, token, postId, comment) => {
 
 export const forgotPassword = email => {
   console.log('email: ', email);
-  return fetch(`${process.env.REACT_APP_API_URL}/forgot-password/`, {
+  return fetch(`${url}/forgot-password/`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
@@ -355,7 +355,7 @@ export const forgotPassword = email => {
 };
 
 export const resetPassword = resetInfo => {
-  return fetch(`${process.env.REACT_APP_API_URL}/reset-password/`, {
+  return fetch(`${url}/reset-password/`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',

@@ -48,7 +48,23 @@ export default class ForgotPassword extends React.PureComponent {
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
               <div className={containerName + `_content`}>
-                {this.state.message && <h3 className="header-three">{this.state.message}</h3>}
+                {this.state.message && (
+                  <div
+                    className="success form-success"
+                    // style={{ display: this.state.message ? '' : 'none' }}
+                  >
+                    <h3 className="header-three">{this.state.message}</h3>
+                  </div>
+                )}
+
+                {/* {this.state.error && (
+                  <div
+                    className="error form-error"
+                    style={{ display: this.state.error ? '' : 'none' }}
+                  >
+                    <h3 className="listItem">{this.state.error}</h3>
+                  </div>
+                )} */}
 
                 <form className="form">
                   <div className="input_email">
@@ -62,7 +78,7 @@ export default class ForgotPassword extends React.PureComponent {
                         this.setState({
                           email: e.target.value,
                           message: '',
-                          //   error: '',
+                          error: '',
                         })
                       }
                       autoFocus
