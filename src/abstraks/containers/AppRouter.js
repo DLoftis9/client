@@ -29,6 +29,8 @@ import Terms from './social/Terms';
 import PrivacyPolicy from './social/PrivacyPolicy';
 import Users from './social/Users';
 import FindUsers from './social/FindUsers';
+import ForgotPassword from './social/ForgotPassword';
+import ResetPassword from './social/ResetPassword';
 
 // Social Components
 import HeaderSocial from '../components/social/HeaderSocial';
@@ -232,9 +234,12 @@ const RouterContent = () => (
       {/* social container */}
       {/* When React renders a component that subscribes to context, 
       it will read the context value passed to it from its Provider. */}
-      {/* Socionet Routes */}
+
+      {/* Socinet Routes */}
       <Route path="/test" component={TestWithContext} />
       <Route exact path="/home" component={HomeFeedWithContext} />
+      <Route exact path="/forgot-password" component={ForgotPassword} />
+      <Route exact path="/reset-password/:resetPasswordToken" component={ResetPassword} />
       <Route exact path="/post/:postId" component={SinglePostWithContext} />
 
       <PrivateRoute exact path="/user/:userId" component={ProfileWithContext} />

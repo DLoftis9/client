@@ -18,7 +18,6 @@ import Comment from '../../components/social/Comment';
 export default class SinglePost extends React.PureComponent {
   state = {
     post: '',
-    loading: false,
     redirectToHome: false,
     redirectToSignin: false,
     like: false,
@@ -54,12 +53,13 @@ export default class SinglePost extends React.PureComponent {
   };
 
   likeToggle = () => {
-    if (isAuthenticated()) {
+    if (!isAuthenticated()) {
       this.setState({
         redirectToSignin: true,
       });
       return false;
     }
+
     let callApi = this.state.like ? unlike : like;
     const userId = isAuthenticated().user._id;
     const postId = this.state.post._id;
@@ -81,6 +81,7 @@ export default class SinglePost extends React.PureComponent {
   removePost = () => {
     const postId = this.props.match.params.postId;
     const token = isAuthenticated().token;
+
     deletePost(postId, token).then(data => {
       if (data.error) {
         console.log(data.error);
@@ -126,7 +127,7 @@ export default class SinglePost extends React.PureComponent {
     if (redirectToHome) {
       return <Redirect to="/home" />;
     } else if (redirectToSignin) {
-      return <Redirect tp={'/signin'} />;
+      return <Redirect to={'/signin'} />;
     }
 
     return (

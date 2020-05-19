@@ -65,6 +65,7 @@
   .comments {
     float: left;
     width: 100%;
+    margin-bottom: 5em;
 
     .text-area {
       width: 100%;
@@ -86,9 +87,21 @@
     left: 0;
     bottom: 0;
     width: 100%;
+    background-color: $color-white;
+    padding: 0 15px;
 
     .input {
-      width: 100%;
+      width: 85%;
+      margin-right: 10px;
+    }
+
+    .button-primary {
+      width: auto;
+    }
+
+    .input,
+    .button-primary {
+      float: left;
     }
   }
 }

@@ -117,12 +117,19 @@ export default class SignIn extends Component {
                     </button>
                   </form>
 
-                  <p className="account-redirect">
+                  <p className="account-redirect_wrapper">
                     Don't have a user account?{' '}
                     <Link className="anchor account-redirect_link" to="/signup">
                       Click here
                     </Link>{' '}
                     to sign up!
+                  </p>
+
+                  <p className="forgot-password_wrapper">
+                    <Link to="/forgot-password" className="anchor forgot-password_link">
+                      {' '}
+                      Forgot Password?
+                    </Link>
                   </p>
 
                   <div className="error form-error" style={{ display: error ? '' : 'none' }}>

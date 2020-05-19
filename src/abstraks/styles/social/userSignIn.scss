@@ -71,8 +71,10 @@
         }
       }
 
-      .account-redirect {
+      .account-redirect_wrapper,
+      .forgot-password_wrapper {
         float: left;
+        width: 100%;
       }
     }
   }
