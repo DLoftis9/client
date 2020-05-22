@@ -51,15 +51,17 @@ export default class PostFeed extends React.PureComponent {
 
                 return (
                   <div className="posts-list" key={i}>
-                    <img
-                      src={`${url}/post/photo/${post._id}`}
-                      alt={post.title}
-                      onError={i =>
-                        (i.target.src =
-                          'https://abstraksresources.s3-us-west-1.amazonaws.com/images/defaultPost.svg')
-                      }
-                      className="image-thumb image"
-                    />
+                    <div className="image-post_container">
+                      <img
+                        src={`${url}/post/photo/${post._id}`}
+                        alt={post.title}
+                        onError={i =>
+                          (i.target.src =
+                            'https://abstraksresources.s3-us-west-1.amazonaws.com/images/defaultPost.svg')
+                        }
+                        className="image-post image"
+                      />
+                    </div>
 
                     <h3 className="post_title header-three">{post.title}</h3>
                     {/* the substring method controls how many characters are shown for the post body */}
@@ -71,13 +73,12 @@ export default class PostFeed extends React.PureComponent {
                     </p>
 
                     <p className="posted-by">
-                      <span>Posted by: </span>
-                      <Link to={`${posterId}`}>{posterName}</Link> |{' '}
-                      <span className="callout">{new Date(post.created).toDateString()}</span>
+                      <span className="text">Posted by: </span>
+                      <Link className="anchor" to={`${posterId}`}>
+                        {posterName}
+                      </Link>{' '}
+                      | <span className="callout">{new Date(post.created).toDateString()}</span>
                     </p>
-                    <Link to={`/post/${post._id}`} className="anchor anchor_view">
-                      Read more
-                    </Link>
                   </div>
                 );
               })}

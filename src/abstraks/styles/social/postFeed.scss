@@ -3,69 +3,91 @@
 
 // Container
 .post-feed {
+  float: left;
+  width: 100%;
+
+  .post-card {
+    .posts-list {
+      border-bottom: 1px solid $color-light_gray;
+      padding-bottom: 30px;
+      float: left;
+      width: 100%;
+
+    //   .image-post_container {
+    //     height: 200px;
+    //     width: auto;
+    //   }
+
+      .post_body,
+      .posted-by {
+        display: block;
+      }
+
+      .post_body .anchor.anchor_view {
+        display: block;
+      }
+    }
+  }
+
+  .post-widget {
+    display: none;
+    @media #{$medium} {
+      display: block;
+    }
+
+    .post {
+      width: 100%;
+      float: left;
+
+      .post_input {
+        width: 100%;
+        float: left;
+      }
+
+      .post_button,
+      .fa-camera {
+        float: left;
+      }
+
+      .fa-camera {
+        width: 25%;
+
+        @media #{$medium} {
+          width: 100px;
+        }
+      }
+
+      .post_button {
+        width: 75%;
+
+        @media #{$medium} {
+          width: 200px;
+        }
+      }
+    }
+  }
+
+  .post-response,
+  .post-widget {
+    border-bottom: 1px solid $color-light_gray;
     float: left;
     width: 100%;
-    margin: 3.5em 0 5em 0;
-    
-    .post-widget {
-        display: none;
-        @media #{$medium} {
-            display: block;
-        }
+  }
 
-        .post {
-            width: 100%;
-            float: left;
-    
-            .post_input {
-                width: 100%;
-                float: left;
-            }
-    
-            .post_button,
-            .fa-camera {
-                float: left;
-            }
-    
-            .fa-camera {
-                width: 25%;
-    
-                @media #{$medium} {
-                    width: 100px;
-                }
-            }
-    
-            .post_button {
-                width: 75%;
-    
-                @media #{$medium} {
-                    width: 200px;
-                }
-            }
-        }
-    }
+  .post-response {
+    padding-bottom: 40px;
+  }
 
-    .post-response,
-    .post-widget {
-        border-bottom: 1px solid $color-light_gray;
-        float: left;
-        width: 100%;
-    }
+  .post-response-user {
+    padding: 40px 10px 0 10px;
+  }
 
-    .post-response {
-        padding-bottom: 40px;
-    }
-
-    .post-response-user {
-        padding: 40px 10px 0 10px;
-    }
-
-    .post-response-comments {
-        padding: 0 10px;
-    }
+  .post-response-comments {
+    padding: 0 10px;
+  }
 }
 
 .post-feed.menu-slide-in {
-    height: 60px;
-    margin: 0;
-  }
+  height: 60px;
+  margin: 0;
+}
