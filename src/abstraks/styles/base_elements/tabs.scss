@@ -73,5 +73,14 @@
     background-color: $color-white;
     padding: 20px 15px 45px 15px;
     border-radius: 4px;
+
+    .followers,
+    .following {
+      float: left;
+      .tab-image {
+        height: auto;
+        width: 200px;
+      }
+    }
   }
 }

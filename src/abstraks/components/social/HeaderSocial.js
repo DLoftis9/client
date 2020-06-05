@@ -71,8 +71,8 @@ class HeaderSocial extends React.PureComponent {
                               style={isActive(history, '/home')}
                               to={`/home`}
                             >
-                              <i className="fa fa-home"></i>
-                              <span>Home</span>
+                              <i className="icon fa fa-home"></i>
+                              <span className="text">Home</span>
                             </Link>
                           </li>
 
@@ -137,12 +137,12 @@ class HeaderSocial extends React.PureComponent {
                           </li>
 
                           <li className="listItem log-out_listItem">
-                            <button
+                            <span
                               className="anchor log-out_anchor"
                               onClick={() => signout(() => history.push('/signin'))}
                             >
                               Sign Out
-                            </button>
+                            </span>
                           </li>
                         </ul>
                       </>

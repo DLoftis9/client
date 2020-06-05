@@ -89,6 +89,10 @@
 
             .listItem {
               margin: 10px 0;
+
+              .icon {
+                margin-right: 5px;
+              }
             }
 
             .avatar-name,
@@ -100,6 +104,7 @@
             .log-out_listItem {
               border-top: 1px solid $color-medium_gray;
               padding-top: 10px;
+              cursor: pointer;
             }
           }
 

@@ -53,8 +53,12 @@ export default class DeleteUser extends React.PureComponent {
       return <Redirect to="/signin" />;
     }
     return (
-      <button className={componentName + `button`} onClick={this.deleteConfirmed}>
-        Delete Profile
+      <button
+        className={componentName + `button button button-secondary delete`}
+        onClick={this.deleteConfirmed}
+      >
+        <i className="close-icon fa fa-close" aria-hidden="true"></i>
+        <p className="delete">Delete Profile</p>
       </button>
     );
   }

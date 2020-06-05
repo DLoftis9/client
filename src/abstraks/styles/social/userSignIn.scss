@@ -33,7 +33,7 @@
         padding-right: 0;
       }
 
-      .form-element {
+      .form {
         .input_user-name,
         .input_password,
         .input_email {
@@ -52,12 +52,6 @@
           margin-top: 3em;
           float: left;
         }
-      }
-
-      .form-element .form-element_inputs,
-      .form-error {
-        float: left;
-        width: 100%;
       }
 
       .form-error {

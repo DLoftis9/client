@@ -6,120 +6,46 @@
   float: left;
   width: 100%;
   margin: 3.5em 0 5em 0;
-  
-  .website,
-  .profile_bio,
-  .profile_email,
-  .profile_number,
-  .profile_gender {
-    width: 100%;
-    float: left;
-  }
 
-  .subject-input-submit {
-    display: none;
-  }
-
-  .post-response {
-    padding: 10px;
-
-    .avatar {
-      padding: 0;
-    }
-  }
-
-  .post-response-user {
-    border-bottom: 1px solid $color-light_gray;
-    padding-bottom: 40px;
-
-    .avatar {
-      width: 100%;
-      padding: 0;
-    }
-
-    .post_input {
-      width: 100%;
-      min-height: 100px;
-      margin-top: 20px;
-
-      @media #{$medium} {
-        margin-top: 0;
-      }
-    }
-
-    .post_button {
-      width: auto;
-      float: right;
-    }
-
-    .input {
-      min-height: 150px;
-    }
-  }
-
-  .edit-text-input-group {
-    border-bottom: 1px solid $color-light_gray;
-
-    .title {
-      color: $color-medium_gray;
-    }
-
-    .input {
-      @extend .input;
-    }
-
-    .subject-list {
-      padding-left: 0;
-    }
-
-    .subject-button_remove {
-      display: none;
-    }
-  }
-
-  .edit-text-input-single {
-    border-bottom: 1px solid $color-light_gray;
-    .unordered-list {
-      padding-left: 0;
-    }
-
-    .label {
-      color: $color-medium_gray;
-    }
-  }
-
-  .subject-input-adds {
-    border-bottom: 1px solid $color-light_gray;
-    padding: 0 15px 30px 15px;
-
-    @media #{$medium} {
-      padding: 0;
+  .user-info {
+    .profile_image,
+    .wrapper {
+      float: left;
+      width: 50%;
     }
 
     .wrapper {
-      float: left;
-      width: 100%;
-      height: 200px;
-    }
-
-    .title {
-      color: $color-medium_gray;
-    }
-
-    .instructions {
-      color: $color-light_gray;
-    }
-
-    .paragraph {
-      float: left;
-      width: 100%;
+      .email,
+      .about {
+        .header-four {
+          margin-bottom: 5px;
+        }
+      }
     }
   }
 
-  .profile-image {
+  .user-info,
+  .user-manage,
+  .users-posts {
+    float: left;
+    width: 100%;
+  }
+
+  .users-posts {
+    .post_body .anchor_view {
+     display: block;   
+    }
+
+    .date {
+      color: $color-medium_gray;
+    }
+  }
+
+  .img {
     height: 200px;
     width: auto;
   }
+  
 }
 
 .profile.menu-slide-in {
