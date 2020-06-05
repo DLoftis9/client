@@ -127,10 +127,9 @@ export default class Profile extends React.PureComponent {
           <div className={containerName + `_container container`}>
             <div className={containerName + `_row row`}>
               <div className="user-info">
-                <h1 className="header-one">{user.name}'s Profile</h1>
                 <div className={containerName + `_image`}>
                   <img
-                    className={containerName + `-image`}
+                    className={containerName + ` img`}
                     src={photoUrl}
                     onError={i =>
                       (i.target.src = `https://abstraksresources.s3-us-west-1.amazonaws.com/images/avatar.svg`)
@@ -138,14 +137,25 @@ export default class Profile extends React.PureComponent {
                     alt={user.name}
                   />
                 </div>
-                <p>Email: {user.email}</p>
-                <p>{`Joined ${new Date(user.created).toDateString()}`}</p>
+                <div className="wrapper">
+                  <h1 className="header-one">{user.name}'s Profile</h1>
+                  <p className="email">
+                    <h4 className="header-four">Email:</h4> {user.email}
+                  </p>
+                  {/* <p className="joined">{`Joined ${new Date(user.created).toDateString()}`}</p> */}
+
+                  <p className="about">
+                    <h4 className="header-four">About:</h4>
+                    {user.about}
+                  </p>
+                </div>
               </div>
 
               <div className="user-manage">
                 {isAuthenticated().user && isAuthenticated().user._id === user._id ? (
                   <>
-                    <button>
+                    <button className="button button-primary edit">
+                      <i className="edit-icon fa fa-pencil-square-o"></i>
                       <Link to={`/editProfile/${user._id}`}>Edit Profile</Link>
                     </button>
 
@@ -157,10 +167,6 @@ export default class Profile extends React.PureComponent {
                     onButtonClick={this.clickFollowButton}
                   />
                 )}
-              </div>
-
-              <div className="user-manage">
-                <p className="user-about">{user.about}</p>
               </div>
               {/* <ProfileTabs followers={user.followers} following={user.following} /> */}
               <Tabs>
@@ -196,9 +202,7 @@ export default class Profile extends React.PureComponent {
                         </Link>
                       </p>
 
-                      <p className="posted-by">
-                        <span className="callout">{new Date(post.created).toDateString()}</span>
-                      </p>
+                      <p className="date">{new Date(post.created).toDateString()}</p>
                     </React.Fragment>
                   );
                 })}
