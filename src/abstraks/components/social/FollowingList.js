@@ -24,20 +24,19 @@ export default class Following extends React.PureComponent {
       <div className={componentName}>
         {following.map((person, i) => {
           return (
-            <div key={i}>
-              <div>
-                <Link to={`/user/${person._id}`}>
-                  <img
-                    className="tab-image"
-                    onError={i =>
-                      (i.target.src = `https://abstraksresources.s3-us-west-1.amazonaws.com/images/avatar.svg`)
-                    }
-                    src={`${url}/user/photo/${person._id}`}
-                    alt={person.name}
-                  />
-                  <h3 className="header-three">{person.name}</h3>
-                </Link>
-              </div>
+            <div className="thumbnail" key={i}>
+              <Link className="link" to={`/user/${person._id}`}>
+                <img
+                  className="tab-image"
+                  onError={i =>
+                    (i.target.src = `https://abstraksresources.s3-us-west-1.amazonaws.com/images/avatar.svg`)
+                  }
+                  src={`${url}/user/photo/${person._id}`}
+                  alt={person.name}
+                />
+                <h3 className="header-three">{person.name}</h3>
+                {/* <h3 className="header-three">{person.body}</h3> */}
+              </Link>
             </div>
           );
         })}
